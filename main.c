@@ -1,4 +1,12 @@
-int	main(void)
+#include "minishell.h"
+
+int	main(int argc, char **argv, char **envp)
 {
-	return(0);
+	t_shell	shell;
+
+	(void)argc;
+	(void)argv;
+	init_shell(&shell, envp);
+	main_loop(&shell);
+	return (shell.last_status);
 }

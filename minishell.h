@@ -25,131 +25,138 @@
 // === TIPOS DE TOKENS ===
 typedef enum e_token_type
 {
-    TOKEN_WORD,        // palabra (comando o argumento)
-    TOKEN_PIPE,        // |
-    TOKEN_REDIR_IN,    // 
-    TOKEN_REDIR_OUT,   // >
-    TOKEN_REDIR_APPEND, // >>
-    TOKEN_HEREDOC,     // 
-    TOKEN_AND,         // && (bonus)
-    TOKEN_OR,          // || (bonus)
-    TOKEN_OPEN_PAR,    // ( (bonus)
-    TOKEN_CLOSE_PAR,   // ) (bonus)
-}   t_token_type;
+	TOKEN_WORD,		// palabra (comando o argumento)
+	TOKEN_PIPE,		// |
+	TOKEN_REDIR_IN,	// <
+	TOKEN_REDIR_OUT,	// >
+	TOKEN_REDIR_APPEND,	// >>
+	TOKEN_HEREDOC,	// <<
+	TOKEN_AND,		// && (bonus)
+	TOKEN_OR,		// || (bonus)
+	TOKEN_OPEN_PAR,	// ( (bonus)
+	TOKEN_CLOSE_PAR	// ) (bonus)
+}	t_token_type;
 
 // === ESTRUCTURA DE UN TOKEN ===
 typedef struct s_token
 {
-    t_token_type    type;
-    char            *value;
-    struct s_token  *next;
-}   t_token;
+	t_token_type	type;
+	char		*value;
+	struct s_token	*next;
+}	t_token;
 
 // === TIPOS DE REDIRECCIÓN ===
 typedef enum e_redir_type
 {
-    REDIR_IN,       // 
-    REDIR_OUT,      // >
-    REDIR_APPEND,   // >>
-    REDIR_HEREDOC   // 
-}   t_redir_type;
+	REDIR_IN,		// <
+	REDIR_OUT,		// >
+	REDIR_APPEND,	// >>
+	REDIR_HEREDOC	// <<
+}	t_redir_type;
 
 // === ESTRUCTURA DE REDIRECCIÓN ===
 typedef struct s_redir
 {
-    t_redir_type     type;
-    char             *file;     // nombre del archivo o delimitador
-    struct s_redir   *next;
-}   t_redir;
+	t_redir_type	type;
+	char		*file;	// nombre del archivo o delimitador
+	struct s_redir	*next;
+}	t_redir;
 
-// === ESTRUCTURA DE UN PROCESO ===
-typedef struct s_process
+// === ESTRUCTURA DE UN COMANDO ===
+typedef struct s_cmd
 {
-    struct s_process    *next;
-    char                **argv;       // argumentos del comando
-    t_redir             *redirs;      // lista de redirecciones
-    pid_t               pid;          // PID del proceso
-    int                 completed;    // 1 si ha terminado
-    int                 stopped;      // 1 si ha sido detenido
-    int                 status;       // valor de retorno
-    int                 pipe_in[2];   // pipe para entrada
-    int                 pipe_out[2];  // pipe para salida
-}   t_process;
-
-// === ESTRUCTURA DE UN JOB ===
-typedef struct s_job
-{
-    struct s_job    *next;
-    char            *command;        // línea de comando completa (para logs)
-    t_process       *first_process;  // lista enlazada de procesos
-    pid_t           pgid;            // grupo de procesos
-    int             notified;        // 1 si el usuario fue notificado del stop
-    struct termios  tmodes;          // modos del terminal guardados
-    int             stdin;
-    int             stdout;
-    int             stderr;
-    int             operator;        // 0: nada, 1: &&, 2: || (bonus)
-}   t_job;
+	char		**argv;	// argumentos del comando
+	t_redir		*redirs;	// lista de redirecciones
+	struct s_cmd	*next;	// siguiente comando (en un pipe)
+	int		pipe_in;	// fd para entrada
+	int		pipe_out;	// fd para salida
+}	t_cmd;
 
 // === ESTRUCTURA DEL SHELL ===
 typedef struct s_shell
 {
-    t_job           *jobs;            // lista de jobs activos
-    char            **env;            // copia del entorno
-    struct termios  orig_termios;     // configuración original del terminal
-    int             last_status;      // estado de salida del último comando
-    t_token         *tokens;          // tokens de la línea de comando actual
-    int             interactive;      // 1 si el shell es interactivo
-}   t_shell;
+	char		**env;		// copia del entorno
+	struct termios	orig_termios;	// configuración original del terminal
+	int		last_status;	// estado de salida del último comando
+	t_token		*tokens;	// tokens de la línea de comando actual
+	t_cmd		*cmd;		// comando actual en ejecución
+	int		interactive;	// 1 si el shell es interactivo
+}	t_shell;
 
 // === VARIABLES GLOBALES ===
-extern int g_signal_received;         // para manejar señales
+extern int g_signal_received;	// para manejar señales
 
 // === FUNCIONES DE SHELL ===
-void    init_shell(t_shell *shell, char **envp);
-void    reset_terminal(t_shell *shell);
-int     main_loop(t_shell *shell);
-
-// === JOB CONTROL ===
-void    add_job(t_shell *shell, t_job *job);
-t_job   *find_job(t_shell *shell, pid_t pgid);
-int     job_is_completed(t_job *job);
-int     job_is_stopped(t_job *job);
-void    wait_for_job(t_shell *shell, t_job *job);
-void    update_job_status(t_shell *shell);
+int	main(int argc, char **argv, char **envp);
+void	init_shell(t_shell *shell, char **envp);
+int	shell_loop(t_shell *shell);
+void	reset_terminal(t_shell *shell);
 
 // === SIGNAL HANDLING ===
-void    setup_signal_handlers(void);
-void    ignore_signals(void);
-void    default_signals(void);
+void	setup_signal_handlers(void);
+void	ignore_signals(void);
+void	default_signals(void);
 
 // === LEXER Y PARSER ===
-t_token *tokenize_line(char *line);
-t_job   *parse_tokens(t_shell *shell, t_token *tokens);
-void    expand_variables(t_shell *shell, char **word);
-char    *expand_wildcards(char *pattern);  // bonus
+t_token	*tokenize_line(char *line);
+void	add_token(t_token **tokens, t_token_type type, char *value);
+t_token	*create_token(t_token_type type, char *value);
+void	handle_quotes(char *line, int *i, char **word);
+int	is_special_char(char c);
+
+t_cmd	*parse_tokens(t_shell *shell, t_token *tokens);
+int	parse_redirections(t_token **token_ptr, t_cmd *cmd);
+int	syntax_check(t_token *tokens);
+void	add_redirection(t_redir **redirs, t_redir_type type, char *file);
+t_redir	*create_redirection(t_redir_type type, char *file);
+
+// === EXPANSIÓN ===
+void	expand_variables(t_shell *shell, char **word);
+char	*get_var_value(t_shell *shell, char *var_name);
+char	*expand_exit_status(t_shell *shell);
 
 // === EXECUCIÓN ===
-void    execute_job(t_shell *shell, t_job *job);
-int     is_builtin(char *cmd);
-int     exec_builtin(t_shell *shell, t_process *process);
-void    handle_redirections(t_process *process);
+int	execute_cmd(t_shell *shell, t_cmd *cmd);
+void	execute_pipe(t_shell *shell, t_cmd *cmd);
+int	is_builtin(char *cmd);
+int	exec_builtin(t_shell *shell, t_cmd *cmd);
+int	handle_redirections(t_cmd *cmd);
+void	reset_redirections(t_cmd *cmd, int stdin_fd, int stdout_fd);
+pid_t	execute_process(t_shell *shell, t_cmd *cmd);
+int	wait_for_process(pid_t pid);
 
 // === BUILTINS ===
-int     builtin_echo(t_shell *shell, char **argv);
-int     builtin_cd(t_shell *shell, char **argv);
-int     builtin_pwd(t_shell *shell, char **argv);
-int     builtin_export(t_shell *shell, char **argv);
-int     builtin_unset(t_shell *shell, char **argv);
-int     builtin_env(t_shell *shell, char **argv);
-int     builtin_exit(t_shell *shell, char **argv);
+int	builtin_echo(t_shell *shell, char **argv);
+int	builtin_cd(t_shell *shell, char **argv);
+int	builtin_pwd(t_shell *shell, char **argv);
+int	builtin_export(t_shell *shell, char **argv);
+int	builtin_unset(t_shell *shell, char **argv);
+int	builtin_env(t_shell *shell, char **argv);
+int	builtin_exit(t_shell *shell, char **argv);
+int	is_valid_identifier(char *str);
+
+// === REDIRECCIONES ===
+int	setup_redirections(t_cmd *cmd);
+int	redirect_input(t_redir *redir);
+int	redirect_output(t_redir *redir);
+int	redirect_append(t_redir *redir);
+int	redirect_heredoc(t_shell *shell, t_redir *redir);
 
 // === UTILS ===
-void    error_exit(const char *msg);
-void    free_job(t_job *job);
-void    free_tokens(t_token *tokens);
-char    *get_cmd_path(const char *cmd, char **envp);
-char    *get_env_value(t_shell *shell, const char *name);
-void    print_jobs(t_shell *shell);
+void	error_msg(const char *msg);
+void	error_exit(const char *msg);
+void	free_cmd(t_cmd *cmd);
+void	free_tokens(t_token *tokens);
+void	free_redirs(t_redir *redirs);
+char	*get_cmd_path(const char *cmd, char **envp);
+char	*get_env_value(t_shell *shell, const char *name);
+void	print_error(const char *cmd, const char *arg, const char *msg);
+char	**copy_env(char **envp);
+int	add_env_var(t_shell *shell, char *var);
+int	remove_env_var(t_shell *shell, char *var);
+
+// === BONUS FUNCTIONS ===
+char	*expand_wildcards(char *pattern);
+int	execute_logic_ops(t_shell *shell, t_token *tokens);
 
 #endif
