@@ -7,6 +7,6 @@ int	main(int argc, char **argv, char **envp)
 	(void)argc;
 	(void)argv;
 	init_shell(&shell, envp);
-	main_loop(&shell);
+	shell_loop(&shell);
 	return (shell.last_status);
 }
