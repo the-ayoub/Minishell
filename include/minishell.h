@@ -82,7 +82,6 @@ typedef struct s_shell
 	t_cmd		*cmd;		// comando actual en ejecución
 	int		interactive;	// 1 si el shell es interactivo
 }	t_shell;
-
 // === VARIABLES GLOBALES ===
 extern int g_signal_received;	// para manejar señales
 
@@ -145,6 +144,7 @@ int	redirect_heredoc(t_shell *shell, t_redir *redir);
 // === UTILS ===
 void	error_msg(const char *msg);
 void	error_exit(const char *msg);
+void	free_array(char **array);
 void	free_cmd(t_cmd *cmd);
 void	free_tokens(t_token *tokens);
 void	free_redirs(t_redir *redirs);
