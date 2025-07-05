@@ -1,8 +1,8 @@
-#include "minishell.h"
+#include "../include/minishell.h"
 
-#include "minishell.h"
+#include "../include/minishell.h"
 
-#include "minishell.h"
+#include "../include/minishell.h"
 
 char *get_cmd_path(const char *cmd, char **envp)
 {

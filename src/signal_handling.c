@@ -1,4 +1,4 @@
-#include "minishell.h"
+#include "../include/minishell.h"
 
 volatile sig_atomic_t g_signal = 0;
 int g_in_input_phase = 0;  // Variable global para estado de input

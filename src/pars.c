@@ -1,4 +1,4 @@
-#include "minishell.h"
+#include "../include/minishell.h"
 
 int expand_dollar(t_shell *shell, char **result, char *ptr)
 {
@@ -88,7 +88,7 @@ int syntax_check(t_token *tokens)
     }
     return (0); // Sintaxis válida
 }
-#include "minishell.h"
+#include "../include/minishell.h"
 
 static void add_argument(t_cmd *cmd, char *arg)
 {

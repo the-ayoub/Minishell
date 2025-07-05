@@ -1,4 +1,4 @@
-#include "minishell.h"
+#include "../include/minishell.h"
 
 static void exec_external(t_shell *shell, t_cmd *cmd)
 {

@@ -1,4 +1,4 @@
-#include "minishell.h"
+#include "../include/minishell.h"
 
 void close_pipe_ends(int pipe_fd[2], int keep_read_end)
 {

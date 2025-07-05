@@ -1,4 +1,4 @@
-#include "minishell.h"
+#include "../include/minishell.h"
 
 extern int g_in_input_phase;  // Definido en signal_handling.c
 
