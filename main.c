@@ -8,5 +8,6 @@ int	main(int argc, char **argv, char **envp)
 	(void)argv;
 	init_shell(&shell, envp);
 	shell_loop(&shell);
+	//free(shell.env);
 	return (shell.last_status);
 }
