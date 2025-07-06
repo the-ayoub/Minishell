@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 20:15:37 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/06 20:39:45 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/06 20:40:38 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,7 @@ int	shell_loop(t_shell *shell)
 			}
 		}
 		reset_cmd_line(&line, shell);
-		//Restaurar FDs estándar después de cada comando
-		reset_std_fds(std_backup);
+		reset_std_fds(std_backup); //Restaurar FDs estándar después de cada comando
 	}
 	close(std_backup[0]);
 	close(std_backup[1]);
