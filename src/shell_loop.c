@@ -6,12 +6,13 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 20:15:37 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/06 20:37:38 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/06 20:39:45 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
+// WARNING: OIGA QUE CHUCHA
 extern int g_in_input_phase;  // Definido en signal_handling.c
 
 // NOTE: Por qué caralho el g_in_input_phase? lo usa el readline?
@@ -56,7 +57,7 @@ static void	reset_cmd_line(char **line, t_shell *shell)
 	shell->cmd = NULL;
 }
 
-int shell_loop(t_shell *shell)
+int	shell_loop(t_shell *shell)
 {
 	char	*line;
 	int		std_backup[2] = {dup(STDIN_FILENO), dup(STDOUT_FILENO)};
