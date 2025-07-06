@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 20:15:37 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/06 20:40:38 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/06 20:43:17 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ extern int g_in_input_phase;  // Definido en signal_handling.c
 static int	readline_wrapper(char **line, int *g_var, t_shell *shell)
 {
 	*line = readline(PROMPT);
-	g_in_input_phase = 0;
+	g_var = 0;
 	if (!line)
 	{
 		ft_putstr_fd("exit", STDOUT_FILENO);
@@ -50,7 +50,7 @@ static int	tokenize_and_check_wrp(char **line, t_shell *shell)
 
 static void	reset_cmd_line(char **line, t_shell *shell)
 {
-	free(line);
+	free(*line);
 	free_tokens(shell->tokens);
 	free_cmd_list(shell->cmd);  // Libera TODA la lista de comandos
 	shell->tokens = NULL;
