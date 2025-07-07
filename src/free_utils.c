@@ -1,43 +1,63 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   free_utils.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/07 16:40:04 by aybelhaj          #+#    #+#             */
+/*   Updated: 2025/07/07 16:46:04 by aybelhaj         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/minishell.h"
 
-void free_cmd_list(t_cmd *head)
+void	free_cmd_list(t_cmd *head)
 {
-    t_cmd *tmp;
-    while (head) {
-        tmp = head;
-        head = head->next;
-        free_cmd(tmp);
-    }
+	t_cmd	*tmp;
+
+	while (head)
+	{
+		tmp = head;
+		head = head->next;
+		free_cmd(tmp);
+	}
 }
 
-void free_cmd(t_cmd *cmd)
+void	free_cmd(t_cmd *cmd)
 {
-    if (!cmd) return;
-    
-    // Liberar argumentos
-    if (cmd->argv) {
-        for (int i = 0; cmd->argv[i]; i++)
-            free(cmd->argv[i]);
-        free(cmd->argv);
-    }
-    
-    // Liberar redirecciones
-    t_redir *redir = cmd->redirs;
-    while (redir) {
-        t_redir *next = redir->next;
-        if (redir->file) free(redir->file);
-        free(redir);
-        redir = next;
-    }
-    free(cmd);
+	t_redir	*redir;
+	t_redir	*next;
+
+	if (!cmd)
+		return ;
+	if (cmd->argv)
+	{
+		for (int i = 0; cmd->argv[i]; i++)
+			free(cmd->argv[i]);
+		free(cmd->argv);
+	}
+	redir = cmd->redirs;
+	while (redir)
+	{
+		next = redir->next;
+		if (redir->file)
+			free(redir->file);
+		free(redir);
+		redir = next;
+	}
+	free(cmd);
 }
 
-void free_tokens(t_token *tokens)
+void	free_tokens(t_token *tokens)
 {
-    while (tokens) {
-        t_token *next = tokens->next;
-        free(tokens->value);
-        free(tokens);
-        tokens = next;
-    }
+	t_token	*next;
+
+	while (tokens)
+	{
+		next = tokens->next;
+		free(tokens->value);
+		free(tokens);
+		tokens = next;
+	}
 }
