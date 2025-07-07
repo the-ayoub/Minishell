@@ -6,12 +6,14 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:38:32 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/07 20:08:37 by aybelhaj         ###   ########.fr       */
+/*   Updated: 2025/07/07 23:46:03 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
+// NOTE: To implement: working interface that uses
+// envp as linked list rather than a double **
 char	**copy_env(char **envp)
 {
 	int		i;
