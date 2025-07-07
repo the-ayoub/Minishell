@@ -12,9 +12,9 @@
       "obj/another.o",
       "src/another.c"
     ],
-    "directory": "/home/ohnonon/code/minishell/group",
-    "file": "/home/ohnonon/code/minishell/group/src/another.c",
-    "output": "/home/ohnonon/code/minishell/group/obj/another.o"
+    "directory": "/home/nimatura/code/garage/minishell/group",
+    "file": "/home/nimatura/code/garage/minishell/group/src/another.c",
+    "output": "/home/nimatura/code/garage/minishell/group/obj/another.o"
   },
   {
     "arguments": [
@@ -29,9 +29,9 @@
       "obj/builtins.o",
       "src/builtins.c"
     ],
-    "directory": "/home/ohnonon/code/minishell/group",
-    "file": "/home/ohnonon/code/minishell/group/src/builtins.c",
-    "output": "/home/ohnonon/code/minishell/group/obj/builtins.o"
+    "directory": "/home/nimatura/code/garage/minishell/group",
+    "file": "/home/nimatura/code/garage/minishell/group/src/builtins.c",
+    "output": "/home/nimatura/code/garage/minishell/group/obj/builtins.o"
   },
   {
     "arguments": [
@@ -46,9 +46,9 @@
       "obj/copy_env.o",
       "src/copy_env.c"
     ],
-    "directory": "/home/ohnonon/code/minishell/group",
-    "file": "/home/ohnonon/code/minishell/group/src/copy_env.c",
-    "output": "/home/ohnonon/code/minishell/group/obj/copy_env.o"
+    "directory": "/home/nimatura/code/garage/minishell/group",
+    "file": "/home/nimatura/code/garage/minishell/group/src/copy_env.c",
+    "output": "/home/nimatura/code/garage/minishell/group/obj/copy_env.o"
   },
   {
     "arguments": [
@@ -63,9 +63,9 @@
       "obj/error_exit.o",
       "src/error_exit.c"
     ],
-    "directory": "/home/ohnonon/code/minishell/group",
-    "file": "/home/ohnonon/code/minishell/group/src/error_exit.c",
-    "output": "/home/ohnonon/code/minishell/group/obj/error_exit.o"
+    "directory": "/home/nimatura/code/garage/minishell/group",
+    "file": "/home/nimatura/code/garage/minishell/group/src/error_exit.c",
+    "output": "/home/nimatura/code/garage/minishell/group/obj/error_exit.o"
   },
   {
     "arguments": [
@@ -80,9 +80,9 @@
       "obj/error_msg.o",
       "src/error_msg.c"
     ],
-    "directory": "/home/ohnonon/code/minishell/group",
-    "file": "/home/ohnonon/code/minishell/group/src/error_msg.c",
-    "output": "/home/ohnonon/code/minishell/group/obj/error_msg.o"
+    "directory": "/home/nimatura/code/garage/minishell/group",
+    "file": "/home/nimatura/code/garage/minishell/group/src/error_msg.c",
+    "output": "/home/nimatura/code/garage/minishell/group/obj/error_msg.o"
   },
   {
     "arguments": [
@@ -97,9 +97,9 @@
       "obj/excution_utils.o",
       "src/excution_utils.c"
     ],
-    "directory": "/home/ohnonon/code/minishell/group",
-    "file": "/home/ohnonon/code/minishell/group/src/excution_utils.c",
-    "output": "/home/ohnonon/code/minishell/group/obj/excution_utils.o"
+    "directory": "/home/nimatura/code/garage/minishell/group",
+    "file": "/home/nimatura/code/garage/minishell/group/src/excution_utils.c",
+    "output": "/home/nimatura/code/garage/minishell/group/obj/excution_utils.o"
   },
   {
     "arguments": [
@@ -114,9 +114,9 @@
       "obj/executions.o",
       "src/executions.c"
     ],
-    "directory": "/home/ohnonon/code/minishell/group",
-    "file": "/home/ohnonon/code/minishell/group/src/executions.c",
-    "output": "/home/ohnonon/code/minishell/group/obj/executions.o"
+    "directory": "/home/nimatura/code/garage/minishell/group",
+    "file": "/home/nimatura/code/garage/minishell/group/src/executions.c",
+    "output": "/home/nimatura/code/garage/minishell/group/obj/executions.o"
   },
   {
     "arguments": [
@@ -131,9 +131,9 @@
       "obj/expansion.o",
       "src/expansion.c"
     ],
-    "directory": "/home/ohnonon/code/minishell/group",
-    "file": "/home/ohnonon/code/minishell/group/src/expansion.c",
-    "output": "/home/ohnonon/code/minishell/group/obj/expansion.o"
+    "directory": "/home/nimatura/code/garage/minishell/group",
+    "file": "/home/nimatura/code/garage/minishell/group/src/expansion.c",
+    "output": "/home/nimatura/code/garage/minishell/group/obj/expansion.o"
   },
   {
     "arguments": [
@@ -148,9 +148,9 @@
       "obj/free_array.o",
       "src/free_array.c"
     ],
-    "directory": "/home/ohnonon/code/minishell/group",
-    "file": "/home/ohnonon/code/minishell/group/src/free_array.c",
-    "output": "/home/ohnonon/code/minishell/group/obj/free_array.o"
+    "directory": "/home/nimatura/code/garage/minishell/group",
+    "file": "/home/nimatura/code/garage/minishell/group/src/free_array.c",
+    "output": "/home/nimatura/code/garage/minishell/group/obj/free_array.o"
   },
   {
     "arguments": [
@@ -165,9 +165,9 @@
       "obj/free_utils.o",
       "src/free_utils.c"
     ],
-    "directory": "/home/ohnonon/code/minishell/group",
-    "file": "/home/ohnonon/code/minishell/group/src/free_utils.c",
-    "output": "/home/ohnonon/code/minishell/group/obj/free_utils.o"
+    "directory": "/home/nimatura/code/garage/minishell/group",
+    "file": "/home/nimatura/code/garage/minishell/group/src/free_utils.c",
+    "output": "/home/nimatura/code/garage/minishell/group/obj/free_utils.o"
   },
   {
     "arguments": [
@@ -182,9 +182,9 @@
       "obj/init_shell.o",
       "src/init_shell.c"
     ],
-    "directory": "/home/ohnonon/code/minishell/group",
-    "file": "/home/ohnonon/code/minishell/group/src/init_shell.c",
-    "output": "/home/ohnonon/code/minishell/group/obj/init_shell.o"
+    "directory": "/home/nimatura/code/garage/minishell/group",
+    "file": "/home/nimatura/code/garage/minishell/group/src/init_shell.c",
+    "output": "/home/nimatura/code/garage/minishell/group/obj/init_shell.o"
   },
   {
     "arguments": [
@@ -199,9 +199,9 @@
       "obj/main.o",
       "src/main.c"
     ],
-    "directory": "/home/ohnonon/code/minishell/group",
-    "file": "/home/ohnonon/code/minishell/group/src/main.c",
-    "output": "/home/ohnonon/code/minishell/group/obj/main.o"
+    "directory": "/home/nimatura/code/garage/minishell/group",
+    "file": "/home/nimatura/code/garage/minishell/group/src/main.c",
+    "output": "/home/nimatura/code/garage/minishell/group/obj/main.o"
   },
   {
     "arguments": [
@@ -216,9 +216,9 @@
       "obj/pars.o",
       "src/pars.c"
     ],
-    "directory": "/home/ohnonon/code/minishell/group",
-    "file": "/home/ohnonon/code/minishell/group/src/pars.c",
-    "output": "/home/ohnonon/code/minishell/group/obj/pars.o"
+    "directory": "/home/nimatura/code/garage/minishell/group",
+    "file": "/home/nimatura/code/garage/minishell/group/src/pars.c",
+    "output": "/home/nimatura/code/garage/minishell/group/obj/pars.o"
   },
   {
     "arguments": [
@@ -233,9 +233,9 @@
       "obj/redirections.o",
       "src/redirections.c"
     ],
-    "directory": "/home/ohnonon/code/minishell/group",
-    "file": "/home/ohnonon/code/minishell/group/src/redirections.c",
-    "output": "/home/ohnonon/code/minishell/group/obj/redirections.o"
+    "directory": "/home/nimatura/code/garage/minishell/group",
+    "file": "/home/nimatura/code/garage/minishell/group/src/redirections.c",
+    "output": "/home/nimatura/code/garage/minishell/group/obj/redirections.o"
   },
   {
     "arguments": [
@@ -250,9 +250,9 @@
       "obj/shell_loop.o",
       "src/shell_loop.c"
     ],
-    "directory": "/home/ohnonon/code/minishell/group",
-    "file": "/home/ohnonon/code/minishell/group/src/shell_loop.c",
-    "output": "/home/ohnonon/code/minishell/group/obj/shell_loop.o"
+    "directory": "/home/nimatura/code/garage/minishell/group",
+    "file": "/home/nimatura/code/garage/minishell/group/src/shell_loop.c",
+    "output": "/home/nimatura/code/garage/minishell/group/obj/shell_loop.o"
   },
   {
     "arguments": [
@@ -267,9 +267,9 @@
       "obj/signal_handling.o",
       "src/signal_handling.c"
     ],
-    "directory": "/home/ohnonon/code/minishell/group",
-    "file": "/home/ohnonon/code/minishell/group/src/signal_handling.c",
-    "output": "/home/ohnonon/code/minishell/group/obj/signal_handling.o"
+    "directory": "/home/nimatura/code/garage/minishell/group",
+    "file": "/home/nimatura/code/garage/minishell/group/src/signal_handling.c",
+    "output": "/home/nimatura/code/garage/minishell/group/obj/signal_handling.o"
   },
   {
     "arguments": [
@@ -284,9 +284,9 @@
       "obj/builtin_utils.o",
       "src/builtin_utils.c"
     ],
-    "directory": "/home/ohnonon/code/minishell/group",
-    "file": "/home/ohnonon/code/minishell/group/src/builtin_utils.c",
-    "output": "/home/ohnonon/code/minishell/group/obj/builtin_utils.o"
+    "directory": "/home/nimatura/code/garage/minishell/group",
+    "file": "/home/nimatura/code/garage/minishell/group/src/builtin_utils.c",
+    "output": "/home/nimatura/code/garage/minishell/group/obj/builtin_utils.o"
   },
   {
     "arguments": [
@@ -301,8 +301,8 @@
       "obj/path_utils.o",
       "src/path_utils.c"
     ],
-    "directory": "/home/ohnonon/code/minishell/group",
-    "file": "/home/ohnonon/code/minishell/group/src/path_utils.c",
-    "output": "/home/ohnonon/code/minishell/group/obj/path_utils.o"
+    "directory": "/home/nimatura/code/garage/minishell/group",
+    "file": "/home/nimatura/code/garage/minishell/group/src/path_utils.c",
+    "output": "/home/nimatura/code/garage/minishell/group/obj/path_utils.o"
   }
 ]
