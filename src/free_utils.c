@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:40:04 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/07 16:46:04 by aybelhaj         ###   ########.fr       */
+/*   Updated: 2025/07/07 20:09:58 by aybelhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,18 @@ void	free_cmd(t_cmd *cmd)
 {
 	t_redir	*redir;
 	t_redir	*next;
+	int		i;
 
 	if (!cmd)
 		return ;
 	if (cmd->argv)
 	{
-		for (int i = 0; cmd->argv[i]; i++)
+		i = 0;
+		while (cmd->argv[i])
+		{
 			free(cmd->argv[i]);
+			i++;
+		}
 		free(cmd->argv);
 	}
 	redir = cmd->redirs;

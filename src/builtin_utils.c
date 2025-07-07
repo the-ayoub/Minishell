@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:37:17 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/07 16:47:02 by aybelhaj         ###   ########.fr       */
+/*   Updated: 2025/07/07 20:08:15 by aybelhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	exec_builtin(t_shell *shell, t_cmd *cmd)
 		return (builtin_exit(shell, cmd->argv));
 	return (0);
 }
+
 int	is_valid_identifier(char *str)
 {
 	if (!str || !*str || ft_isdigit(*str))

@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 21:45:15 by aybelhaj          #+#    #+#             */
-/*   Updated: 2024/10/15 12:55:43 by aybelhaj         ###   ########.fr       */
+/*   Updated: 2025/07/07 19:58:23 by aybelhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -15,7 +15,7 @@ long	ft_atoi(const char *str)
 {
 	int		sign;
 	long	i;
-	long		result;
+	long	result;
 
 	i = 0;
 	sign = 1;
@@ -33,9 +33,10 @@ long	ft_atoi(const char *str)
 	return (result * sign);
 }
 /*
-#include <stdlib.h>
 #include <stdio.h>
-int main(void)
+#include <stdlib.h>
+
+int	main(void)
 {
 	printf("%i\n", ft_atoi("  +-3"));
 	printf("org: %i", atoi("  +-3"));

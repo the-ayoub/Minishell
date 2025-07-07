@@ -6,13 +6,11 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:43:30 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/07 16:46:26 by aybelhaj         ###   ########.fr       */
+/*   Updated: 2025/07/07 20:11:05 by aybelhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
-
-extern int g_in_input_phase; // Definido en signal_handling.c
 
 int	shell_loop(t_shell *shell)
 {
@@ -22,12 +20,12 @@ int	shell_loop(t_shell *shell)
 	setup_signal_handlers();
 	while (1)
 	{
-		g_in_input_phase = 1;
+		g_state.in_input = 1;
 		line = readline(PROMPT);
-		g_in_input_phase = 0;
+		g_state.in_input = 0;
 		if (!line)
 		{
-			ft_putstr_fd("exit", STDOUT_FILENO);
+			ft_putstr_fd("exit\n", STDOUT_FILENO);
 			free_array(shell->env);
 			break ;
 		}
@@ -51,7 +49,6 @@ int	shell_loop(t_shell *shell)
 		free_tokens(shell->tokens);
 		free_cmd_list(shell->cmd);
 		shell->cmd = NULL;
-		// Restaurar FDs estándar después de cada comando
 		reset_std_fds(std_backup);
 	}
 	close(std_backup[0]);

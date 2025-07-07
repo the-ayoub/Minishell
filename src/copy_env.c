@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:38:32 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/07 16:47:09 by aybelhaj         ###   ########.fr       */
+/*   Updated: 2025/07/07 20:08:37 by aybelhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,11 @@ char	*get_env_value(t_shell *shell, const char *name)
 void	set_env_var(t_shell *shell, const char *name, const char *value)
 {
 	char	*var;
-	int		i;
-	char	**new_env;
 	char	*temp;
+	int		i;
 	int		len;
 	int		j;
+	char	**new_env;
 
 	i = 0;
 	len = ft_strlen(name);
@@ -82,11 +82,6 @@ void	set_env_var(t_shell *shell, const char *name, const char *value)
 		i++;
 	}
 	new_env = malloc((i + 2) * sizeof(char *));
-	if (!new_env)
-	{
-		free(var);
-		return ;
-	}
 	j = 0;
 	while (j < i)
 	{

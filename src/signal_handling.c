@@ -6,20 +6,19 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:43:45 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/07 16:46:41 by aybelhaj         ###   ########.fr       */
+/*   Updated: 2025/07/07 20:11:19 by aybelhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-volatile sig_atomic_t	g_signal = 0;
-int						g_in_input_phase = 0;
+volatile t_global	g_state = {0, 0};
 
 void	sigint_handler(int sig)
 {
-	g_signal = sig;
+	g_state.received = sig;
 	write(1, "\n", 1);
-	if (g_in_input_phase)
+	if (g_state.in_input)
 	{
 		rl_replace_line("", 0);
 		rl_on_new_line();

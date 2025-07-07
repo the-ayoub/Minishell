@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:42:45 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/07 16:49:37 by aybelhaj         ###   ########.fr       */
+/*   Updated: 2025/07/07 20:10:32 by aybelhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -226,15 +226,11 @@ t_cmd	*parse_tokens(t_shell *shell, t_token *tokens)
 			current_cmd = create_new_command();
 			head = current_cmd;
 		}
-		switch (current->type)
-		{
-		case TOKEN_WORD:
+		if (current->type == TOKEN_WORD)
 			add_argument(current_cmd, ft_strdup(current->value));
-			break ;
-		case TOKEN_REDIR_IN:
-		case TOKEN_REDIR_OUT:
-		case TOKEN_REDIR_APPEND:
-		case TOKEN_HEREDOC:
+		else if (current->type >= TOKEN_REDIR_IN
+			&& current->type <= TOKEN_HEREDOC)
+		{
 			if (!current->next || current->next->type != TOKEN_WORD)
 			{
 				ft_putstr_fd("minishell: syntax error near redirection\n",
@@ -244,10 +240,9 @@ t_cmd	*parse_tokens(t_shell *shell, t_token *tokens)
 			}
 			add_redirection(current_cmd, current);
 			current = current->next;
-			break ;
-		case TOKEN_PIPE:
-			break ;
-		default:
+		}
+		else
+		{
 			ft_putstr_fd("minishell: unknown token type\n", STDERR_FILENO);
 			free_cmd_list(head);
 			return (NULL);

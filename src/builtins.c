@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:38:11 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/07 16:47:07 by aybelhaj         ###   ########.fr       */
+/*   Updated: 2025/07/07 20:08:26 by aybelhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,8 @@ int	builtin_pwd(t_shell *shell, char **argv)
 	cwd = getcwd(NULL, 0);
 	if (cwd)
 	{
-		printf("%s\n", cwd);
+		ft_putstr_fd(cwd, STDOUT_FILENO);
+		ft_putchar_fd('\n', STDOUT_FILENO);
 		free(cwd);
 		return (0);
 	}
@@ -123,22 +124,29 @@ int	builtin_pwd(t_shell *shell, char **argv)
 
 int	builtin_export(t_shell *shell, char **argv)
 {
+	int		i;
 	int		status;
 	char	*name;
 	char	*value;
 	char	*current;
 
+	status = 0;
 	if (!argv[1])
 	{
-		for (int i = 0; shell->env[i]; i++)
-			printf("declare -x %s\n", shell->env[i]);
+		i = 0;
+		while (shell->env[i])
+		{
+			ft_putstr_fd("declare -x ", STDOUT_FILENO);
+			ft_putendl_fd(shell->env[i], STDOUT_FILENO);
+			i++;
+		}
 		return (0);
 	}
-	status = 0;
-	for (int i = 1; argv[i]; i++)
+	i = 1;
+	while (argv[i])
 	{
 		name = argv[i];
-		value = strchr(argv[i], '=');
+		value = ft_strchr(argv[i], '=');
 		if (value)
 			*value++ = '\0';
 		if (!is_valid_identifier(name))
@@ -147,18 +155,18 @@ int	builtin_export(t_shell *shell, char **argv)
 			ft_putstr_fd(name, STDERR_FILENO);
 			ft_putstr_fd("': not a valid identifier\n", STDERR_FILENO);
 			status = 1;
+			i++;
 			continue ;
 		}
 		if (value)
-		{
 			set_env_var(shell, name, value);
-		}
 		else
 		{
 			current = get_env_value(shell, name);
 			if (!current)
 				set_env_var(shell, name, "");
 		}
+		i++;
 	}
 	return (status);
 }
@@ -176,10 +184,14 @@ int	builtin_unset(t_shell *shell, char **argv)
 
 int	builtin_env(t_shell *shell, char **argv)
 {
+	int	i;
+
 	(void)argv;
-	for (int i = 0; shell->env[i]; i++)
+	i = 0;
+	while (shell->env[i])
 	{
-		printf("%s\n", shell->env[i]);
+		ft_putendl_fd(shell->env[i], STDOUT_FILENO);
+		i++;
 	}
 	return (0);
 }

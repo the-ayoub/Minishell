@@ -91,7 +91,12 @@ typedef struct s_shell
 }	t_shell;
 
 // === VARIABLES GLOBALES ===
-extern volatile sig_atomic_t g_signal; // para manejar señales
+typedef struct s_global
+{
+    volatile sig_atomic_t received;
+    int in_input;
+} t_global;
+extern volatile t_global g_state;
 
 // === FUNCIONES DE SHELL ===
 int		main(int argc, char **argv, char **envp);

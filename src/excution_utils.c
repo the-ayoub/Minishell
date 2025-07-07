@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:39:21 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/07 16:47:17 by aybelhaj         ###   ########.fr       */
+/*   Updated: 2025/07/07 20:09:19 by aybelhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,14 @@ void	wait_for_children(t_shell *shell, pid_t last_pid)
 int	builtin_in_pipe(char *cmd)
 {
 	const char	*pipe_builtins[] = {"echo", "env", "pwd", NULL};
+	int			i;
 
-	for (int i = 0; pipe_builtins[i]; i++)
+	i = 0;
+	while (pipe_builtins[i])
+	{
 		if (ft_strcmp(cmd, pipe_builtins[i]) == 0)
 			return (TRUE);
+		i++;
+	}
 	return (FALSE);
 }

@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:39:32 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/07 16:45:50 by aybelhaj         ###   ########.fr       */
+/*   Updated: 2025/07/07 20:09:30 by aybelhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,16 +140,12 @@ int	execute_cmd(t_shell *shell, t_cmd *cmd)
 	if (cmd->next || !is_builtin(cmd->argv[0]) || builtin_in_pipe(cmd->argv[0]))
 	{
 		if (cmd->next)
-		{
 			execute_pipe(shell, cmd);
-		}
 		else
 		{
 			pid = execute_process(shell, cmd);
 			if (pid != -1)
-			{
 				wait_for_children(shell, pid);
-			}
 		}
 	}
 	else

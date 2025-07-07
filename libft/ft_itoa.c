@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 16:22:46 by aybelhaj          #+#    #+#             */
-/*   Updated: 2024/10/12 17:57:12 by aybelhaj         ###   ########.fr       */
+/*   Updated: 2025/07/07 19:56:21 by aybelhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,11 @@ char	*ft_itoa(int n)
 	return (src);
 }
 /*int main(void) {
-    int n;
-    char *test;
-    n = -2147483648;
-    test = ft_itoa(n);
-    printf("%s",test);
-    //free(test);
-    return 0;
+	int n;
+	char *test;
+	n = -2147483648;
+	test = ft_itoa(n);
+	printf("%s",test);
+	//free(test);
+	return (0);
 }*/
