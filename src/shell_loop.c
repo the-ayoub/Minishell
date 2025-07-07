@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 20:15:37 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/07 21:59:41 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/08 00:24:22 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 // NOTE: Por qué caralho el g_in_input_phase? lo usa el readline?
 // En ese caso, capaz que no hay que pasarla por referencia
 // returns 1 in case of err, otherwise 0
+// TODO: free_arr to free lnk_lst
 static int	readline_wrapper(char **line, t_shell *shell)
 {
 	*line = readline(PROMPT);
