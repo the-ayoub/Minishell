@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:39:44 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/07 20:09:38 by aybelhaj         ###   ########.fr       */
+/*   Updated: 2025/07/07 20:23:40 by aybelhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	expand_exit_status(t_shell *shell, char **result)
 void	expand_variables(t_shell *shell, char **word)
 {
 	char	*result;
-	char	*ptr;
+	char	*ptr = NULL;
 	int		in_squote;
 	int		in_dquote;
 	char	str[2] = {*ptr, '\0'};
