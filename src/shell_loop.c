@@ -6,23 +6,21 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 20:15:37 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/08 00:24:22 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/08 00:30:11 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-// NOTE: Por qué caralho el g_in_input_phase? lo usa el readline?
-// En ese caso, capaz que no hay que pasarla por referencia
 // returns 1 in case of err, otherwise 0
 // TODO: free_arr to free lnk_lst
 static int	readline_wrapper(char **line, t_shell *shell)
 {
 	*line = readline(PROMPT);
 	g_state.in_input = 0;
-	if (!line)
+	if (NULL == *line)
 	{
-		ft_putstr_fd("exit", STDOUT_FILENO);
+		ft_putstr_fd("exit\n", STDOUT_FILENO);
 		free_array(shell->env);
 		return (1);
 	}
@@ -48,7 +46,7 @@ static int	tokenize_and_check_wrp(char **line, t_shell *shell)
 
 static void	reset_cmd_line(char **line, t_shell *shell)
 {
-	free(line);
+	free(*line);
 	free_tokens(shell->tokens);
 	free_cmd_list(shell->cmd);  // Libera TODA la lista de comandos
 	shell->tokens = NULL;
