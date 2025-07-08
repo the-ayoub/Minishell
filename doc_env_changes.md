@@ -10,6 +10,7 @@ to
 
 t_list  *env
 
+## DIFF IN LIBFT_BONUS
 
 ### IMPLEMENTATION
 
@@ -25,7 +26,18 @@ size_t	get_var_len(char *str);
 char	*ft_strdup_env(const char *src);
 
 /* ENV_PARSING */
+
+    WARNING: MALLOC
 char	*get_var_name(char *str);
 char	**expand_env_var(char *var);
-char	*locate_env_var(t_minishell *data, char *str);
+
+    FUNCTION FREES MEMORY
 void	search_and_print_env_var(t_minishell *data, char *str);
+
+    NO MALLOC
+char	*locate_env_var(t_minishell *data, char *str);
+
+/* FREE MEMORY */
+void	free_split_wrp(char **str);
+void	free_lst_wrp(t_list *head);
+

@@ -6,12 +6,12 @@
 /*   By: aybelhaj <aybelhaj@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 19:01:03 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/01/05 01:04:25 by aybelhaj         ###   ########.fr       */
+/*   Updated: 2025/07/08 20:59:43 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-t_list	*ft_lstnew(int content)
+t_list	*ft_lstnew(void *content)
 {
 	t_list	*new;
 

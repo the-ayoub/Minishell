@@ -6,7 +6,7 @@
 /*   By: aybelhaj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 16:02:31 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/07 19:57:02 by aybelhaj         ###   ########.fr       */
+/*   Updated: 2025/07/08 21:00:35 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,17 +61,17 @@ int					ft_strcmp(const char *s1, const char *s2);
 // parte bonus
 typedef struct s_list
 {
-	char			content;
+	void			*content;
 	struct s_list	*next;
 }					t_list;
 
-t_list				*ft_lstnew(int content);
+t_list				*ft_lstnew(void *content);
 void				ft_lstadd_front(t_list **lst, t_list *new);
 int					ft_lstsize(t_list *lst);
 t_list				*ft_lstlast(t_list *lst);
 void				ft_lstadd_back(t_list **lst, t_list *new);
 void				ft_lstdelone(t_list *lst, void (*del)(int));
 void				ft_lstclear(t_list **lst, void (*del)(int));
-void				ft_lstiter(t_list *lst, void (*f)(int));
+void				ft_lstiter(t_list *lst, void (*f)(void *));
 
 #endif
