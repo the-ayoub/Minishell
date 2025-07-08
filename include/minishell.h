@@ -73,21 +73,22 @@ typedef struct s_redir
 // === ESTRUCTURA DE UN COMANDO ===
 typedef struct s_cmd
 {
-	char		**argv;     // argumentos del comando
-	t_redir		*redirs;    // lista de redirecciones
+	char			**argv;     // argumentos del comando
+	t_redir			*redirs;    // lista de redirecciones
 	struct s_cmd	*next;  // siguiente comando (en un pipe)
 }	t_cmd;
 
 // === ESTRUCTURA DEL SHELL ===
 typedef struct s_shell
 {
-	char		**env;              // copia del entorno
 	struct termios	orig_termios;   // configuración original del terminal
-	int		last_status;        // estado de salida del último comando
-	t_token		*tokens;            // tokens de la línea de comando actual
-	t_cmd		*cmd;               // comando actual en ejecución
-	int		interactive;        // 1 si el shell es interactivo
-	int     in_input_phase;  // Nuevo: para manejo de señales
+	t_list			*raw_env;
+	char			**env;              // copia del entorno
+	int				last_status;        // estado de salida del último comando
+	t_token			*tokens;            // tokens de la línea de comando actual
+	t_cmd			*cmd;               // comando actual en ejecución
+	int				interactive;        // 1 si el shell es interactivo
+	int			    in_input_phase;  // Nuevo: para manejo de señales
 }	t_shell;
 
 // === VARIABLES GLOBALES ===
@@ -103,6 +104,12 @@ int		main(int argc, char **argv, char **envp);
 void	init_shell(t_shell *shell, char **envp);
 int		shell_loop(t_shell *shell);
 
+// === LIST TOOLS ===
+void	free_lst_wrp(t_list *head);
+
+// === ENV AND LIST TOOLS ===
+t_list	*env_lst_init(char **env);
+
 // === SIGNAL HANDLING ===
 void	setup_signal_handlers(void);
 void	sigint_handler(int sig);
@@ -115,7 +122,7 @@ int		syntax_check(t_token *tokens);
 t_token	*create_token(t_token_type type, char *value);
 void	add_token(t_token **tokens, t_token_type type, char *value);
 //void	add_redirection(t_redir **redirs, t_redir_type type, char *file);
-void add_redirection(t_cmd *cmd, t_token *token);
+void	add_redirection(t_cmd *cmd, t_token *token);
 
 void	add_to_argv(char ***argv, char *arg);
 
@@ -161,7 +168,7 @@ char	*get_env_value(t_shell *shell, const char *name);
 char	**copy_env(char **envp);
 int		add_env_var(t_shell *shell, char *var);
 int		remove_env_var(t_shell *shell, char *var);
-void    set_env_var(t_shell *shell, const char *name, const char *value);
-void free_cmd_list(t_cmd *head);
+void	set_env_var(t_shell *shell, const char *name, const char *value);
+void	free_cmd_list(t_cmd *head);
 
 #endif

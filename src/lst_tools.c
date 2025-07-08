@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter_bonus.c                                 :+:      :+:    :+:   */
+/*   lst_tools.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aybelhaj <aybelhaj@student.42barcelon      +#+  +:+       +#+        */
+/*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/04 12:47:03 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/08 21:01:18 by nimatura         ###   ########.fr       */
+/*   Created: 2025/07/08 21:05:33 by nimatura          #+#    #+#             */
+/*   Updated: 2025/07/08 21:09:11 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/minishell.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+void	free_lst_wrp(t_list *head)
 {
-	t_list	*tmp;
+	t_list	*ptr;
+	t_list	*fwd;
 
-	if (!lst || !f)
+	if (head == NULL)
 		return ;
-	while (lst != NULL)
+	ptr = head;
+	while (ptr != NULL)
 	{
-		tmp = lst->next;
-		f(lst->content);
-		lst = tmp;
+		fwd = ptr->next;
+		free(ptr->content);
+		ptr->content = NULL;
+		free(ptr);
+		ptr = fwd;
 	}
+	head = NULL;
 }
