@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minishell.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/10 19:46:54 by nimatura          #+#    #+#             */
+/*   Updated: 2025/07/10 20:09:16 by nimatura         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
@@ -16,7 +28,7 @@
 # include <dirent.h>
 # include <readline/readline.h>
 # include <readline/history.h>
-# include "../libft/libft.h"
+# include "../libft/inc/libft.h"
 
 // === CONSTANTES ===
 # define PROMPT "minishell> "
@@ -94,9 +106,10 @@ typedef struct s_shell
 // === VARIABLES GLOBALES ===
 typedef struct s_global
 {
-    volatile sig_atomic_t received;
-    int in_input;
-} t_global;
+    volatile sig_atomic_t	received;
+    int						in_input;
+}							t_global;
+
 extern volatile t_global g_state;
 
 // === FUNCIONES DE SHELL ===
@@ -170,5 +183,10 @@ int		add_env_var(t_shell *shell, char *var);
 int		remove_env_var(t_shell *shell, char *var);
 void	set_env_var(t_shell *shell, const char *name, const char *value);
 void	free_cmd_list(t_cmd *head);
+
+// === DEBUGGING TOOLS ===
+void	expand_arr_and_print(t_list *lst);
+void	print_arr(char **str);
+void	print_lst(t_list *ptr);
 
 #endif

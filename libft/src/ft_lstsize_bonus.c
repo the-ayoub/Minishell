@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aybelhaj <aybelhaj@student.42barcelona.co  +#+  +:+       +#+        */
+/*   By: ohnudes </var/spool/mail/ohnudes>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/07 16:36:40 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/10 19:47:32 by nimatura         ###   ########.fr       */
+/*   Created: 2024/05/23 14:17:10 by ohnudes           #+#    #+#             */
+/*   Updated: 2024/05/23 18:18:09 by ohnudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell.h"
+#include "../inc/libft.h"
 
-int	main(int argc, char **argv, char **envp)
+int	ft_lstsize(t_list *lst)
 {
-	t_shell	shell;
+	t_list	*tmp;
+	int		i;
 
-	(void)argc;
-	(void)argv;
-	init_shell(&shell, envp);
-	shell_loop(&shell);
-	free_lst_wrp(shell.raw_env);
-	return (shell.last_status);
+	if (!lst)
+		return (0);
+	i = 0;
+	tmp = lst;
+	while (tmp != NULL)
+	{
+		tmp = tmp->next;
+		i++;
+	}
+	return (i);
 }

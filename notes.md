@@ -1,16 +1,19 @@
 
 # TODO:
-[ ] env -i
-[ ] env compiler to arr, str
+[x] env compiler to arr, str
 
 [ ] Expansor
 [ ] Comillas
 [ ] builtins
-[ ] make clean (falla)
-
     [ ]
 
-## LINKS
+# DONE
+[x] env -i
+
+## ENV -i
+no lo pide el subject, se considera nulo
+
+# LINKS
 
 -   https://aosabook.org/en/v1/bash.html
     Chet Ramey very goated explanation of bash parsing
@@ -44,4 +47,3 @@
 
 -   https://matklad.github.io/2020/04/13/simple-but-powerful-pratt-parsing.html
     Pratt parsing, because sounds fun
-

@@ -9,6 +9,23 @@
       "-fsanitize=address",
       "-c",
       "-o",
+      "obj/debugging_tools.o",
+      "src/debugging_tools.c"
+    ],
+    "directory": "/home/nimatura/code/garage/minishell/group",
+    "file": "/home/nimatura/code/garage/minishell/group/src/debugging_tools.c",
+    "output": "/home/nimatura/code/garage/minishell/group/obj/debugging_tools.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-fsanitize=address",
+      "-c",
+      "-o",
       "obj/lst_tools.o",
       "src/lst_tools.c"
     ],

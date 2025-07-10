@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aybelhaj <aybelhaj@student.42barcelona.co  +#+  +:+       +#+        */
+/*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/07 16:36:40 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/10 19:47:32 by nimatura         ###   ########.fr       */
+/*   Created: 2025/07/02 18:00:19 by nimatura          #+#    #+#             */
+/*   Updated: 2025/07/02 18:01:03 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell.h"
+#include "../inc/libft.h"
 
-int	main(int argc, char **argv, char **envp)
+int	ft_isspace(int c)
 {
-	t_shell	shell;
-
-	(void)argc;
-	(void)argv;
-	init_shell(&shell, envp);
-	shell_loop(&shell);
-	free_lst_wrp(shell.raw_env);
-	return (shell.last_status);
+	if (c != '\f' && c != '\n')
+	{
+		if (c != '\v' && c != '\r')
+		{
+			if (c != '\t' && c != ' ')
+				return (0);
+		}
+	}
+	return (1);
 }

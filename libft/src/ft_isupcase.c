@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isupcase.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aybelhaj <aybelhaj@student.42barcelona.co  +#+  +:+       +#+        */
+/*   By: ohnudes </var/spool/mail/ohnudes>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/07 16:36:40 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/10 19:47:32 by nimatura         ###   ########.fr       */
+/*   Created: 2024/05/18 15:06:58 by ohnudes           #+#    #+#             */
+/*   Updated: 2024/05/18 15:08:19 by ohnudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell.h"
+#include "../inc/libft.h"
 
-int	main(int argc, char **argv, char **envp)
+int	ft_islowcase(int c)
 {
-	t_shell	shell;
+	return ((c >= 'a' && c <= 'z'));
+}
 
-	(void)argc;
-	(void)argv;
-	init_shell(&shell, envp);
-	shell_loop(&shell);
-	free_lst_wrp(shell.raw_env);
-	return (shell.last_status);
+int	ft_isupcase(int c)
+{
+	return ((c >= 'A' && c <= 'Z'));
 }

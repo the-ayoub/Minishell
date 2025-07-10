@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:43:45 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/07 23:51:38 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/09 14:13:20 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 volatile t_global	g_state = {0, 0};
 
-// g_state.received use? it's not used anywhere else
-// returns void
+// WARNING: Que wea hermano con el sig
 void	sigint_handler(int sig)
 {
 	g_state.received = sig;
