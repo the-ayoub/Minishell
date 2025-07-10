@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:40:58 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/10 20:13:06 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/10 20:27:56 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,26 +31,6 @@ static int	generate_and_fill_arr(char ***arr, int i, t_list *lst)
 		i++;
 	}
 	return (0);
-}
-
-char	**env_compiler(t_list *head)
-{
-	char	**arr;
-	t_list	*iter;
-	int		i;
-
-	iter = head;
-	i = 0;
-	while (iter != NULL)
-	{
-		iter = iter->next;
-		i++;
-	}
-	arr = NULL;
-	if (1 == generate_and_fill_arr(&arr, i, head))
-		return (free_lst_wrp(head), NULL);
-	print_arr(arr);
-	return (arr);
 }
 
 // returns the head of the list, or NULL in case of malloc err
@@ -85,7 +65,6 @@ t_list	*env_lst_init(char **envp)
 void	init_shell(t_shell *shell, char **envp)
 {
 	shell->raw_env = env_lst_init(envp);
-	// shell->env = copy_env(envp);
 	shell->env = env_compiler(shell->raw_env);
 	print_arr(shell->env);
 	if (!shell->env)

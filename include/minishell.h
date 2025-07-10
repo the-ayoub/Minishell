@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 19:46:54 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/10 20:09:16 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/10 20:33:39 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,11 @@ void	free_lst_wrp(t_list *head);
 
 // === ENV AND LIST TOOLS ===
 t_list	*env_lst_init(char **env);
+char	**env_compiler(t_list *head);
+int		generate_and_fill_arr(char ***arr, int i, t_list *lst);
+void	set_env_var(t_shell *shell, const char *name, const char *value);
+int		add_env_var(t_shell *shell, char *var);
+int		remove_env_var(t_shell *shell, char *var);
 
 // === SIGNAL HANDLING ===
 void	setup_signal_handlers(void);
@@ -178,15 +183,14 @@ void	free_tokens(t_token *tokens);
 void	free_redirs(t_redir *redirs);
 char	*get_cmd_path(const char *cmd, char **envp);
 char	*get_env_value(t_shell *shell, const char *name);
-char	**copy_env(char **envp);
-int		add_env_var(t_shell *shell, char *var);
-int		remove_env_var(t_shell *shell, char *var);
-void	set_env_var(t_shell *shell, const char *name, const char *value);
 void	free_cmd_list(t_cmd *head);
 
 // === DEBUGGING TOOLS ===
 void	expand_arr_and_print(t_list *lst);
 void	print_arr(char **str);
 void	print_lst(t_list *ptr);
+
+// xxxx Deprecated xxxx
+char	**copy_env(char **envp);
 
 #endif

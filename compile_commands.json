@@ -9,6 +9,23 @@
       "-fsanitize=address",
       "-c",
       "-o",
+      "obj/deprecated.o",
+      "src/deprecated.c"
+    ],
+    "directory": "/home/nimatura/code/garage/minishell/group",
+    "file": "/home/nimatura/code/garage/minishell/group/src/deprecated.c",
+    "output": "/home/nimatura/code/garage/minishell/group/obj/deprecated.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-fsanitize=address",
+      "-c",
+      "-o",
       "obj/debugging_tools.o",
       "src/debugging_tools.c"
     ],
@@ -77,12 +94,12 @@
       "-fsanitize=address",
       "-c",
       "-o",
-      "obj/copy_env.o",
-      "src/copy_env.c"
+      "obj/copy_main.o",
+      "src/copy_main.c"
     ],
     "directory": "/home/nimatura/code/garage/minishell/group",
-    "file": "/home/nimatura/code/garage/minishell/group/src/copy_env.c",
-    "output": "/home/nimatura/code/garage/minishell/group/obj/copy_env.o"
+    "file": "/home/nimatura/code/garage/minishell/group/src/copy_main.c",
+    "output": "/home/nimatura/code/garage/minishell/group/obj/copy_main.o"
   },
   {
     "arguments": [
