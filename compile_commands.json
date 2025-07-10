@@ -94,12 +94,12 @@
       "-fsanitize=address",
       "-c",
       "-o",
-      "obj/copy_main.o",
-      "src/copy_main.c"
+      "obj/env_main.o",
+      "src/env_main.c"
     ],
     "directory": "/home/nimatura/code/garage/minishell/group",
-    "file": "/home/nimatura/code/garage/minishell/group/src/copy_main.c",
-    "output": "/home/nimatura/code/garage/minishell/group/obj/copy_main.o"
+    "file": "/home/nimatura/code/garage/minishell/group/src/env_main.c",
+    "output": "/home/nimatura/code/garage/minishell/group/obj/env_main.o"
   },
   {
     "arguments": [

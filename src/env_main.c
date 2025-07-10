@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   copy_env.c                                         :+:      :+:    :+:   */
+/*   env_main.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:38:32 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/10 20:32:55 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/10 21:04:05 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ char	**env_compiler(t_list *head)
 	arr = NULL;
 	if (1 == generate_and_fill_arr(&arr, i, head))
 		return (free_lst_wrp(head), NULL);
-	print_arr(arr);
 	return (arr);
 }
 

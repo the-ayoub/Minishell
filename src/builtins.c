@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:38:11 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/07 20:08:26 by aybelhaj         ###   ########.fr       */
+/*   Updated: 2025/07/10 21:00:56 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,25 +173,25 @@ int	builtin_export(t_shell *shell, char **argv)
 
 int	builtin_unset(t_shell *shell, char **argv)
 {
+	t_list	*node;
+	char	*str;
+
 	if (!argv[1])
 	{
 		fprintf(stderr, "minishell: unset: missing argument\n");
 		return (1);
 	}
+	node = shell->raw_env;
 	(void)shell;
+	(void)node;
+	(void)str;
 	return (0);
 }
 
 int	builtin_env(t_shell *shell, char **argv)
 {
-	int	i;
-
 	(void)argv;
-	i = 0;
-	while (shell->env[i])
-	{
-		ft_putendl_fd(shell->env[i], STDOUT_FILENO);
-		i++;
-	}
+
+	print_lst(shell->raw_env);
 	return (0);
 }

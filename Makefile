@@ -6,7 +6,7 @@
 #    By: nimatura <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/05 18:42:02 by nimatura          #+#    #+#              #
-#    Updated: 2025/07/10 20:34:55 by nimatura         ###   ########.fr        #
+#    Updated: 2025/07/10 21:01:14 by nimatura         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ LDFLAGS = -lreadline -lhistory
 
 DPS := $(SRC_FILE:.c=.d)
 SRC_DIR = ./src/
-SRC_FILE =	another.c builtins.c copy_main.c error_exit.c error_msg.c \
+SRC_FILE =	another.c builtins.c env_main.c error_exit.c error_msg.c \
 			excution_utils.c executions.c expansion.c free_array.c \
 			free_utils.c init_shell.c main.c pars.c redirections.c \
 			shell_loop.c signal_handling.c builtin_utils.c path_utils.c \
