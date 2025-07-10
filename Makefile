@@ -6,7 +6,7 @@
 #    By: nimatura <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/05 18:42:02 by nimatura          #+#    #+#              #
-#    Updated: 2025/07/05 18:53:17 by nimatura         ###   ########.fr        #
+#    Updated: 2025/07/10 19:23:58 by nimatura         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,9 @@ DPS := $(SRC_FILE:.c=.d)
 SRC_DIR	= ./src/
 SRC_FILE	=	another.c builtins.c copy_env.c error_exit.c error_msg.c excution_utils.c \
 			executions.c expansion.c free_array.c free_utils.c init_shell.c main.c pars.c \
-			redirections.c shell_loop.c signal_handling.c builtin_utils.c path_utils.c
+			redirections.c shell_loop.c signal_handling.c builtin_utils.c path_utils.c\
+			lst_tools.c
+
 SRC = $(addprefix $(SRC_DIR), $(SRC_FILE))
 
 OBJ_FILE := $(SRC_FILE:.c=.o)
@@ -58,7 +60,7 @@ clean:
 	@if [ -d "$(LIBFT_PATH)" ]; then \
 		make clean -C $(LIBFT_PATH) --silent; \
 	fi
-	@rm -rf $(OBJDIR)
+	@rm -rf $(OBJ_DIR)
 
 fclean: clean
 	@printf "%b" "$(BLUE)Full cleaning...$(RESET)\n"
