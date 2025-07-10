@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 19:46:54 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/10 20:33:39 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/10 21:17:54 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,9 @@ int		generate_and_fill_arr(char ***arr, int i, t_list *lst);
 void	set_env_var(t_shell *shell, const char *name, const char *value);
 int		add_env_var(t_shell *shell, char *var);
 int		remove_env_var(t_shell *shell, char *var);
+
+//	|||	=== ENV UTILS ===
+char	*locate_env_var(t_list *data, char *str);
 
 // === SIGNAL HANDLING ===
 void	setup_signal_handlers(void);
