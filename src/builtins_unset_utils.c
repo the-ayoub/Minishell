@@ -6,16 +6,17 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 21:19:18 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/10 21:32:07 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/11 19:09:48 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-int	unset_check_arg(char **str, t_shell *shell, char *var)
+// returns 1 for err cases
+static int	check_var_and_del(t_list **head, char *var)
 {
-	char	*tmp;
-
+	if (*head == NULL || NULL == var)
+		return (1);
 	if (NULL == var)
 		return (ft_putstr_fd("minishell: unset: missing argument\n", 2), 1);
 	tmp = locate_env_var(shell->raw_env, var);
@@ -25,24 +26,24 @@ int	unset_check_arg(char **str, t_shell *shell, char *var)
 	return (0);
 }
 
-// check if the argv is a valid variable
-// locate the variable
-// free the content
-// delete the node
+// Function will iter over args and delete every env var that matches its name
 int	builtin_unset(t_shell *shell, char **argv)
 {
+	char	**new_env;
 	size_t	i;
-	char	*str;
 
 	i = 1;
 	while (argv[i] != NULL)
 	{
-		str = locate_env_var(shell->raw_env, argv[i]);
-		if (NULL == str)
-			return (0);
-
+		if (check_var_and_del(&shell->raw_env, argv[i]) == 1)
+			break ;
+		i++;
 	}
-	shell->env = env_compiler(shell->raw_env);
+	new_env = env_compiler(shell->raw_env);
+	if (NULL == new_env)
+		return (ft_lstclear(&shell->raw_env, free), 1);
+	free(shell->env);
+	shell->env = new_env;
 	return (0);
 }
 
