@@ -6,11 +6,38 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 21:04:23 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/11 21:09:17 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/11 21:35:02 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
+
+static void	unvalid_var_name(char *var)
+{
+	ft_putstr_fd("minishell: export: `", STDERR_FILENO);
+	ft_putstr_fd(var, STDERR_FILENO);
+	ft_putstr_fd("': not a valid identifier\n", STDERR_FILENO);
+}
+
+int	is_var_name_ok(char *str)
+{
+	int	i;
+
+	i = 6;
+	if (str[i] == '\0')
+		return (0);
+	while (str[i] != '\0' && ft_isspace(str[i]))
+		i++;
+	while (str[i] != '\0' && ft_isalpha(str[i]))
+		i++;
+	while (str[i] != '\0' && (ft_isalnum(str[i]) || str[i] == '_'))
+		i++;
+	while (str[i] != '\0' && ft_isspace(str[i]))
+		i++;
+	if (str[i] != '\0')
+		return (0);
+	return (1);
+}
 
 static int	export_no_arg(t_shell *shell)
 {
@@ -26,40 +53,39 @@ static int	export_no_arg(t_shell *shell)
 	return (0);
 }
 
+// 1. check var amount
+// 2. check var value
 int	builtin_export(t_shell *shell, char **argv)
 {
 	int		i;
 	int		status;
-	char	*name;
-	char	*value;
+	char	*var_id;
+	char	*var_value;
 	char	*current;
 
-	status = 0;
-	if (!argv[1])
+	if (NULL == argv[1])
 		return (export_no_arg(shell));
+	status = 0;
 	i = 1;
-	while (argv[i])
+	while (NULL != argv[i])
 	{
-		name = argv[i];
-		value = ft_strchr(argv[i], '=');
-		if (value)
-			*value++ = '\0';
-		if (!is_valid_identifier(name))
+		var_id = ft_strtrim(argv[i], "=");
+		var_value = ft_strchr(argv[i], '=');
+		if (var_value)
+			(*var_value)++ = '\0';
+		if (!is_var_name_ok(var_id))
 		{
-			ft_putstr_fd("minishell: export: `", STDERR_FILENO);
-			ft_putstr_fd(name, STDERR_FILENO);
-			ft_putstr_fd("': not a valid identifier\n", STDERR_FILENO);
-			status = 1;
+			status = unvalid_var_name(var_id);
 			i++;
 			continue ;
 		}
-		if (value)
-			set_env_var(shell, name, value);
+		if (var_value)
+			set_env_var(shell, var_id, var_value);
 		else
 		{
-			current = get_env_value(shell, name);
+			current = get_env_value(shell, var_id);
 			if (!current)
-				set_env_var(shell, name, "");
+				set_env_var(shell, var_id, "");
 		}
 		i++;
 	}
