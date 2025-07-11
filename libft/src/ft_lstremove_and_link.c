@@ -6,13 +6,13 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 18:54:31 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/11 19:01:50 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/11 20:37:01 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/libft.h"
 
-// Removes a [node] from the [head] lst. If the node is not found, the function\
+// Removes a [node] from the [head] lst. If the node is not found, the function
 // will not do anything
 void	ft_lstremove_and_link(t_list **head, t_list *node)
 {

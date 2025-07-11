@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 21:19:18 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/11 19:16:11 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/11 20:07:38 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,12 @@ int	builtin_unset(t_shell *shell, char **argv)
 		i++;
 	}
 	new_env = env_compiler(shell->raw_env);
-	if (NULL == new_env)
-		return (ft_lstclear(&shell->raw_env, free), 1);
-	free(shell->env);
-	shell->env = new_env;
-	return (0);
+	if (NULL != new_env)
+	{
+		free(shell->env);
+		shell->env = new_env;
+		return (0);
+	}
+	return (ft_lstclear(&shell->raw_env, free), 1);
 }
 
