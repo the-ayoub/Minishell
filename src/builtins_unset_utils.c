@@ -6,23 +6,22 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 21:19:18 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/11 19:09:48 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/11 19:16:11 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-// returns 1 for err cases
+// returns 1 for err cases, returns 0 either it has deleted a node or not
 static int	check_var_and_del(t_list **head, char *var)
 {
-	if (*head == NULL || NULL == var)
-		return (1);
-	if (NULL == var)
-		return (ft_putstr_fd("minishell: unset: missing argument\n", 2), 1);
-	tmp = locate_env_var(shell->raw_env, var);
-	if (NULL == tmp)
-		return (0);
+	t_list	*node;
 
+	if (*head == NULL || NULL == var)
+		return (ft_putstr_fd("minishell: unset: missing argument\n", 2), 1);
+	node = locate_env_var(*head, var);
+	if (NULL != node)
+		ft_lstremove_and_link(head, node);
 	return (0);
 }
 
