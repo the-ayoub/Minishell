@@ -9,6 +9,23 @@
       "-fsanitize=address",
       "-c",
       "-o",
+      "obj/builtins_unset.o",
+      "src/builtins_unset.c"
+    ],
+    "directory": "/home/nimatura/code/garage/minishell/group",
+    "file": "/home/nimatura/code/garage/minishell/group/src/builtins_unset.c",
+    "output": "/home/nimatura/code/garage/minishell/group/obj/builtins_unset.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-fsanitize=address",
+      "-c",
+      "-o",
       "obj/env_utils.o",
       "src/env_utils.c"
     ],

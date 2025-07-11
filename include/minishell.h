@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 19:46:54 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/11 19:14:53 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/11 21:02:46 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,12 +166,14 @@ void	wait_for_children(t_shell *shell, pid_t last_pid);
 int		builtin_in_pipe(char *cmd);
 int		redirect_heredoc(t_shell *shell, t_redir *redir);
 
-// === BUILTINS ===
+// === COMPLETED BUILTINS ===
+int		builtin_unset(t_shell *shell, char **argv);
+
+// === PENDING BUILTINS ===
 int		builtin_echo(t_shell *shell, char **argv);
 int		builtin_cd(t_shell *shell, char **argv);
 int		builtin_pwd(t_shell *shell, char **argv);
 int		builtin_export(t_shell *shell, char **argv);
-int		builtin_unset(t_shell *shell, char **argv);
 int		builtin_env(t_shell *shell, char **argv);
 int		builtin_exit(t_shell *shell, char **argv);
 int		is_valid_identifier(char *str);
