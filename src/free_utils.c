@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:40:04 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/10 20:33:54 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/11 20:58:17 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,19 @@ void	free_tokens(t_token *tokens)
 		free(tokens);
 		tokens = next;
 	}
+}
+
+void	free_array(char **array)
+{
+	int	i;
+
+	if (!array)
+		return ;
+	i = 0;
+	while (array[i])
+	{
+		free(array[i]);
+		i++;
+	}
+	free(array);
 }
