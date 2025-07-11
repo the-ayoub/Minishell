@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 21:49:11 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/10 21:10:07 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/11 21:11:29 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,6 @@ void search_and_print_env_var(t_minishell *data, char *str)
 	if (match != NULL)
 	{
 		len = ft_strlen(var_name);
-		printf("%s\n", match + len + 1);
 	}
 	free(var_name);
 }

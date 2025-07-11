@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 21:06:41 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/11 20:45:23 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/11 21:12:02 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,7 @@ t_list	*locate_env_var(t_list *node, char *var)
 				ft_strncmp(var, iter->content, len) == 0)
 			{
 				if (((char *)iter->content)[len] == '=')
-				{
-					printf("%s\n", (char *)iter->content);
 					return (iter);
-				}
 			}
 			iter = iter->next;
 		}

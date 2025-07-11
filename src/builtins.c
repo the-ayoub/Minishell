@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:38:11 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/10 21:24:40 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/11 21:06:13 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,55 +120,6 @@ int	builtin_pwd(t_shell *shell, char **argv)
 	}
 	perror("minishell: pwd");
 	return (1);
-}
-
-int	builtin_export(t_shell *shell, char **argv)
-{
-	int		i;
-	int		status;
-	char	*name;
-	char	*value;
-	char	*current;
-
-	status = 0;
-	if (!argv[1])
-	{
-		i = 0;
-		while (shell->env[i])
-		{
-			ft_putstr_fd("declare -x ", STDOUT_FILENO);
-			ft_putendl_fd(shell->env[i], STDOUT_FILENO);
-			i++;
-		}
-		return (0);
-	}
-	i = 1;
-	while (argv[i])
-	{
-		name = argv[i];
-		value = ft_strchr(argv[i], '=');
-		if (value)
-			*value++ = '\0';
-		if (!is_valid_identifier(name))
-		{
-			ft_putstr_fd("minishell: export: `", STDERR_FILENO);
-			ft_putstr_fd(name, STDERR_FILENO);
-			ft_putstr_fd("': not a valid identifier\n", STDERR_FILENO);
-			status = 1;
-			i++;
-			continue ;
-		}
-		if (value)
-			set_env_var(shell, name, value);
-		else
-		{
-			current = get_env_value(shell, name);
-			if (!current)
-				set_env_var(shell, name, "");
-		}
-		i++;
-	}
-	return (status);
 }
 
 int	builtin_env(t_shell *shell, char **argv)
