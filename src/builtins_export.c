@@ -6,17 +6,18 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 21:04:23 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/11 21:35:02 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/13 16:07:31 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-static void	unvalid_var_name(char *var)
+static int	unvalid_var_name(char *var)
 {
 	ft_putstr_fd("minishell: export: `", STDERR_FILENO);
 	ft_putstr_fd(var, STDERR_FILENO);
 	ft_putstr_fd("': not a valid identifier\n", STDERR_FILENO);
+	return (1);
 }
 
 int	is_var_name_ok(char *str)
@@ -72,7 +73,7 @@ int	builtin_export(t_shell *shell, char **argv)
 		var_id = ft_strtrim(argv[i], "=");
 		var_value = ft_strchr(argv[i], '=');
 		if (var_value)
-			(*var_value)++ = '\0';
+			*var_value++ = '\0';
 		if (!is_var_name_ok(var_id))
 		{
 			status = unvalid_var_name(var_id);

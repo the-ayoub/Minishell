@@ -25,6 +25,8 @@
     bash output: env print sin ABC
     - export ABC=123 | env | unset ABC
     bash output: NO PRINT
+    - export ABC=123 | echo $ABC
+    bash output: \n
 
 ## ENV -i
 no lo pide el subject, se considera nulo

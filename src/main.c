@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:36:40 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/10 19:47:32 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/13 16:06:41 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@ int	main(int argc, char **argv, char **envp)
 	init_shell(&shell, envp);
 	shell_loop(&shell);
 	free_lst_wrp(shell.raw_env);
+	// free_array(shell.env);
 	return (shell.last_status);
 }
