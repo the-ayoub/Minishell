@@ -11,12 +11,26 @@
 [x] env -i
 
 ## Expansor y comillas
-[ ] Estudiar lexer, estructura de parseo, algoritmo de agrupacion y 
-    logica de rollback - Binary tree?
 [ ] Expansor de variable
+
+[ ] Parse the command line: Separate between operators and words
+[ ] Handle quote rules to define
+
+Handle quotes (preserve tokens).
+
+Expand variables.
+
+Remove quotes.
+
+### Quote parsing
+    Quotes devuelven una nueva linea de tipo word, operadores seran considerados
+    words
+
+ex: "ls | ls": command not found
 
 ## BUILTINS -- UNSET
     Coge todas las args validas y las borra.
+
 ### CASOS
 
     - export ABC=123 | unset ABC | env

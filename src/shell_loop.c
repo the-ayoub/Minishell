@@ -24,6 +24,7 @@ static int	readline_wrapper(char **line, t_shell *shell)
 		free_array(shell->env);
 		return (1);
 	}
+	add_history(*line);
 	return (0);
 }
 
@@ -32,7 +33,6 @@ static int	tokenize_and_check_wrp(char **line, t_shell *shell)
 {
 	if (*line != NULL && **line != '\0')
 	{
-		add_history(*line);
 		shell->tokens = tokenize_line(*line);
 		if (!syntax_check(shell->tokens))
 		{
