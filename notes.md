@@ -1,6 +1,5 @@
 
 # TODO:
-[x] env compiler to arr, str
 
 [ ] Expansor
 [ ] Comillas
@@ -8,7 +7,24 @@
     [ ]
 
 # DONE
+[x] env compiler to arr, str
 [x] env -i
+
+## Expansor y comillas
+[ ] Estudiar lexer, estructura de parseo, algoritmo de agrupacion y 
+    logica de rollback - Binary tree?
+[ ] Expansor de variable
+
+## BUILTINS -- UNSET
+    Coge todas las args validas y las borra.
+### CASOS
+
+    - export ABC=123 | unset ABC | env
+    bash output: env print sin ABC
+    - export ABC=123 | env
+    bash output: env print sin ABC
+    - export ABC=123 | env | unset ABC
+    bash output: NO PRINT
 
 ## ENV -i
 no lo pide el subject, se considera nulo
