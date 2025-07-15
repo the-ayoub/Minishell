@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:42:45 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/15 17:35:42 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/15 18:25:03 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void	append_char(char **str, char c)
 	*str = new_str;
 }
 
+// WARNING: If 1 token only, there's no current->next->type
 int	syntax_check(t_token *tokens)
 {
 	t_token			*current;
@@ -199,6 +200,12 @@ static t_cmd	*create_new_command(void)
 	return (new);
 }
 
+static int	is_token_word(t_token_type type)
+{
+	return (type == TOKEN_WORD || type == TOKEN_WORD_DQ \
+	|| type == TOKEN_WORD_SQ);
+}
+
 t_cmd	*parse_tokens(t_shell *shell, t_token *tokens)
 {
 	t_cmd	*head;
@@ -230,12 +237,12 @@ t_cmd	*parse_tokens(t_shell *shell, t_token *tokens)
 			current_cmd = create_new_command();
 			head = current_cmd;
 		}
-		if (current->type == TOKEN_WORD)
+		if (is_token_word(current->type))
 			add_argument(current_cmd, ft_strdup(current->value));
 		else if (current->type >= TOKEN_REDIR_IN
 			&& current->type <= TOKEN_HEREDOC)
 		{
-			if (!current->next || current->next->type != TOKEN_WORD)
+			if (!current->next || !is_token_word(current->next->type != TOKEN_WORD))
 			{
 				ft_putstr_fd("minishell: syntax error near redirection\n",
 					STDERR_FILENO);

@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 15:29:33 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/15 17:27:23 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/15 18:21:44 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,13 @@ static char	*collect_quote_word(char *str, char delim, int *i, t_token_type *typ
 {
 	char	*word;
 	char	*end;
-	int		len;
 
-	end = ft_strchr(str + *i, delim);
+	end = ft_strchr(str + *i + 1, delim);
 	if (end == NULL)
-		return (NULL);
-	len = end - (str + (sizeof(char) * *i));
-	if (len == 0)
-		return (ft_strdup(""));
-	word = ft_substr(str, *i, len);
+		return (printf("open quote: %c\n", delim), NULL);
+	word = ft_strtrim(str + *i, &delim);
 	if (NULL != word)
-		*i += ft_strlen(word);
+		*i += ft_strlen(word) + 2;
 	if (delim == '\'')
 		*type = TOKEN_WORD_SQ;
 	else
@@ -34,7 +30,6 @@ static char	*collect_quote_word(char *str, char delim, int *i, t_token_type *typ
 	return (word);
 }
 
-// NOTE: DECLARE TYPE
 char	*collect_word(char *s, int *i, t_token_type *type)
 {
 	char	*word;

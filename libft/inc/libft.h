@@ -6,7 +6,7 @@
 /*   By: ohnudes </var/spool/mail/ohnudes>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 15:41:56 by ohnudes           #+#    #+#             */
-/*   Updated: 2025/07/11 19:03:20 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/15 18:17:04 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int		ft_tolower(int c);
 
 int		ft_strcmp(const char *s1, const char *s2);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
-char	*ft_strchr(const char *str, int c);
+char	*ft_strchr(const char *str, char c);
 char	*ft_strrchr(const char *str, int c);
 void	*ft_memchr(const void *ptr, int c, size_t n);
 int		ft_memcmp(const void *p1, const void *p2, size_t n);

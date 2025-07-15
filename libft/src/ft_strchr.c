@@ -6,19 +6,19 @@
 /*   By: ohnudes </var/spool/mail/ohnudes>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 13:35:34 by ohnudes           #+#    #+#             */
-/*   Updated: 2024/05/21 13:56:18 by ohnudes          ###   ########.fr       */
+/*   Updated: 2025/07/15 18:16:55 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/libft.h"
 
 // cast the int as char? to check at campus. Allows extended ascii, should error
-char	*ft_strchr(const char *str, int c)
+char	*ft_strchr(const char *str, char c)
 {
 	char	*ref;
 
 	ref = (char *)str;
-	while (*ref != (char) c && *ref)
+	while (*ref && *ref != (char) c)
 		ref++;
 	if (*ref == (char) c)
 		return (ref);
