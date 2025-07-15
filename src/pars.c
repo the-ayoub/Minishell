@@ -6,11 +6,17 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:42:45 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/15 18:25:03 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/15 19:36:32 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
+
+static int	is_token_word(t_token_type type)
+{
+	return (type == TOKEN_WORD || type == TOKEN_WORD_DQ \
+	|| type == TOKEN_WORD_SQ);
+}
 
 int	expand_dollar(t_shell *shell, char **result, char *ptr)
 {
@@ -144,6 +150,8 @@ static t_redir	*create_redirection(t_redir_type type, char *file)
 	new->next = NULL;
 	return (new);
 }
+
+// WARNING: no filename token
 void	add_redirection(t_cmd *cmd, t_token *token)
 {
 	t_redir_type	type;
@@ -162,10 +170,8 @@ void	add_redirection(t_cmd *cmd, t_token *token)
 		type = REDIR_HEREDOC;
 	else
 		return ;
-	if (token->next && token->next->type == TOKEN_WORD)
-	{
+	if (token->next && is_token_word(token->next->type))
 		file = ft_strdup(token->next->value);
-	}
 	if (!file)
 		return ;
 	new_redir = create_redirection(type, file);
@@ -175,9 +181,7 @@ void	add_redirection(t_cmd *cmd, t_token *token)
 		return ;
 	}
 	if (!cmd->redirs)
-	{
 		cmd->redirs = new_redir;
-	}
 	else
 	{
 		last = cmd->redirs;
@@ -200,12 +204,6 @@ static t_cmd	*create_new_command(void)
 	return (new);
 }
 
-static int	is_token_word(t_token_type type)
-{
-	return (type == TOKEN_WORD || type == TOKEN_WORD_DQ \
-	|| type == TOKEN_WORD_SQ);
-}
-
 t_cmd	*parse_tokens(t_shell *shell, t_token *tokens)
 {
 	t_cmd	*head;
@@ -216,11 +214,11 @@ t_cmd	*parse_tokens(t_shell *shell, t_token *tokens)
 	head = NULL;
 	current_cmd = NULL;
 	current = tokens;
-	while (current)
+	while (current != NULL)
 	{
-		if (current->type == TOKEN_PIPE)
+		if (current->type == TOKEN_PIPE)				// if pipe
 		{
-			if (!current_cmd)
+			if (NULL == current_cmd)
 			{
 				ft_putstr_fd("minishell: syntax error near `|'\n",
 					STDERR_FILENO);
@@ -232,17 +230,18 @@ t_cmd	*parse_tokens(t_shell *shell, t_token *tokens)
 			current = current->next;
 			continue ;
 		}
-		if (!current_cmd)
+		if (NULL == current_cmd)	// set first word as
 		{
 			current_cmd = create_new_command();
 			head = current_cmd;
 		}
-		if (is_token_word(current->type))
+		if (is_token_word(current->type)) //if word
 			add_argument(current_cmd, ft_strdup(current->value));
-		else if (current->type >= TOKEN_REDIR_IN
-			&& current->type <= TOKEN_HEREDOC)
+		else if (current->type >= TOKEN_REDIR_IN \
+				&& current->type <= TOKEN_HEREDOC) // if redir
 		{
-			if (!current->next || !is_token_word(current->next->type != TOKEN_WORD))
+			if (!current->next \
+			|| !is_token_word(current->next->type))
 			{
 				ft_putstr_fd("minishell: syntax error near redirection\n",
 					STDERR_FILENO);
@@ -252,7 +251,7 @@ t_cmd	*parse_tokens(t_shell *shell, t_token *tokens)
 			add_redirection(current_cmd, current);
 			current = current->next;
 		}
-		else
+		else	//err
 		{
 			ft_putstr_fd("minishell: unknown token type\n", STDERR_FILENO);
 			free_cmd_list(head);
