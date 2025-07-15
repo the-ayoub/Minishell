@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:42:45 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/07 20:10:32 by aybelhaj         ###   ########.fr       */
+/*   Updated: 2025/07/15 17:31:09 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,8 @@ void	append_char(char **str, char c)
 
 int	syntax_check(t_token *tokens)
 {
-	t_token	*current;
+	t_token			*current;
+	t_token_type	type;
 
 	if (!tokens)
 		return (1);
@@ -88,13 +89,15 @@ int	syntax_check(t_token *tokens)
 	{
 		if (current->type >= TOKEN_REDIR_IN && current->type <= TOKEN_HEREDOC)
 		{
-			if (!current->next || current->next->type != TOKEN_WORD)
+			type = current->next->type;
+			if (!current->next || type != TOKEN_WORD || type != TOKEN_WORD_SQ\
+			|| type != TOKEN_WORD_DQ)
 				return (1);
 			current = current->next;
 		}
 		else if (current->type == TOKEN_PIPE)
 		{
-			if (!current->next || current->next->type == TOKEN_PIPE)
+			if (!current->next || type == TOKEN_PIPE)
 				return (1);
 		}
 		current = current->next;

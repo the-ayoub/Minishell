@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 19:46:54 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/11 21:02:46 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/15 17:23:45 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ typedef enum e_parse_state
 typedef enum e_token_type
 {
 	TOKEN_WORD,         // palabra (comando o argumento)
+	TOKEN_WORD_SQ,         // palabra (comando o argumento)
+	TOKEN_WORD_DQ,         // palabra (comando o argumento)
 	TOKEN_PIPE,         // |
 	TOKEN_REDIR_IN,     // <
 	TOKEN_REDIR_OUT,    // >
@@ -146,6 +148,8 @@ void	add_token(t_token **tokens, t_token_type type, char *value);
 void	add_redirection(t_cmd *cmd, t_token *token);
 
 void	add_to_argv(char ***argv, char *arg);
+//	|||	=== COLLECT_WORD ===
+char	*collect_word(char *s, int *i, t_token_type *type);
 
 // === EXPANSIÓN ===
 void	expand_variables(t_shell *shell, char **word);

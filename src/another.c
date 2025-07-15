@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:37:06 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/15 15:46:42 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/15 17:21:55 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,43 +16,6 @@
 int	is_special_char(char c)
 {
 	return (c == '|' || c == '<' || c == '>' || c == ';');
-}
-
-static char	*collect_word(char *s, int *i)
-{
-	int		start;
-	int		in_quote;
-	char	quote_char;
-
-	start = *i;
-	in_quote = 0;
-	quote_char = 0;
-	while (s[*i])
-	{
-		if (!in_quote && (s[*i] == '\'' || s[*i] == '\"'))
-		{
-			in_quote = 1;
-			quote_char = s[*i];
-			(*i)++;
-			continue ;
-		}
-		else if (in_quote && s[*i] == quote_char)
-		{
-			in_quote = 0;
-			(*i)++;
-			if (s[*i] == ' ' || s[*i] == '\t' || s[*i] == '\0'
-				|| is_special_char(s[*i]))
-				break ;
-			else
-				continue ;
-		}
-		if (!in_quote && is_special_char(s[*i]))
-			break ;
-		if (!in_quote && (s[*i] == ' ' || s[*i] == '\t'))
-			break ;
-		(*i)++;
-	}
-	return (ft_substr(s, start, *i - start));
 }
 
 static t_token_type	detect_operator(char *s, int *i)
@@ -140,13 +103,13 @@ t_token	*tokenize_line(char *line)
 		}
 		else if (line[i] != '\0')
 		{
-			word = collect_word(line, &i);
+			word = collect_word(line, &i, &type);
 			if (NULL == word)
 			{
 				free_tokens(tokens);
 				return (NULL);
 			}
-			add_token(&tokens, TOKEN_WORD, word);
+			add_token(&tokens, type, word);
 		}
 	}
 	return (tokens);

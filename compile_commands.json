@@ -9,6 +9,23 @@
       "-fsanitize=address",
       "-c",
       "-o",
+      "obj/collect_word.o",
+      "src/collect_word.c"
+    ],
+    "directory": "/home/nimatura/code/garage/minishell/group",
+    "file": "/home/nimatura/code/garage/minishell/group/src/collect_word.c",
+    "output": "/home/nimatura/code/garage/minishell/group/obj/collect_word.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-fsanitize=address",
+      "-c",
+      "-o",
       "obj/builtins_export.o",
       "src/builtins_export.c"
     ],

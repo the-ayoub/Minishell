@@ -6,7 +6,7 @@
 #    By: nimatura <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/05 18:42:02 by nimatura          #+#    #+#              #
-#    Updated: 2025/07/13 16:16:31 by nimatura         ###   ########.fr        #
+#    Updated: 2025/07/15 17:22:04 by nimatura         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRC_FILE =	another.c builtins.c env_main.c error_exit.c error_msg.c \
 			free_utils.c init_shell.c main.c pars.c redirections.c \
 			shell_loop.c signal_handling.c builtin_utils.c path_utils.c \
 			lst_tools.c debugging_tools.c env_utils.c builtins_unset.c \
-			builtins_export.c
+			builtins_export.c collect_word.c
 
 SRC = $(addprefix $(SRC_DIR), $(SRC_FILE))
 
