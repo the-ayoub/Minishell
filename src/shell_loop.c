@@ -52,7 +52,9 @@ static void	reset_cmd_line(char **line, t_shell *shell)
 	shell->cmd = NULL;
 }
 
-// TODO: proteger dup
+// TODO:
+// 1. INIT DUP
+// 2. CLOSE DUP
 int	shell_loop(t_shell *shell)
 {
 	char	*line;
