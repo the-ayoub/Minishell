@@ -34,6 +34,7 @@ static int	tokenize_and_check_wrp(char **line, t_shell *shell)
 	if (*line != NULL && **line != '\0')
 	{
 		shell->tokens = tokenize_line(*line);
+		printf("check post token\n");
 		if (!syntax_check(shell->tokens))
 		{
 			shell->cmd = parse_tokens(shell, shell->tokens);
