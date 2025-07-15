@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:42:45 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/15 19:48:44 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/15 20:02:46 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -219,7 +219,21 @@ static int	parse_pipe(t_token **current, t_cmd **cmd, t_cmd **ptr)
 	return (1);
 }
 
-// RETURNS 0 in case of error
+// RETURNS 1 in case of success
+static int	parse_redir(t_token **current, t_cmd **cmd, t_cmd **ptr)
+{
+	if (NULL == (*current)->next || !is_token_word((*current)->next->type))
+	{
+		ft_putstr_fd("minishell: syntax error near redirection\n",
+			   STDERR_FILENO);
+		free_cmd_list(*ptr);
+		return (0);
+	}
+	add_redirection(*cmd, *current);
+	*current = (*current)->next;
+	return (1);
+}
+
 // RETURNS 1 in case of success
 int	parse_tokens(t_shell *shell, t_token *tokens, t_cmd **ptr)
 {
@@ -247,18 +261,7 @@ int	parse_tokens(t_shell *shell, t_token *tokens, t_cmd **ptr)
 			add_argument(current_cmd, ft_strdup(current->value));
 		else if (current->type >= TOKEN_REDIR_IN \
 				&& current->type <= TOKEN_HEREDOC) // if redir
-		{
-			if (!current->next \
-			|| !is_token_word(current->next->type))
-			{
-				ft_putstr_fd("minishell: syntax error near redirection\n",
-					STDERR_FILENO);
-				free_cmd_list(head);
-				return (0);
-			}
-			add_redirection(current_cmd, current);
-			current = current->next;
-		}
+			parse_redir(&current, &current_cmd, ptr);
 		else	//err
 		{
 			ft_putstr_fd("minishell: unknown token type\n", STDERR_FILENO);
