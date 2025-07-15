@@ -36,8 +36,7 @@ static int	tokenize_and_check_wrp(char **line, t_shell *shell)
 		shell->tokens = tokenize_line(*line);
 		if (!syntax_check(shell->tokens))
 		{
-			shell->cmd = parse_tokens(shell, shell->tokens);
-			if (shell->cmd)
+			if (parse_tokens(shell, shell->tokens, &shell->cmd))
 				return (0);
 		}
 	}

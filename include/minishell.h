@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 19:46:54 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/15 17:23:45 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/15 19:41:50 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,7 @@ void	sigint_handler(int sig);
 // === LEXER Y PARSER ===
 t_token	*tokenize_line(char *line);
 int		is_special_char(char c);
-t_cmd	*parse_tokens(t_shell *shell, t_token *tokens);
+int		parse_tokens(t_shell *shell, t_token *tokens, t_cmd **head);
 int		syntax_check(t_token *tokens);
 t_token	*create_token(t_token_type type, char *value);
 void	add_token(t_token **tokens, t_token_type type, char *value);

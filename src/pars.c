@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:42:45 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/15 19:36:32 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/15 19:48:44 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -204,32 +204,40 @@ static t_cmd	*create_new_command(void)
 	return (new);
 }
 
-t_cmd	*parse_tokens(t_shell *shell, t_token *tokens)
+static int	parse_pipe(t_token **current, t_cmd **cmd, t_cmd **ptr)
+{
+	if (NULL == *cmd)
+	{
+		ft_putstr_fd("minishell: syntax error near `|'\n",
+			   STDERR_FILENO);
+		free_cmd_list(*ptr);
+		return (0);
+	}
+	(*cmd)->next = create_new_command();
+	*cmd = (*cmd)->next;
+	*current = (*current)->next;
+	return (1);
+}
+
+// RETURNS 0 in case of error
+// RETURNS 1 in case of success
+int	parse_tokens(t_shell *shell, t_token *tokens, t_cmd **ptr)
 {
 	t_cmd	*head;
 	t_cmd	*current_cmd;
 	t_token	*current;
 
 	(void)shell;
-	head = NULL;
+	head = *ptr;
 	current_cmd = NULL;
 	current = tokens;
 	while (current != NULL)
 	{
-		if (current->type == TOKEN_PIPE)				// if pipe
-		{
-			if (NULL == current_cmd)
-			{
-				ft_putstr_fd("minishell: syntax error near `|'\n",
-					STDERR_FILENO);
-				free_cmd_list(head);
-				return (NULL);
-			}
-			current_cmd->next = create_new_command();
-			current_cmd = current_cmd->next;
-			current = current->next;
+		if (current->type == TOKEN_PIPE && \
+			parse_pipe(&current, &current_cmd, ptr))
 			continue ;
-		}
+		else
+			return (0);
 		if (NULL == current_cmd)	// set first word as
 		{
 			current_cmd = create_new_command();
@@ -246,7 +254,7 @@ t_cmd	*parse_tokens(t_shell *shell, t_token *tokens)
 				ft_putstr_fd("minishell: syntax error near redirection\n",
 					STDERR_FILENO);
 				free_cmd_list(head);
-				return (NULL);
+				return (0);
 			}
 			add_redirection(current_cmd, current);
 			current = current->next;
@@ -255,9 +263,9 @@ t_cmd	*parse_tokens(t_shell *shell, t_token *tokens)
 		{
 			ft_putstr_fd("minishell: unknown token type\n", STDERR_FILENO);
 			free_cmd_list(head);
-			return (NULL);
+			return (0);
 		}
 		current = current->next;
 	}
-	return (head);
+	return (1);
 }
