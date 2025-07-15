@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:37:06 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/13 17:06:09 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/15 15:46:42 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,12 +117,9 @@ void	add_token(t_token **tokens, t_token_type type, char *value)
 	}
 }
 
-int	is_quote(char c)
-{
-	return (c == '\'' || c == '"');
-}
-
 // NOTE: Lexer: Quotes?
+// 1. identify next work
+// 2. get word
 t_token	*tokenize_line(char *line)
 {
 	t_token			*tokens;
@@ -132,31 +129,24 @@ t_token	*tokenize_line(char *line)
 
 	tokens = NULL;
 	i = 0;
-	while (line[i])
+	while (line && line[i])
 	{
 		while (line[i] == ' ' || line[i] == '\t')
 			i++;
-		if ('\0' == line[i])
-			break ;
-		if (is_special_char(line[i]))
+		if (line[i] != '\0' && is_special_char(line[i]))
 		{
 			type = detect_operator(line, &i);
 			add_token(&tokens, type, NULL);
 		}
-		else if (is_quote(line[i]))
+		else if (line[i] != '\0')
 		{
 			word = collect_word(line, &i);
-			if (!word)
+			if (NULL == word)
 			{
 				free_tokens(tokens);
 				return (NULL);
 			}
 			add_token(&tokens, TOKEN_WORD, word);
-		}
-		else
-		{
-
-
 		}
 	}
 	return (tokens);

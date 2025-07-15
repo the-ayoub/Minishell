@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 21:49:11 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/11 21:11:29 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/15 16:34:46 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,21 +59,21 @@ char	**expand_env_var(char *var)
 }
 
 // Returns the node in which its content matches with the str.
-// char	*locate_env_var(t_minishell *data, char *str)
-// {
-// 	t_list	*iter;
-//
-// 	iter = data->env_lst;
-// 	while (iter != NULL)
-// 	{
-// 		if (ft_strncmp(str, iter->content, ft_strlen(str)) == 0)
-// 			break ;
-// 		iter = iter->next;
-// 	}
-// 	if (NULL == iter)
-// 		return (NULL);
-// 	return (iter->content);
-// }
+char	*locate_env_var(t_minishell *data, char *str)
+{
+	t_list	*iter;
+
+	iter = data->env_lst;
+	while (iter != NULL)
+	{
+		if (ft_strncmp(str, iter->content, ft_strlen(str)) == 0)
+			break ;
+		iter = iter->next;
+	}
+	if (NULL == iter)
+		return (NULL);
+	return (iter->content);
+}
 
 // WARNING: MALLOC
 // Isolates the var name without the '=' sign and returns an allocated str
