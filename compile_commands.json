@@ -9,12 +9,12 @@
       "-fsanitize=address",
       "-c",
       "-o",
-      "obj/tokenize_aux.o",
-      "src/tokenize_aux.c"
+      "obj/pars_aux.o",
+      "src/pars_aux.c"
     ],
     "directory": "/home/nimatura/code/garage/minishell/group",
-    "file": "/home/nimatura/code/garage/minishell/group/src/tokenize_aux.c",
-    "output": "/home/nimatura/code/garage/minishell/group/obj/tokenize_aux.o"
+    "file": "/home/nimatura/code/garage/minishell/group/src/pars_aux.c",
+    "output": "/home/nimatura/code/garage/minishell/group/obj/pars_aux.o"
   },
   {
     "arguments": [

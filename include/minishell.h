@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 19:46:54 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/16 20:52:32 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/16 21:10:54 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,16 +138,27 @@ void	setup_signal_handlers(void);
 void	sigint_handler(int sig);
 
 // LEXER Y PARSER
+
 // === SYNTAX CHECK ===
 int		syntax_check(t_token *tokens);
+
 // === PARSE TOKEN ===
 int		parse_tokens(t_shell *shell, t_token *tokens, t_cmd **head);
+// >>>	=== PARSE AUX
+t_cmd	*create_new_command(void);
+t_redir	*create_redirection(t_redir_type type, char *file);
+void	add_argument(t_cmd *cmd, char *arg);
+int		parse_pipe(t_token **current, t_cmd **cmd, t_cmd **ptr);
+
 // === TOKENIZE ===
 t_token	*tokenize_line(char *line);
 void	add_token(t_token **tokens, t_token_type type, char *value);
 t_token	*create_token(t_token_type type, char *value);
-// ||||||	=== COLLECT_WORD ===
+
+// >>>	=== COLLECT_WORD ===
 char	*collect_word(char *s, int *i, t_token_type *type);
+
+// END LEXER Y PARSER
 
 // === EXPANSIÓN ===
 void	expand_variables(t_shell *shell, char **word);
