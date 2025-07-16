@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:42:45 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/15 20:05:46 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/16 19:46:38 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ void	append_char(char **str, char c)
 }
 
 // WARNING: If 1 token only, there's no current->next->type
+
+// returns 1 in case of err
 int	syntax_check(t_token *tokens)
 {
 	t_token			*current;
@@ -252,7 +254,7 @@ int	parse_tokens(t_shell *shell, t_token *tokens, t_cmd **ptr)
 			continue ;
 		else
 			return (0);
-		if (NULL == current_cmd)	// set first word as
+		if (NULL == current_cmd)
 		{
 			current_cmd = create_new_command();
 			head = current_cmd;

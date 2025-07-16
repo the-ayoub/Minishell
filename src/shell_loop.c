@@ -34,11 +34,10 @@ static int	tokenize_and_check_wrp(char **line, t_shell *shell)
 	if (*line != NULL && **line != '\0')
 	{
 		shell->tokens = tokenize_line(*line);
-		if (!syntax_check(shell->tokens))
-		{
-			if (parse_tokens(shell, shell->tokens, &shell->cmd))
-				return (0);
-		}
+		if (syntax_check(shell->tokens))
+			return (1);
+		if (parse_tokens(shell, shell->tokens, &shell->cmd))
+			return (0);
 	}
 	return (1);
 }
