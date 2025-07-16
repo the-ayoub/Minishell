@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:39:32 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/07 20:09:30 by aybelhaj         ###   ########.fr       */
+/*   Updated: 2025/07/16 21:37:26 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,7 @@ pid_t	execute_process(t_shell *shell, t_cmd *cmd)
 	return (pid);
 }
 
+// NOTE: uses t_cmd only: when do we free tokens?
 int	execute_cmd(t_shell *shell, t_cmd *cmd)
 {
 	pid_t	pid;

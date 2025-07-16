@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:42:45 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/16 21:10:58 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/16 21:25:52 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static int	parse_redir(t_token **current, t_cmd **cmd, t_cmd **ptr)
 	return (1);
 }
 
-// RETURNS 1 in case of success
+// RETURNS 0 in case of success
 int	parse_tokens(t_shell *shell, t_token *tokens, t_cmd **ptr)
 {
 	t_cmd	*head;
@@ -88,7 +88,7 @@ int	parse_tokens(t_shell *shell, t_token *tokens, t_cmd **ptr)
 		if (current->type == TOKEN_PIPE)
 		{
 			if (parse_pipe(&current, &current_cmd, ptr) == 0)
-				return (0);
+				return (1);
 			continue ;
 		}
 		if (NULL == current_cmd)
@@ -104,5 +104,5 @@ int	parse_tokens(t_shell *shell, t_token *tokens, t_cmd **ptr)
 		current = current->next;
 	}
 	*ptr = head;
-	return (1);
+	return (0);
 }

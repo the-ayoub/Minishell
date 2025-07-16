@@ -28,6 +28,7 @@ static int	readline_wrapper(char **line, t_shell *shell)
 	return (0);
 }
 
+// NOTE: When do we expand variables? when we transform the token into the cmd?
 // returns 1 in case of err, otherwise 0
 static int	tokenize_and_check_wrp(char **line, t_shell *shell)
 {
@@ -35,8 +36,10 @@ static int	tokenize_and_check_wrp(char **line, t_shell *shell)
 	{
 		shell->tokens = tokenize_line(*line);
 		if (syntax_check(shell->tokens))
-			return (1);
+			return (0);
 		if (parse_tokens(shell, shell->tokens, &shell->cmd))
+			return (0);
+		if (expand_variables(shell, shell->cmd)) // <--- tokens arent needed here anymore
 			return (0);
 	}
 	return (1);
