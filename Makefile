@@ -6,7 +6,7 @@
 #    By: nimatura <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/05 18:42:02 by nimatura          #+#    #+#              #
-#    Updated: 2025/07/16 20:54:50 by nimatura         ###   ########.fr        #
+#    Updated: 2025/07/16 20:56:55 by nimatura         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ SRC_FILE =	tokenize.c builtins.c env_main.c error_exit.c error_msg.c \
 			shell_loop.c signal_handling.c builtin_utils.c path_utils.c \
 			lst_tools.c debugging_tools.c env_utils.c builtins_unset.c \
 			builtins_export.c collect_word.c expand_env_var.c syntax_check.c \
-
+			tokenize_aux.c
 
 SRC = $(addprefix $(SRC_DIR), $(SRC_FILE))
 
