@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:39:44 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/16 21:42:09 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/16 21:53:19 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,10 @@ void	expand_variables(t_shell *shell, t_cmd *head)
 	{
 		i_str = head->argv;
 		while (NULL != i_str)
+		{
 
+
+		}
 	}
 }
 	// char	*result;
