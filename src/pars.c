@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:42:45 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/16 20:40:51 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/16 20:51:34 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ static t_redir	*create_redirection(t_redir_type type, char *file)
 }
 
 // WARNING: no filename token
-void	add_redirection(t_cmd *cmd, t_token *token)
+static void	add_redirection(t_cmd *cmd, t_token *token)
 {
 	t_redir_type	type;
 	char			*file;

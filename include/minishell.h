@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 19:46:54 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/16 20:47:57 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/16 20:52:32 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,21 +138,16 @@ void	setup_signal_handlers(void);
 void	sigint_handler(int sig);
 
 // LEXER Y PARSER
-// |||	=== TOKENIZE
+// === SYNTAX CHECK ===
+int		syntax_check(t_token *tokens);
+// === PARSE TOKEN ===
+int		parse_tokens(t_shell *shell, t_token *tokens, t_cmd **head);
+// === TOKENIZE ===
 t_token	*tokenize_line(char *line);
 void	add_token(t_token **tokens, t_token_type type, char *value);
 t_token	*create_token(t_token_type type, char *value);
 // ||||||	=== COLLECT_WORD ===
 char	*collect_word(char *s, int *i, t_token_type *type);
-
-// |||	=== SYNTAX CHECK
-int		syntax_check(t_token *tokens);
-// |||	=== PARSE TOKEN
-int		parse_tokens(t_shell *shell, t_token *tokens, t_cmd **head);
-//void	add_redirection(t_redir **redirs, t_redir_type type, char *file);
-void	add_redirection(t_cmd *cmd, t_token *token);
-
-void	add_to_argv(char ***argv, char *arg);
 
 // === EXPANSIÓN ===
 void	expand_variables(t_shell *shell, char **word);
