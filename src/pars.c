@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:42:45 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/16 20:51:34 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/16 20:54:20 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,38 +16,6 @@ static int	is_token_word(t_token_type type)
 {
 	return (type == TOKEN_WORD || type == TOKEN_WORD_DQ \
 	|| type == TOKEN_WORD_SQ);
-}
-
-// WARNING: If 1 token only, there's no current->next->type
-int	syntax_check(t_token *tokens)
-{
-	t_token			*current;
-	t_token_type	type;
-
-	if (!tokens)
-		return (1);
-	if (tokens->type == TOKEN_PIPE)
-		return (1);
-	current = tokens;
-	while (current)
-	{
-		if (current->type >= TOKEN_REDIR_IN && current->type <= TOKEN_HEREDOC)
-		{
-			type = current->next->type;
-			if (!current->next || type != TOKEN_WORD || type != TOKEN_WORD_SQ\
-			|| type != TOKEN_WORD_DQ)
-				return (1);
-			current = current->next;
-		}
-		else if (current->type == TOKEN_PIPE)
-		{
-			type = current->next->type;
-			if (!current->next || type == TOKEN_PIPE)
-				return (1);
-		}
-		current = current->next;
-	}
-	return (0);
 }
 
 static void	add_argument(t_cmd *cmd, char *arg)
