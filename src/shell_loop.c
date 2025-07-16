@@ -67,7 +67,7 @@ int	shell_loop(t_shell *shell)
 			break ;
 		if (*line)
 		{
-			if (0 == tokenize_and_check_wrp(&line, shell) && !shell->cmd)
+			if (0 == tokenize_and_check_wrp(&line, shell) && shell->cmd)
 				execute_cmd(shell, shell->cmd);
 			else
 			{

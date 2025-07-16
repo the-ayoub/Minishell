@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:42:45 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/16 20:27:51 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/16 20:35:24 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -243,7 +243,6 @@ int	parse_tokens(t_shell *shell, t_token *tokens, t_cmd **ptr)
 	t_token	*current;
 
 	(void)shell;
-	head = *ptr;
 	current_cmd = NULL;
 	current = tokens;
 	while (current != NULL)
@@ -272,5 +271,6 @@ int	parse_tokens(t_shell *shell, t_token *tokens, t_cmd **ptr)
 		}
 		current = current->next;
 	}
+	*ptr = head;
 	return (1);
 }
