@@ -9,6 +9,23 @@
       "-fsanitize=address",
       "-c",
       "-o",
+      "obj/expand_env_var.o",
+      "src/expand_env_var.c"
+    ],
+    "directory": "/home/nimatura/code/garage/minishell/group",
+    "file": "/home/nimatura/code/garage/minishell/group/src/expand_env_var.c",
+    "output": "/home/nimatura/code/garage/minishell/group/obj/expand_env_var.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-fsanitize=address",
+      "-c",
+      "-o",
       "obj/collect_word.o",
       "src/collect_word.c"
     ],
@@ -128,12 +145,12 @@
       "-fsanitize=address",
       "-c",
       "-o",
-      "obj/another.o",
-      "src/another.c"
+      "obj/tokenize.o",
+      "src/tokenize.c"
     ],
     "directory": "/home/nimatura/code/garage/minishell/group",
-    "file": "/home/nimatura/code/garage/minishell/group/src/another.c",
-    "output": "/home/nimatura/code/garage/minishell/group/obj/another.o"
+    "file": "/home/nimatura/code/garage/minishell/group/src/tokenize.c",
+    "output": "/home/nimatura/code/garage/minishell/group/obj/tokenize.o"
   },
   {
     "arguments": [

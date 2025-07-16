@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   another.c                                          :+:      :+:    :+:   */
+/*   tokenize.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/07 16:37:06 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/15 18:10:27 by nimatura         ###   ########.fr       */
+/*   Created: 2025/07/16 20:46:01 by nimatura          #+#    #+#             */
+/*   Updated: 2025/07/16 20:46:02 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
 // NOTE: Por qué el ";"? Eso es bonus
-int	is_special_char(char c)
+static int	is_special_char(char c)
 {
 	return (c == '|' || c == '<' || c == '>' || c == ';');
 }
