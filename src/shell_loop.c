@@ -13,6 +13,17 @@
 #include "../include/minishell.h"
 #include <unistd.h>
 
+static int	init_std_fd(int (*arr)[2])
+{
+	(*arr)[0] = dup(STDIN_FILENO);
+	if ((*arr)[0] == -1)
+		return (1);
+	(*arr)[1] = dup(STDOUT_FILENO);
+	if ((*arr)[1] == -1)
+		return (1);
+	return (0);
+}
+
 // returns 1 in case of err, otherwise 0
 // TODO: free_arr to free lnk_lst
 static int	readline_wrapper(char **line, t_shell *shell)
@@ -38,9 +49,9 @@ static int	tokenize_and_check_wrp(char **line, t_shell *shell)
 		shell->tokens = tokenize_line(*line);
 		if (syntax_check(shell->tokens))
 			return (0);
-		if (parse_tokens(shell, shell->tokens, &shell->cmd))
+		if (expand_variables(shell, shell->tokens))
 			return (0);
-		if (expand_variables(shell, shell->cmd)) // <--- tokens arent needed here anymore
+		if (parse_tokens(shell, shell->tokens, &shell->cmd))
 			return (0);
 	}
 	return (1);
@@ -53,17 +64,6 @@ static void	reset_cmd_line(char **line, t_shell *shell)
 	free_cmd_list(shell->cmd);  // Libera TODA la lista de comandos
 	shell->tokens = NULL;
 	shell->cmd = NULL;
-}
-
-static int	init_std_fd(int (*arr)[2])
-{
-	(*arr)[0] = dup(STDIN_FILENO);
-	if ((*arr)[0] == -1)
-		return (1);
-	(*arr)[1] = dup(STDOUT_FILENO);
-	if ((*arr)[1] == -1)
-		return (1);
-	return (0);
 }
 
 int	shell_loop(t_shell *shell)

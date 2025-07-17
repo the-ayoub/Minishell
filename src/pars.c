@@ -6,13 +6,13 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:42:45 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/16 21:25:52 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/17 13:02:34 by ohnonon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-static int	is_token_word(t_token_type type)
+int	is_token_word(t_token_type type)
 {
 	return (type == TOKEN_WORD || type == TOKEN_WORD_DQ \
 	|| type == TOKEN_WORD_SQ);
