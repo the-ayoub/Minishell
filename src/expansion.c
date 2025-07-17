@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:39:44 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/17 13:33:14 by ohnonon          ###   ########.fr       */
+/*   Updated: 2025/07/17 18:13:25 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,125 +24,117 @@ void	expand_exit_status(t_shell *shell, char **result)
 	*result = new_result;
 }
 
-char	*locate_env_var(t_list *data, char *str)
+// Retrieves the variable name from the string
+char	*locate_env_var(t_list *env, char *str)
 {
 	t_list	*iter;
 	char	*var_name;
+	size_t	len;
 
-	iter = data;
+	iter = env;
+	var_name = NULL;
 	while (iter != NULL)
 	{
 		var_name = ft_strtrim(iter->content, "=");
-		if (var_name == NULL)
-		{
-			iter = iter->next;
-			continue ;
-		}
-		if (ft_strncmp(str, var_name, ft_strlen(var_name)) == 0)
-		{
-			free(var_name);
+		if (var_name == NULL) // MALLOC BREAKS
+			return ;
+		len = ft_strlen(var_name);
+		if (ft_strncmp(str, var_name, len) == 0)
 			break ;
-		}
 		iter = iter->next;
 	}
+	free(var_name);
 	if (NULL == iter)
 		return (NULL);
 	return (iter->content);
 }
 
+// WARNING: MALLOC
 char	*get_var_name(char *str)
 {
-	char	*var_name;
-	size_t	i;
+	char	*match;
 
-	i = 0;
-	var_name = NULL;
-	if (str == NULL)
+	match = NULL;
+	match = ft_strchr(str, '$');
+	if (NULL == match)
 		return (NULL);
-	if (str[i] && str[i] == '$')
-		i++;
-	if (str[i] && ft_isspace(str[i]))
+	match++;
+	match = ft_strtrim(match, "$ \t"); // MALLOC
+	if (NULL == match)
 		return (NULL);
-	if (str[i])
-		str = &str[i];
-	i = 0;
-	while (str[i] && str[i] != '=' && str[i] != '\n')
-		i++;
-	if (str[i] == '\n')
-		str[i] = '\0';
-	var_name = ft_strdup(str);
-	str[i] = '\n';
-	return (var_name);
+	return (match);
 }
 
-// if it finds a match but isnt a valid variable it will return the old str
-char	*find_and_expand_var(t_shell *shell, char *old)
+// Retrieves the $str from the token.value, then iterates over env_lst
+// looking for a match. For success, returns 1, else 0 as FALSE
+static t_list	*is_expandable(t_token token, char **match)
 {
-	char	*var;
-	char	*var_value;
+	t_list	*iter;
 
-	var = get_var_name(ft_strchr(old, '$'));
-	if (NULL == var) // var not valid syntax
-		return (old);
-	var_value = locate_env_var()
-
-	return (new);
+	if (token.type != TOKEN_WORD_DQ && token.type != TOKEN_WORD)
+		return (NULL);
+	*match = get_var_name(token.value);
+	if (NULL == match)
+		return (NULL);
+	iter = locate_env_var(iter->content,*match);
+	return (iter);
 }
 
-// expand var and strjoin with prev and after unless space or another var
-// or tab
+char	*assemble_expansion(char *token_value, t_list *env_value, char *var)
+{
+	char	*prev;
+	char	*expansion;
+	char	*end;
+
+	if (token_value == NULL || env_value == NULL || var == NULL)
+		return (NULL);
+	prev = NULL;
+	expansion = NULL;
+	end = NULL;
+	prev = ft_strtrim(token_value, "$");
+	if (prev != NULL)
+	{
+		expansion = ft_strchr(env_value->content, '=');
+		expansion++;
+		expansion = ft_strdup(expansion);
+		if (expansion != NULL)
+			end = ft_strjoin(prev, expansion);
+	}
+	free(expansion);
+	free(prev);
+	if (end != NULL)
+	{
+		token_value += ft_strlen(prev) + ft_strlen(var);
+		prev = end;
+		end = ft_strjoin(end, token_value);
+		free(prev);
+	}
+	return (end);
+}
+
+// loops looking for tokens with expandable variables
 int	expand_variables(t_shell *shell, t_token *head)
 {
 	t_token	*iter;
+	t_list	*env_var;
+	char	*match;
+	char	*tmp;
 	
-	(void)shell;
 	iter = head;
+	match = NULL;
 	while (NULL != iter)
 	{
-		if (iter->type != TOKEN_WORD && iter->type != TOKEN_WORD_DQ)
+		env_var = is_expandable(*iter, &match);
+		if (env_var != NULL)
 		{
-			iter = iter->next;
-			continue;
+			tmp = assemble_expansion(iter->value, env_var, match);
+			free(iter->value);
+			iter->value = tmp;
+			break ;
 		}
-		if (ft_strchr(iter->value, '$') == NULL)
-			continue ;
-		iter->value = find_and_expand_var(shell, iter->value);
-		if (iter->va
+		iter = iter->next;
 	}
+	if (iter == NULL)
+		return (1);
 	return (0);
 }
-	// char	*result;
-	// char	*ptr = NULL;
-	// int		in_squote;
-	// int		in_dquote;
-	// char	str[2] = {*ptr, '\0'};
-	// char	*new_temp;
-	//
-	// ptr = NULL;
-	// ptr = NULL;
-	// result = ft_strdup("");
-	// ptr = *word;
-	// in_squote = 0;
-	// in_dquote = 0;
-	// while (*ptr)
-	// {
-	// 	if (*ptr == '\'' && !in_dquote)
-	// 		in_squote = !in_squote;
-	// 	else if (*ptr == '"' && !in_squote)
-	// 		in_dquote = !in_dquote;
-	// 	else if (*ptr == '$' && !in_squote)
-	// 	{
-	// 		if (ptr[1] == '?')
-	// 		{
-	// 			expand_exit_status(shell, &result);
-	// 			ptr += 2;
-	// 			continue ;
-	// 		}
-	// 	}
-	// 	new_temp = ft_strjoin(result, str);
-	// 	free(result);
-	// 	result = new_temp;
-	// 	ptr++;
-	// }
-	// free(*word);
-	// *word = result;
