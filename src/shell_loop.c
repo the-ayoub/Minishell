@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
+#include <unistd.h>
 
 // returns 1 in case of err, otherwise 0
 // TODO: free_arr to free lnk_lst
@@ -54,14 +55,24 @@ static void	reset_cmd_line(char **line, t_shell *shell)
 	shell->cmd = NULL;
 }
 
-// TODO:
-// 1. INIT DUP
-// 2. CLOSE DUP
+static int	init_std_fd(int (*arr)[2])
+{
+	(*arr)[0] = dup(STDIN_FILENO);
+	if ((*arr)[0] == -1)
+		return (1);
+	(*arr)[1] = dup(STDOUT_FILENO);
+	if ((*arr)[1] == -1)
+		return (1);
+	return (0);
+}
+
 int	shell_loop(t_shell *shell)
 {
 	char	*line;
-	int		std_backup[2] = {dup(STDIN_FILENO), dup(STDOUT_FILENO)};
+	int		std_backup[2];
 
+	if (init_std_fd(&std_backup))
+		return (1);
 	setup_signal_handlers();
 	while (1)
 	{
