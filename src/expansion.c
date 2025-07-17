@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:39:44 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/16 21:53:19 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/17 12:45:15 by ohnonon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,12 @@ void	expand_exit_status(t_shell *shell, char **result)
 }
 
 // NOTE: Tokens aren't needed at this step
-void	expand_variables(t_shell *shell, t_cmd *head)
+int	expand_variables(t_shell *shell, t_cmd *head)
 {
 	t_cmd	*iter;
 	char	**i_str;
 	
+	(void)shell;
 	iter = head;
 	while (NULL != iter)
 	{
@@ -40,6 +41,7 @@ void	expand_variables(t_shell *shell, t_cmd *head)
 
 		}
 	}
+	return (0);
 }
 	// char	*result;
 	// char	*ptr = NULL;

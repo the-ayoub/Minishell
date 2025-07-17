@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 19:46:54 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/16 21:38:59 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/17 12:45:05 by ohnonon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,7 +161,7 @@ char	*collect_word(char *s, int *i, t_token_type *type);
 // END LEXER Y PARSER
 
 // === EXPANSIÓN ===
-void	expand_variables(t_shell *shell, t_cmd *head_cmd);
+int	expand_variables(t_shell *shell, t_cmd *head_cmd);
 void	expand_exit_status(t_shell *shell, char **result);
 void	append_char(char **str, char c);
 int		expand_dollar(t_shell *shell, char **result, char *ptr);
