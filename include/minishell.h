@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 19:46:54 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/17 13:02:56 by ohnonon          ###   ########.fr       */
+/*   Updated: 2025/07/18 17:48:25 by ohnonon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,7 @@ int		remove_env_var(t_shell *shell, char *var);
 
 //	|||	=== ENV UTILS ===
 t_list	*locate_env_var(t_list *node, char *var);
+char	*get_var_name(char *str);
 
 // === SIGNAL HANDLING ===
 void	setup_signal_handlers(void);

@@ -6,7 +6,7 @@
 /*   By: ohnudes </var/spool/mail/ohnudes>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 15:41:56 by ohnudes           #+#    #+#             */
-/*   Updated: 2025/07/15 18:17:04 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/18 17:56:59 by ohnonon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ char	*ft_strdup(const char *s);
 char	*ft_substr(char const *str, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, const char *s2);
 char	*ft_strtrim(char const *s, const char *set);
+char	*ft_strtrim_end(char const *s, const char *set);
 char	**ft_split(char const *s, char c);
 char	*ft_itoa(int nb);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));

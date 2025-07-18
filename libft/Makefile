@@ -6,7 +6,7 @@
 #    By: ohnudes </var/spool/mail/ohnudes>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/20 23:41:26 by ohnudes           #+#    #+#              #
-#    Updated: 2025/07/11 19:02:56 by nimatura         ###   ########.fr        #
+#    Updated: 2025/07/18 17:57:21 by ohnonon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ SRC_FILE = ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c \
 		   ft_lstlast_bonus.c ft_lstadd_back_bonus.c ft_lstdelone_bonus.c \
 		   ft_lstclear_bonus.c ft_lstiter_bonus.c ft_lstmap_bonus.c \
 		   ft_printf.c ft_printf_tools.c ft_printf_convert.c get_next_line.c \
-		   get_next_line_utils.c ft_isspace.c ft_strcmp.c \
+		   get_next_line_utils.c ft_isspace.c ft_strcmp.c ft_strtrim_end.c \
 		   ft_lstremove_and_link.c
 
 OBJ_FILE = $(SRC_FILE:.c=.o)

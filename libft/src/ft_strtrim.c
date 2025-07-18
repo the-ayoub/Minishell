@@ -6,13 +6,13 @@
 /*   By: ohnudes </var/spool/mail/ohnudes>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 17:44:05 by ohnudes           #+#    #+#             */
-/*   Updated: 2025/07/03 20:11:49 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/18 17:55:11 by ohnonon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/libft.h"
 
-char	*aux_end_str(const char *s, const char *set)
+static char	*aux_end_str(const char *s, const char *set)
 {
 	size_t	len;
 
