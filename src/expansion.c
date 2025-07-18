@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:39:44 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/18 19:22:30 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/18 19:25:57 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,12 +88,15 @@ int	expand_variables(t_shell *shell, t_token *head)
 		{
 			tmp = assemble_expansion(iter->value, env_var, match);
 			if (tmp == NULL)
+			{
 				return (1);
+			}
 			free(iter->value);
 			iter->value = tmp;
 			break ;
 		}
 		iter = iter->next;
 	}
+	free(match);
 	return (0);
 }
