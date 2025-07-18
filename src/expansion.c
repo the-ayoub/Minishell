@@ -6,23 +6,11 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:39:44 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/18 19:03:03 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/18 19:14:14 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
-
-void	expand_exit_status(t_shell *shell, char **result)
-{
-	char	*exit_str;
-	char	*new_result;
-
-	exit_str = ft_itoa(shell->last_status);
-	new_result = ft_strjoin(*result, exit_str);
-	free(*result);
-	free(exit_str);
-	*result = new_result;
-}
 
 // Retrieves the $str from the token.value, then iterates over env_lst
 // looking for a match. For success, returns 1, else 0 as FALSE
@@ -42,6 +30,20 @@ static t_list	*is_expandable(t_list *env_var, t_token token, char **match)
 	return (node);
 }
 
+static void	aux_exp(char **exp, t_list *env_value, char **prev, char **end)
+{
+	if (*prev != NULL)
+	{
+		*exp = ft_strchr(env_value->content, '=');
+		(*exp)++;
+		*exp = ft_strdup(*exp);
+		if (*exp != NULL)
+			*end = ft_strjoin(*prev, *exp);
+	}
+	free(*exp);
+	free(*prev);
+}
+
 char	*assemble_expansion(char *token_value, t_list *env_value, char *var)
 {
 	char	*prev;
@@ -54,16 +56,7 @@ char	*assemble_expansion(char *token_value, t_list *env_value, char *var)
 	expansion = NULL;
 	end = NULL;
 	prev = ft_strtrim_end(token_value, "$");
-	if (prev != NULL)
-	{
-		expansion = ft_strchr(env_value->content, '=');
-		expansion++;
-		expansion = ft_strdup(expansion);
-		if (expansion != NULL)
-			end = ft_strjoin(prev, expansion);
-	}
-	free(expansion);
-	free(prev);
+	aux_exp(&expansion, env_value, &prev, &end);
 	if (end != NULL)
 	{
 		token_value += ft_strlen(prev) + ft_strlen(var);
