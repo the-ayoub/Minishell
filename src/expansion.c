@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:39:44 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/18 18:35:55 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/18 19:03:03 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static t_list	*is_expandable(t_list *env_var, t_token token, char **match)
 	*match = get_var_name(token.value);
 	if (NULL == match)
 		return (NULL);
-	node = locate_env_var(node->content,*match);
+	node = locate_env_var(node, *match);
 	return (node);
 }
 
@@ -71,6 +71,7 @@ char	*assemble_expansion(char *token_value, t_list *env_value, char *var)
 		end = ft_strjoin(end, token_value);
 		free(prev);
 	}
+	free(var);
 	return (end);
 }
 

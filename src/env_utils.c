@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 21:06:41 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/18 17:57:48 by ohnonon          ###   ########.fr       */
+/*   Updated: 2025/07/18 19:02:23 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*get_var_name(char *str)
 	match++;
 	if (*match == ' ' || *match == '\t' || *match == '\0' || *match == '$')
 		return (NULL);
-	match = ft_strtrim_end(match, "$ \t"); // MALLOC
+	match = ft_strtrim_end(match, "$ \t\n"); // MALLOC
 	if (NULL == match)
 		return (NULL);
 	return (match);
