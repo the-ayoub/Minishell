@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:39:44 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/18 19:27:14 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/18 19:50:10 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,13 @@ static void	aux_exp(char **exp, t_list *env_value, char **prev, char **end)
 	free(*prev);
 }
 
-char	*assemble_expansion(char *token_value, t_list *env_value, char *var)
+char	*assemble_expansion(char *token_value, t_list *env_value, char **var)
 {
 	char	*prev;
 	char	*expansion;
 	char	*end;
 
-	if (token_value == NULL || env_value == NULL || var == NULL)
+	if (token_value == NULL || env_value == NULL || *var == NULL)
 		return (NULL);
 	prev = NULL;
 	expansion = NULL;
@@ -61,14 +61,19 @@ char	*assemble_expansion(char *token_value, t_list *env_value, char *var)
 	aux_exp(&expansion, env_value, &prev, &end);
 	if (end != NULL)
 	{
-		token_value += ft_strlen(prev) + ft_strlen(var);
+		token_value += ft_strlen(prev) + ft_strlen(*var);
 		prev = end;
 		end = ft_strjoin(end, token_value);
 		free(prev);
 	}
+	free(*var);
+	*var = NULL;
 	return (end);
 }
 
+// BUG: Each time it encounters a variable in the token such as $PATH and
+// $USER it should recalibre to iter == head, otherwise it will not check
+// allt he var
 // loops looking for tokens with expandable variables
 // returns 1 in case of malloc err
 int	expand_variables(t_shell *shell, t_token *head)
@@ -85,17 +90,19 @@ int	expand_variables(t_shell *shell, t_token *head)
 		env_var = is_expandable(shell->raw_env, *iter, &match);
 		if (env_var != NULL)
 		{
-			tmp = assemble_expansion(iter->value, env_var, match);
-			if (tmp == NULL)
+			tmp = assemble_expansion(iter->value, env_var, &match);
+			if (iter->value == NULL)
 			{
+				free(match);
 				return (1);
 			}
 			free(iter->value);
 			iter->value = tmp;
-			break ;
+			continue ;
 		}
 		iter = iter->next;
 	}
 	free(match);
+	match = NULL;
 	return (0);
 }
