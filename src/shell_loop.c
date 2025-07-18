@@ -13,17 +13,17 @@
 #include "../include/minishell.h"
 #include <unistd.h>
 
-static int	init_std_fd(int (*arr)[2])
-{
-	(*arr)[0] = dup(STDIN_FILENO);
-	if ((*arr)[0] == -1)
-		return (1);
-	(*arr)[1] = dup(STDOUT_FILENO);
-	if ((*arr)[1] == -1)
-		return (1);
-	return (0);
-}
-
+// static int	init_std_fd(int (*arr)[2])
+// {
+// 	(*arr)[0] = dup(STDIN_FILENO);
+// 	if ((*arr)[0] == -1)
+// 		return (1);
+// 	(*arr)[1] = dup(STDOUT_FILENO);
+// 	if ((*arr)[1] == -1)
+// 		return (1);
+// 	return (0);
+// }
+//
 // returns 1 in case of err, otherwise 0
 // TODO: free_arr to free lnk_lst
 static int	readline_wrapper(char **line, t_shell *shell)
@@ -71,7 +71,11 @@ int	shell_loop(t_shell *shell)
 	char	*line;
 	int		std_backup[2];
 
-	if (init_std_fd(&std_backup))
+	std_backup[0] = dup(STDIN_FILENO);
+	if (std_backup[0] == -1)
+		return (1);
+	std_backup[1] = dup(STDOUT_FILENO);
+	if (std_backup[1] == -1)
 		return (1);
 	setup_signal_handlers();
 	while (1)
@@ -81,7 +85,7 @@ int	shell_loop(t_shell *shell)
 			break ;
 		if (*line)
 		{
-			if (0 == tokenize_and_check_wrp(&line, shell) && shell->cmd)
+			if (tokenize_and_check_wrp(&line, shell) && shell->cmd)
 				execute_cmd(shell, shell->cmd);
 			else
 			{

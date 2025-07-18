@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:39:44 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/18 17:57:31 by ohnonon          ###   ########.fr       */
+/*   Updated: 2025/07/18 18:35:55 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ static t_list	*is_expandable(t_list *env_var, t_token token, char **match)
 
 	node = env_var;
 	if (token.type != TOKEN_WORD_DQ && token.type != TOKEN_WORD)
+		return (NULL);
+	if (ft_strchr(token.value, '$') == NULL)
 		return (NULL);
 	*match = get_var_name(token.value);
 	if (NULL == match)
@@ -73,6 +75,7 @@ char	*assemble_expansion(char *token_value, t_list *env_value, char *var)
 }
 
 // loops looking for tokens with expandable variables
+// returns 1 in case of malloc err
 int	expand_variables(t_shell *shell, t_token *head)
 {
 	t_token	*iter;
@@ -88,13 +91,13 @@ int	expand_variables(t_shell *shell, t_token *head)
 		if (env_var != NULL)
 		{
 			tmp = assemble_expansion(iter->value, env_var, match);
+			if (tmp == NULL)
+				return (1);
 			free(iter->value);
 			iter->value = tmp;
 			break ;
 		}
 		iter = iter->next;
 	}
-	if (iter == NULL)
-		return (1);
 	return (0);
 }
