@@ -6,11 +6,11 @@
 /*   By: ohnonon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 17:50:39 by ohnonon           #+#    #+#             */
-/*   Updated: 2025/07/18 17:56:28 by ohnonon          ###   ########.fr       */
+/*   Updated: 2025/07/18 19:17:26 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../inc/libft.h"
 
 static char	*aux_end_str(const char *s, const char *set)
 {

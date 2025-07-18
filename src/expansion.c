@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:39:44 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/18 19:14:14 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/18 19:22:30 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ char	*assemble_expansion(char *token_value, t_list *env_value, char *var)
 	expansion = NULL;
 	end = NULL;
 	prev = ft_strtrim_end(token_value, "$");
+	printf("check_assamble_exp:token_value: %s\n", token_value);
+	printf("check_assamble_exp:prev: %s\n", prev);
 	aux_exp(&expansion, env_value, &prev, &end);
 	if (end != NULL)
 	{
