@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:39:44 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/18 19:50:10 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/18 20:28:22 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,35 +72,35 @@ char	*assemble_expansion(char *token_value, t_list *env_value, char **var)
 }
 
 // BUG: Each time it encounters a variable in the token such as $PATH and
-// $USER it should recalibre to iter == head, otherwise it will not check
+// $USER it should recalibre to token == head, otherwise it will not check
 // allt he var
 // loops looking for tokens with expandable variables
 // returns 1 in case of malloc err
 int	expand_variables(t_shell *shell, t_token *head)
 {
-	t_token	*iter;
+	t_token	*token;
 	t_list	*env_var;
 	char	*match;
 	char	*tmp;
 	
-	iter = head;
+	token = head;
 	match = NULL;
-	while (NULL != iter)
+	while (NULL != token)
 	{
-		env_var = is_expandable(shell->raw_env, *iter, &match);
+		env_var = is_expandable(shell->raw_env, *token, &match);
 		if (env_var != NULL)
 		{
-			tmp = assemble_expansion(iter->value, env_var, &match);
-			if (iter->value == NULL)
+			tmp = assemble_expansion(token->value, env_var, &match);
+			if (token->value == NULL)
 			{
 				free(match);
 				return (1);
 			}
-			free(iter->value);
-			iter->value = tmp;
+			free(token->value);
+			token->value = tmp;
 			continue ;
 		}
-		iter = iter->next;
+		token = token->next;
 	}
 	free(match);
 	match = NULL;
