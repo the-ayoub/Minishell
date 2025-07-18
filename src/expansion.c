@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:39:44 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/18 19:25:57 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/18 19:27:14 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ char	*assemble_expansion(char *token_value, t_list *env_value, char *var)
 		end = ft_strjoin(end, token_value);
 		free(prev);
 	}
-	free(var);
 	return (end);
 }
 
