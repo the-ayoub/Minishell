@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:39:44 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/20 18:22:47 by ohnonon          ###   ########.fr       */
+/*   Updated: 2025/07/20 18:23:34 by ohnonon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,6 @@ char	*assemble_expansion(char *token_value, t_expand *data)
 	char	*result;
 
 	i = data->to_expand - token_value;
-	if (i < 0)
-		return (NULL);
 	new = ft_substr(token_value, 0, i);
 	if (new == NULL)
 		return (NULL);

@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 21:06:41 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/20 17:19:34 by ohnonon          ###   ########.fr       */
+/*   Updated: 2025/07/20 18:24:42 by ohnonon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char	*get_var_name(char *str)
 	new[i] = '\0';
 	while (i--)
 		new[i] = match[i];
-	return (match);
+	return (new);
 }
 
 // Iterates over the list looking for a comparaison of the name str and the
