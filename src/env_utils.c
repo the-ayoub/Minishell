@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 21:06:41 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/18 19:36:30 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/20 17:19:34 by ohnonon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,35 @@
 // Receives a string and looks for a '$' sign. It will strdup the following
 // content until a space, tab, cash or null char are found. It will return
 // a new allocated str at success, otherwise NULL.
+static int	is_var_name_ok(char c)
+{
+	if (c == ' ' || c == '\t' || c == '\0' || c == '$')
+		return (FALSE);
+	return (TRUE);
+}
+
 char	*get_var_name(char *str)
 {
 	char	*match;
+	char	*new;
+	size_t	i;
 
+	i = 0;
 	match = NULL;
 	match = ft_strchr(str, '$');
 	if (NULL == match)
 		return (NULL);
 	match++;
-	if (*match == ' ' || *match == '\t' || *match == '\0' || *match == '$')
+	if (is_var_name_ok(*match) == FALSE)
 		return (NULL);
-	match = ft_strtrim_end(match, "$ \t\n"); // MALLOC
-	if (NULL == match)
+	while (match[i] && is_var_name_ok(match[i]))
+		i++;
+	new = malloc(sizeof(char) * i + 1);
+	if (NULL == new)
 		return (NULL);
+	new[i] = '\0';
+	while (i--)
+		new[i] = match[i];
 	return (match);
 }
 
