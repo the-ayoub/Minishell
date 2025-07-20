@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:39:44 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/20 18:23:34 by ohnonon          ###   ########.fr       */
+/*   Updated: 2025/07/20 18:31:12 by ohnonon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ char	*assemble_expansion(char *token_value, t_expand *data)
 	char	*new;
 	char	*tmp;
 	char	*result;
+	size_t	len;
 
 	i = data->to_expand - token_value;
 	new = ft_substr(token_value, 0, i);
@@ -79,13 +80,14 @@ char	*assemble_expansion(char *token_value, t_expand *data)
 	data->matching_env = ft_strchr(data->matching_env, '=');
 	if (data->matching_env == NULL)
 		perror("cant assamble expansion");
-	tmp = ft_strjoin(new, data->matching_env);
+	tmp = ft_strjoin(new, ++data->matching_env);
 	if (tmp == NULL)
 		perror("cant assamble expansion");
 	free(new);
 	new = tmp;
-	size_t	len;
+	/* BUUUG */
 	len = ft_strlen(data->var_name);
+	printf("str	%s\nlen	%ld\n",data->var_name, len);
 	data->to_expand += len;
 	tmp = ft_substr(data->to_expand, 0, ft_strlen(data->to_expand));
 	if (NULL == new)
@@ -115,12 +117,12 @@ int	expand_variables(t_shell *shell, t_token *head)
 	while (NULL != token)
 	{
 		data.token_str = token->value;
-		if (1 == is_expandable(shell->raw_env, *token, &data))
+		if (1 == is_expandable(shell->raw_env, *token, &data)) // ok
 		{
 			token = token->next;
 			continue ;
 		}
-		tmp = assemble_expansion(token->value, &data); // malloc faillure
+		tmp = assemble_expansion(token->value, &data);
 		if (NULL == tmp)
 		{
 			token = token->next;
