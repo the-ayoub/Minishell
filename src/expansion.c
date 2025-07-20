@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:39:44 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/20 18:36:08 by ohnonon          ###   ########.fr       */
+/*   Updated: 2025/07/20 19:40:27 by ohnonon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,7 @@ char	*assemble_expansion(char *token_value, t_expand *data)
 		perror("cant assamble expansion");
 	free(new);
 	new = tmp;
-	/* BUUUG */
 	len = ft_strlen(data->var_name) + 1;
-	printf("str	%s\nlen	%ld\n",data->var_name, len);
 	data->to_expand += len;
 	tmp = ft_substr(data->to_expand, 0, ft_strlen(data->to_expand));
 	if (NULL == new)

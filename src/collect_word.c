@@ -6,18 +6,21 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 15:29:33 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/15 18:21:44 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/20 19:54:45 by ohnonon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
+// BUG: Doesn't correctly capture the word when echo "$PATH" | cat -e case
+//
 static char	*collect_quote_word(char *str, char delim, int *i, t_token_type *type)
 {
 	char	*word;
 	char	*end;
 
-	end = ft_strchr(str + *i + 1, delim);
+	end = ft_strchr(str + *i, delim);
+	printf("end	%s\n\n", end);
 	if (end == NULL)
 		return (printf("open quote: %c\n", delim), NULL);
 	word = ft_strtrim(str + *i, &delim);

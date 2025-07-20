@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 20:46:01 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/20 19:16:20 by ohnonon          ###   ########.fr       */
+/*   Updated: 2025/07/20 19:29:26 by ohnonon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void	add_token(t_token **tokens, t_token_type type, char *value)
 	}
 }
 
+// BUG: i is iterating out of boundaries
 t_token	*tokenize_line(char *line)
 {
 	t_token			*tokens;
