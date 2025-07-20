@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 15:29:33 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/20 20:11:09 by ohnonon          ###   ########.fr       */
+/*   Updated: 2025/07/20 20:12:41 by ohnonon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static char	*collect_quote_word(char *str, char delim, int *i, t_token_type *typ
 	end = ft_strchr(str + *i + 1, delim);
 	if (end == NULL)
 		return (printf("open quote: %c\n", delim), NULL);
-	word = ft_substr(str, *i, end - &str[*i] - 1);
+	word = ft_substr(str, *i + 1, end - &str[*i] - 1);
 	// word = ft_strtrim(str + *i + 1, &delim);
 	if (NULL != word)
 		*i += ft_strlen(word) + 2;
