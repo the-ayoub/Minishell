@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:39:44 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/20 18:31:12 by ohnonon          ###   ########.fr       */
+/*   Updated: 2025/07/20 18:36:08 by ohnonon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ static int	is_expandable(t_list *env_lst, t_token token, t_expand *data)
 		iter = ++match;
 		match = NULL;
 	}
-	free(var_name);
 	if (match == NULL || var_name == NULL)
 		return (1);
 	return (0);
@@ -86,7 +85,7 @@ char	*assemble_expansion(char *token_value, t_expand *data)
 	free(new);
 	new = tmp;
 	/* BUUUG */
-	len = ft_strlen(data->var_name);
+	len = ft_strlen(data->var_name) + 1;
 	printf("str	%s\nlen	%ld\n",data->var_name, len);
 	data->to_expand += len;
 	tmp = ft_substr(data->to_expand, 0, ft_strlen(data->to_expand));
@@ -116,6 +115,8 @@ int	expand_variables(t_shell *shell, t_token *head)
 	token = head;
 	while (NULL != token)
 	{
+		free(data.var_name);
+		data.var_name = NULL;
 		data.token_str = token->value;
 		if (1 == is_expandable(shell->raw_env, *token, &data)) // ok
 		{
