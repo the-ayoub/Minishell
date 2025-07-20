@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 21:06:41 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/20 18:24:42 by ohnonon          ###   ########.fr       */
+/*   Updated: 2025/07/20 19:00:36 by ohnonon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 static int	is_var_name_ok(char c)
 {
 	if (c == ' ' || c == '\t' || c == '\0' || c == '$')
+		return (FALSE);
+	if (c == '\'' || c == '"')
 		return (FALSE);
 	return (TRUE);
 }
