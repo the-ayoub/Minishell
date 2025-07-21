@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 21:04:23 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/21 11:41:14 by ohnonon          ###   ########.fr       */
+/*   Updated: 2025/07/21 11:48:49 by ohnonon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	is_var_name_ok(char *str)
 {
 	int	i;
 
-	i = 6;
+	i = 0;
 	if (str[i] == '\0')
 		return (0);
 	while (str[i] != '\0' && ft_isspace(str[i]))
@@ -91,6 +91,7 @@ int	builtin_export(t_shell *shell, char **argv)
 			if (!current)
 				set_env_var(shell, var_id, "");
 		}
+		free(var_id);
 		i++;
 	}
 	return (status);
