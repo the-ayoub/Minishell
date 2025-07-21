@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 21:04:23 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/21 21:11:12 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/21 23:51:14 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,36 +57,25 @@ static int	export_no_arg(t_shell *shell)
 	return (0);
 }
 
-static int	set_value_name(char **var_id, char *argv)
+static int	set_value_name(char **var_key, char *argv)
 {
 	size_t	len;
 
 	len = 0;
 	if (ft_strchr(argv, '=') == NULL)
 	{
-		*var_id = NULL;
+		*var_key = NULL;
 		return (1);
 	}
-	*var_id = ft_substr(argv, 0, len);
-	if (*var_id == NULL)
+	*var_key = ft_substr(argv, 0, len);
+	if (*var_key == NULL)
 		return (perror("Memory allocation error: set_value_name\n") , 1);
-	if (FALSE == is_var_name_ok(*var_id))
+	if (FALSE == is_var_name_ok(*var_key))
+	{
+		free(*var_key);
 		return (1);
-	return (0);
-}
-
-static int	check_var_value(char *argv, char *var_id)
-{
-	char	*str;
-	size_t	len;
-
-	len = 0;
-	len = ft_strlen(var_id);
-	if ('\0' == argv[len])
-		return (0);
-	str = 
-	if ()
-		return (1);
+	}
+	*var_key = ft_strdup(argv);
 	return (0);
 }
 
@@ -95,9 +84,9 @@ int	builtin_export(t_shell *shell, char **argv)
 {
 	int		i;
 	int		status;
-	char	*var_id;
+	char	*var_key;
 	char	*var_value;
-	char	*current;
+	char	*tmp;
 
 	if (NULL == argv[1])
 		return (export_no_arg(shell));
@@ -105,22 +94,15 @@ int	builtin_export(t_shell *shell, char **argv)
 	i = 1;
 	while (NULL != argv[i])
 	{
-		if (set_value_name(&var_id, argv[i]) == 1)
+		if (set_value_name(&var_key, argv[i]) == 1)
 		{
-			aux_reset_loop(&var_id, &status, &i);
+			aux_reset_loop(&var_key, &shell->last_status, &i);
 			continue ;
 		}
-		if (check_var_value(argv[1], var_id, ))
-		{
-
-		}
-		set_env_var(shell, var_id, "");
-		else
-		{
-			current = get_env_value(shell, var_id);
-			if (!current)
-		}
-		free(var_id);
+		tmp = prepare_env_syntax(shell, var_key, "");
+		if (tmp)
+			add_env_var();
+		free(var_key);
 		i++;
 	}
 	return (status);
