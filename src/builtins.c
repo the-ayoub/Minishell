@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:38:11 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/21 17:38:04 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/21 18:26:34 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,31 +78,6 @@ int	builtin_cd(t_shell *shell, char **argv)
 	getcwd(cwd, sizeof(cwd));
 	set_env_var(shell, "PWD", cwd);
 	free(oldpwd);
-	return (0);
-}
-
-int	builtin_echo(t_shell *shell, char **argv)
-{
-	int	i;
-	int	newline;
-
-	i = 1;
-	newline = 1;
-	(void)shell;
-	if (argv[1] && ft_strcmp(argv[1], "-n") == 0)
-	{
-		newline = 0;
-		i++;
-	}
-	while (argv[i])
-	{
-		ft_putstr_fd(argv[i], STDOUT_FILENO);
-		if (argv[i + 1])
-			ft_putchar_fd(' ', STDOUT_FILENO);
-		i++;
-	}
-	if (newline)
-		ft_putchar_fd('\n', STDOUT_FILENO);
 	return (0);
 }
 
