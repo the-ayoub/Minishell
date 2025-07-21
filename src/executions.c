@@ -6,11 +6,12 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:39:32 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/16 21:37:26 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/21 22:30:30 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
+#include <unistd.h>
 
 static void	exec_external(t_shell *shell, t_cmd *cmd)
 {
@@ -124,43 +125,63 @@ pid_t	execute_process(t_shell *shell, t_cmd *cmd)
 	return (pid);
 }
 
+int	wrapper_dup2(int oldfd, int newfd, t_shell *shell)
+{
+	if (dup2(oldfd, newfd) == -1)
+	{
+		perror("execute_cmd: dup2 failed");
+		shell->last_status = 1;
+		return (FALSE);
+	}
+	return (TRUE);
+}
+
+static int	exe_builtin_parent(int *b_stdin, int *b_stdout, t_shell *shell)
+{
+	*b_stdin = dup(STDIN_FILENO);
+	*b_stdout = dup(STDOUT_FILENO);
+	if (setup_redirections(shell, shell->cmd) != SUCCESS)
+		shell->last_status = 1;
+	else
+		shell->last_status = exec_builtin(shell, shell->cmd);
+	if(wrapper_dup2(*b_stdin, STDIN_FILENO, shell) != TRUE ||\
+		wrapper_dup2(*b_stdin, STDIN_FILENO, shell) != TRUE)
+	{
+		close(*b_stdin);
+		close(*b_stdout);
+		return (shell->last_status);
+	}
+	close(*b_stdin);
+	close(*b_stdout);
+	return (shell->last_status);
+}
+
 // NOTE: uses t_cmd only: when do we free tokens?
 int	execute_cmd(t_shell *shell, t_cmd *cmd)
 {
 	pid_t	pid;
-	int		saved_stdin;
-	int		saved_stdout;
+	int		b_stdin;
+	int		b_stdout;
 
-	if (!cmd)
+	if (NULL == cmd)
 		return (0);
-	if (cmd->argv[0] && !ft_strcmp(cmd->argv[0], "exit") && cmd->next)
+	if (cmd->argv[0] && !ft_strcmp(cmd->argv[0], "exit") && cmd->next != NULL) //protect exit
 	{
 		ft_putstr_fd("minishell: exit: pipes not allowed\n", STDERR_FILENO);
 		return (1);
 	}
-	if (cmd->next || !is_builtin(cmd->argv[0]) || builtin_in_pipe(cmd->argv[0]))
+	if (cmd->next || !is_builtin(cmd->argv[0]) || builtin_in_pipe(cmd->argv[0]))  // IF it's part of pipe or not builtin or builtin for pipes
 	{
-		if (cmd->next)
+		if (cmd->next != NULL) //if pipe, delegate to pipe
 			execute_pipe(shell, cmd);
-		else
+		else //single command
 		{
 			pid = execute_process(shell, cmd);
 			if (pid != -1)
 				wait_for_children(shell, pid);
 		}
 	}
-	else
-	{
-		saved_stdin = dup(STDIN_FILENO);
-		saved_stdout = dup(STDOUT_FILENO);
-		if (setup_redirections(shell, cmd) != SUCCESS)
-			shell->last_status = 1;
-		else
-			shell->last_status = exec_builtin(shell, cmd);
-		dup2(saved_stdin, STDIN_FILENO);
-		dup2(saved_stdout, STDOUT_FILENO);
-		close(saved_stdin);
-		close(saved_stdout);
-	}
+	else //execute builtin from parent
+		shell->last_status = exe_builtin_parent(&b_stdin, &b_stdout, shell);
 	return (shell->last_status);
 }
