@@ -23,18 +23,15 @@ static int	init_std_fd(int (*arr)[2])
 	return (0);
 }
 
-static int	aux_protect_readline(char **line, t_shell *shell)
+static int	aux_protect_readline(char **line)
 {
 	size_t	i;
 
 	i = 0;
-	while ((*line)[i] != '\0' && ft_isprint((*line)[i])
+	while ((*line)[i] != '\0' && ft_isprint((*line)[i]))
 		i++;
-	if (ft_isprint((*line)[i] == FALSE && (*line)[i] != '\0')
-	{
-		// exit sequence?
+	if (ft_isprint((*line)[i] == FALSE && (*line)[i] != '\0'))
 		return (1);
-	}
 	return (0);
 }
 
@@ -50,7 +47,7 @@ static int	readline_wrapper(char **line, t_shell *shell)
 		free_array(shell->env);
 		return (1);
 	}
-	if (aux_protect_readline(line, shell) == 1)
+	if (aux_protect_readline(line) == 1)
 		return (1);
 	add_history(*line);
 	return (0);
