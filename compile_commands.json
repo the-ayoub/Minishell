@@ -1,19 +1,903 @@
 [
   {
     "arguments": [
-      "/usr/bin/cc",
+      "/usr/bin/gcc",
       "-g",
       "-Wall",
       "-Wextra",
       "-Werror",
-      "-fsanitize=address",
+      "-I./inc/",
       "-c",
       "-o",
-      "obj/syntax_check.o",
-      "src/syntax_check.c"
+      "obj/ft_bzero.o",
+      "src/ft_bzero.c"
     ],
-    "directory": "/home/ohnonon/code/minishell/group",
-    "file": "/home/ohnonon/code/minishell/group/src/syntax_check.c",
-    "output": "/home/ohnonon/code/minishell/group/obj/syntax_check.o"
+    "directory": "/home/ohnonon/code/minishell/group/libft",
+    "file": "/home/ohnonon/code/minishell/group/libft/src/ft_bzero.c",
+    "output": "/home/ohnonon/code/minishell/group/libft/obj/ft_bzero.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I./inc/",
+      "-c",
+      "-o",
+      "obj/ft_isalnum.o",
+      "src/ft_isalnum.c"
+    ],
+    "directory": "/home/ohnonon/code/minishell/group/libft",
+    "file": "/home/ohnonon/code/minishell/group/libft/src/ft_isalnum.c",
+    "output": "/home/ohnonon/code/minishell/group/libft/obj/ft_isalnum.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I./inc/",
+      "-c",
+      "-o",
+      "obj/ft_isalpha.o",
+      "src/ft_isalpha.c"
+    ],
+    "directory": "/home/ohnonon/code/minishell/group/libft",
+    "file": "/home/ohnonon/code/minishell/group/libft/src/ft_isalpha.c",
+    "output": "/home/ohnonon/code/minishell/group/libft/obj/ft_isalpha.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I./inc/",
+      "-c",
+      "-o",
+      "obj/ft_isascii.o",
+      "src/ft_isascii.c"
+    ],
+    "directory": "/home/ohnonon/code/minishell/group/libft",
+    "file": "/home/ohnonon/code/minishell/group/libft/src/ft_isascii.c",
+    "output": "/home/ohnonon/code/minishell/group/libft/obj/ft_isascii.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I./inc/",
+      "-c",
+      "-o",
+      "obj/ft_isdigit.o",
+      "src/ft_isdigit.c"
+    ],
+    "directory": "/home/ohnonon/code/minishell/group/libft",
+    "file": "/home/ohnonon/code/minishell/group/libft/src/ft_isdigit.c",
+    "output": "/home/ohnonon/code/minishell/group/libft/obj/ft_isdigit.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I./inc/",
+      "-c",
+      "-o",
+      "obj/ft_isprint.o",
+      "src/ft_isprint.c"
+    ],
+    "directory": "/home/ohnonon/code/minishell/group/libft",
+    "file": "/home/ohnonon/code/minishell/group/libft/src/ft_isprint.c",
+    "output": "/home/ohnonon/code/minishell/group/libft/obj/ft_isprint.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I./inc/",
+      "-c",
+      "-o",
+      "obj/ft_memcpy.o",
+      "src/ft_memcpy.c"
+    ],
+    "directory": "/home/ohnonon/code/minishell/group/libft",
+    "file": "/home/ohnonon/code/minishell/group/libft/src/ft_memcpy.c",
+    "output": "/home/ohnonon/code/minishell/group/libft/obj/ft_memcpy.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I./inc/",
+      "-c",
+      "-o",
+      "obj/ft_memmove.o",
+      "src/ft_memmove.c"
+    ],
+    "directory": "/home/ohnonon/code/minishell/group/libft",
+    "file": "/home/ohnonon/code/minishell/group/libft/src/ft_memmove.c",
+    "output": "/home/ohnonon/code/minishell/group/libft/obj/ft_memmove.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I./inc/",
+      "-c",
+      "-o",
+      "obj/ft_memset.o",
+      "src/ft_memset.c"
+    ],
+    "directory": "/home/ohnonon/code/minishell/group/libft",
+    "file": "/home/ohnonon/code/minishell/group/libft/src/ft_memset.c",
+    "output": "/home/ohnonon/code/minishell/group/libft/obj/ft_memset.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I./inc/",
+      "-c",
+      "-o",
+      "obj/ft_strlcat.o",
+      "src/ft_strlcat.c"
+    ],
+    "directory": "/home/ohnonon/code/minishell/group/libft",
+    "file": "/home/ohnonon/code/minishell/group/libft/src/ft_strlcat.c",
+    "output": "/home/ohnonon/code/minishell/group/libft/obj/ft_strlcat.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I./inc/",
+      "-c",
+      "-o",
+      "obj/ft_strlcpy.o",
+      "src/ft_strlcpy.c"
+    ],
+    "directory": "/home/ohnonon/code/minishell/group/libft",
+    "file": "/home/ohnonon/code/minishell/group/libft/src/ft_strlcpy.c",
+    "output": "/home/ohnonon/code/minishell/group/libft/obj/ft_strlcpy.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I./inc/",
+      "-c",
+      "-o",
+      "obj/ft_strlen.o",
+      "src/ft_strlen.c"
+    ],
+    "directory": "/home/ohnonon/code/minishell/group/libft",
+    "file": "/home/ohnonon/code/minishell/group/libft/src/ft_strlen.c",
+    "output": "/home/ohnonon/code/minishell/group/libft/obj/ft_strlen.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I./inc/",
+      "-c",
+      "-o",
+      "obj/ft_tolower.o",
+      "src/ft_tolower.c"
+    ],
+    "directory": "/home/ohnonon/code/minishell/group/libft",
+    "file": "/home/ohnonon/code/minishell/group/libft/src/ft_tolower.c",
+    "output": "/home/ohnonon/code/minishell/group/libft/obj/ft_tolower.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I./inc/",
+      "-c",
+      "-o",
+      "obj/ft_toupper.o",
+      "src/ft_toupper.c"
+    ],
+    "directory": "/home/ohnonon/code/minishell/group/libft",
+    "file": "/home/ohnonon/code/minishell/group/libft/src/ft_toupper.c",
+    "output": "/home/ohnonon/code/minishell/group/libft/obj/ft_toupper.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I./inc/",
+      "-c",
+      "-o",
+      "obj/ft_strchr.o",
+      "src/ft_strchr.c"
+    ],
+    "directory": "/home/ohnonon/code/minishell/group/libft",
+    "file": "/home/ohnonon/code/minishell/group/libft/src/ft_strchr.c",
+    "output": "/home/ohnonon/code/minishell/group/libft/obj/ft_strchr.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I./inc/",
+      "-c",
+      "-o",
+      "obj/ft_strrchr.o",
+      "src/ft_strrchr.c"
+    ],
+    "directory": "/home/ohnonon/code/minishell/group/libft",
+    "file": "/home/ohnonon/code/minishell/group/libft/src/ft_strrchr.c",
+    "output": "/home/ohnonon/code/minishell/group/libft/obj/ft_strrchr.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I./inc/",
+      "-c",
+      "-o",
+      "obj/ft_strncmp.o",
+      "src/ft_strncmp.c"
+    ],
+    "directory": "/home/ohnonon/code/minishell/group/libft",
+    "file": "/home/ohnonon/code/minishell/group/libft/src/ft_strncmp.c",
+    "output": "/home/ohnonon/code/minishell/group/libft/obj/ft_strncmp.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I./inc/",
+      "-c",
+      "-o",
+      "obj/ft_memcmp.o",
+      "src/ft_memcmp.c"
+    ],
+    "directory": "/home/ohnonon/code/minishell/group/libft",
+    "file": "/home/ohnonon/code/minishell/group/libft/src/ft_memcmp.c",
+    "output": "/home/ohnonon/code/minishell/group/libft/obj/ft_memcmp.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I./inc/",
+      "-c",
+      "-o",
+      "obj/ft_memchr.o",
+      "src/ft_memchr.c"
+    ],
+    "directory": "/home/ohnonon/code/minishell/group/libft",
+    "file": "/home/ohnonon/code/minishell/group/libft/src/ft_memchr.c",
+    "output": "/home/ohnonon/code/minishell/group/libft/obj/ft_memchr.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I./inc/",
+      "-c",
+      "-o",
+      "obj/ft_strnstr.o",
+      "src/ft_strnstr.c"
+    ],
+    "directory": "/home/ohnonon/code/minishell/group/libft",
+    "file": "/home/ohnonon/code/minishell/group/libft/src/ft_strnstr.c",
+    "output": "/home/ohnonon/code/minishell/group/libft/obj/ft_strnstr.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I./inc/",
+      "-c",
+      "-o",
+      "obj/ft_atoi.o",
+      "src/ft_atoi.c"
+    ],
+    "directory": "/home/ohnonon/code/minishell/group/libft",
+    "file": "/home/ohnonon/code/minishell/group/libft/src/ft_atoi.c",
+    "output": "/home/ohnonon/code/minishell/group/libft/obj/ft_atoi.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I./inc/",
+      "-c",
+      "-o",
+      "obj/ft_calloc.o",
+      "src/ft_calloc.c"
+    ],
+    "directory": "/home/ohnonon/code/minishell/group/libft",
+    "file": "/home/ohnonon/code/minishell/group/libft/src/ft_calloc.c",
+    "output": "/home/ohnonon/code/minishell/group/libft/obj/ft_calloc.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I./inc/",
+      "-c",
+      "-o",
+      "obj/ft_strdup.o",
+      "src/ft_strdup.c"
+    ],
+    "directory": "/home/ohnonon/code/minishell/group/libft",
+    "file": "/home/ohnonon/code/minishell/group/libft/src/ft_strdup.c",
+    "output": "/home/ohnonon/code/minishell/group/libft/obj/ft_strdup.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I./inc/",
+      "-c",
+      "-o",
+      "obj/ft_substr.o",
+      "src/ft_substr.c"
+    ],
+    "directory": "/home/ohnonon/code/minishell/group/libft",
+    "file": "/home/ohnonon/code/minishell/group/libft/src/ft_substr.c",
+    "output": "/home/ohnonon/code/minishell/group/libft/obj/ft_substr.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I./inc/",
+      "-c",
+      "-o",
+      "obj/ft_strjoin.o",
+      "src/ft_strjoin.c"
+    ],
+    "directory": "/home/ohnonon/code/minishell/group/libft",
+    "file": "/home/ohnonon/code/minishell/group/libft/src/ft_strjoin.c",
+    "output": "/home/ohnonon/code/minishell/group/libft/obj/ft_strjoin.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I./inc/",
+      "-c",
+      "-o",
+      "obj/ft_strtrim.o",
+      "src/ft_strtrim.c"
+    ],
+    "directory": "/home/ohnonon/code/minishell/group/libft",
+    "file": "/home/ohnonon/code/minishell/group/libft/src/ft_strtrim.c",
+    "output": "/home/ohnonon/code/minishell/group/libft/obj/ft_strtrim.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I./inc/",
+      "-c",
+      "-o",
+      "obj/ft_split.o",
+      "src/ft_split.c"
+    ],
+    "directory": "/home/ohnonon/code/minishell/group/libft",
+    "file": "/home/ohnonon/code/minishell/group/libft/src/ft_split.c",
+    "output": "/home/ohnonon/code/minishell/group/libft/obj/ft_split.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I./inc/",
+      "-c",
+      "-o",
+      "obj/ft_itoa.o",
+      "src/ft_itoa.c"
+    ],
+    "directory": "/home/ohnonon/code/minishell/group/libft",
+    "file": "/home/ohnonon/code/minishell/group/libft/src/ft_itoa.c",
+    "output": "/home/ohnonon/code/minishell/group/libft/obj/ft_itoa.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I./inc/",
+      "-c",
+      "-o",
+      "obj/ft_striteri.o",
+      "src/ft_striteri.c"
+    ],
+    "directory": "/home/ohnonon/code/minishell/group/libft",
+    "file": "/home/ohnonon/code/minishell/group/libft/src/ft_striteri.c",
+    "output": "/home/ohnonon/code/minishell/group/libft/obj/ft_striteri.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I./inc/",
+      "-c",
+      "-o",
+      "obj/ft_strmapi.o",
+      "src/ft_strmapi.c"
+    ],
+    "directory": "/home/ohnonon/code/minishell/group/libft",
+    "file": "/home/ohnonon/code/minishell/group/libft/src/ft_strmapi.c",
+    "output": "/home/ohnonon/code/minishell/group/libft/obj/ft_strmapi.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I./inc/",
+      "-c",
+      "-o",
+      "obj/ft_putstr_fd.o",
+      "src/ft_putstr_fd.c"
+    ],
+    "directory": "/home/ohnonon/code/minishell/group/libft",
+    "file": "/home/ohnonon/code/minishell/group/libft/src/ft_putstr_fd.c",
+    "output": "/home/ohnonon/code/minishell/group/libft/obj/ft_putstr_fd.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I./inc/",
+      "-c",
+      "-o",
+      "obj/ft_putendl_fd.o",
+      "src/ft_putendl_fd.c"
+    ],
+    "directory": "/home/ohnonon/code/minishell/group/libft",
+    "file": "/home/ohnonon/code/minishell/group/libft/src/ft_putendl_fd.c",
+    "output": "/home/ohnonon/code/minishell/group/libft/obj/ft_putendl_fd.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I./inc/",
+      "-c",
+      "-o",
+      "obj/ft_putchar_fd.o",
+      "src/ft_putchar_fd.c"
+    ],
+    "directory": "/home/ohnonon/code/minishell/group/libft",
+    "file": "/home/ohnonon/code/minishell/group/libft/src/ft_putchar_fd.c",
+    "output": "/home/ohnonon/code/minishell/group/libft/obj/ft_putchar_fd.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I./inc/",
+      "-c",
+      "-o",
+      "obj/ft_putnbr_fd.o",
+      "src/ft_putnbr_fd.c"
+    ],
+    "directory": "/home/ohnonon/code/minishell/group/libft",
+    "file": "/home/ohnonon/code/minishell/group/libft/src/ft_putnbr_fd.c",
+    "output": "/home/ohnonon/code/minishell/group/libft/obj/ft_putnbr_fd.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I./inc/",
+      "-c",
+      "-o",
+      "obj/ft_lstnew_bonus.o",
+      "src/ft_lstnew_bonus.c"
+    ],
+    "directory": "/home/ohnonon/code/minishell/group/libft",
+    "file": "/home/ohnonon/code/minishell/group/libft/src/ft_lstnew_bonus.c",
+    "output": "/home/ohnonon/code/minishell/group/libft/obj/ft_lstnew_bonus.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I./inc/",
+      "-c",
+      "-o",
+      "obj/ft_lstadd_front_bonus.o",
+      "src/ft_lstadd_front_bonus.c"
+    ],
+    "directory": "/home/ohnonon/code/minishell/group/libft",
+    "file": "/home/ohnonon/code/minishell/group/libft/src/ft_lstadd_front_bonus.c",
+    "output": "/home/ohnonon/code/minishell/group/libft/obj/ft_lstadd_front_bonus.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I./inc/",
+      "-c",
+      "-o",
+      "obj/ft_lstsize_bonus.o",
+      "src/ft_lstsize_bonus.c"
+    ],
+    "directory": "/home/ohnonon/code/minishell/group/libft",
+    "file": "/home/ohnonon/code/minishell/group/libft/src/ft_lstsize_bonus.c",
+    "output": "/home/ohnonon/code/minishell/group/libft/obj/ft_lstsize_bonus.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I./inc/",
+      "-c",
+      "-o",
+      "obj/ft_lstlast_bonus.o",
+      "src/ft_lstlast_bonus.c"
+    ],
+    "directory": "/home/ohnonon/code/minishell/group/libft",
+    "file": "/home/ohnonon/code/minishell/group/libft/src/ft_lstlast_bonus.c",
+    "output": "/home/ohnonon/code/minishell/group/libft/obj/ft_lstlast_bonus.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I./inc/",
+      "-c",
+      "-o",
+      "obj/ft_lstadd_back_bonus.o",
+      "src/ft_lstadd_back_bonus.c"
+    ],
+    "directory": "/home/ohnonon/code/minishell/group/libft",
+    "file": "/home/ohnonon/code/minishell/group/libft/src/ft_lstadd_back_bonus.c",
+    "output": "/home/ohnonon/code/minishell/group/libft/obj/ft_lstadd_back_bonus.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I./inc/",
+      "-c",
+      "-o",
+      "obj/ft_lstdelone_bonus.o",
+      "src/ft_lstdelone_bonus.c"
+    ],
+    "directory": "/home/ohnonon/code/minishell/group/libft",
+    "file": "/home/ohnonon/code/minishell/group/libft/src/ft_lstdelone_bonus.c",
+    "output": "/home/ohnonon/code/minishell/group/libft/obj/ft_lstdelone_bonus.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I./inc/",
+      "-c",
+      "-o",
+      "obj/ft_lstclear_bonus.o",
+      "src/ft_lstclear_bonus.c"
+    ],
+    "directory": "/home/ohnonon/code/minishell/group/libft",
+    "file": "/home/ohnonon/code/minishell/group/libft/src/ft_lstclear_bonus.c",
+    "output": "/home/ohnonon/code/minishell/group/libft/obj/ft_lstclear_bonus.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I./inc/",
+      "-c",
+      "-o",
+      "obj/ft_lstiter_bonus.o",
+      "src/ft_lstiter_bonus.c"
+    ],
+    "directory": "/home/ohnonon/code/minishell/group/libft",
+    "file": "/home/ohnonon/code/minishell/group/libft/src/ft_lstiter_bonus.c",
+    "output": "/home/ohnonon/code/minishell/group/libft/obj/ft_lstiter_bonus.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I./inc/",
+      "-c",
+      "-o",
+      "obj/ft_lstmap_bonus.o",
+      "src/ft_lstmap_bonus.c"
+    ],
+    "directory": "/home/ohnonon/code/minishell/group/libft",
+    "file": "/home/ohnonon/code/minishell/group/libft/src/ft_lstmap_bonus.c",
+    "output": "/home/ohnonon/code/minishell/group/libft/obj/ft_lstmap_bonus.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I./inc/",
+      "-c",
+      "-o",
+      "obj/ft_printf.o",
+      "src/ft_printf.c"
+    ],
+    "directory": "/home/ohnonon/code/minishell/group/libft",
+    "file": "/home/ohnonon/code/minishell/group/libft/src/ft_printf.c",
+    "output": "/home/ohnonon/code/minishell/group/libft/obj/ft_printf.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I./inc/",
+      "-c",
+      "-o",
+      "obj/ft_printf_tools.o",
+      "src/ft_printf_tools.c"
+    ],
+    "directory": "/home/ohnonon/code/minishell/group/libft",
+    "file": "/home/ohnonon/code/minishell/group/libft/src/ft_printf_tools.c",
+    "output": "/home/ohnonon/code/minishell/group/libft/obj/ft_printf_tools.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I./inc/",
+      "-c",
+      "-o",
+      "obj/ft_printf_convert.o",
+      "src/ft_printf_convert.c"
+    ],
+    "directory": "/home/ohnonon/code/minishell/group/libft",
+    "file": "/home/ohnonon/code/minishell/group/libft/src/ft_printf_convert.c",
+    "output": "/home/ohnonon/code/minishell/group/libft/obj/ft_printf_convert.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I./inc/",
+      "-c",
+      "-o",
+      "obj/get_next_line.o",
+      "src/get_next_line.c"
+    ],
+    "directory": "/home/ohnonon/code/minishell/group/libft",
+    "file": "/home/ohnonon/code/minishell/group/libft/src/get_next_line.c",
+    "output": "/home/ohnonon/code/minishell/group/libft/obj/get_next_line.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I./inc/",
+      "-c",
+      "-o",
+      "obj/get_next_line_utils.o",
+      "src/get_next_line_utils.c"
+    ],
+    "directory": "/home/ohnonon/code/minishell/group/libft",
+    "file": "/home/ohnonon/code/minishell/group/libft/src/get_next_line_utils.c",
+    "output": "/home/ohnonon/code/minishell/group/libft/obj/get_next_line_utils.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I./inc/",
+      "-c",
+      "-o",
+      "obj/ft_isspace.o",
+      "src/ft_isspace.c"
+    ],
+    "directory": "/home/ohnonon/code/minishell/group/libft",
+    "file": "/home/ohnonon/code/minishell/group/libft/src/ft_isspace.c",
+    "output": "/home/ohnonon/code/minishell/group/libft/obj/ft_isspace.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I./inc/",
+      "-c",
+      "-o",
+      "obj/ft_strcmp.o",
+      "src/ft_strcmp.c"
+    ],
+    "directory": "/home/ohnonon/code/minishell/group/libft",
+    "file": "/home/ohnonon/code/minishell/group/libft/src/ft_strcmp.c",
+    "output": "/home/ohnonon/code/minishell/group/libft/obj/ft_strcmp.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I./inc/",
+      "-c",
+      "-o",
+      "obj/ft_strtrim_end.o",
+      "src/ft_strtrim_end.c"
+    ],
+    "directory": "/home/ohnonon/code/minishell/group/libft",
+    "file": "/home/ohnonon/code/minishell/group/libft/src/ft_strtrim_end.c",
+    "output": "/home/ohnonon/code/minishell/group/libft/obj/ft_strtrim_end.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I./inc/",
+      "-c",
+      "-o",
+      "obj/ft_lstremove_and_link.o",
+      "src/ft_lstremove_and_link.c"
+    ],
+    "directory": "/home/ohnonon/code/minishell/group/libft",
+    "file": "/home/ohnonon/code/minishell/group/libft/src/ft_lstremove_and_link.c",
+    "output": "/home/ohnonon/code/minishell/group/libft/obj/ft_lstremove_and_link.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I./inc/",
+      "-c",
+      "-o",
+      "obj/ft_strtrim2.o",
+      "src/ft_strtrim2.c"
+    ],
+    "directory": "/home/ohnonon/code/minishell/group/libft",
+    "file": "/home/ohnonon/code/minishell/group/libft/src/ft_strtrim2.c",
+    "output": "/home/ohnonon/code/minishell/group/libft/obj/ft_strtrim2.o"
   }
 ]

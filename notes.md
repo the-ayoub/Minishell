@@ -1,7 +1,11 @@
 
 # TODO:
-
-[ ] builtins
+[ ] builtins_echo
+[ ] builtins_export: env var lst update
+[ ] heredoc: segfault
+[ ] heredoc: syntax err
+[ ] debug: double quotes print space
+[ ] debug: single quote print space
 
 # DONE
 [x] env compiler to arr, str
@@ -71,19 +75,3 @@ no lo pide el subject, se considera nulo
     Pratt parsing, because sounds fun
 
 ==============================================================================
-
-Test   4: ❌ echo hello'world'
-mini output = ()
-bash output = (helloworld)
-mini exit code =
-bash exit code = 0
-mini error = ( No such file or directory)
-bash error = ()
-
-Test   5: ❌ echo hello""world 
-mini output = ()
-bash output = (helloworld)
-mini exit code =
-bash exit code = 0
-mini error = ( No such file or directory)
-bash error = ()
