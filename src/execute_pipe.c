@@ -6,14 +6,22 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 22:38:09 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/21 23:36:02 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/21 23:42:43 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
-#include <unistd.h>
 
-// proteger
+static void	fork_helper(t_shell *shell, t_cmd *cmd)
+{
+	if (setup_redirections(shell, cmd) != SUCCESS)
+		exit(1);
+	if (is_builtin(cmd->argv[0]))
+		exit(exec_builtin(shell, cmd));
+	else
+		exec_external(shell, cmd);
+}
+
 static void	fork_wrapper(t_shell *shell, t_pipe *data, t_cmd *cmd)
 {
 	data->pid = fork();
@@ -28,21 +36,18 @@ static void	fork_wrapper(t_shell *shell, t_pipe *data, t_cmd *cmd)
 		signal(SIGQUIT, SIG_DFL);
 		if (data->prev_read_end != -1)
 		{
-			dup2(data->prev_read_end, STDIN_FILENO);
+			if (wrapper_dup2(data->prev_read_end, STDIN_FILENO, shell) == 0)
+				exit(shell->last_status); // WARNING: GESTIONAR SALIDA!
 			close(data->prev_read_end);
 		}
 		if (cmd->next)
 		{
 			close(data->pipe_fd[0]);
-			dup2(data->pipe_fd[1], STDOUT_FILENO);
+			if (wrapper_dup2(data->pipe_fd[1], STDOUT_FILENO, shell) == 0)
+				exit(shell->last_status); // WARNING: GESTIONAR SALIDA!
 			close(data->pipe_fd[1]);
 		}
-		if (setup_redirections(shell, cmd) != SUCCESS)
-			exit(1);
-		if (is_builtin(cmd->argv[0]))
-			exit(exec_builtin(shell, cmd));
-		else
-			exec_external(shell, cmd);
+		fork_helper(shell, cmd);
 	}
 }
 
