@@ -6,7 +6,7 @@
 #    By: nimatura <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/05 18:42:02 by nimatura          #+#    #+#              #
-#    Updated: 2025/07/18 20:25:57 by nimatura         ###   ########.fr        #
+#    Updated: 2025/07/21 16:49:41 by nimatura         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ PURPLE	=	\033[0;35m
 BLUE	=	\033[0;34m
 RESET	=	\033[m
 
-all: $(NAME)
+all: $(LIBFT) $(NAME)
 
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)

@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 15:29:33 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/20 20:12:41 by ohnonon          ###   ########.fr       */
+/*   Updated: 2025/07/21 17:01:50 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*collect_word(char *s, int *i, t_token_type *type)
 	size_t	word_len;
 	int		start;
 
-	if (NULL == s || '\0' == *s)
+	if (NULL == s || '\0' == s[*i])
 		return (NULL);
 	start = *i;
 	if ('\'' == s[*i] || '"' == s[*i])
