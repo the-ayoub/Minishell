@@ -3,4 +3,3 @@
 **/*.a
 **/.cache
 minishell
-**/compile_commands.json
