@@ -1,26 +1,16 @@
 
 # TODO:
 
-[ ] Expansor
-[ ] Comillas
 [ ] builtins
-    [ ]
 
 # DONE
 [x] env compiler to arr, str
 [x] env -i
+[x] Expansor
+[x] Comillas
 
 ## Expansor y comillas
-[ ] Expansor de variable
-
-[ ] Parse the command line: Separate between operators and words
-[ ] Handle quote rules to define
-
-Handle quotes (preserve tokens).
-
-Expand variables.
-
-Remove quotes.
+[x] Expansor de variable
 
 ### Quote parsing
     Quotes devuelven una nueva linea de tipo word, operadores seran considerados
@@ -80,90 +70,6 @@ no lo pide el subject, se considera nulo
 -   https://matklad.github.io/2020/04/13/simple-but-powerful-pratt-parsing.html
     Pratt parsing, because sounds fun
 
-;
-p;Great question — and your comment in the code hints at the right idea. The best point to expand environment variables depends on **what stage of processing** you're at and **what type of structure** you’re working with. Let’s walk through this step by step:
-
----
-
-### 🔁 What each function likely does:
-
-```c
-shell->tokens = tokenize_line(*line);
-```
-
-* This breaks the raw line into tokens — possibly separating commands, arguments, operators (`|`, `&&`, etc).
-
-```c
-syntax_check(shell->tokens)
-```
-
-* Ensures the tokens form a valid shell syntax.
-
-```c
-parse_tokens(shell, shell->tokens, &shell->cmd)
-```
-
-* Converts the tokens into a structured command list (`t_cmd` tree or array).
-
-```c
-expand_variables(shell, shell->cmd)
-```
-
-* Replaces `$VAR`, `$?`, etc., with their actual values **inside the parsed command structure**.
-
----
-
-### ✅ Correct stage for env variable expansion:
-
-Environment variable expansion (e.g., turning `$HOME` into `/home/user`) **should** happen **after** tokenizing **and** parsing — **exactly where you have it now**.
-
-That’s because:
-
-* Tokenizing and parsing need to understand **quoted strings** (`"$HOME"` vs `$HOME`) and **operators** — so doing expansion too early might mess up parsing.
-* After parsing, you have a structured representation (`shell->cmd`) where arguments and strings are clearly identified, and variable expansion can be done precisely.
-
----
-
-### 🧠 Why not earlier?
-
-* If you expand variables **before parsing**, you risk:
-
-  * Breaking quotes incorrectly.
-  * Interpreting special characters wrongly (e.g., `$HOME*` could turn into `"/home/user/*"` and confuse the tokenizer).
-  * Losing the structure needed to decide whether expansion should even occur (e.g., variables in single quotes shouldn’t be expanded).
-
----
-
-### ✅ Conclusion
-
-You're already doing the expansion in the correct spot:
-
-```c
-if (parse_tokens(shell, shell->tokens, &shell->cmd))
-    return (0);
-if (expand_variables(shell, shell->cmd)) // Correct place
-    return (0);
-```
-
-This is ideal, since:
-
-* You only expand once you're sure parsing succeeded.
-* Tokens aren’t needed anymore.
-* Your command structure is clean and safe to modify.
-
-If you want to be even cleaner, you could consider **freeing the tokens** right after expansion starts, if you don’t need them anymore.
-
-Let me know if you want help optimizing or cleaning up this pipeline!
-
-
-
-
-
-
-
-
-
-
 ==============================================================================
 tester:
 
@@ -174,6 +80,7 @@ mini exit code =
 bash exit code = 0
 mini error = ( No such file or directory)
 bash error = ()
+
 Test   2: ❌ echo "hello world" 
 mini output = ()
 bash output = (hello world)
@@ -181,6 +88,7 @@ mini exit code =
 bash exit code = 0
 mini error = ( No such file or directory)
 bash error = ()
+
 Test   3: ❌ echo 'hello world' 
 mini output = ()
 bash output = (hello world)
@@ -188,6 +96,7 @@ mini exit code =
 bash exit code = 0
 mini error = ( No such file or directory)
 bash error = ()
+
 Test   4: ❌ echo hello'world' 
 mini output = ()
 bash output = (helloworld)
@@ -195,6 +104,7 @@ mini exit code =
 bash exit code = 0
 mini error = ( No such file or directory)
 bash error = ()
+
 Test   5: ❌ echo hello""world 
 mini output = ()
 bash output = (helloworld)
@@ -202,11 +112,13 @@ mini exit code =
 bash exit code = 0
 mini error = ( No such file or directory)
 bash error = ()
+
 Test   6: ❌ echo '' 
 mini exit code =
 bash exit code = 0
 mini error = ( No such file or directory)
 bash error = ()
+
 Test   7: ❌ echo "$PWD" 
 mini output = ()
 bash output = (/home/aybelhaj/minishell/minishell_tester)
@@ -214,6 +126,7 @@ mini exit code =
 bash exit code = 0
 mini error = ( No such file or directory)
 bash error = ()
+
 Test   8: ❌ echo '$PWD' 
 mini output = ()
 bash output = ($PWD)
@@ -221,5 +134,3 @@ mini exit code =
 bash exit code = 0
 mini error = ( No such file or directory)
 bash error = ()
-
-
