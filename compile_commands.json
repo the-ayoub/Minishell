@@ -882,5 +882,22 @@
     "directory": "/home/ohnonon/code/minishell/group/libft",
     "file": "/home/ohnonon/code/minishell/group/libft/src/ft_lstremove_and_link.c",
     "output": "/home/ohnonon/code/minishell/group/libft/obj/ft_lstremove_and_link.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I./inc/",
+      "-c",
+      "-o",
+      "obj/ft_strtrim2.o",
+      "src/ft_strtrim2.c"
+    ],
+    "directory": "/home/ohnonon/code/minishell/group/libft",
+    "file": "/home/ohnonon/code/minishell/group/libft/src/ft_strtrim2.c",
+    "output": "/home/ohnonon/code/minishell/group/libft/obj/ft_strtrim2.o"
   }
 ]

@@ -6,7 +6,7 @@
 /*   By: ohnudes </var/spool/mail/ohnudes>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 15:41:56 by ohnudes           #+#    #+#             */
-/*   Updated: 2025/07/18 17:56:59 by ohnonon          ###   ########.fr       */
+/*   Updated: 2025/07/21 11:36:37 by ohnonon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void	ft_putchar_fd(char s, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int nb, int fd);
+char	*ft_strtrim2(const char *str, const char *set);
 
 // lists functions
 t_list	*ft_lstnew(void *content);

@@ -1,42 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_strtrim2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ohnudes </var/spool/mail/ohnudes>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 17:44:05 by ohnudes           #+#    #+#             */
-/*   Updated: 2025/07/21 11:33:42 by ohnonon          ###   ########.fr       */
+/*   Updated: 2025/07/21 11:40:39 by ohnonon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/libft.h"
 
-static char	*aux_end_str(const char *s, const char *set)
-{
-	size_t	len;
-
-	len = ft_strlen(s);
-	while (s[len - 1] && len && ft_strchr(set, s[len - 1]))
-		len--;
-	return ((char *)s + len - 1);
-}
-
 // WARNING:: malloc
-char	*ft_strtrim(const char *s, const char *set)
+char	*ft_strtrim2(const char *str, const char *set)
 {
 	size_t	size;
 	char	*end_str;
 
 	end_str = NULL;
-	if (!s)
+	if (NULL == str)
 		return (ft_strdup(""));
-	while (ft_strchr(set, *s) && *s)
-		s++;
-	if (*s)
-		end_str = aux_end_str(s, set);
-	else
+	while (ft_strchr(set, *str) && *str != '\0')
+		str++;
+	if (*str == '\0')
 		return (ft_strdup(""));
-	size = end_str - s + 1;
-	return (ft_substr(s, 0, size));
+	size = 0;
+	while (str[size] != '\0' && ft_strchr(set, str[size]) == NULL)
+		size++;
+	end_str = ft_substr(str, 0, size);
+	return (end_str);
 }

@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 21:04:23 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/13 16:07:31 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/21 11:41:14 by ohnonon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	is_var_name_ok(char *str)
 		i++;
 	while (str[i] != '\0' && ft_isspace(str[i]))
 		i++;
-	if (str[i] != '\0')
+	if (str[i] != '\0' && str[i] != '=' && str[i] != '\n')
 		return (0);
 	return (1);
 }
@@ -54,8 +54,8 @@ static int	export_no_arg(t_shell *shell)
 	return (0);
 }
 
-// 1. check var amount
-// 2. check var value
+// TODO: protect variables
+// BUG: trim 
 int	builtin_export(t_shell *shell, char **argv)
 {
 	int		i;
@@ -70,13 +70,16 @@ int	builtin_export(t_shell *shell, char **argv)
 	i = 1;
 	while (NULL != argv[i])
 	{
-		var_id = ft_strtrim(argv[i], "=");
+		var_id = ft_strtrim2(argv[i], "=");
+		printf("var_id	|%s|\n", var_id);
 		var_value = ft_strchr(argv[i], '=');
 		if (var_value)
 			*var_value++ = '\0';
 		if (!is_var_name_ok(var_id))
 		{
 			status = unvalid_var_name(var_id);
+			free(var_id);
+			var_id = NULL;
 			i++;
 			continue ;
 		}
