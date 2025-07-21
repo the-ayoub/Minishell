@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 19:46:54 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/20 19:52:13 by ohnonon          ###   ########.fr       */
+/*   Updated: 2025/07/21 22:39:39 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,6 +180,7 @@ void	close_pipe_ends(int pipe_fd[2], int keep_read_end);
 void	wait_for_children(t_shell *shell, pid_t last_pid);
 int		builtin_in_pipe(char *cmd);
 int		redirect_heredoc(t_shell *shell, t_redir *redir);
+void	exec_external(t_shell *shell, t_cmd *cmd);
 
 // === COMPLETED BUILTINS ===
 int		builtin_unset(t_shell *shell, char **argv);

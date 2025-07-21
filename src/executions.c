@@ -6,14 +6,14 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:39:32 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/21 22:30:30 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/21 22:39:50 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 #include <unistd.h>
 
-static void	exec_external(t_shell *shell, t_cmd *cmd)
+void	exec_external(t_shell *shell, t_cmd *cmd)
 {
 	char	*path;
 
@@ -31,76 +31,6 @@ static void	exec_external(t_shell *shell, t_cmd *cmd)
 	free(path);
 	exit(126);
 }
-
-void	execute_pipe(t_shell *shell, t_cmd *cmd)
-{
-	int		pipe_fd[2] = {-1, -1};
-	int		std_backup[2] = {dup(STDIN_FILENO), dup(STDOUT_FILENO)};
-	pid_t	last_pid;
-	int		prev_read_end;
-	pid_t	pid;
-
-	last_pid = -1;
-	prev_read_end = -1;
-	while (cmd)
-	{
-		if (cmd->next)
-		{
-			if (pipe(pipe_fd) == -1)
-			{
-				perror("minishell: pipe");
-				return ;
-			}
-		}
-		pid = fork();
-		if (pid == -1)
-		{
-			perror("minishell: fork");
-			return ;
-		}
-		if (pid == 0)
-		{
-			signal(SIGINT, SIG_DFL);
-			signal(SIGQUIT, SIG_DFL);
-			if (prev_read_end != -1)
-			{
-				dup2(prev_read_end, STDIN_FILENO);
-				close(prev_read_end);
-			}
-			if (cmd->next)
-			{
-				close(pipe_fd[0]);
-				dup2(pipe_fd[1], STDOUT_FILENO);
-				close(pipe_fd[1]);
-			}
-			if (setup_redirections(shell, cmd) != SUCCESS)
-				exit(1);
-			if (is_builtin(cmd->argv[0]))
-				exit(exec_builtin(shell, cmd));
-			else
-				exec_external(shell, cmd);
-		}
-		if (prev_read_end != -1)
-			close(prev_read_end);
-		if (cmd->next)
-		{
-			close(pipe_fd[1]);
-			prev_read_end = pipe_fd[0];
-		}
-		last_pid = pid;
-		cmd = cmd->next;
-	}
-	if (prev_read_end != -1)
-		close(prev_read_end);
-	if (last_pid != -1)
-	{
-		wait_for_children(shell, last_pid);
-	}
-	reset_std_fds(std_backup);
-	close(std_backup[0]);
-	close(std_backup[1]);
-}
-
 pid_t	execute_process(t_shell *shell, t_cmd *cmd)
 {
 	pid_t	pid;
@@ -125,7 +55,7 @@ pid_t	execute_process(t_shell *shell, t_cmd *cmd)
 	return (pid);
 }
 
-int	wrapper_dup2(int oldfd, int newfd, t_shell *shell)
+static int	wrapper_dup2(int oldfd, int newfd, t_shell *shell)
 {
 	if (dup2(oldfd, newfd) == -1)
 	{
@@ -156,7 +86,6 @@ static int	exe_builtin_parent(int *b_stdin, int *b_stdout, t_shell *shell)
 	return (shell->last_status);
 }
 
-// NOTE: uses t_cmd only: when do we free tokens?
 int	execute_cmd(t_shell *shell, t_cmd *cmd)
 {
 	pid_t	pid;
