@@ -87,7 +87,8 @@ int	shell_loop(t_shell *shell)
 	char	*line;
 	int		std_backup[2];
 
-	init_std_fd(&std_backup);
+	if (init_std_fd(&std_backup) == 1)
+		exit_sequence(); // FAIL IN FD BACKUP
 	setup_signal_handlers();
 	while (1)
 	{
