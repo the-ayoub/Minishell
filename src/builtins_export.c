@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 21:04:23 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/21 20:57:16 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/21 21:11:12 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ static int	set_value_name(char **var_id, char *argv)
 		*var_id = NULL;
 		return (1);
 	}
-	len = ft_strchr(argv, '=') - argv + 1;
 	*var_id = ft_substr(argv, 0, len);
 	if (*var_id == NULL)
 		return (perror("Memory allocation error: set_value_name\n") , 1);
@@ -78,10 +77,17 @@ static int	set_value_name(char **var_id, char *argv)
 
 static int	check_var_value(char *argv, char *var_id)
 {
-	if (ft_strchr(argv, '=') == NULL)
+	char	*str;
+	size_t	len;
+
+	len = 0;
+	len = ft_strlen(var_id);
+	if ('\0' == argv[len])
+		return (0);
+	str = 
+	if ()
 		return (1);
-
-
+	return (0);
 }
 
 // TODO: protect variables

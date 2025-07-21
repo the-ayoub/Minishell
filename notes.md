@@ -21,6 +21,8 @@
 
 # TODO:
 [ ] Salidas: error y salidas de builtins
+[ ] Gestionar caso bash < /dev/urandom: readline sale si le entra un no print
+char
 
 ## ECHO BUG
 [ ] debug: double quotes print space
