@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 21:04:23 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/22 00:03:52 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/22 00:21:54 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,12 @@ static int	print_export(t_shell *shell)
 	return (shell->last_status);
 }
 
-static void	update_env(t_shell *shell, char *arg)
-{
-	char	*var;
-
-	return (shell->last_status);
-}
+// static int	update_env(t_shell *shell, char *arg)
+// {
+// 	char	*var;
+//
+// 	return (shell->last_status);
+// }
 
 // TODO: protect variables
 int	builtin_export(t_shell *shell, char **argv)
@@ -73,8 +73,8 @@ int	builtin_export(t_shell *shell, char **argv)
 	{
 		if (is_var_name_ok(argv[i]) == 1)
 			aux_reset_loop(argv[i], &shell->last_status);
-		else
-			update_env(shell, argv[i]);
+		// else
+		// 	update_env(shell, argv[i]);
 		i++;
 	}
 	return (shell->last_status);

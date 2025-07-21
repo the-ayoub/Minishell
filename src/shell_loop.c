@@ -31,7 +31,7 @@ static int	aux_protect_readline(char **line)
 	while ((*line)[i] != '\0' && ft_isprint((*line)[i]))
 		i++;
 	if (ft_isprint((*line)[i] == FALSE && (*line)[i] != '\0'))
-		return (1);
+		exit(1);
 	return (0);
 }
 
@@ -85,7 +85,7 @@ int	shell_loop(t_shell *shell)
 	int		std_backup[2];
 
 	if (init_std_fd(&std_backup) == 1)
-		exit_sequence(); // FAIL IN FD BACKUP
+		exit(1);
 	setup_signal_handlers();
 	while (1)
 	{
