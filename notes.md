@@ -13,6 +13,7 @@
 [ ] builtins_echo
 [ ] heredoc: segfault
 [ ] heredoc: syntax err
+[ ] Gestionar salida de programa en pipes
 
 # TODO NICO:
 [ ] builtins_export: env var lst update
