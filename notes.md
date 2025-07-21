@@ -1,9 +1,24 @@
 
-# TODO:
+# RECORDATORIO PARA NICO
+# RECORDATORIO PARA AYOUB
+[ ] Gestionar estructuras para pipes en builtins
+
+# TODO AYOUB:
+[ ] Gestionar estructuras para pipes en builtins!
+[ ] proteger dup2
 [ ] builtins_echo
-[ ] builtins_export: env var lst update
 [ ] heredoc: segfault
 [ ] heredoc: syntax err
+
+# TODO NICO:
+[ ] builtins_export: env var lst update
+[ ] norminette
+[ ] revisar funciones y proteger memoria
+
+# TODO:
+[ ] Salidas: error y salidas de builtins
+
+## ECHO BUG
 [ ] debug: double quotes print space
 [ ] debug: single quote print space
 
