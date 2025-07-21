@@ -6,21 +6,18 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 21:04:23 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/21 23:51:14 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/22 00:00:53 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-static void	aux_reset_loop(char **var, int *status, int *i)
+static void	aux_reset_loop(char **var, int *status)
 {
 	ft_putstr_fd("minishell: export: `", STDERR_FILENO);
 	ft_putstr_fd(*var, STDERR_FILENO);
 	ft_putstr_fd("': not a valid identifier\n", STDERR_FILENO);
 	*status = 1;
-	free(*var);
-	var = NULL;
-	(*i)++;
 }
 
 int	is_var_name_ok(char *str)
@@ -34,7 +31,7 @@ int	is_var_name_ok(char *str)
 		i++;
 	while (str[i] != '\0' && ft_isalpha(str[i]))
 		i++;
-	while (str[i] != '\0' && (ft_isalnum(str[i]) || str[i] == '_'))
+	while (str[i] != '\0' && (ft_isalnum(str[i])|| str[i] == '_'))
 		i++;
 	while (str[i] != '\0' && ft_isspace(str[i]))
 		i++;
@@ -82,28 +79,19 @@ static int	set_value_name(char **var_key, char *argv)
 // TODO: protect variables
 int	builtin_export(t_shell *shell, char **argv)
 {
-	int		i;
-	int		status;
-	char	*var_key;
-	char	*var_value;
 	char	*tmp;
+	int		i;
 
 	if (NULL == argv[1])
 		return (export_no_arg(shell));
-	status = 0;
 	i = 1;
 	while (NULL != argv[i])
 	{
-		if (set_value_name(&var_key, argv[i]) == 1)
-		{
-			aux_reset_loop(&var_key, &shell->last_status, &i);
-			continue ;
-		}
-		tmp = prepare_env_syntax(shell, var_key, "");
-		if (tmp)
-			add_env_var();
-		free(var_key);
+		if (is_var_name_ok(argv[i]) == 1)
+			aux_reset_loop(&var_key);
+		else
+			update_env(shell, argv[i]);
 		i++;
 	}
-	return (status);
+	return (shell->last_status);
 }
