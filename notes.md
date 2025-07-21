@@ -9,7 +9,7 @@
 
 # TODO AYOUB:
 [ ] Gestionar estructuras para pipes en builtins!
-[ ] proteger dup2
+[ ] proteger dup2: execute_pipe.c
 [ ] builtins_echo
 [ ] heredoc: segfault
 [ ] heredoc: syntax err
