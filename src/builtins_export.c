@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 21:04:23 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/21 11:51:07 by ohnonon          ###   ########.fr       */
+/*   Updated: 2025/07/21 11:57:29 by ohnonon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ int	builtin_export(t_shell *shell, char **argv)
 	while (NULL != argv[i])
 	{
 		var_id = ft_strtrim2(argv[i], "=");
-		printf("var_id	|%s|\n", var_id);
 		var_value = ft_strchr(argv[i], '=');
 		if (var_value)
 			*var_value++ = '\0';
