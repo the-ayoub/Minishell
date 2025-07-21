@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 21:04:23 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/21 11:48:49 by ohnonon          ###   ########.fr       */
+/*   Updated: 2025/07/21 11:51:07 by ohnonon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static int	export_no_arg(t_shell *shell)
 }
 
 // TODO: protect variables
-// BUG: trim 
+// BUG: trim
 int	builtin_export(t_shell *shell, char **argv)
 {
 	int		i;

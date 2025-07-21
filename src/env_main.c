@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:38:32 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/10 21:04:05 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/21 11:55:36 by ohnonon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ char	*get_env_value(t_shell *shell, const char *name)
 	return (NULL);
 }
 
+// TODO: set_env_var deberia modificar la lista en variable shell->raw_env
+// y despues compilar, no al revés
 void set_env_var(t_shell *shell, const char *name, const char *value)
 {
 	char *var;
