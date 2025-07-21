@@ -16,7 +16,9 @@
 [ ] Gestionar salida de programa en pipes
 
 # TODO NICO:
-[ ] builtins_export: env var lst update
+[ ] builtins_export: env var lst update:
+    - Problema: gestionar syntax para organizar correctamente
+        casos: export "abc"=$USER"$PATH"
 [ ] norminette
 [ ] revisar funciones y proteger memoria
 
