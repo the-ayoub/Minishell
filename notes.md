@@ -1,4 +1,8 @@
 
+# ESTADO
+- EXPORT NO FUNCIONA
+- ECHO NO FUNCIONA
+
 # RECORDATORIO PARA NICO
 # RECORDATORIO PARA AYOUB
 [ ] Gestionar estructuras para pipes en builtins
