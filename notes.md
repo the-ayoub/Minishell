@@ -71,33 +71,8 @@ no lo pide el subject, se considera nulo
     Pratt parsing, because sounds fun
 
 ==============================================================================
-tester:
 
-Test   1: ❌ echo hello world 
-mini output = ()
-bash output = (hello world)
-mini exit code =
-bash exit code = 0
-mini error = ( No such file or directory)
-bash error = ()
-
-Test   2: ❌ echo "hello world" 
-mini output = ()
-bash output = (hello world)
-mini exit code =
-bash exit code = 0
-mini error = ( No such file or directory)
-bash error = ()
-
-Test   3: ❌ echo 'hello world' 
-mini output = ()
-bash output = (hello world)
-mini exit code =
-bash exit code = 0
-mini error = ( No such file or directory)
-bash error = ()
-
-Test   4: ❌ echo hello'world' 
+Test   4: ❌ echo hello'world'
 mini output = ()
 bash output = (helloworld)
 mini exit code =
@@ -108,28 +83,6 @@ bash error = ()
 Test   5: ❌ echo hello""world 
 mini output = ()
 bash output = (helloworld)
-mini exit code =
-bash exit code = 0
-mini error = ( No such file or directory)
-bash error = ()
-
-Test   6: ❌ echo '' 
-mini exit code =
-bash exit code = 0
-mini error = ( No such file or directory)
-bash error = ()
-
-Test   7: ❌ echo "$PWD" 
-mini output = ()
-bash output = (/home/aybelhaj/minishell/minishell_tester)
-mini exit code =
-bash exit code = 0
-mini error = ( No such file or directory)
-bash error = ()
-
-Test   8: ❌ echo '$PWD' 
-mini output = ()
-bash output = ($PWD)
 mini exit code =
 bash exit code = 0
 mini error = ( No such file or directory)
