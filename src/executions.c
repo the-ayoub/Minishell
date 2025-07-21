@@ -6,12 +6,11 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:39:32 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/21 22:39:50 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/21 23:09:04 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
-#include <unistd.h>
 
 void	exec_external(t_shell *shell, t_cmd *cmd)
 {
@@ -31,6 +30,7 @@ void	exec_external(t_shell *shell, t_cmd *cmd)
 	free(path);
 	exit(126);
 }
+
 pid_t	execute_process(t_shell *shell, t_cmd *cmd)
 {
 	pid_t	pid;
@@ -53,17 +53,6 @@ pid_t	execute_process(t_shell *shell, t_cmd *cmd)
 			exec_external(shell, cmd);
 	}
 	return (pid);
-}
-
-static int	wrapper_dup2(int oldfd, int newfd, t_shell *shell)
-{
-	if (dup2(oldfd, newfd) == -1)
-	{
-		perror("execute_cmd: dup2 failed");
-		shell->last_status = 1;
-		return (FALSE);
-	}
-	return (TRUE);
 }
 
 static int	exe_builtin_parent(int *b_stdin, int *b_stdout, t_shell *shell)
@@ -110,7 +99,7 @@ int	execute_cmd(t_shell *shell, t_cmd *cmd)
 				wait_for_children(shell, pid);
 		}
 	}
-	else //execute builtin from parent
+	else 
 		shell->last_status = exe_builtin_parent(&b_stdin, &b_stdout, shell);
 	return (shell->last_status);
 }
