@@ -5,18 +5,14 @@
 
 # RECORDATORIO PARA NICO
 # RECORDATORIO PARA AYOUB
-[ ] Gestionar estructuras para pipes en builtins
 
 # TODO AYOUB:
-[ ] Gestionar estructuras para pipes en builtins!
 [ ] proteger dup2: execute_pipe.c
-[ ] builtins_echo
 [ ] heredoc: segfault
 [ ] heredoc: syntax err
 [ ] Gestionar salida de programa en pipes
 
 # TODO NICO:
-[ ] builtins_export: env var lst update:
     - Problema: gestionar syntax para organizar correctamente
         casos: export "abc"=$USER"$PATH"
 [ ] norminette
@@ -35,6 +31,8 @@ notes: cada repo usa el mismo sistema de putstr de una arr de str. El nuestro
 crashea anda a saber por que
 
 # DONE
+[x] builtins_export:
+[x] builtins_echo
 [x] env compiler to arr, str
 [x] env -i
 [x] Expansor
