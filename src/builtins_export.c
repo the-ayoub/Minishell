@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 21:04:23 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/22 21:43:24 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/22 21:47:27 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ static int	print_export(t_shell *shell)
 	return (shell->last_status);
 }
 
-// TODO: last status
 static int	update_env(t_shell *shell, char *arg)
 {
 	char	*var;
@@ -73,13 +72,18 @@ static int	update_env(t_shell *shell, char *arg)
 			shell->env = env_compiler(shell->raw_env);
 		}
 		else
+		{
 			shell->last_status = 1;
+			free(var);
+		}
 	}
 	else
 		shell->last_status = 1;
 	return (shell->last_status);
 }
 
+// BUG: is_var_name_ok
+// Accepts only numbers
 int	builtin_export(t_shell *shell, char **argv)
 {
 	int	i;
