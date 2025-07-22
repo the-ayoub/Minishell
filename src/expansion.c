@@ -6,19 +6,11 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:39:44 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/20 19:40:27 by ohnonon          ###   ########.fr       */
+/*   Updated: 2025/07/22 21:58:16 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
-
-typedef struct s_expans
-{
-	char	*to_expand;
-	char	*matching_env;
-	char	*token_str;
-	char	*var_name;
-}			t_expand;
 
 static int	aux_upd_data(t_expand *data, char *match, char *var_name, char *env_var)
 {

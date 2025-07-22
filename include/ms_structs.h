@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 23:05:39 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/22 19:08:17 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/22 21:58:14 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,4 +91,13 @@ typedef struct	s_pipe
 	int		prev_read_end;
 	pid_t	pid;
 }			t_pipe;
+
+typedef struct s_expans
+{
+	char	*to_expand;
+	char	*matching_env;
+	char	*token_str;
+	char	*var_name;
+}			t_expand;
+
 #endif

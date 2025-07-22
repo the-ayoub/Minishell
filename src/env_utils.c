@@ -6,16 +6,60 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 21:06:41 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/20 19:00:36 by ohnonon          ###   ########.fr       */
+/*   Updated: 2025/07/22 21:57:41 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-// WARNING: MALLOC
-// Receives a string and looks for a '$' sign. It will strdup the following
-// content until a space, tab, cash or null char are found. It will return
-// a new allocated str at success, otherwise NULL.
+int	update_env(t_shell *shell, char *arg)
+{
+	char	*var;
+	t_list	*node;
+
+	var = ft_strdup(arg);
+	if (NULL != var)
+	{
+		node = ft_lstnew(var);
+		if (node != NULL)
+		{
+			ft_lstadd_back(&shell->raw_env, node);
+			free_array(shell->env);
+			shell->env = env_compiler(shell->raw_env);
+		}
+		else
+		{
+			shell->last_status = 1;
+			free(var);
+		}
+	}
+	else
+		shell->last_status = 1;
+	return (shell->last_status);
+}
+
+int	is_valid_env_key(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (str[i] == '\0')
+		return (0);
+	while (str[i] != '\0' && ft_isspace(str[i]))
+		i++;
+	while (str[i] != '\0' && ft_isalpha(str[i]))
+		i++;
+	while (str[i] != '\0' && (ft_isalnum(str[i])|| str[i] == '_'))
+		i++;
+	while (str[i] != '\0' && ft_isspace(str[i]))
+		i++;
+	if (str[i] != '\0' && str[i] != '=' && str[i] != '\n')
+		return (0);
+	if (i == 0)
+		return (0);
+	return (1);
+}
+
 static int	is_var_name_ok(char c)
 {
 	if (c == ' ' || c == '\t' || c == '\0' || c == '$')
@@ -50,9 +94,6 @@ char	*get_var_name(char *str)
 	return (new);
 }
 
-// Iterates over the list looking for a comparaison of the name str and the
-// start of each env_var node. In case of a match, it returns the node,
-// otherwise NULL
 t_list	*locate_env_var(t_list *node, char *name)
 {
 	t_list	*iter;

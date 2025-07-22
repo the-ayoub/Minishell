@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 21:04:23 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/22 21:47:27 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/22 21:56:50 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,12 @@ static void	aux_reset_loop(char *arg, int *status)
 	*status = 1;
 }
 
-int	is_var_name_ok(char *str)
+
+
+// NOTE: SYNTAX
+// regex format for valid key is
+// [A-Za-z_][A-Za-z0-9_]
+int	is_valid_env_key(char *str)
 {
 	int	i;
 
@@ -56,34 +61,6 @@ static int	print_export(t_shell *shell)
 	return (shell->last_status);
 }
 
-static int	update_env(t_shell *shell, char *arg)
-{
-	char	*var;
-	t_list	*node;
-
-	var = ft_strdup(arg);
-	if (NULL != var)
-	{
-		node = ft_lstnew(var);
-		if (node != NULL)
-		{
-			ft_lstadd_back(&shell->raw_env, node);
-			free_array(shell->env);
-			shell->env = env_compiler(shell->raw_env);
-		}
-		else
-		{
-			shell->last_status = 1;
-			free(var);
-		}
-	}
-	else
-		shell->last_status = 1;
-	return (shell->last_status);
-}
-
-// BUG: is_var_name_ok
-// Accepts only numbers
 int	builtin_export(t_shell *shell, char **argv)
 {
 	int	i;
@@ -93,7 +70,7 @@ int	builtin_export(t_shell *shell, char **argv)
 	i = 1;
 	while (NULL != argv[i])
 	{
-		if (is_var_name_ok(argv[i]) == 0)
+		if (is_valid_env_key(argv[i]) == 0)
 			aux_reset_loop(argv[i], &shell->last_status);
 		else
 			update_env(shell, argv[i]);
