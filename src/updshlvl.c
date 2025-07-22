@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 22:49:20 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/22 23:32:35 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/22 23:45:24 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ void	update_shlvl(t_shell *shell, char *argv)
 	if (tmp == NULL)
 		return ;
 	check_var_and_del(&shell->raw_env, "SHLVL");
+	free_array(shell->env);
 	new = ft_lstnew(tmp);
 	if (!new)
 		return ;
 	ft_lstadd_back(&shell->raw_env, new);
-	free(shell->env);
 	shell->env = env_compiler(shell->raw_env);
 }
