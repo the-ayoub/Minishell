@@ -6,12 +6,13 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:16:35 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/22 16:40:50 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/22 18:44:28 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
+// TODO: integrar pipe de tokens
 // returns 1 in case of error
 int	retokenize(t_shell *shell, t_token *head)
 {
@@ -28,10 +29,10 @@ int	retokenize(t_shell *shell, t_token *head)
 		next = iter->next;
 		if (next == NULL)
 			break ;
-		if (!is_token_word(iter->type) || !is_token_word(next->type))
+		if (next->type != TOKEN_LINK)
 			continue;
 		if (FALSE == wrapper_strjoin(&iter->value, next->value))
-			exit(1); // WARNING: gestionar salida
+			return (1); // WARNING: gestionar salida
 		iter->next = next->next;
 		delete_token(&head, next);
 		iter->type = TOKEN_WORD;

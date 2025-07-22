@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 20:46:01 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/22 16:35:22 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/22 17:33:05 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,16 @@ static t_token_type	detect_operator(char *s, int *i)
 	return (TOKEN_WORD);
 }
 
+static t_token	*wrapper_exit(t_token **head)
+{
+	free_tokens(*head);
+	*head = NULL;
+	return (NULL);
+}
+
 t_token	*tokenize_line(char *line)
 {
 	t_token			*tokens;
-	char			*word;
 	t_token_type	type;
 	int				i;
 
@@ -70,13 +76,8 @@ t_token	*tokenize_line(char *line)
 		}
 		else if (line[i] != '\0')
 		{
-			word = collect_word(line, &i, &type);
-			if (NULL == word)
-			{
-				free_tokens(tokens);
-				return (NULL);
-			}
-			add_token(&tokens, type, word);
+			if (collect_word(tokens, line, &i, &type) == 1)
+				return (wrapper_exit(&tokens));
 		}
 	}
 	return (tokens);

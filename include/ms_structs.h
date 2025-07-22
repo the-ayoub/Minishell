@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 23:05:39 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/21 23:08:46 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/22 18:42:11 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef enum e_token_type
 	TOKEN_WORD,         // palabra (comando o argumento)
 	TOKEN_WORD_SQ,         // palabra (comando o argumento)
 	TOKEN_WORD_DQ,         // palabra (comando o argumento)
+	TOKEN_LINK,         // palabra (comando o argumento)
 	TOKEN_PIPE,         // |
 	TOKEN_REDIR_IN,     // <
 	TOKEN_REDIR_OUT,    // >
@@ -42,6 +43,7 @@ typedef struct s_token
 	t_token_type	type;
 	char		    *value;
 	struct s_token	*next;
+	int				link_prev;
 }	t_token;
 
 // === TIPOS DE REDIRECCIÓN ===
