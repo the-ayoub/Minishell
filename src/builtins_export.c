@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 21:04:23 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/22 21:56:50 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/22 22:01:48 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,33 +18,6 @@ static void	aux_reset_loop(char *arg, int *status)
 	ft_putstr_fd(arg, STDERR_FILENO);
 	ft_putstr_fd("': not a valid identifier\n", STDERR_FILENO);
 	*status = 1;
-}
-
-
-
-// NOTE: SYNTAX
-// regex format for valid key is
-// [A-Za-z_][A-Za-z0-9_]
-int	is_valid_env_key(char *str)
-{
-	int	i;
-
-	i = 0;
-	if (str[i] == '\0')
-		return (0);
-	while (str[i] != '\0' && ft_isspace(str[i]))
-		i++;
-	while (str[i] != '\0' && ft_isalpha(str[i]))
-		i++;
-	while (str[i] != '\0' && (ft_isalnum(str[i])|| str[i] == '_'))
-		i++;
-	while (str[i] != '\0' && ft_isspace(str[i]))
-		i++;
-	if (str[i] != '\0' && str[i] != '=' && str[i] != '\n')
-		return (0);
-	if (i == 0)
-		return (0);
-	return (1);
 }
 
 static int	print_export(t_shell *shell)

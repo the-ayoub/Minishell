@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 21:06:41 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/22 21:57:41 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/22 22:11:39 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,26 +38,45 @@ int	update_env(t_shell *shell, char *arg)
 	return (shell->last_status);
 }
 
+static int	env_key_second_iter(char *str, int *i)
+{
+	while (str && str[*i] != '\0' && (ft_isalnum(str[*i]) || str[*i] == '_'))
+	{
+		while (str[*i] != '\0' && ft_isdigit(str[*i]))
+		{
+			if (*i == 0)
+				return (FALSE);
+			i++;
+		}
+		while (str[*i] != '\0' && ft_isalpha(str[*i]))
+			i++;
+		while (str[*i] != '\0' && '_' == str[*i])
+			i++;
+	}
+	return (TRUE);
+}
+
+// NOTE: SYNTAX
+// regex format for valid key is
+// [A-Za-z_][A-Za-z0-9_]
 int	is_valid_env_key(char *str)
 {
 	int	i;
 
 	i = 0;
 	if (str[i] == '\0')
-		return (0);
+		return (FALSE);
 	while (str[i] != '\0' && ft_isspace(str[i]))
 		i++;
 	while (str[i] != '\0' && ft_isalpha(str[i]))
 		i++;
-	while (str[i] != '\0' && (ft_isalnum(str[i])|| str[i] == '_'))
-		i++;
-	while (str[i] != '\0' && ft_isspace(str[i]))
-		i++;
+	if (env_key_second_iter(str, &i) == FALSE)
+		return (FALSE);
 	if (str[i] != '\0' && str[i] != '=' && str[i] != '\n')
-		return (0);
+		return (FALSE);
 	if (i == 0)
-		return (0);
-	return (1);
+		return (FALSE);
+	return (TRUE);
 }
 
 static int	is_var_name_ok(char c)
