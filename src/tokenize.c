@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 20:46:01 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/21 17:01:33 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/22 16:35:22 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,38 +46,6 @@ static t_token_type	detect_operator(char *s, int *i)
 		return (TOKEN_REDIR_OUT);
 	}
 	return (TOKEN_WORD);
-}
-
-t_token	*create_token(t_token_type type, char *value)
-{
-	t_token	*new;
-
-	new = malloc(sizeof(t_token));
-	if (!new)
-		return (NULL);
-	new->type = type;
-	new->value = value;
-	new->next = NULL;
-	return (new);
-}
-
-void	add_token(t_token **tokens, t_token_type type, char *value)
-{
-	t_token	*new;
-	t_token	*last;
-
-	new = create_token(type, value);
-	if (!new)
-		return ;
-	if (!*tokens)
-		*tokens = new;
-	else
-	{
-		last = *tokens;
-		while (last->next != NULL)
-			last = last->next;
-		last->next = new;
-	}
 }
 
 t_token	*tokenize_line(char *line)

@@ -31,6 +31,9 @@ char
 [ ] debug: double quotes print space
 [ ] debug: single quote print space
 
+notes: cada repo usa el mismo sistema de putstr de una arr de str. El nuestro 
+crashea anda a saber por que
+
 # DONE
 [x] env compiler to arr, str
 [x] env -i

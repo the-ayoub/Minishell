@@ -64,6 +64,8 @@ static int	tokenize_and_check_wrp(char **line, t_shell *shell)
 			return (0);
 		if (expand_variables(shell, shell->tokens))
 			return (0);
+		if (retokenize(shell, shell->tokens))
+			return (0);
 		if (parse_tokens(shell, shell->tokens, &shell->cmd))
 			return (0);
 	}

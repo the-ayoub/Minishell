@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 19:46:54 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/21 23:32:01 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/22 16:35:15 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,11 @@ int		parse_pipe(t_token **current, t_cmd **cmd, t_cmd **ptr);
 t_token	*tokenize_line(char *line);
 void	add_token(t_token **tokens, t_token_type type, char *value);
 t_token	*create_token(t_token_type type, char *value);
+void	delete_token(t_token **head, t_token *ptr);
 // >>> TOKEN AUX
 int		is_token_word(t_token_type type);
+// >>> RETOKENIZE
+int		retokenize(t_shell *shell, t_token *head);
 
 // >>>	=== COLLECT_WORD ===
 char	*collect_word(char *s, int *i, t_token_type *type);
@@ -118,10 +121,10 @@ int		redirect_heredoc(t_shell *shell, t_redir *redir);
 void	exec_external(t_shell *shell, t_cmd *cmd);
 
 // === COMPLETED BUILTINS ===
-int		builtin_unset(t_shell *shell, char **argv);
+int		builtin_echo(t_shell *shell, char **argv);
 
 // === PENDING BUILTINS ===
-int		builtin_echo(t_shell *shell, char **argv);
+int		builtin_unset(t_shell *shell, char **argv);
 int		builtin_cd(t_shell *shell, char **argv);
 int		builtin_pwd(t_shell *shell, char **argv);
 int		builtin_export(t_shell *shell, char **argv);
@@ -131,6 +134,7 @@ int		is_valid_identifier(char *str);
 int		is_valid_exit_arg(char *arg);
 
 // === WRAPPERS ===
+int	wrapper_strjoin(char **s1, char *s2);
 int	wrapper_dup(int *holder, int fd, t_shell *shell);
 int	wrapper_dup2(int oldfd, int newfd, t_shell *shell);
 

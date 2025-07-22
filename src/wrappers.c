@@ -6,11 +6,24 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 23:03:22 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/22 00:23:03 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/22 16:26:43 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
+
+int	wrapper_strjoin(char **s1, char *s2)
+{
+	char	*tmp;
+
+	tmp = ft_strjoin(*s1, s2);
+	free(*s1);
+	*s1 = NULL;
+	if (NULL ==  tmp)
+		return (FALSE);
+	*s1 = tmp;
+	return (TRUE);
+}
 
 int	wrapper_dup2(int oldfd, int newfd, t_shell *shell)
 {
