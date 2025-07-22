@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:40:58 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/10 21:03:21 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/22 21:33:27 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_list	*env_lst_init(char **envp)
 		str = ft_strdup(envp[i]);
 		new = ft_lstnew(str);
 		if (NULL == new)
-			free_lst_wrp(head);
+			wrapper_free_lst(head);
 		ft_lstadd_back(&head, new);
 	}
 	return (head);

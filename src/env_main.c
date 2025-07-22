@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:38:32 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/21 11:55:36 by ohnonon          ###   ########.fr       */
+/*   Updated: 2025/07/22 21:35:53 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char	**env_compiler(t_list *head)
 	}
 	arr = NULL;
 	if (1 == generate_and_fill_arr(&arr, i, head))
-		return (free_lst_wrp(head), NULL);
+		return (wrapper_free_lst(head), NULL);
 	return (arr);
 }
 

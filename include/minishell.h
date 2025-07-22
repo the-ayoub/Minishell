@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 19:46:54 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/22 20:25:27 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/22 21:33:38 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	init_shell(t_shell *shell, char **envp);
 int		shell_loop(t_shell *shell);
 
 // === LIST TOOLS ===
-void	free_lst_wrp(t_list *head);
+void	wrapper_free_lst(t_list *head);
 
 // === ENV AND LIST TOOLS ===
 t_list	*env_lst_init(char **env);

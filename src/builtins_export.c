@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 21:04:23 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/22 00:21:54 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/22 21:43:24 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int	is_var_name_ok(char *str)
 		i++;
 	if (str[i] != '\0' && str[i] != '=' && str[i] != '\n')
 		return (0);
+	if (i == 0)
+		return (0);
 	return (1);
 }
 
@@ -54,14 +56,30 @@ static int	print_export(t_shell *shell)
 	return (shell->last_status);
 }
 
-// static int	update_env(t_shell *shell, char *arg)
-// {
-// 	char	*var;
-//
-// 	return (shell->last_status);
-// }
+// TODO: last status
+static int	update_env(t_shell *shell, char *arg)
+{
+	char	*var;
+	t_list	*node;
 
-// TODO: protect variables
+	var = ft_strdup(arg);
+	if (NULL != var)
+	{
+		node = ft_lstnew(var);
+		if (node != NULL)
+		{
+			ft_lstadd_back(&shell->raw_env, node);
+			free_array(shell->env);
+			shell->env = env_compiler(shell->raw_env);
+		}
+		else
+			shell->last_status = 1;
+	}
+	else
+		shell->last_status = 1;
+	return (shell->last_status);
+}
+
 int	builtin_export(t_shell *shell, char **argv)
 {
 	int	i;
@@ -71,10 +89,10 @@ int	builtin_export(t_shell *shell, char **argv)
 	i = 1;
 	while (NULL != argv[i])
 	{
-		if (is_var_name_ok(argv[i]) == 1)
+		if (is_var_name_ok(argv[i]) == 0)
 			aux_reset_loop(argv[i], &shell->last_status);
-		// else
-		// 	update_env(shell, argv[i]);
+		else
+			update_env(shell, argv[i]);
 		i++;
 	}
 	return (shell->last_status);

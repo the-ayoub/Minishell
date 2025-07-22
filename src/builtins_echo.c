@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 18:17:00 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/22 15:39:35 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/22 21:25:36 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,5 @@ int	builtin_echo(t_shell *shell, char **argv)
 	}
 	if (newline == 1)
 		ft_putchar_fd('\n', STDOUT_FILENO);
-	return (0);
+	return (shell->last_status);
 }

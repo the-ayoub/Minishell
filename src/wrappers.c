@@ -6,11 +6,30 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 23:03:22 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/22 20:30:17 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/22 21:33:24 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
+
+void	wrapper_free_lst(t_list *head)
+{
+	t_list	*ptr;
+	t_list	*fwd;
+
+	if (head == NULL)
+		return ;
+	ptr = head;
+	while (ptr != NULL)
+	{
+		fwd = ptr->next;
+		free(ptr->content);
+		ptr->content = NULL;
+		free(ptr);
+		ptr = fwd;
+	}
+	head = NULL;
+}
 
 int	wrapper_strjoin(char **s1, char *s2)
 {
