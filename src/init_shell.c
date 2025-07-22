@@ -6,13 +6,12 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:40:58 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/22 21:33:27 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/22 21:45:15 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-// returns the head of the list, or NULL in case of malloc err
 t_list	*env_lst_init(char **envp)
 {
 	t_list	*head;
@@ -40,7 +39,6 @@ t_list	*env_lst_init(char **envp)
 	return (head);
 }
 
-// NOTE: shell->env now with env_compiler
 void	init_shell(t_shell *shell, char **envp)
 {
 	shell->raw_env = env_lst_init(envp);
