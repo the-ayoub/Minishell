@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 20:46:01 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/22 17:33:05 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/22 18:56:59 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ t_token	*tokenize_line(char *line)
 		}
 		else if (line[i] != '\0')
 		{
-			if (collect_word(tokens, line, &i, &type) == 1)
+			if (collect_words(&tokens, line, &i, &type) == 1)
 				return (wrapper_exit(&tokens));
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:28:38 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/22 18:42:47 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/22 19:25:01 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,21 @@ t_token	*create_token(t_token_type type, char *value)
 		return (NULL);
 	new->type = type;
 	new->value = value;
+	new->link = 0;
 	new->next = NULL;
 	return (new);
 }
 
-void	add_token(t_token **tokens, t_token_type type, char *value)
+t_token	*add_token(t_token **tokens, t_token_type type, char *value)
 {
 	t_token	*new;
 	t_token	*last;
 
 	new = create_token(type, value);
 	if (!new)
-		return ;
-	if (!*tokens)
+		return (NULL);
+	last = NULL;
+	if (NULL == *tokens)
 		*tokens = new;
 	else
 	{
@@ -42,6 +44,7 @@ void	add_token(t_token **tokens, t_token_type type, char *value)
 			last = last->next;
 		last->next = new;
 	}
+	return (new);
 }
 
 void	delete_token(t_token **head, t_token *ptr)

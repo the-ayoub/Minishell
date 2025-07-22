@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 15:29:33 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/22 18:41:58 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/22 19:27:30 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static char	*collect_quote_word(char *str, char delim, int *i, t_token_type *typ
 	return (word);
 }
 
-static char *collect_normal_word(char *line, int *i)
+static char *collect_normal_word(char *line, int *i, t_token_type *type)
 {
 	char	*word;
 	size_t	word_len;
@@ -44,16 +44,18 @@ static char *collect_normal_word(char *line, int *i)
 		word_len++;
 	}
 	word = ft_substr(line, start, word_len);
+	*type = TOKEN_WORD;
 	return (word);
 }
 
 // Si encuentra quoted word, se crea token
 // si encuentra normal word, se crea token
 // al encontrar word, si contador > 1, linkea los tokens
-int	collect_words(t_token *head, char *line, int *i, t_token_type *type)
+int	collect_words(t_token **head, char *line, int *i, t_token_type *type)
 {
 	char	*word;
 	int		word_counter;
+	t_token	*last_token;
 
 	if (NULL == line || '\0' == line[*i])
 		return (1);
@@ -64,15 +66,15 @@ int	collect_words(t_token *head, char *line, int *i, t_token_type *type)
 		if ('\'' == line[*i] || '"' == line[*i])
 			word = collect_quote_word(line, line[*i], i, type);
 		else if (line[*i] != '\0' && ft_strchr("\t <>|",line[*i]) == NULL)
-			word = collect_normal_word(line, i);
+			word = collect_normal_word(line, i, type);
 		else
 			return (0);
 		if (NULL == word)
 			return (1);
 		word_counter++;
+		last_token = add_token(head, *type, word);
 		if (word_counter > 1)
-			*type = TOKEN_LINK;
-		add_token(&head, *type, word);
+			last_token->link = 1;
 	}
 	return (0);
 }

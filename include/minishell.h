@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 19:46:54 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/22 17:31:54 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/22 19:11:41 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int		parse_pipe(t_token **current, t_cmd **cmd, t_cmd **ptr);
 
 // === TOKENIZE ===
 t_token	*tokenize_line(char *line);
-void	add_token(t_token **tokens, t_token_type type, char *value);
+t_token	*add_token(t_token **tokens, t_token_type type, char *value);
 t_token	*create_token(t_token_type type, char *value);
 void	delete_token(t_token **head, t_token *ptr);
 // >>> TOKEN AUX
@@ -97,7 +97,7 @@ int		is_token_word(t_token_type type);
 int		retokenize(t_shell *shell, t_token *head);
 
 // >>>	=== COLLECT_WORD ===
-int	collect_word(t_token *head, char *s, int *i, t_token_type *type);
+int	collect_words(t_token **head, char *line, int *i, t_token_type *type);
 
 // END LEXER Y PARSER
 
