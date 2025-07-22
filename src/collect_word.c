@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 15:29:33 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/22 19:27:30 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/22 19:37:11 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,6 @@ static char *collect_normal_word(char *line, int *i, t_token_type *type)
 	return (word);
 }
 
-// Si encuentra quoted word, se crea token
-// si encuentra normal word, se crea token
-// al encontrar word, si contador > 1, linkea los tokens
 int	collect_words(t_token **head, char *line, int *i, t_token_type *type)
 {
 	char	*word;

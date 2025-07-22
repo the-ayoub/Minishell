@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 23:03:22 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/22 16:26:43 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/22 20:30:17 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,12 @@ int	wrapper_strjoin(char **s1, char *s2)
 {
 	char	*tmp;
 
-	tmp = ft_strjoin(*s1, s2);
-	free(*s1);
-	*s1 = NULL;
-	if (NULL ==  tmp)
+	if (s1 == NULL || *s1 == NULL || s2 == NULL)
 		return (FALSE);
+	tmp = ft_strjoin(*s1, s2);
+	if (NULL == tmp)
+		return (FALSE);
+	free(*s1);
 	*s1 = tmp;
 	return (TRUE);
 }

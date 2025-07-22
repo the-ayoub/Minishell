@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 19:46:54 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/22 19:11:41 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/22 20:25:27 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void	delete_token(t_token **head, t_token *ptr);
 // >>> TOKEN AUX
 int		is_token_word(t_token_type type);
 // >>> RETOKENIZE
-int		retokenize(t_shell *shell, t_token *head);
+int		retokenize(t_token **head);
 
 // >>>	=== COLLECT_WORD ===
 int	collect_words(t_token **head, char *line, int *i, t_token_type *type);

@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:28:38 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/22 19:25:01 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/22 19:57:19 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,16 +52,17 @@ void	delete_token(t_token **head, t_token *ptr)
 	t_token	*prev;
 	t_token	*next;
 
-	if (*head == NULL || ptr == NULL)
+	if (head == NULL || *head == NULL || ptr == NULL)
 		return ;
-	prev = *head;
-	if (ptr == prev)
+	if (ptr == *head)
 	{
-		head = &prev->next;
+		next = ptr->next;
 		free(ptr->value);
-		free(prev);
+		free(ptr);
+		*head = next;
 		return ;
 	}
+	prev = *head;
 	while (prev->next != NULL)
 	{
 		if (prev->next == ptr)
