@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 19:46:54 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/22 21:56:40 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/22 23:33:13 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ t_list	*locate_env_var(t_list *node, char *var);
 char	*get_var_name(char *str);
 int		update_env(t_shell *shell, char *arg);
 int		is_valid_env_key(char *str);
+int		check_var_and_del(t_list **head, char *var);
 
 // === SIGNAL HANDLING ===
 void	setup_signal_handlers(void);
@@ -97,10 +98,8 @@ void	delete_token(t_token **head, t_token *ptr);
 int		is_token_word(t_token_type type);
 // >>> RETOKENIZE
 int		retokenize(t_token **head);
-
 // >>>	=== COLLECT_WORD ===
 int	collect_words(t_token **head, char *line, int *i, t_token_type *type);
-
 // END LEXER Y PARSER
 
 // === EXPANSIÓN ===
@@ -123,13 +122,14 @@ int		redirect_heredoc(t_shell *shell, t_redir *redir);
 void	exec_external(t_shell *shell, t_cmd *cmd);
 
 // === COMPLETED BUILTINS ===
+void	update_shlvl(t_shell *shell, char *argv);
 int		builtin_echo(t_shell *shell, char **argv);
+int		builtin_export(t_shell *shell, char **argv);
+int		builtin_unset(t_shell *shell, char **argv);
 
 // === PENDING BUILTINS ===
-int		builtin_unset(t_shell *shell, char **argv);
 int		builtin_cd(t_shell *shell, char **argv);
 int		builtin_pwd(t_shell *shell, char **argv);
-int		builtin_export(t_shell *shell, char **argv);
 int		builtin_env(t_shell *shell, char **argv);
 int		builtin_exit(t_shell *shell, char **argv);
 int		is_valid_identifier(char *str);

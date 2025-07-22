@@ -6,14 +6,14 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 21:19:18 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/18 17:49:31 by ohnonon          ###   ########.fr       */
+/*   Updated: 2025/07/22 23:24:44 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
 // returns 1 for err cases, returns 0 either it has deleted a node or not
-static int	check_var_and_del(t_list **head, char *var)
+int	check_var_and_del(t_list **head, char *var)
 {
 	t_list	*node;
 
@@ -45,5 +45,5 @@ int	builtin_unset(t_shell *shell, char **argv)
 		shell->env = new_env;
 		return (0);
 	}
-	return (ft_lstclear(&shell->raw_env, free), 1);
+	return (1);
 }

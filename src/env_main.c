@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:38:32 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/22 21:35:53 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/22 23:20:15 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ char	**env_compiler(t_list *head)
 	return (arr);
 }
 
+// Retrieves the value of an env var if the name matches a env key
 char	*get_env_value(t_shell *shell, const char *name)
 {
 	int	i;
