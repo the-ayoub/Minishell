@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:42:45 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/23 23:18:44 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/23 23:19:52 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ static int	parse_redir(t_token **current, t_cmd **cmd, t_cmd **ptr)
 {
 	if (NULL == (*current)->next || !is_token_word((*current)->next->type))
 	{
-		ft_putstr_fd("minishell: syntax error near redirection\n",
-			   STDERR_FILENO);
+		ft_putstr_fd("minishell: syntax error near redirection\n",\
+					STDERR_FILENO);
 		free_cmd_list(*ptr);
 		return (0);
 	}
