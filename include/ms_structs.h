@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 23:05:39 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/23 22:12:18 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/24 00:04:16 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,5 +100,14 @@ typedef struct s_expans
 	char	*var_name;
 	int		false_env;
 }			t_expand;
+
+typedef struct s_paths
+{
+	char	*env;
+	char	*cpy;
+	char	*full;
+	char	**paths;
+	int		i;
+}		t_paths;
 
 #endif

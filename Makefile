@@ -6,7 +6,7 @@
 #    By: nimatura <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/05 18:42:02 by nimatura          #+#    #+#              #
-#    Updated: 2025/07/23 23:03:23 by nimatura         ###   ########.fr        #
+#    Updated: 2025/07/23 23:49:55 by nimatura         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,13 +18,13 @@ LDFLAGS = -lreadline -lhistory
 DPS := $(SRC_FILE:.c=.d)
 SRC_DIR = ./src/
 SRC_FILE =	tokenize.c builtins.c env_main.c error_exit.c error_msg.c \
-			exec_utils.c executions.c expansion.c free_array.c \
-			free_utils.c init_shell.c main.c pars.c redirections.c \
+			exec_utils.c exec.c expansion.c free_array.c free_utils.c \
+			init_shell.c main.c pars.c redirections.c retokenize.c \
 			shell_loop.c signal_handling.c builtin_utils.c path_utils.c \
 			lst_tools.c debugging_tools.c env_utils.c builtins_unset.c \
 			builtins_export.c collect_word.c expand_env_var.c syntax_check.c \
 			pars_aux.c builtins_echo.c execute_pipe.c wrappers.c token_tools.c \
-			retokenize.c expand_utils.c
+			expand_utils.c wrappers2.c
 
 SRC = $(addprefix $(SRC_DIR), $(SRC_FILE))
 

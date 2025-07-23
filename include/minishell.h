@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 19:46:54 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/23 23:13:51 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/23 23:50:49 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ void	init_shell(t_shell *shell, char **envp);
 int		shell_loop(t_shell *shell);
 
 // === LIST TOOLS ===
-void	wrapper_free_lst(t_list *head);
 
 // === ENV AND LIST TOOLS ===
 t_list	*env_lst_init(char **env);
@@ -143,6 +142,10 @@ int		wrapper_strjoin(char **s1, char *s2);
 int		wrapper_dup(int *holder, int fd, t_shell *shell);
 int		wrapper_dup2(int oldfd, int newfd, t_shell *shell);
 t_token	*wrapper_exit(t_token **head);
+void	wrapper_free_lst(t_list *head);
+
+// === WRAPPERS 2 ===
+void	free_wrapper(void **ptr);
 
 // === FREE UTILS ===
 void	free_cmd_list(t_cmd *head);
