@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   executions.c                                       :+:      :+:    :+:   */
+/*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:39:32 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/23 22:43:50 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/24 00:20:46 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static int	exe_builtin_parent(int *b_stdin, int *b_stdout, t_shell *shell)
 		shell->last_status = 1;
 	else
 		shell->last_status = exec_builtin(shell, shell->cmd);
-	if(wrapper_dup2(*b_stdin, STDIN_FILENO, shell) != TRUE ||\
+	if (wrapper_dup2(*b_stdin, STDIN_FILENO, shell) != TRUE || \
 		wrapper_dup2(*b_stdin, STDIN_FILENO, shell) != TRUE)
 	{
 		close(*b_stdin);
@@ -90,11 +90,11 @@ int	execute_cmd(t_shell *shell, t_cmd *cmd)
 
 	if (NULL == cmd)
 		return (0);
-	if (cmd->argv[0] && !ft_strcmp(cmd->argv[0], "exit") && cmd->next != NULL) //protect exit
+	if (cmd->argv[0] && !ft_strcmp(cmd->argv[0], "exit") && cmd->next != NULL)
 		return (\
 		  ft_putstr_fd("minishell: exit: pipes not allowed\n", STDERR_FILENO)\
 		, 1);
-	if (cmd->next || !is_builtin(cmd->argv[0]) || builtin_in_pipe(cmd->argv[0]))  // IF it's part of pipe or not builtin or builtin for pipes
+	if (cmd->next || !is_builtin(cmd->argv[0]) || builtin_in_pipe(cmd->argv[0]))
 	{
 		if (cmd->next != NULL) //if pipe, delegate to pipe
 			execute_pipe(shell, cmd);
