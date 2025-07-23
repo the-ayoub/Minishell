@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:42:45 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/21 18:25:21 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/23 23:18:44 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,26 @@ int	is_token_word(t_token_type type)
 	|| type == TOKEN_WORD_SQ);
 }
 
+static int	aux_add_redir(t_token *token, t_redir_type *type, char **file)
+{
+	*file = NULL;
+	if (token->type == TOKEN_REDIR_IN)
+		*type = REDIR_IN;
+	else if (token->type == TOKEN_REDIR_OUT)
+		*type = REDIR_OUT;
+	else if (token->type == TOKEN_REDIR_APPEND)
+		*type = REDIR_APPEND;
+	else if (token->type == TOKEN_HEREDOC)
+		*type = REDIR_HEREDOC;
+	else
+		return (0);
+	if (token->next && is_token_word(token->next->type))
+		*file = ft_strdup(token->next->value);
+	if (NULL == *file)
+		return (0);
+	return (1);
+}
+
 // WARNING: no filename token
 static void	add_redirection(t_cmd *cmd, t_token *token)
 {
@@ -26,20 +46,7 @@ static void	add_redirection(t_cmd *cmd, t_token *token)
 	t_redir			*new_redir;
 	t_redir			*last;
 
-	file = NULL;
-	if (token->type == TOKEN_REDIR_IN)
-		type = REDIR_IN;
-	else if (token->type == TOKEN_REDIR_OUT)
-		type = REDIR_OUT;
-	else if (token->type == TOKEN_REDIR_APPEND)
-		type = REDIR_APPEND;
-	else if (token->type == TOKEN_HEREDOC)
-		type = REDIR_HEREDOC;
-	else
-		return ;
-	if (token->next && is_token_word(token->next->type))
-		file = ft_strdup(token->next->value);
-	if (!file)
+	if (aux_add_redir(token, &type, &file) == 0)
 		return ;
 	new_redir = create_redirection(type, file);
 	if (!new_redir)
