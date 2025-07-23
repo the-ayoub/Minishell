@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:28:38 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/22 19:57:19 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/24 00:26:45 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,19 @@ t_token	*add_token(t_token **tokens, t_token_type type, char *value)
 	return (new);
 }
 
+static int	aux_delete_head(t_token ***head, t_token **next, t_token **ptr)
+{
+	if (*ptr == **head)
+	{
+		*next = (*ptr)->next;
+		free((*ptr)->value);
+		free(ptr);
+		*head = next;
+		return (1);
+	}
+	return (0);
+}
+
 void	delete_token(t_token **head, t_token *ptr)
 {
 	t_token	*prev;
@@ -54,14 +67,8 @@ void	delete_token(t_token **head, t_token *ptr)
 
 	if (head == NULL || *head == NULL || ptr == NULL)
 		return ;
-	if (ptr == *head)
-	{
-		next = ptr->next;
-		free(ptr->value);
-		free(ptr);
-		*head = next;
+	if (aux_delete_head(&head, &next, &ptr) == 1)
 		return ;
-	}
 	prev = *head;
 	while (prev->next != NULL)
 	{
