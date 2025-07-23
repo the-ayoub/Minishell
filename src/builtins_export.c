@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 21:04:23 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/22 22:01:48 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/23 18:59:02 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ static int	print_export(t_shell *shell)
 
 int	builtin_export(t_shell *shell, char **argv)
 {
+	int	ret;
 	int	i;
 
 	if (NULL == argv[1])
@@ -43,10 +44,13 @@ int	builtin_export(t_shell *shell, char **argv)
 	i = 1;
 	while (NULL != argv[i])
 	{
-		if (is_valid_env_key(argv[i]) == 0)
+		ret = is_valid_env_key(argv[i]);
+		if (ret == FALSE)
 			aux_reset_loop(argv[i], &shell->last_status);
-		else
+		else if (ret == TRUE)
 			update_env(shell, argv[i]);
+		else
+			shell->last_status = 0;
 		i++;
 	}
 	return (shell->last_status);
