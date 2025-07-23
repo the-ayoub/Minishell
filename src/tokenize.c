@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 20:46:01 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/22 18:56:59 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/23 23:11:41 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,38 +21,16 @@ static int	is_special_char(char c)
 static t_token_type	detect_operator(char *s, int *i)
 {
 	if (s[*i] == '|')
-	{
-		(*i)++;
-		return (TOKEN_PIPE);
-	}
+		return ((*i)++, TOKEN_PIPE);
 	if (s[*i] == '<' && s[*i + 1] == '<')
-	{
-		(*i) += 2;
-		return (TOKEN_HEREDOC);
-	}
+		return ((*i) += 2, TOKEN_HEREDOC);
 	if (s[*i] == '>' && s[*i + 1] == '>')
-	{
-		(*i) += 2;
-		return (TOKEN_REDIR_APPEND);
-	}
+		return ((*i) += 2, TOKEN_REDIR_APPEND);
 	if (s[*i] == '<')
-	{
-		(*i)++;
-		return (TOKEN_REDIR_IN);
-	}
+		return ((*i)++, TOKEN_REDIR_IN);
 	if (s[*i] == '>')
-	{
-		(*i)++;
-		return (TOKEN_REDIR_OUT);
-	}
+		return ((*i)++, TOKEN_REDIR_OUT);
 	return (TOKEN_WORD);
-}
-
-static t_token	*wrapper_exit(t_token **head)
-{
-	free_tokens(*head);
-	*head = NULL;
-	return (NULL);
 }
 
 t_token	*tokenize_line(char *line)

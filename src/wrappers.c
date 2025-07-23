@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 23:03:22 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/22 21:33:24 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/23 23:07:29 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,11 @@ int	wrapper_dup(int *holder, int fd, t_shell *shell)
 		return (FALSE);
 	}
 	return (TRUE);
+}
+
+t_token	*wrapper_exit(t_token **head)
+{
+	free_tokens(*head);
+	*head = NULL;
+	return (NULL);
 }

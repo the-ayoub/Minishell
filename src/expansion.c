@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:39:44 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/23 22:46:19 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/23 22:48:43 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,10 +95,8 @@ static int	is_expandable(t_token tkn, t_expand *dt, t_shell *shl)
 		free(var_name);
 		var_name = NULL;
 		iter = ++match;
-		match = 0;
+		match = NULL;
 	}
-	if (match == NULL || var_name == NULL)
-		return (1);
 	return (0);
 }
 

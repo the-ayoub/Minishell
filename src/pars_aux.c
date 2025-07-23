@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 20:56:20 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/16 21:10:41 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/23 23:05:45 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,22 @@
 
 void	add_argument(t_cmd *cmd, char *arg)
 {
-	int		count;
 	char	**new_argv;
+	int		i;
+	int		count;
 
 	count = 0;
+	i = 0;
 	if (cmd->argv)
-	{
 		while (cmd->argv[count])
 			count++;
-	}
 	new_argv = malloc((count + 2) * sizeof(char *));
 	if (!new_argv)
 		return ;
-	for (int i = 0; i < count; i++)
+	while (i < count)
 	{
 		new_argv[i] = cmd->argv[i];
+		i++;
 	}
 	new_argv[count] = arg;
 	new_argv[count + 1] = NULL;
@@ -68,8 +69,7 @@ int	parse_pipe(t_token **current, t_cmd **cmd, t_cmd **ptr)
 {
 	if (NULL == *cmd)
 	{
-		ft_putstr_fd("minishell: syntax error near `|'\n",
-			   STDERR_FILENO);
+		ft_putstr_fd("minishell: syntax error near `|'\n", STDERR_FILENO);
 		free_cmd_list(*ptr);
 		return (0);
 	}

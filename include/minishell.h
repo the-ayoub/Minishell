@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 19:46:54 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/23 22:43:57 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/23 23:08:29 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,9 +139,10 @@ int		is_valid_identifier(char *str);
 int		is_valid_exit_arg(char *arg);
 
 // === WRAPPERS ===
-int	wrapper_strjoin(char **s1, char *s2);
-int	wrapper_dup(int *holder, int fd, t_shell *shell);
-int	wrapper_dup2(int oldfd, int newfd, t_shell *shell);
+int		wrapper_strjoin(char **s1, char *s2);
+int		wrapper_dup(int *holder, int fd, t_shell *shell);
+int		wrapper_dup2(int oldfd, int newfd, t_shell *shell);
+t_token	*wrapper_exit(t_token **head);
 
 // === UTILS ===
 void	error_msg(const char *msg);
