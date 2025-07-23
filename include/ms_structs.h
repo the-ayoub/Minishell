@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 23:05:39 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/22 21:58:14 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/23 19:44:52 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ typedef struct s_expans
 	char	*to_expand;
 	char	*matching_env;
 	char	*token_str;
-	char	*var_name;
+	char	*var_name; //alloc
 }			t_expand;
 
 #endif

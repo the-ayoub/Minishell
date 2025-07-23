@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 21:06:41 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/22 22:11:39 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/23 18:56:55 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,15 @@ int	update_env(t_shell *shell, char *arg)
 	else
 		shell->last_status = 1;
 	return (shell->last_status);
+}
+
+static int	is_var_name_ok(char c)
+{
+	if (c == ' ' || c == '\t' || c == '\0' || c == '$')
+		return (FALSE);
+	if (c == '\'' || c == '"')
+		return (FALSE);
+	return (TRUE);
 }
 
 static int	env_key_second_iter(char *str, int *i)
@@ -72,18 +81,9 @@ int	is_valid_env_key(char *str)
 		i++;
 	if (env_key_second_iter(str, &i) == FALSE)
 		return (FALSE);
-	if (str[i] != '\0' && str[i] != '=' && str[i] != '\n')
-		return (FALSE);
+	if (str[i] != '=')
+		return (3);
 	if (i == 0)
-		return (FALSE);
-	return (TRUE);
-}
-
-static int	is_var_name_ok(char c)
-{
-	if (c == ' ' || c == '\t' || c == '\0' || c == '$')
-		return (FALSE);
-	if (c == '\'' || c == '"')
 		return (FALSE);
 	return (TRUE);
 }
@@ -110,6 +110,7 @@ char	*get_var_name(char *str)
 	new[i] = '\0';
 	while (i--)
 		new[i] = match[i];
+	// check_special_var(&new);
 	return (new);
 }
 
