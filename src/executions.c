@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:39:32 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/22 23:38:11 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/23 22:43:50 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,6 @@ int	execute_cmd(t_shell *shell, t_cmd *cmd)
 		, 1);
 	if (cmd->next || !is_builtin(cmd->argv[0]) || builtin_in_pipe(cmd->argv[0]))  // IF it's part of pipe or not builtin or builtin for pipes
 	{
-		update_shlvl(shell, cmd->argv[0]);
 		if (cmd->next != NULL) //if pipe, delegate to pipe
 			execute_pipe(shell, cmd);
 		else

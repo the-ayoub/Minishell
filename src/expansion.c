@@ -6,30 +6,13 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:39:44 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/23 22:37:14 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/23 22:46:19 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-void	init_expand(t_expand *dt)
-{
-	dt->token_str = NULL;
-	dt->to_expand = NULL;
-	dt->matching_env = NULL;
-	dt->var_name = NULL;
-	dt->false_env = 0;
-}
-
-int	aux_upd_data(t_expand *dt, char *match, char *var_name, char *env_var)
-{
-	dt->matching_env = env_var;
-	dt->to_expand = match;
-	dt->var_name = var_name;
-	return (1);
-}
-
-char	*assemble_expansion(char *token_value, t_expand *dt)
+static char	*assemble_expansion(char *token_value, t_expand *dt)
 {
 	char	*new;
 	char	*tmp;
@@ -58,7 +41,7 @@ char	*assemble_expansion(char *token_value, t_expand *dt)
 	return (new);
 }
 
-void	aux_upd_node(t_expand *dt, t_list **node, t_shell *shell)
+static int	aux_upd_node(t_expand *dt, t_list **node, t_shell *shell)
 {
 	char	*err_str;
 	char	*tmp;
@@ -69,11 +52,12 @@ void	aux_upd_node(t_expand *dt, t_list **node, t_shell *shell)
 	if (check == 0)
 	{
 		tmp = ft_itoa(shell->last_status);
-		err_str = ft_strjoin("=", tmp);
+		if (tmp)
+			err_str = ft_strjoin("=", tmp);
 		free(tmp);
 		aux_upd_data(dt, dt->to_expand, dt->var_name, err_str);
 		dt->false_env = 1;
-		return ;
+		return (1);
 	}
 	*node = locate_env_var(shell->raw_env, dt->var_name);
 	if (*node == NULL && ft_strcmp(dt->var_name, "=") == 0)
@@ -83,6 +67,7 @@ void	aux_upd_node(t_expand *dt, t_list **node, t_shell *shell)
 	}
 	else
 		aux_upd_data(dt, dt->to_expand, dt->var_name, (*node)->content);
+	return (1);
 }
 
 // Retrieves the $str from the tkn.value, then iterates over env
@@ -105,11 +90,8 @@ static int	is_expandable(t_token tkn, t_expand *dt, t_shell *shl)
 			return (1);
 		var_name = get_var_name(match); // nombre valido
 		aux_upd_data(dt, match, var_name, NULL);
-		if (var_name != NULL)
-		{
-			aux_upd_node(dt, &node, shl);
+		if (var_name != NULL && aux_upd_node(dt, &node, shl))
 			break ;
-		}
 		free(var_name);
 		var_name = NULL;
 		iter = ++match;

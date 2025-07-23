@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 19:46:54 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/22 23:33:13 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/23 22:43:57 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,10 @@ int		expand_variables(t_shell *shell, t_token *head);
 void	append_char(char **str, char c);
 int		expand_dollar(t_shell *shell, char **result, char *ptr);
 
+// === EXPAND_UTILS ===
+void	init_expand(t_expand *dt);
+int		aux_upd_data(t_expand *dt, char *match, char *var_name, char *env_var);
+
 // === EXECUCIÓN ===
 int		execute_cmd(t_shell *shell, t_cmd *cmd);
 void	execute_pipe(t_shell *shell, t_cmd *cmd);
@@ -122,7 +126,6 @@ int		redirect_heredoc(t_shell *shell, t_redir *redir);
 void	exec_external(t_shell *shell, t_cmd *cmd);
 
 // === COMPLETED BUILTINS ===
-void	update_shlvl(t_shell *shell, char *argv);
 int		builtin_echo(t_shell *shell, char **argv);
 int		builtin_export(t_shell *shell, char **argv);
 int		builtin_unset(t_shell *shell, char **argv);
