@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:43:17 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/07 20:10:56 by aybelhaj         ###   ########.fr       */
+/*   Updated: 2025/07/24 00:11:25 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int	redirect_heredoc(t_shell *shell, t_redir *redir)
 	close(fd[1]);
 	return (fd[0]);
 }
+
 static int	open_redirection(t_redir *redir, t_shell *shell)
 {
 	int	fd;
