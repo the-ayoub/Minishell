@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:40:04 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/11 20:58:17 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/23 23:14:16 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,7 @@ void	free_cmd(t_cmd *cmd)
 	{
 		i = 0;
 		while (cmd->argv[i])
-		{
-			free(cmd->argv[i]);
-			i++;
-		}
+			free(cmd->argv[i++]);
 		free(cmd->argv);
 	}
 	redir = cmd->redirs;

@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 19:46:54 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/23 23:08:29 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/23 23:13:51 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,6 +144,12 @@ int		wrapper_dup(int *holder, int fd, t_shell *shell);
 int		wrapper_dup2(int oldfd, int newfd, t_shell *shell);
 t_token	*wrapper_exit(t_token **head);
 
+// === FREE UTILS ===
+void	free_cmd_list(t_cmd *head);
+void	free_cmd(t_cmd *cmd);
+void	free_tokens(t_token *tokens);
+void	free_array(char **array);
+
 // === UTILS ===
 void	error_msg(const char *msg);
 void	error_exit(char *msg);
@@ -153,7 +159,6 @@ void	free_tokens(t_token *tokens);
 void	free_redirs(t_redir *redirs);
 char	*get_cmd_path(const char *cmd, char **envp);
 char	*get_env_value(t_shell *shell, const char *name);
-void	free_cmd_list(t_cmd *head);
 
 // === DEBUGGING TOOLS ===
 void	expand_arr_and_print(t_list *lst);
