@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 23:05:39 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/23 20:59:17 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/23 22:12:18 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ typedef struct s_expans
 	char	*matching_env;
 	char	*token_str;
 	char	*var_name;
+	int		false_env;
 }			t_expand;
 
 #endif

@@ -6,66 +6,97 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:39:44 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/23 20:56:49 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/23 22:37:14 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-void	init_expand(t_expand *data)
+void	init_expand(t_expand *dt)
 {
-	data->token_str = NULL;
-	data->to_expand = NULL;
-	data->matching_env = NULL;
-	data->var_name = NULL;
+	dt->token_str = NULL;
+	dt->to_expand = NULL;
+	dt->matching_env = NULL;
+	dt->var_name = NULL;
+	dt->false_env = 0;
 }
 
-int	aux_upd_data(t_expand *data, char *match, char *var_name, char *env_var)
+int	aux_upd_data(t_expand *dt, char *match, char *var_name, char *env_var)
 {
-	data->matching_env = env_var;
-	data->to_expand = match;
-	data->var_name = var_name;
+	dt->matching_env = env_var;
+	dt->to_expand = match;
+	dt->var_name = var_name;
 	return (1);
 }
 
-char	*assemble_expansion(char *token_value, t_expand *data)
+char	*assemble_expansion(char *token_value, t_expand *dt)
 {
 	char	*new;
 	char	*tmp;
 	size_t	i;
 	size_t	len;
 
-	i = data->to_expand - token_value;
+	i = dt->to_expand - token_value;
 	new = ft_substr(token_value, 0, i);
 	if (new == NULL)
 		return (NULL);
-	tmp = data->matching_env;
-	data->matching_env = ft_strchr(data->matching_env, '=');
-	if (data->matching_env == NULL)
+	tmp = dt->matching_env;
+	dt->matching_env = ft_strchr(dt->matching_env, '=');
+	if (dt->matching_env == NULL)
 		perror("cant assamble expansion");
-	if (wrapper_strjoin(&new, ++data->matching_env) == FALSE)
+	if (wrapper_strjoin(&new, ++dt->matching_env) == FALSE)
 		perror("cant assamble expansion");
-	len = ft_strlen(data->var_name) + 1;
-	data->to_expand += len;
-	if (wrapper_strjoin(&new, data->to_expand) == FALSE)
+	len = ft_strlen(dt->var_name) + 1;
+	dt->to_expand += len;
+	if (wrapper_strjoin(&new, dt->to_expand) == FALSE)
 		perror("cant assamble expansion");
-	if (ft_strlen(tmp) == 1)
+	if (dt->false_env == 1)
+	{
 		free(tmp);
+		dt->false_env = 0;
+	}
 	return (new);
 }
 
-// Retrieves the $str from the token.value, then iterates over env_lst
-// looking for a match. For success, returns 1, else 0 as FALSE
-static int	is_expandable(t_list *env_lst, t_token token, t_expand *data)
+void	aux_upd_node(t_expand *dt, t_list **node, t_shell *shell)
+{
+	char	*err_str;
+	char	*tmp;
+	int		check;
+
+	err_str = NULL;
+	check = ft_strncmp(dt->var_name, "?", ft_strlen(dt->var_name));
+	if (check == 0)
+	{
+		tmp = ft_itoa(shell->last_status);
+		err_str = ft_strjoin("=", tmp);
+		free(tmp);
+		aux_upd_data(dt, dt->to_expand, dt->var_name, err_str);
+		dt->false_env = 1;
+		return ;
+	}
+	*node = locate_env_var(shell->raw_env, dt->var_name);
+	if (*node == NULL && ft_strcmp(dt->var_name, "=") == 0)
+	{
+		aux_upd_data(dt, dt->to_expand, dt->var_name, ft_strdup("="));
+		dt->false_env = 1;
+	}
+	else
+		aux_upd_data(dt, dt->to_expand, dt->var_name, (*node)->content);
+}
+
+// Retrieves the $str from the tkn.value, then iterates over env
+// looking for a match. For no match, returns 1, else 0 there's match
+static int	is_expandable(t_token tkn, t_expand *dt, t_shell *shl)
 {
 	t_list	*node;
 	char	*var_name;
 	char	*match;
 	char	*iter;
 
-	if (token.type != TOKEN_WORD_DQ && token.type != TOKEN_WORD)
+	if (tkn.type != TOKEN_WORD_DQ && tkn.type != TOKEN_WORD)
 		return (1);
-	iter = token.value;
+	iter = tkn.value;
 	match = NULL;
 	while (match == NULL && *iter != '\0')
 	{
@@ -73,21 +104,16 @@ static int	is_expandable(t_list *env_lst, t_token token, t_expand *data)
 		if (match == NULL)
 			return (1);
 		var_name = get_var_name(match); // nombre valido
+		aux_upd_data(dt, match, var_name, NULL);
 		if (var_name != NULL)
 		{
-			node = locate_env_var(env_lst, var_name);
-			if (node == NULL)
-			{
-				aux_upd_data(data, match, var_name, ft_strdup("="));
-				break ;
-			}
-			else if (node != NULL && aux_upd_data(data, match, var_name, node->content))
-				break ;
-			free(var_name);
-			var_name = NULL;
+			aux_upd_node(dt, &node, shl);
+			break ;
 		}
+		free(var_name);
+		var_name = NULL;
 		iter = ++match;
-		match = NULL;
+		match = 0;
 	}
 	if (match == NULL || var_name == NULL)
 		return (1);
@@ -96,31 +122,28 @@ static int	is_expandable(t_list *env_lst, t_token token, t_expand *data)
 
 int	expand_variables(t_shell *shell, t_token *head)
 {
-	t_expand	data;
-	t_token		*token;
+	t_expand	dt;
+	t_token		*tkn;
 	char		*tmp;
 	
-	init_expand(&data);
-	token = head;
-	while (NULL != token)
+	init_expand(&dt);
+	tkn = head;
+	while (NULL != tkn)
 	{
-		free(data.var_name);
-		data.var_name = NULL;
-		data.token_str = token->value;
-		if (1 == is_expandable(shell->raw_env, *token, &data)) // ok
+		free(dt.var_name);
+		dt.var_name = NULL;
+		dt.token_str = tkn->value;
+		if (1 == is_expandable(*tkn, &dt, shell)) // ok
 		{
-			token = token->next;
+			tkn = tkn->next;
 			continue ;
 		}
-		tmp = assemble_expansion(token->value, &data);
+		tmp = assemble_expansion(tkn->value, &dt);
 		if (NULL == tmp)
-		{
-			token = token->next;
-			continue ;
-		}
-		free(token->value);
-		token->value = tmp;
+			return (perror("cant expand variable\n"), 1);
+		free(tkn->value);
+		tkn->value = tmp;
 	}
-	free(data.var_name);
+	free(dt.var_name);
 	return (0);
 }

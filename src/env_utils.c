@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 21:06:41 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/23 18:56:55 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/23 21:55:29 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ int	update_env(t_shell *shell, char *arg)
 
 static int	is_var_name_ok(char c)
 {
+	if (c == '?')
+		return (TRUE);
 	if (c == ' ' || c == '\t' || c == '\0' || c == '$')
 		return (FALSE);
 	if (c == '\'' || c == '"')
@@ -95,11 +97,12 @@ char	*get_var_name(char *str)
 	size_t	i;
 
 	i = 0;
-	match = NULL;
 	match = ft_strchr(str, '$');
 	if (NULL == match)
 		return (NULL);
 	match++;
+	if (ft_strncmp(match, "?", ft_strlen(match)) == 0)
+		return (ft_strdup("?"));
 	if (is_var_name_ok(*match) == FALSE)
 		return (NULL);
 	while (match[i] && is_var_name_ok(match[i]))
@@ -110,7 +113,6 @@ char	*get_var_name(char *str)
 	new[i] = '\0';
 	while (i--)
 		new[i] = match[i];
-	// check_special_var(&new);
 	return (new);
 }
 
