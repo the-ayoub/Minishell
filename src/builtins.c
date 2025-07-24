@@ -6,16 +6,18 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:38:11 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/21 18:26:34 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/24 05:27:34 by aybelhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-int	is_valid_exit_arg(char *arg)
+ int	is_valid_exit_arg(char *arg)
 {
-	if (!arg)
-		return (1);
+	if (!arg || *arg == '\0')
+		return (0);
+	if (*arg == '+' || *arg == '-')
+		arg++;
 	while (*arg)
 	{
 		if (!ft_isdigit(*arg))
@@ -41,7 +43,7 @@ int	builtin_exit(t_shell *shell, char **argv)
 		ft_putstr_fd("minishell: exit: ", STDERR_FILENO);
 		ft_putstr_fd(argv[1], STDERR_FILENO);
 		ft_putstr_fd(": numeric argument required\n", STDERR_FILENO);
-		exit_code = 255;
+		exit_code = 2;
 	}
 	else if (argv[1])
 	{
@@ -50,12 +52,18 @@ int	builtin_exit(t_shell *shell, char **argv)
 	exit(exit_code);
 }
 
+
 int	builtin_cd(t_shell *shell, char **argv)
 {
 	char	*path;
 	char	cwd[PATH_MAX];
 	char	*oldpwd;
 
+	if (argv[1] && argv[2]) // <-- esto es lo que falta
+	{
+		ft_putstr_fd("minishell: cd: too many arguments\n", STDERR_FILENO);
+		return (1);
+	}
 	path = argv[1];
 	oldpwd = getcwd(NULL, 0);
 	if (!path || (path[0] == '~' && path[1] == '\0'))

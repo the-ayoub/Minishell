@@ -8,9 +8,8 @@
 
 # TODO AYOUB:
 [ ] proteger dup2: execute_pipe.c
-[ ] heredoc: segfault
-[ ] heredoc: syntax err
-[ ] Gestionar salida de programa en pipes
+[x] heredoc: segfault
+[x] heredoc: syntax err
 
 # TODO NICO:
     - Problema: gestionar syntax para organizar correctamente
