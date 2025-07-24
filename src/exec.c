@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:39:32 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/24 00:20:46 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/24 00:59:50 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,16 +92,15 @@ int	execute_cmd(t_shell *shell, t_cmd *cmd)
 		return (0);
 	if (cmd->argv[0] && !ft_strcmp(cmd->argv[0], "exit") && cmd->next != NULL)
 		return (\
-		  ft_putstr_fd("minishell: exit: pipes not allowed\n", STDERR_FILENO)\
-		, 1);
+		ft_putstr_fd("minishell: exit: pipes not allowed\n", STDERR_FILENO), 1);
 	if (cmd->next || !is_builtin(cmd->argv[0]) || builtin_in_pipe(cmd->argv[0]))
 	{
-		if (cmd->next != NULL) //if pipe, delegate to pipe
+		if (cmd->next != NULL)
 			execute_pipe(shell, cmd);
 		else
 			wrapper_single_command(shell, cmd, &pid);
 	}
-	else 
+	else
 		shell->last_status = exe_builtin_parent(&b_stdin, &b_stdout, shell);
 	return (shell->last_status);
 }

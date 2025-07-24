@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 20:56:20 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/24 00:16:50 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/24 01:00:05 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,3 @@ int	is_token_word(t_token_type type)
 	return (type == TOKEN_WORD || type == TOKEN_WORD_DQ \
 	|| type == TOKEN_WORD_SQ);
 }
-
