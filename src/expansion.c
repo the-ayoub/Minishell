@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:39:44 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/24 02:35:57 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/24 03:47:12 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ static char	*assemble_expansion(char *token_value, t_expand *dt)
 		return (NULL);
 	tmp = dt->matching_env;
 	dt->matching_env = ft_strchr(dt->matching_env, '=');
-	if (dt->matching_env == NULL)
-		perror("cant assamble expansion");
-	if (wrapper_strjoin(&new, ++dt->matching_env) == FALSE)
-		perror("cant assamble expansion");
+	if (dt->matching_env != NULL)
+		dt->matching_env++;
+	if (wrapper_strjoin(&new, dt->matching_env) == FALSE)
+		perror("cant assamble expansion 2");
 	len = ft_strlen(dt->var_name) + 1;
 	dt->to_expand += len;
 	if (wrapper_strjoin(&new, dt->to_expand) == FALSE)
-		perror("cant assamble expansion");
+		perror("cant assamble expansion 3");
 	if (dt->false_env == 1)
 	{
 		free(tmp);
@@ -73,6 +73,11 @@ static int	aux_upd_node(t_expand *dt, t_list **node, t_shell *shell)
 		aux_upd_data(dt, dt->to_expand, dt->var_name, ft_strdup("="));
 		dt->false_env = 1;
 	}
+	else if (*node == NULL)
+	{
+		aux_upd_data(dt, dt->to_expand, dt->var_name, ft_strdup("="));
+		dt->false_env = 1;
+	}
 	else
 		aux_upd_data(dt, dt->to_expand, dt->var_name, (*node)->content);
 	return (1);
@@ -100,8 +105,7 @@ static int	is_expandable(t_token tkn, t_expand *dt, t_shell *shl)
 		aux_upd_data(dt, match, var_name, NULL);
 		if (var_name != NULL && aux_upd_node(dt, &node, shl))
 			break ;
-		free(var_name);
-		var_name = NULL;
+		free_wrapper((void **)&var_name);
 		iter = ++match;
 		match = NULL;
 	}
@@ -131,6 +135,7 @@ int	expand_variables(t_shell *shell, t_token *head)
 			return (perror("cant expand variable\n"), 1);
 		free(tkn->value);
 		tkn->value = tmp;
+		break ;
 	}
 	free(dt.var_name);
 	return (0);
