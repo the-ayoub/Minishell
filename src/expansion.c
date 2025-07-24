@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:39:44 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/23 22:48:43 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/24 02:35:57 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,17 @@ static char	*assemble_expansion(char *token_value, t_expand *dt)
 	return (new);
 }
 
-static int	aux_upd_node(t_expand *dt, t_list **node, t_shell *shell)
+static int	aux_guard_interr(t_expand *dt, t_shell *sh)
 {
-	char	*err_str;
-	char	*tmp;
 	int		check;
+	char	*tmp;
+	char	*err_str;
 
 	err_str = NULL;
 	check = ft_strncmp(dt->var_name, "?", ft_strlen(dt->var_name));
 	if (check == 0)
 	{
-		tmp = ft_itoa(shell->last_status);
+		tmp = ft_itoa(sh->last_status);
 		if (tmp)
 			err_str = ft_strjoin("=", tmp);
 		free(tmp);
@@ -59,6 +59,14 @@ static int	aux_upd_node(t_expand *dt, t_list **node, t_shell *shell)
 		dt->false_env = 1;
 		return (1);
 	}
+	return (0);
+}
+
+static int	aux_upd_node(t_expand *dt, t_list **node, t_shell *shell)
+{
+
+	if (aux_guard_interr(dt, shell) == 1)
+		return (1);
 	*node = locate_env_var(shell->raw_env, dt->var_name);
 	if (*node == NULL && ft_strcmp(dt->var_name, "=") == 0)
 	{
@@ -113,7 +121,7 @@ int	expand_variables(t_shell *shell, t_token *head)
 		free(dt.var_name);
 		dt.var_name = NULL;
 		dt.token_str = tkn->value;
-		if (1 == is_expandable(*tkn, &dt, shell)) // ok
+		if (1 == is_expandable(*tkn, &dt, shell))
 		{
 			tkn = tkn->next;
 			continue ;
