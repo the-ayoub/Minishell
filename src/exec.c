@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:39:32 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/24 00:59:50 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/24 03:20:02 by aybelhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ static void	wrapper_single_command(t_shell *shell, t_cmd *cmd, int *pid)
 		wait_for_children(shell, *pid);
 }
 
-int	execute_cmd(t_shell *shell, t_cmd *cmd)
+/*int	execute_cmd(t_shell *shell, t_cmd *cmd)
 {
 	pid_t	pid;
 	int		b_stdin;
@@ -103,4 +103,36 @@ int	execute_cmd(t_shell *shell, t_cmd *cmd)
 	else
 		shell->last_status = exe_builtin_parent(&b_stdin, &b_stdout, shell);
 	return (shell->last_status);
+}*/
+int	execute_cmd(t_shell *shell, t_cmd *cmd)
+{
+	pid_t	pid;
+	int		b_stdin;
+	int		b_stdout;
+
+	if (!cmd)
+		return (0);
+	if (!cmd->argv || !cmd->argv[0])	//Protección: comando vacío
+	{
+		if (cmd->redirs) // ejecutar heredoc aunque no haya comando
+			setup_redirections(shell, cmd);
+		return (0);
+	}
+	if (!ft_strcmp(cmd->argv[0], "exit") && cmd->next != NULL)// Protección: "exit" en una tubería
+	{
+		ft_putstr_fd("minishell: exit: pipes not allowed\n", STDERR_FILENO);
+		return (1);
+	}
+	if (cmd->next || !is_builtin(cmd->argv[0]) || builtin_in_pipe(cmd->argv[0]))// Ejecutar con fork si es parte de pipe o no builtin o builtin en pipe
+	{
+		if (cmd->next)
+			execute_pipe(shell, cmd);
+		else
+			wrapper_single_command(shell, cmd, &pid);
+	}
+	else
+		shell->last_status = exe_builtin_parent(&b_stdin, &b_stdout, shell);
+	return (shell->last_status);
 }
+
+
