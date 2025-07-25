@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:16:35 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/22 20:44:50 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/25 20:47:45 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	retokenize(t_token **head)
 
 	next = *head;
 	if (NULL == next)
-		return (0);
+		return (1);
 	while (next != NULL)
 	{
 		iter = next;

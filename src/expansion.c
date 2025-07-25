@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:39:44 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/24 03:47:12 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/25 20:50:20 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static char	*assemble_expansion(char *token_value, t_expand *dt)
 		perror("cant assamble expansion 3");
 	if (dt->false_env == 1)
 	{
-		free(tmp);
+		free_wrapper((void **)&tmp);
 		dt->false_env = 0;
 	}
 	return (new);
@@ -54,9 +54,8 @@ static int	aux_guard_interr(t_expand *dt, t_shell *sh)
 		tmp = ft_itoa(sh->last_status);
 		if (tmp)
 			err_str = ft_strjoin("=", tmp);
-		free(tmp);
-		aux_upd_data(dt, dt->to_expand, dt->var_name, err_str);
-		dt->false_env = 1;
+		free_wrapper((void **)&tmp);
+		dt->false_env = aux_upd_data(dt, dt->to_expand, dt->var_name, err_str);
 		return (1);
 	}
 	return (0);
@@ -69,15 +68,11 @@ static int	aux_upd_node(t_expand *dt, t_list **node, t_shell *shell)
 		return (1);
 	*node = locate_env_var(shell->raw_env, dt->var_name);
 	if (*node == NULL && ft_strcmp(dt->var_name, "=") == 0)
-	{
-		aux_upd_data(dt, dt->to_expand, dt->var_name, ft_strdup("="));
-		dt->false_env = 1;
-	}
+		dt->false_env = aux_upd_data(dt, dt->to_expand, dt->var_name,\
+							   ft_strdup("="));
 	else if (*node == NULL)
-	{
-		aux_upd_data(dt, dt->to_expand, dt->var_name, ft_strdup("="));
-		dt->false_env = 1;
-	}
+		dt->false_env = aux_upd_data(dt, dt->to_expand, dt->var_name,\
+							   ft_strdup("="));
 	else
 		aux_upd_data(dt, dt->to_expand, dt->var_name, (*node)->content);
 	return (1);
@@ -96,7 +91,7 @@ static int	is_expandable(t_token tkn, t_expand *dt, t_shell *shl)
 		return (1);
 	iter = tkn.value;
 	match = NULL;
-	while (match == NULL && *iter != '\0')
+	while (match == NULL)
 	{
 		match = ft_strchr(iter, '$'); //hay cash
 		if (match == NULL)
@@ -122,8 +117,7 @@ int	expand_variables(t_shell *shell, t_token *head)
 	tkn = head;
 	while (NULL != tkn)
 	{
-		free(dt.var_name);
-		dt.var_name = NULL;
+		free_wrapper((void **)&dt.var_name);
 		dt.token_str = tkn->value;
 		if (1 == is_expandable(*tkn, &dt, shell))
 		{
@@ -135,7 +129,6 @@ int	expand_variables(t_shell *shell, t_token *head)
 			return (perror("cant expand variable\n"), 1);
 		free(tkn->value);
 		tkn->value = tmp;
-		break ;
 	}
 	free(dt.var_name);
 	return (0);
