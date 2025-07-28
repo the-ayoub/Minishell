@@ -6,12 +6,13 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:43:01 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/07 20:10:41 by aybelhaj         ###   ########.fr       */
+/*   Updated: 2025/07/28 17:00:48 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
+// BUG: norminette + path_env pulling wrong env var
 char	*get_cmd_path(const char *cmd, char **envp)
 {
 	char	*path_env;
@@ -21,6 +22,8 @@ char	*get_cmd_path(const char *cmd, char **envp)
 	char	**paths;
 	int		i;
 
+	if (*cmd == '\0')
+		return (NULL);
 	if (ft_strchr(cmd, '/'))
 	{
 		if (access(cmd, X_OK) == 0)

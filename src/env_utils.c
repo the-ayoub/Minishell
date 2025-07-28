@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 21:06:41 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/28 16:32:55 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/28 17:25:16 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,46 +49,30 @@ static int	is_var_name_ok(char c)
 	return (TRUE);
 }
 
-/*static int	env_key_second_iter(char *str, int *i)
-{
-	while (str && str[*i] != '\0' && (ft_isalnum(str[*i]) || str[*i] == '_'))
-	{
-		while (str[*i] != '\0' && ft_isdigit(str[*i]))
-		{
-			if (*i == 0)
-				return (FALSE);
-			i++;
-		}
-		while (str[*i] != '\0' && ft_isalpha(str[*i]))
-			i++;
-		while (str[*i] != '\0' && '_' == str[*i])
-			i++;
-	}
-	return (TRUE);
-}*/
-
 // NOTE: SYNTAX
 // regex format for valid key is
 // [A-Za-z_][A-Za-z0-9_]
-/*int	is_valid_env_key(char *str)
+int	is_valid_env_key(char *str)
 {
 	int	i;
 
 	i = 0;
-	if (str[i] == '\0')
+	if (str == NULL || str[i] == '\0')
 		return (FALSE);
-	while (str[i] != '\0' && ft_isspace(str[i]))
-		i++;
-	while (str[i] != '\0' && ft_isalpha(str[i]))
-		i++;
-	if (env_key_second_iter(str, &i) == FALSE)
+	if (!ft_isalpha(str[i]) && str[i] != '_')
 		return (FALSE);
+	i++;
+	while (str[i] && str[i] != '=')
+	{
+		if (str[i] != '_' && !ft_isalnum(str[i]))
+			return (FALSE);
+		i++;
+	}
 	if (str[i] != '=')
 		return (3);
-	if (i == 0)
-		return (FALSE);
 	return (TRUE);
-}*/
+}
+/*
 int	is_valid_env_key(char *str)
 {
 	int	i;
@@ -106,7 +90,7 @@ int	is_valid_env_key(char *str)
 		i++;
 	}
 	return (TRUE);
-}
+}*/
 
 char	*get_var_name(char *str)
 {

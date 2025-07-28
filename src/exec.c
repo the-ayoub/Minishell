@@ -6,16 +6,22 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:39:32 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/28 16:40:06 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/28 17:07:41 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
+// BUG: get_cmd_path error handling for wrong case
 void	exec_external(t_shell *shell, t_cmd *cmd)
 {
 	char	*path;
 
+	if (*(cmd->argv[0]) == '\0')
+	{
+		shell->last_status = 0;
+		exit(shell->last_status);
+	}
 	path = get_cmd_path(cmd->argv[0], shell->env);
 	if (!path)
 	{
