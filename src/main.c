@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:36:40 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/24 00:28:39 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/28 16:41:07 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	main(int argc, char **argv, char **envp)
 {
 	t_shell	shell;
 
-	if (argc > 1)
+	if (argc != 1 || *envp == NULL)
 		return (1);
 	(void)argv;
 	init_shell(&shell, envp);

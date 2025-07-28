@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 21:06:41 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/28 16:27:51 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/28 16:32:55 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ int	update_env(t_shell *shell, char *arg)
 		}
 		else
 		{
-			shell->last_status = 1;
+			shell->last_status = 0;
 			free(var);
 		}
 	}
 	else
-		shell->last_status = 1;
+		shell->last_status = 0;
 	return (shell->last_status);
 }
 
