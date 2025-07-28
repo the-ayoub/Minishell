@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 21:06:41 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/28 17:25:16 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/28 17:52:42 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,8 @@ char	*get_var_name(char *str)
 	match++;
 	if (ft_strncmp(match, "?", 1) == 0)
 		return (ft_strdup("?"));
+	if (ft_strncmp(match, "$", 1) == 0)
+		return (ft_strdup("$"));
 	if (is_var_name_ok(*match) == FALSE)
 		return (NULL);
 	while (match[i] && is_var_name_ok(match[i]))

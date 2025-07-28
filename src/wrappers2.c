@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 23:48:54 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/23 23:49:37 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/28 17:47:22 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,4 +16,9 @@ void	free_wrapper(void **ptr)
 {
 	free(*ptr);
 	*ptr = NULL;
+}
+
+void	simple_env_search()
+{
+
 }

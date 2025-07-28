@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 15:29:33 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/28 16:26:25 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/28 18:01:15 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,27 @@ static char *collect_normal_word(char *line, int *i, t_token_type *type)
 	return (word);
 }
 
+int	identify_cash_cases(char a, char b)
+{
+	if (a != '$')
+		return (1);
+	if (b == '"')
+		return (0);
+	return (1);
+}
+
+char	*handle_locale_aware_strings(char *line, int *i, t_token_type *type)
+{
+	char	*word;
+
+	(*i)++;
+	word = NULL;
+	if (line[*i] == '"')
+		word = ft_strdup("");
+	*type = TOKEN_WORD;
+	return (word);
+}
+
 int	collect_words(t_token **head, char *line, int *i, t_token_type *type)
 {
 	char	*word;
@@ -59,7 +80,9 @@ int	collect_words(t_token **head, char *line, int *i, t_token_type *type)
 	word_counter = 0;
 	while (line[*i] != '\0' && ft_strchr("\t <>|",line[*i]) == NULL)
 	{
-		if ('\'' == line[*i] || '"' == line[*i])
+		if (line[*i] == '$' && line[*i + 1] == '"')
+			word = handle_locale_aware_strings(line, i, type);
+		else if ('\'' == line[*i] || '"' == line[*i])
 			word = collect_quote_word(line, line[*i], i, type);
 		else if (line[*i] != '\0' && ft_strchr("\t <>|",line[*i]) == NULL)
 			word = collect_normal_word(line, i, type);
