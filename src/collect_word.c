@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 15:29:33 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/22 19:37:11 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/28 16:26:25 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ int	collect_words(t_token **head, char *line, int *i, t_token_type *type)
 
 	if (NULL == line || '\0' == line[*i])
 		return (1);
-	word = NULL;
 	word_counter = 0;
 	while (line[*i] != '\0' && ft_strchr("\t <>|",line[*i]) == NULL)
 	{
