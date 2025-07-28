@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 19:46:54 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/28 20:43:35 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/28 23:58:43 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,6 @@ extern volatile t_global g_state;
 int		main(int argc, char **argv, char **envp);
 void	init_shell(t_shell *shell, char **envp);
 int		shell_loop(t_shell *shell);
-
-// === LIST TOOLS ===
 
 // === ENV AND LIST TOOLS ===
 t_list	*env_lst_init(char **env);

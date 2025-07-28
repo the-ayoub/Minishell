@@ -86,11 +86,11 @@ int	shell_loop(t_shell *shell)
 	char	*line;
 	int		std_backup[2];
 
-	if (init_std_fd(&std_backup) == 1)
-		exit(1);
 	setup_signal_handlers();
 	while (1)
 	{
+		if (init_std_fd(&std_backup) == 1)
+			exit(1);
 		g_state.in_input = 1;
 		if (0 != readline_wrapper(&line, shell))
 			break ;
@@ -107,7 +107,5 @@ int	shell_loop(t_shell *shell)
 		reset_cmd_line(&line, shell);
 		reset_std_fds(std_backup, shell); //Restaurar FDs estándar después de cada comando
 	}
-	close(std_backup[0]);
-	close(std_backup[1]);
 	return (0);
 }

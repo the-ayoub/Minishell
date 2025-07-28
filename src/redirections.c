@@ -6,11 +6,12 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:43:17 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/28 21:47:10 by aybelhaj         ###   ########.fr       */
+/*   Updated: 2025/07/29 00:30:47 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
+#include <unistd.h>
 
 int	redirect_heredoc(t_shell *shell, t_redir *redir)
 {
@@ -79,15 +80,9 @@ int	setup_redirections(t_shell *shell, t_cmd *cmd)
 		if (fd == -1)
 			return (ERROR);
 		if (current->type == REDIR_IN || current->type == REDIR_HEREDOC)
-		{
-			if(wrapper_dup2(fd, STDIN_FILENO,shell) == FALSE)
-				exit(shell->last_status);
-		}
+			dup2(fd, STDIN_FILENO);
 		else
-		{
-			if(wrapper_dup2(fd, STDOUT_FILENO,shell) == FALSE)
-				exit(shell->last_status);
-		}
+			dup2(fd, STDOUT_FILENO);
 		close(fd);
 		current = current->next;
 	}
@@ -96,11 +91,15 @@ int	setup_redirections(t_shell *shell, t_cmd *cmd)
 
 int	reset_std_fds(int backup[2], t_shell *shell)
 {
-	if(wrapper_dup2(backup[0], STDIN_FILENO, shell) == FALSE)
-		exit(shell->last_status);
-	if(wrapper_dup2(backup[1], STDOUT_FILENO, shell) == FALSE)
-		exit(shell->last_status);
-	close(backup[0]);
-	close(backup[1]);
+	if (backup[0] >= 0)
+		if (wrapper_dup2(backup[0], STDIN_FILENO, shell) == FALSE)
+			shell->last_status = errno;
+	if (backup[1] >= 0)
+		if (wrapper_dup2(backup[1], STDOUT_FILENO, shell) == FALSE)
+			shell->last_status = errno;
+	if (backup[0] >= 0)
+		close(backup[0]);
+	if (backup[1] >= 0)
+		close(backup[1]);
 	return (0);
 }

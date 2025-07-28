@@ -6,13 +6,13 @@
 #    By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/05 18:42:02 by nimatura          #+#    #+#              #
-#    Updated: 2025/07/28 21:38:02 by aybelhaj         ###   ########.fr        #
+#    Updated: 2025/07/29 00:26:52 by nimatura         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 CC = cc
-CFLAGS = -g -Wall -Wextra -Werror #-fsanitize=address
+CFLAGS = -g -Wall -Wextra -Werror -fsanitize=address
 LDFLAGS = -lreadline -lhistory
 
 DPS := $(SRC_FILE:.c=.d)
@@ -64,7 +64,7 @@ clean:
 	@if [ -d "$(LIBFT_PATH)" ]; then \
 		make clean -C $(LIBFT_PATH) --silent; \
 	fi
-	@rm -rf $(OBJDIR)
+	@rm -rf $(OBJ_DIR)
 
 fclean: clean
 	@printf "%b" "$(BLUE)Full cleaning...$(RESET)\n"
