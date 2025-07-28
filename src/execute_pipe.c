@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 22:38:09 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/21 23:42:43 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/28 18:29:20 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ static void	update_fd(t_pipe *data, t_cmd **cmd)
 	*cmd = (*cmd)->next;
 }
 
-// TODO: SALIDA DE PROGRAMA SI pipe == -1?
 void	execute_pipe(t_shell *shell, t_cmd *cmd)
 {
 	t_cmd	*cmd_iter;
