@@ -6,11 +6,12 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:39:32 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/28 17:07:41 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/28 19:25:20 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
+#include <unistd.h>
 
 // BUG: get_cmd_path error handling for wrong case
 void	exec_external(t_shell *shell, t_cmd *cmd)
@@ -63,7 +64,10 @@ pid_t	execute_process(t_shell *shell, t_cmd *cmd)
 
 static int	exe_builtin_parent(int *b_stdin, int *b_stdout, t_shell *shell)
 {
-	*b_stdin = dup(STDIN_FILENO);
+	if (wrapper_dup(b_stdin, STDIN_FILENO, shell) == FALSE)
+		exit(shell->last_status);
+	if (wrapper_dup(b_stdin, STDOUT_FILENO, shell) == FALSE)
+		exit(shell->last_status);
 	*b_stdout = dup(STDOUT_FILENO);
 	if (setup_redirections(shell, shell->cmd) != SUCCESS)
 		shell->last_status = 1;

@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 21:06:41 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/28 17:52:42 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/28 19:38:25 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static int	is_var_name_ok(char c)
 		return (TRUE);
 	if (c == ' ' || c == '\t' || c == '\0' || c == '$')
 		return (FALSE);
-	if (c == '\'' || c == '"')
+	if (c == '\'' || c == '"' || c == '/')
 		return (FALSE);
 	return (TRUE);
 }
@@ -72,25 +72,6 @@ int	is_valid_env_key(char *str)
 		return (3);
 	return (TRUE);
 }
-/*
-int	is_valid_env_key(char *str)
-{
-	int	i;
-
-	if (!str || str[0] == '\0')
-		return (FALSE);
-	if (!ft_isalpha(str[0]) && str[0] != '_')// El primer carácter debe ser letra o '_'
-		return (FALSE);
-
-	i = 1;
-	while (str[i] && str[i] != '=')// El resto puede ser alfanumérico o '_', hasta encontrar '=' o fin
-	{
-		if (!ft_isalnum(str[i]) && str[i] != '_')
-			return (FALSE);
-		i++;
-	}
-	return (TRUE);
-}*/
 
 char	*get_var_name(char *str)
 {

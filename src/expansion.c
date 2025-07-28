@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:39:44 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/28 17:52:14 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/28 18:39:09 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ static int	is_expandable(t_token tkn, t_expand *dt, t_shell *shl)
 		match = ft_strchr(iter, '$'); //hay cash
 		if (match == NULL)
 			return (1);
-		var_name = get_var_name(match); // nombre validoexpansexpans
+		var_name = get_var_name(match);
 		aux_upd_data(dt, match, var_name, NULL);
 		if (var_name != NULL && aux_upd_node(dt, &node, shl))
 			break ;
