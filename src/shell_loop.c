@@ -105,7 +105,7 @@ int	shell_loop(t_shell *shell)
 			}
 		}
 		reset_cmd_line(&line, shell);
-		reset_std_fds(std_backup); //Restaurar FDs estándar después de cada comando
+		reset_std_fds(std_backup, shell); //Restaurar FDs estándar después de cada comando
 	}
 	close(std_backup[0]);
 	close(std_backup[1]);

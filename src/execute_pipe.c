@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 22:38:09 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/28 18:29:20 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/28 19:29:58 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,14 @@ static void	fork_wrapper(t_shell *shell, t_pipe *data, t_cmd *cmd)
 		if (data->prev_read_end != -1)
 		{
 			if (wrapper_dup2(data->prev_read_end, STDIN_FILENO, shell) == 0)
-				exit(shell->last_status); // WARNING: GESTIONAR SALIDA!
+				exit(shell->last_status);
 			close(data->prev_read_end);
 		}
 		if (cmd->next)
 		{
 			close(data->pipe_fd[0]);
 			if (wrapper_dup2(data->pipe_fd[1], STDOUT_FILENO, shell) == 0)
-				exit(shell->last_status); // WARNING: GESTIONAR SALIDA!
+				exit(shell->last_status);
 			close(data->pipe_fd[1]);
 		}
 		fork_helper(shell, cmd);
@@ -101,7 +101,7 @@ void	execute_pipe(t_shell *shell, t_cmd *cmd)
 		close(data.prev_read_end);
 	if (data.last_pid != -1)
 		wait_for_children(shell, data.last_pid);
-	reset_std_fds(&*data.b_std);
+	reset_std_fds(&*data.b_std, shell);
 	close(data.b_std[0]);
 	close(data.b_std[1]);
 }

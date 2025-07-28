@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 19:46:54 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/23 23:50:49 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/28 19:29:44 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ void	execute_pipe(t_shell *shell, t_cmd *cmd);
 int		is_builtin(char *cmd);
 int		exec_builtin(t_shell *shell, t_cmd *cmd);
 int		setup_redirections(t_shell *shell, t_cmd *cmd);
-int		reset_std_fds(int backup[2]);
+int		reset_std_fds(int backup[2], t_shell *shell);
 pid_t	execute_process(t_shell *shell, t_cmd *cmd);
 void	close_pipe_ends(int pipe_fd[2], int keep_read_end);
 void	wait_for_children(t_shell *shell, pid_t last_pid);
