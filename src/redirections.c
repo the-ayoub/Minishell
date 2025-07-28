@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:43:17 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/28 19:28:42 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/28 21:47:10 by aybelhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,15 @@ int	setup_redirections(t_shell *shell, t_cmd *cmd)
 		if (fd == -1)
 			return (ERROR);
 		if (current->type == REDIR_IN || current->type == REDIR_HEREDOC)
-			dup2(fd, STDIN_FILENO);
+		{
+			if(wrapper_dup2(fd, STDIN_FILENO,shell) == FALSE)
+				exit(shell->last_status);
+		}
 		else
-			dup2(fd, STDOUT_FILENO);
+		{
+			if(wrapper_dup2(fd, STDOUT_FILENO,shell) == FALSE)
+				exit(shell->last_status);
+		}
 		close(fd);
 		current = current->next;
 	}
@@ -90,8 +96,10 @@ int	setup_redirections(t_shell *shell, t_cmd *cmd)
 
 int	reset_std_fds(int backup[2], t_shell *shell)
 {
-	wrapper_dup2(backup[0], STDIN_FILENO, shell);
-	dup2(backup[1], STDOUT_FILENO);
+	if(wrapper_dup2(backup[0], STDIN_FILENO, shell) == FALSE)
+		exit(shell->last_status);
+	if(wrapper_dup2(backup[1], STDOUT_FILENO, shell) == FALSE)
+		exit(shell->last_status);
 	close(backup[0]);
 	close(backup[1]);
 	return (0);

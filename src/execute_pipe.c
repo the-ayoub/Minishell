@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_pipe.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 22:38:09 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/28 19:29:58 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/28 21:19:46 by aybelhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,14 @@ static void	fork_wrapper(t_shell *shell, t_pipe *data, t_cmd *cmd)
 		signal(SIGQUIT, SIG_DFL);
 		if (data->prev_read_end != -1)
 		{
-			if (wrapper_dup2(data->prev_read_end, STDIN_FILENO, shell) == 0)
+			if (wrapper_dup2(data->prev_read_end, STDIN_FILENO, shell) == FALSE)
 				exit(shell->last_status);
 			close(data->prev_read_end);
 		}
 		if (cmd->next)
 		{
 			close(data->pipe_fd[0]);
-			if (wrapper_dup2(data->pipe_fd[1], STDOUT_FILENO, shell) == 0)
+			if (wrapper_dup2(data->pipe_fd[1], STDOUT_FILENO, shell) == FALSE)
 				exit(shell->last_status);
 			close(data->pipe_fd[1]);
 		}
@@ -56,9 +56,9 @@ static void	set_pipe_data(t_pipe *data, t_shell *shell)
 {
 	data->pipe_fd[0] = -1;
 	data->pipe_fd[1] = -1;
-	if (wrapper_dup(&data->b_std[0], STDIN_FILENO, shell) == -1)
+	if (wrapper_dup(&data->b_std[0], STDIN_FILENO, shell) == FALSE)
 		exit(shell->last_status);
-	if (wrapper_dup(&data->b_std[1], STDOUT_FILENO, shell) == -1)
+	if (wrapper_dup(&data->b_std[1], STDOUT_FILENO, shell) == FALSE)
 		exit(shell->last_status);
 	data->last_pid = - 1;
 	data->prev_read_end = - 1;
