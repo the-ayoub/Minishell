@@ -6,11 +6,17 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:38:32 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/28 20:55:21 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/28 21:02:35 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
+
+static int	gtfo_env_crash(t_shell *shell)
+{
+	shell->last_status = 2;
+	exit(shell->last_status);
+}
 
 int	generate_and_fill_arr(char ***arr, int i, t_list *lst)
 {
@@ -77,14 +83,14 @@ void set_env_var(t_shell *shell, const char *name, const char *value)
 	char	*var;
 
 	var = NULL;
-	if (check_var_and_del(&shell->raw_env, (char *)name) == TRUE)
-		exit(2);
+	if (check_var_and_del(&shell->raw_env, (char *)name) == 1)
+		gtfo_env_crash(shell);
 	if (wrapper_strjoin(&var, (char *)name) == FALSE)
-		exit(2);
+		gtfo_env_crash(shell);
 	if (wrapper_strjoin(&var, "=") == FALSE)
-		exit(2);
+		gtfo_env_crash(shell);
 	if (wrapper_strjoin(&var, (char *)value) == FALSE)
-		exit(2);
+		gtfo_env_crash(shell);
 	shell->last_status = update_env(shell, var);
 	free(var);
 }
