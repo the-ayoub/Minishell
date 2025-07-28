@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 19:46:54 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/28 19:29:44 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/28 20:43:35 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,6 @@ t_list	*env_lst_init(char **env);
 char	**env_compiler(t_list *head);
 int		generate_and_fill_arr(char ***arr, int i, t_list *lst);
 void	set_env_var(t_shell *shell, const char *name, const char *value);
-int		add_env_var(t_shell *shell, char *var);
-int		remove_env_var(t_shell *shell, char *var);
 
 //	|||	=== ENV UTILS ===
 t_list	*locate_env_var(t_list *node, char *var);

@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:38:32 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/22 23:20:15 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/28 20:55:21 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,35 +74,17 @@ char	*get_env_value(t_shell *shell, const char *name)
 // y despues compilar, no al revés
 void set_env_var(t_shell *shell, const char *name, const char *value)
 {
-	char *var;
-	int i = 0;
-	int len = ft_strlen(name);
+	char	*var;
 
-	// Crear la variable en formato "nombre=valor"
-	var = ft_strjoin(name, "=");
-	char *temp = var;
-	var = ft_strjoin(var, value);
-	free(temp);
-
-	// Buscar si la variable ya existe
-	while (shell->env[i])
-	{
-		if (ft_strncmp(shell->env[i], name, len) == 0 && shell->env[i][len] == '=')
-		{
-			free(shell->env[i]);
-			shell->env[i] = var;
-			return;
-		}
-		i++;
-	}
-
-	// Agregar nueva variable al final
-	char **new_env = malloc((i + 2) * sizeof(char *));
-	for (int j = 0; j < i; j++) {
-		new_env[j] = shell->env[j];
-	}
-	new_env[i] = var;
-	new_env[i + 1] = NULL;
-	free(shell->env);
-	shell->env = new_env;
+	var = NULL;
+	if (check_var_and_del(&shell->raw_env, (char *)name) == TRUE)
+		exit(2);
+	if (wrapper_strjoin(&var, (char *)name) == FALSE)
+		exit(2);
+	if (wrapper_strjoin(&var, "=") == FALSE)
+		exit(2);
+	if (wrapper_strjoin(&var, (char *)value) == FALSE)
+		exit(2);
+	shell->last_status = update_env(shell, var);
+	free(var);
 }

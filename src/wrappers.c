@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 23:03:22 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/28 19:27:15 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/28 20:24:15 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	wrapper_strjoin(char **s1, char *s2)
 	if (s1 == NULL || *s1 == NULL)
 		if (s2 != NULL)
 			*s1 = ft_strdup(s2);
-	return (FALSE);
+	return (TRUE);
 }
 
 int	wrapper_dup2(int oldfd, int newfd, t_shell *shell)
