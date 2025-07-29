@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 19:46:54 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/29 19:16:16 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/29 19:22:46 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,6 @@ void	wrapper_free_lst(t_list *head);
 // === WRAPPERS 2 ===
 void	free_wrapper(void **ptr);
 int		waitpid_wrapper(pid_t *ptr, int *status);
-int		wrapper_getcwd(char **buf, size_t size);
 
 // === FREE UTILS ===
 void	free_cmd_list(t_cmd *head);
