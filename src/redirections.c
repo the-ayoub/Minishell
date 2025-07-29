@@ -6,25 +6,16 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:43:17 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/29 19:50:33 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/29 22:49:57 by aybelhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-int	redirect_heredoc(t_shell *shell, t_redir *redir)
+int	handle_heredoc_loop(int fd, const char *delimiter)
 {
-	int		fd[2];
 	char	*line;
 
-	(void)shell;
-	if (!redir || !redir->file)
-	{
-		ft_putstr_fd("minishell: heredoc: missing delimiter\n", STDERR_FILENO);
-		return (-1);
-	}
-	if (pipe(fd) == -1)
-		return (-1);
 	while (1)
 	{
 		line = readline("> ");
@@ -34,14 +25,31 @@ int	redirect_heredoc(t_shell *shell, t_redir *redir)
 				STDERR_FILENO);
 			break ;
 		}
-		if (ft_strcmp(line, redir->file) == 0)
+		if (ft_strcmp(line, delimiter) == 0)
+		{
+			free(line);
 			break ;
-		write(fd[1], line, ft_strlen(line));
-		write(fd[1], "\n", 1);
+		}
+		write(fd, line, ft_strlen(line));
+		write(fd, "\n", 1);
 		free(line);
 	}
-	if (line)
-		free(line);
+	return (0);
+}
+
+int	redirect_heredoc(t_shell *shell, t_redir *redir)
+{
+	int	fd[2];
+
+	(void)shell;
+	if (!redir || !redir->file)
+	{
+		ft_putstr_fd("minishell: heredoc: missing delimiter\n", STDERR_FILENO);
+		return (-1);
+	}
+	if (pipe(fd) == -1)
+		return (-1);
+	handle_heredoc_loop(fd[1], redir->file);
 	close(fd[1]);
 	return (fd[0]);
 }
