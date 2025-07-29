@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 23:05:39 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/29 20:03:14 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/29 20:05:20 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,29 +58,29 @@ typedef enum e_redir_type
 typedef struct s_redir
 {
 	t_redir_type	type;
-	char		    *file;  // nombre del archivo o delimitador
+	char			*file;
 	struct s_redir	*next;
 }	t_redir;
 
 // === ESTRUCTURA DE UN COMANDO ===
 typedef struct s_cmd
 {
-	char			**argv;     // argumentos del comando
-	t_redir			*redirs;    // lista de redirecciones
-	struct s_cmd	*next;  // siguiente comando (en un pipe)
+	char			**argv;
+	t_redir			*redirs;
+	struct s_cmd	*next;
 }	t_cmd;
 
 // === ESTRUCTURA DEL SHELL ===
 typedef struct s_shell
 {
-	struct termios	orig_termios;   // configuración original del terminal
+	struct termios	orig_termios;
 	t_list			*raw_env;
-	char			**env;              // copia del entorno
-	int				last_status;        // estado de salida del último comando
-	t_token			*tokens;            // tokens de la línea de comando actual
-	t_cmd			*cmd;               // comando actual en ejecución
-	int				interactive;        // 1 si el shell es interactivo
-	int			    in_input_phase;  // Nuevo: para manejo de señales
+	char			**env;
+	int				last_status;
+	t_token			*tokens;
+	t_cmd			*cmd;
+	int				interactive;
+	int			    in_input_phase;
 }	t_shell;
 
 typedef struct	s_pipe
