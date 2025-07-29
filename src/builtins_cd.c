@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 18:52:36 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/29 19:21:59 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/29 19:22:24 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,3 @@ int	builtin_cd(t_shell *shell, char **argv)
 	free(oldpwd);
 	return (0);
 }
-
