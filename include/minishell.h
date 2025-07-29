@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 19:46:54 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/29 19:31:47 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/29 19:46:30 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,14 @@
 # define ERROR 1
 # define PATH_MAX 4096  // Tamaño razonable para la mayoría de sistemas
 
-
 // === VARIABLES GLOBALES ===
 typedef struct s_global
 {
-    volatile sig_atomic_t	received;
-    int						in_input;
+	volatile sig_atomic_t	received;
+	int						in_input;
 }							t_global;
 
-extern volatile t_global g_state;
+extern volatile t_global	g_state;
 
 // === FUNCIONES DE SHELL ===
 int		main(int argc, char **argv, char **envp);
@@ -93,8 +92,7 @@ int		is_token_word(t_token_type type);
 // >>> RETOKENIZE
 int		retokenize(t_token **head);
 // >>>	=== COLLECT_WORD ===
-int	collect_words(t_token **head, char *line, int *i, t_token_type *type);
-// END LEXER Y PARSER
+int		collect_words(t_token **head, char *line, int *i, t_token_type *type);
 
 // === EXPANSIÓN ===
 int		expand_variables(t_shell *shell, t_token *head);
