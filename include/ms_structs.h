@@ -6,11 +6,12 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 23:05:39 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/29 20:05:20 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/29 20:06:37 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MS_STRUCTS_H
+# define MS_STRUCTS_H
 # include "../libft/inc/libft.h"
 // What the fuck is this
 # include <termios.h>
@@ -80,10 +81,10 @@ typedef struct s_shell
 	t_token			*tokens;
 	t_cmd			*cmd;
 	int				interactive;
-	int			    in_input_phase;
+	int				in_input_phase;
 }	t_shell;
 
-typedef struct	s_pipe
+typedef struct s_pipe
 {
 	int				pipe_fd[2];
 	int				b_std[2];
