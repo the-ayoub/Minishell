@@ -6,7 +6,7 @@
 /*   By: ohnonon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 17:50:39 by ohnonon           #+#    #+#             */
-/*   Updated: 2025/07/18 20:25:53 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/29 19:55:43 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static size_t	aux_end_str(const char *s, const char *set)
 	i = 0;
 	while (s && s[i])
 	{
-		if(ft_strchr(set, s[i]))
+		if (ft_strchr(set, s[i]))
 			break ;
 		i++;
 	}
