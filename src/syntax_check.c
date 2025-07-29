@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 20:53:43 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/29 18:51:06 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/29 19:42:17 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	syntax_check(t_token *tokens)
 		if (current->type >= TOKEN_REDIR_IN && current->type <= TOKEN_HEREDOC)
 		{
 			type = current->next->type;
-			if (!current->next && type != TOKEN_WORD && type != TOKEN_WORD_SQ\
+			if (!current->next && type != TOKEN_WORD && type != TOKEN_WORD_SQ \
 			&& type != TOKEN_WORD_DQ)
 				return (1);
 			current = current->next;

@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 19:40:08 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/29 19:41:05 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/29 19:43:07 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static void	reset_cmd_line(char **line, t_shell *shell)
 {
 	free(*line);
 	free_tokens(shell->tokens);
-	free_cmd_list(shell->cmd);  // Libera TODA la lista de comandos
+	free_cmd_list(shell->cmd);
 	shell->tokens = NULL;
 	shell->cmd = NULL;
 }
