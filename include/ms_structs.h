@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 23:05:39 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/29 19:58:36 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/29 20:03:14 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,29 +18,29 @@
 // Estados para el análisis de comillas
 typedef enum e_parse_state
 {
-    STATE_GENERAL,
-    STATE_IN_SQUOTE,
-    STATE_IN_DQUOTE
-} t_parse_state;
+	STATE_GENERAL,
+	STATE_IN_SQUOTE,
+	STATE_IN_DQUOTE
+}	t_parse_state;
 
 // === TIPOS DE TOKENS ===
 typedef enum e_token_type
 {
-	TOKEN_WORD,         // palabra (comando o argumento)
-	TOKEN_WORD_SQ,         // palabra (comando o argumento)
-	TOKEN_WORD_DQ,         // palabra (comando o argumento)
-	TOKEN_PIPE,         // |
-	TOKEN_REDIR_IN,     // <
-	TOKEN_REDIR_OUT,    // >
-	TOKEN_REDIR_APPEND, // >>
-	TOKEN_HEREDOC,      // <<
+	TOKEN_WORD,
+	TOKEN_WORD_SQ,
+	TOKEN_WORD_DQ,
+	TOKEN_PIPE,
+	TOKEN_REDIR_IN,
+	TOKEN_REDIR_OUT,
+	TOKEN_REDIR_APPEND,
+	TOKEN_HEREDOC,
 }	t_token_type;
 
 // === ESTRUCTURA DE UN TOKEN ===
 typedef struct s_token
 {
 	t_token_type	type;
-	char		    *value;
+	char			*value;
 	struct s_token	*next;
 	int				link;
 }	t_token;
@@ -48,10 +48,10 @@ typedef struct s_token
 // === TIPOS DE REDIRECCIÓN ===
 typedef enum e_redir_type
 {
-	REDIR_IN,       // <
-	REDIR_OUT,      // >
-	REDIR_APPEND,   // >>
-	REDIR_HEREDOC   // <<
+	REDIR_IN,
+	REDIR_OUT,
+	REDIR_APPEND,
+	REDIR_HEREDOC,
 }	t_redir_type;
 
 // === ESTRUCTURA DE REDIRECCIÓN ===
