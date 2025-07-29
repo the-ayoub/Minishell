@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 19:46:54 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/29 19:49:38 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/29 19:52:39 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,9 +168,5 @@ char	*get_env_value(t_shell *shell, const char *name);
 void	expand_arr_and_print(t_list *lst);
 void	print_arr(char **str);
 void	print_lst(t_list *ptr);
-
-// xxxx Deprecated xxxx
-char	**copy_env(char **envp);
-void	expand_exit_status(t_shell *shell, char **result);
 
 #endif
