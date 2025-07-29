@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 19:46:54 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/29 18:22:17 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/29 19:16:16 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,14 +124,13 @@ void	exec_external(t_shell *shell, t_cmd *cmd);
 int		builtin_echo(t_shell *shell, char **argv);
 int		builtin_export(t_shell *shell, char **argv);
 int		builtin_unset(t_shell *shell, char **argv);
-
-// === PENDING BUILTINS ===
 int		builtin_cd(t_shell *shell, char **argv);
 int		builtin_pwd(t_shell *shell, char **argv);
 int		builtin_env(t_shell *shell, char **argv);
 int		builtin_exit(t_shell *shell, char **argv);
+
+// === BUILTINS UTILS ===
 int		is_valid_identifier(char *str);
-int		is_valid_exit_arg(char *arg);
 
 // === WRAPPERS ===
 int		wrapper_strjoin(char **s1, char *s2);
@@ -143,6 +142,7 @@ void	wrapper_free_lst(t_list *head);
 // === WRAPPERS 2 ===
 void	free_wrapper(void **ptr);
 int		waitpid_wrapper(pid_t *ptr, int *status);
+int		wrapper_getcwd(char **buf, size_t size);
 
 // === FREE UTILS ===
 void	free_cmd_list(t_cmd *head);
