@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shell_loop.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 19:40:08 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/29 19:43:07 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/29 23:14:13 by aybelhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	init_std_fd(int (*arr)[2])
 static int	readline_wrapper(char **line, t_shell *shell)
 {
 	*line = readline(PROMPT);
-	g_state.in_input = 0;
+	g_in_input = 0;
 	if (NULL == *line)
 	{
 		ft_putstr_fd("exit\n", STDOUT_FILENO);
@@ -77,7 +77,7 @@ int	shell_loop(t_shell *shell)
 	{
 		if (init_std_fd(&std_backup) == 1)
 			exit(1);
-		g_state.in_input = 1;
+		g_in_input = 1;
 		if (0 != readline_wrapper(&line, shell))
 			break ;
 		if (*line)

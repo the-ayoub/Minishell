@@ -6,19 +6,19 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:43:45 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/29 19:24:18 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/29 23:27:42 by aybelhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-volatile t_global	g_state = {0, 0};
+volatile sig_atomic_t	g_in_input = 0;
 
 static void	sigint_handler(int sig)
 {
-	g_state.received = sig;
+	(void)sig;
 	write(1, "\n", 1);
-	if (g_state.in_input)
+	if (g_in_input)
 	{
 		rl_replace_line("", 0);
 		rl_on_new_line();

@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 19:46:54 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/29 22:48:46 by aybelhaj         ###   ########.fr       */
+/*   Updated: 2025/07/29 23:21:22 by aybelhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,7 @@
 # define PATH_MAX 4096 // Tamaño razonable para la mayoría de sistemas
 
 // === VARIABLES GLOBALES ===
-typedef struct s_global
-{
-	volatile sig_atomic_t	received;
-	int						in_input;
-}							t_global;
-
-extern volatile t_global	g_state;
+extern volatile sig_atomic_t g_in_input;
 
 // === FUNCIONES DE SHELL ===
 int							main(int argc, char **argv, char **envp);
