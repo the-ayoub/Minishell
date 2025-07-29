@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 20:56:20 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/24 03:16:37 by aybelhaj         ###   ########.fr       */
+/*   Updated: 2025/07/29 18:30:10 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,18 +51,6 @@ t_redir	*create_redirection(t_redir_type type, char *file)
 	return (new);
 }
 
-/*_cmd	*create_new_command(void)
-{
-	t_cmd	*new;
-
-	new = malloc(sizeof(t_cmd));
-	if (!new)
-		return (NULL);
-	new->argv = NULL;
-	new->redirs = NULL;
-	new->next = NULL;
-	return (new);
-}*/
 t_cmd	*create_new_command(void)
 {
 	t_cmd	*new;
@@ -70,7 +58,7 @@ t_cmd	*create_new_command(void)
 	new = malloc(sizeof(t_cmd));
 	if (!new)
 		return (NULL);
-	new->argv = malloc(sizeof(char *)); // argv vacío, solo con NULL
+	new->argv = malloc(sizeof(char *));
 	if (!new->argv)
 	{
 		free(new);
@@ -81,7 +69,6 @@ t_cmd	*create_new_command(void)
 	new->next = NULL;
 	return (new);
 }
-
 
 // returns 1 in success, 0 for err
 int	parse_pipe(t_token **current, t_cmd **cmd, t_cmd **ptr)
