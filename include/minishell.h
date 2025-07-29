@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 19:46:54 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/29 19:46:30 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/29 19:49:38 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ int		is_token_word(t_token_type type);
 int		retokenize(t_token **head);
 // >>>	=== COLLECT_WORD ===
 int		collect_words(t_token **head, char *line, int *i, t_token_type *type);
+// END LEXER Y PARSER
 
 // === EXPANSIÓN ===
 int		expand_variables(t_shell *shell, t_token *head);
@@ -114,9 +115,15 @@ void	wait_for_children(t_shell *shell, pid_t last_pid);
 int		builtin_in_pipe(char *cmd);
 void	close_pipe_ends(int pipe_fd[2], int keep_read_end);
 
+// === EXEC PIPES ===
 void	execute_pipe(t_shell *shell, t_cmd *cmd);
+
+// === BUILTIN UTILS ===
 int		is_builtin(char *cmd);
 int		exec_builtin(t_shell *shell, t_cmd *cmd);
+int		is_valid_identifier(char *str);
+
+// === REDIR ===
 int		setup_redirections(t_shell *shell, t_cmd *cmd);
 int		reset_std_fds(int backup[2], t_shell *shell);
 int		redirect_heredoc(t_shell *shell, t_redir *redir);
@@ -129,9 +136,6 @@ int		builtin_cd(t_shell *shell, char **argv);
 int		builtin_pwd(t_shell *shell, char **argv);
 int		builtin_env(t_shell *shell, char **argv);
 int		builtin_exit(t_shell *shell, char **argv);
-
-// === BUILTINS UTILS ===
-int		is_valid_identifier(char *str);
 
 // === WRAPPERS ===
 int		wrapper_strjoin(char **s1, char *s2);

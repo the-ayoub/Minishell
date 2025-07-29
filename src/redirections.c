@@ -6,12 +6,11 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:43:17 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/29 00:30:47 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/29 19:50:33 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
-#include <unistd.h>
 
 int	redirect_heredoc(t_shell *shell, t_redir *redir)
 {
