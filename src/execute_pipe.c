@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 22:38:09 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/28 19:29:58 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/29 19:39:02 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ static void	set_pipe_data(t_pipe *data, t_shell *shell)
 		exit(shell->last_status);
 	if (wrapper_dup(&data->b_std[1], STDOUT_FILENO, shell) == -1)
 		exit(shell->last_status);
-	data->last_pid = - 1;
-	data->prev_read_end = - 1;
+	data->last_pid = -1;
+	data->prev_read_end = -1;
 }
 
 static void	update_fd(t_pipe *data, t_cmd **cmd)
@@ -88,7 +88,7 @@ void	execute_pipe(t_shell *shell, t_cmd *cmd)
 	{
 		if (cmd_iter->next)
 		{
-			if (pipe(data.pipe_fd) == -1) // exit?
+			if (pipe(data.pipe_fd) == -1)
 			{
 				perror("minishell: pipe");
 				return ;

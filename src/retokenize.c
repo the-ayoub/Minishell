@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:16:35 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/25 20:47:45 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/29 19:39:41 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	retokenize(t_token **head)
 		if (next == NULL)
 			break ;
 		if (next->link != 1)
-			continue;
+			continue ;
 		if (FALSE == wrapper_strjoin(&iter->value, next->value))
 			return (free_tokens(*head), 1);
 		delete_token(head, next);
