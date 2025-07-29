@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 19:46:54 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/29 19:24:35 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/29 19:31:47 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,17 +107,21 @@ int		aux_upd_data(t_expand *dt, char *match, char *var_name, char *env_var);
 
 // === EXECUCIÓN ===
 int		execute_cmd(t_shell *shell, t_cmd *cmd);
+pid_t	execute_process(t_shell *shell, t_cmd *cmd);
+void	exec_external(t_shell *shell, t_cmd *cmd);
+
+// === EXECUCIÓN UTILS ===
+void	wrapper_single_command(t_shell *shell, t_cmd *cmd, int *pid);
+void	wait_for_children(t_shell *shell, pid_t last_pid);
+int		builtin_in_pipe(char *cmd);
+void	close_pipe_ends(int pipe_fd[2], int keep_read_end);
+
 void	execute_pipe(t_shell *shell, t_cmd *cmd);
 int		is_builtin(char *cmd);
 int		exec_builtin(t_shell *shell, t_cmd *cmd);
 int		setup_redirections(t_shell *shell, t_cmd *cmd);
 int		reset_std_fds(int backup[2], t_shell *shell);
-pid_t	execute_process(t_shell *shell, t_cmd *cmd);
-void	close_pipe_ends(int pipe_fd[2], int keep_read_end);
-void	wait_for_children(t_shell *shell, pid_t last_pid);
-int		builtin_in_pipe(char *cmd);
 int		redirect_heredoc(t_shell *shell, t_redir *redir);
-void	exec_external(t_shell *shell, t_cmd *cmd);
 
 // === COMPLETED BUILTINS ===
 int		builtin_echo(t_shell *shell, char **argv);

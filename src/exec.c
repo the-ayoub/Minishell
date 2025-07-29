@@ -6,14 +6,13 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:39:32 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/29 19:26:19 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/29 19:37:22 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 #include <unistd.h>
 
-// BUG: get_cmd_path error handling for wrong case
 void	exec_external(t_shell *shell, t_cmd *cmd)
 {
 	char	*path;
@@ -85,49 +84,27 @@ static int	exe_builtin_parent(int *b_stdin, int *b_stdout, t_shell *shell)
 	return (shell->last_status);
 }
 
-static void	wrapper_single_command(t_shell *shell, t_cmd *cmd, int *pid)
+static int	aux_guard(t_shell *shell, t_cmd *cmd)
 {
-	*pid = execute_process(shell, cmd);
-	if (*pid != -1)
-		wait_for_children(shell, *pid);
+	if (!cmd)
+		return (FALSE);
+	if (!cmd->argv || !cmd->argv[0])
+	{
+		if (cmd->redirs)
+			setup_redirections(shell, cmd);
+		return (FALSE);
+	}
+	return (TRUE);
 }
 
-/*int	execute_cmd(t_shell *shell, t_cmd *cmd)
-{
-	pid_t	pid;
-	int		b_stdin;
-	int		b_stdout;
-
-	if (NULL == cmd)
-		return (0);
-	if (cmd->argv[0] && !ft_strcmp(cmd->argv[0], "exit") && cmd->next != NULL)
-		return (\
-		ft_putstr_fd("minishell: exit: pipes not allowed\n", STDERR_FILENO), 1);
-	if (cmd->next || !is_builtin(cmd->argv[0]) || builtin_in_pipe(cmd->argv[0]))
-	{
-		if (cmd->next != NULL)
-			execute_pipe(shell, cmd);
-		else
-			wrapper_single_command(shell, cmd, &pid);
-	}
-	else
-		shell->last_status = exe_builtin_parent(&b_stdin, &b_stdout, shell);
-	return (shell->last_status);
-}*/
 int	execute_cmd(t_shell *shell, t_cmd *cmd)
 {
 	pid_t	pid;
 	int		b_stdin;
 	int		b_stdout;
 
-	if (!cmd)
+	if (aux_guard(shell, cmd) == FALSE)
 		return (0);
-	if (!cmd->argv || !cmd->argv[0])
-	{
-		if (cmd->redirs)
-			setup_redirections(shell, cmd);
-		return (0);
-	}
 	if (!ft_strcmp(cmd->argv[0], "exit") && cmd->next != NULL)
 	{
 		ft_putstr_fd("minishell: exit: pipes not allowed\n", STDERR_FILENO);
@@ -144,5 +121,3 @@ int	execute_cmd(t_shell *shell, t_cmd *cmd)
 		shell->last_status = exe_builtin_parent(&b_stdin, &b_stdout, shell);
 	return (shell->last_status);
 }
-
-

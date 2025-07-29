@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:39:21 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/29 18:21:45 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/29 19:30:08 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,3 +53,11 @@ int	builtin_in_pipe(char *cmd)
 	}
 	return (FALSE);
 }
+
+void	wrapper_single_command(t_shell *shell, t_cmd *cmd, int *pid)
+{
+	*pid = execute_process(shell, cmd);
+	if (*pid != -1)
+		wait_for_children(shell, *pid);
+}
+
