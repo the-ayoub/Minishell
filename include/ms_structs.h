@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 23:05:39 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/24 00:04:16 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/29 19:58:36 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,29 +85,28 @@ typedef struct s_shell
 
 typedef struct	s_pipe
 {
-	int		pipe_fd[2];
-	int		b_std[2];
-	pid_t	last_pid;
-	int		prev_read_end;
-	pid_t	pid;
-}			t_pipe;
+	int				pipe_fd[2];
+	int				b_std[2];
+	pid_t			last_pid;
+	int				prev_read_end;
+	pid_t			pid;
+}					t_pipe;
 
 typedef struct s_expans
 {
-	char	*to_expand;
-	char	*matching_env;
-	char	*token_str;
-	char	*var_name;
-	int		false_env;
-}			t_expand;
+	char			*to_expand;
+	char			*matching_env;
+	char			*token_str;
+	char			*var_name;
+	int				false_env;
+}					t_expand;
 
 typedef struct s_paths
 {
-	char	*env;
-	char	*cpy;
-	char	*full;
-	char	**paths;
-	int		i;
+	char			*env;
+	char			*cpy;
+	char			*full;
+	char			**paths;
+	int				i;
 }		t_paths;
-
 #endif
