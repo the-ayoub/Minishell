@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 19:46:54 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/29 19:22:46 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/29 19:24:35 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ char	**env_compiler(t_list *head);
 int		generate_and_fill_arr(char ***arr, int i, t_list *lst);
 void	set_env_var(t_shell *shell, const char *name, const char *value);
 
-//	|||	=== ENV UTILS ===
+//	=== ENV UTILS ===
 t_list	*locate_env_var(t_list *node, char *var);
 char	*get_var_name(char *str);
 int		update_env(t_shell *shell, char *arg);
@@ -69,7 +69,6 @@ int		check_var_and_del(t_list **head, char *var);
 
 // === SIGNAL HANDLING ===
 void	setup_signal_handlers(void);
-void	sigint_handler(int sig);
 
 // LEXER Y PARSER
 

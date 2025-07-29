@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:39:32 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/28 19:25:20 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/29 19:26:19 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,18 +122,18 @@ int	execute_cmd(t_shell *shell, t_cmd *cmd)
 
 	if (!cmd)
 		return (0);
-	if (!cmd->argv || !cmd->argv[0])	//Protección: comando vacío
+	if (!cmd->argv || !cmd->argv[0])
 	{
-		if (cmd->redirs) // ejecutar heredoc aunque no haya comando
+		if (cmd->redirs)
 			setup_redirections(shell, cmd);
 		return (0);
 	}
-	if (!ft_strcmp(cmd->argv[0], "exit") && cmd->next != NULL)// Protección: "exit" en una tubería
+	if (!ft_strcmp(cmd->argv[0], "exit") && cmd->next != NULL)
 	{
 		ft_putstr_fd("minishell: exit: pipes not allowed\n", STDERR_FILENO);
 		return (1);
 	}
-	if (cmd->next || !is_builtin(cmd->argv[0]) || builtin_in_pipe(cmd->argv[0]))// Ejecutar con fork si es parte de pipe o no builtin o builtin en pipe
+	if (cmd->next || !is_builtin(cmd->argv[0]) || builtin_in_pipe(cmd->argv[0]))
 	{
 		if (cmd->next)
 			execute_pipe(shell, cmd);

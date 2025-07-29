@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:43:45 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/09 14:13:20 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/29 19:24:18 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 volatile t_global	g_state = {0, 0};
 
-// WARNING: Que wea hermano con el sig
-void	sigint_handler(int sig)
+static void	sigint_handler(int sig)
 {
 	g_state.received = sig;
 	write(1, "\n", 1);
@@ -31,7 +30,7 @@ void	setup_signal_handlers(void)
 {
 	struct sigaction	sa_int;
 
-	sa_int.sa_handler = sigint_handler; //sigint_handler returns void
+	sa_int.sa_handler = sigint_handler;
 	sa_int.sa_flags = SA_RESTART;
 	sigemptyset(&sa_int.sa_mask);
 	if (sigaction(SIGINT, &sa_int, NULL) == -1)
