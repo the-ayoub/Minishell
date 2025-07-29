@@ -6,13 +6,13 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 15:29:33 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/28 18:01:15 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/29 18:17:22 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-static char	*collect_quote_word(char *str, char delim, int *i, t_token_type *type)
+static char	*collect_quote_word(char *str, char delim, int *i, t_token_type *t)
 {
 	char	*word;
 	char	*end;
@@ -24,13 +24,13 @@ static char	*collect_quote_word(char *str, char delim, int *i, t_token_type *typ
 	if (NULL != word)
 		*i += ft_strlen(word) + 2;
 	if (delim == '\'')
-		*type = TOKEN_WORD_SQ;
+		*t = TOKEN_WORD_SQ;
 	else
-		*type = TOKEN_WORD_DQ;
+		*t = TOKEN_WORD_DQ;
 	return (word);
 }
 
-static char *collect_normal_word(char *line, int *i, t_token_type *type)
+static char	*collect_normal_word(char *line, int *i, t_token_type *type)
 {
 	char	*word;
 	size_t	word_len;
@@ -78,13 +78,13 @@ int	collect_words(t_token **head, char *line, int *i, t_token_type *type)
 	if (NULL == line || '\0' == line[*i])
 		return (1);
 	word_counter = 0;
-	while (line[*i] != '\0' && ft_strchr("\t <>|",line[*i]) == NULL)
+	while (line[*i] != '\0' && ft_strchr("\t <>|", line[*i]) == NULL)
 	{
 		if (line[*i] == '$' && line[*i + 1] == '"')
 			word = handle_locale_aware_strings(line, i, type);
 		else if ('\'' == line[*i] || '"' == line[*i])
 			word = collect_quote_word(line, line[*i], i, type);
-		else if (line[*i] != '\0' && ft_strchr("\t <>|",line[*i]) == NULL)
+		else if (line[*i] != '\0' && ft_strchr("\t <>|", line[*i]) == NULL)
 			word = collect_normal_word(line, i, type);
 		else
 			return (0);

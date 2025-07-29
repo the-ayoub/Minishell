@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:39:44 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/28 18:39:09 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/29 18:26:33 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,16 +63,15 @@ static int	aux_guard_interr(t_expand *dt, t_shell *sh)
 
 static int	aux_upd_node(t_expand *dt, t_list **node, t_shell *shell)
 {
-
 	if (aux_guard_interr(dt, shell) == 1)
 		return (1);
 	*node = locate_env_var(shell->raw_env, dt->var_name);
 	if (*node == NULL && ft_strcmp(dt->var_name, "=") == 0)
-		dt->false_env = aux_upd_data(dt, dt->to_expand, dt->var_name,\
-							   ft_strdup("="));
+		dt->false_env = aux_upd_data(dt, dt->to_expand, dt->var_name, \
+								ft_strdup("="));
 	else if (*node == NULL)
-		dt->false_env = aux_upd_data(dt, dt->to_expand, dt->var_name,\
-							   ft_strdup("="));
+		dt->false_env = aux_upd_data(dt, dt->to_expand, dt->var_name, \
+								ft_strdup("="));
 	else
 		aux_upd_data(dt, dt->to_expand, dt->var_name, (*node)->content);
 	return (1);
@@ -93,7 +92,7 @@ static int	is_expandable(t_token tkn, t_expand *dt, t_shell *shl)
 	match = NULL;
 	while (match == NULL)
 	{
-		match = ft_strchr(iter, '$'); //hay cash
+		match = ft_strchr(iter, '$');
 		if (match == NULL)
 			return (1);
 		var_name = get_var_name(match);
@@ -112,7 +111,7 @@ int	expand_variables(t_shell *shell, t_token *head)
 	t_expand	dt;
 	t_token		*tkn;
 	char		*tmp;
-	
+
 	init_expand(&dt);
 	tkn = head;
 	while (NULL != tkn)

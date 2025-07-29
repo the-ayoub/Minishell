@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   excution_utils.c                                   :+:      :+:    :+:   */
+/*   exec_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:39:21 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/07 20:09:19 by aybelhaj         ###   ########.fr       */
+/*   Updated: 2025/07/29 18:21:45 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	wait_for_children(t_shell *shell, pid_t last_pid)
 
 	if (last_pid == -1)
 		return ;
-	while ((wpid = waitpid(-1, &status, 0)) > 0)
+	while (waitpid_wrapper(&wpid, &status) > 0)
 	{
 		if (wpid == last_pid)
 		{

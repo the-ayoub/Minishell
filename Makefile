@@ -6,7 +6,7 @@
 #    By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/05 18:42:02 by nimatura          #+#    #+#              #
-#    Updated: 2025/07/29 00:26:52 by nimatura         ###   ########.fr        #
+#    Updated: 2025/07/29 18:27:09 by nimatura         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,10 +21,9 @@ SRC_FILE =	tokenize.c builtins.c env_main.c error_exit.c error_msg.c \
 			exec_utils.c exec.c expansion.c free_array.c free_utils.c \
 			init_shell.c main.c pars.c redirections.c retokenize.c \
 			shell_loop.c signal_handling.c builtin_utils.c path_utils.c \
-			lst_tools.c debugging_tools.c env_utils.c builtins_unset.c \
-			builtins_export.c collect_word.c expand_env_var.c syntax_check.c \
-			pars_aux.c builtins_echo.c execute_pipe.c wrappers.c token_tools.c \
-			expand_utils.c wrappers2.c
+			expand_utils.c debugging_tools.c env_utils.c builtins_unset.c \
+			builtins_export.c collect_word.c syntax_check.c wrappers2.c \
+			pars_aux.c builtins_echo.c execute_pipe.c wrappers.c token_tools.c
 
 SRC = $(addprefix $(SRC_DIR), $(SRC_FILE))
 
