@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 19:46:54 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/30 14:18:47 by ohnonon          ###   ########.fr       */
+/*   Updated: 2025/07/30 14:20:14 by ohnonon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,6 @@ int							check_var_and_del(t_list **head, char *var);
 // === SIGNAL HANDLING ===
 void						setup_signal_handlers(void);
 
-// LEXER Y PARSER
-
 // === SYNTAX CHECK ===
 int							syntax_check(t_token *tokens);
 
@@ -90,10 +88,10 @@ void						delete_token(t_token **head, t_token *ptr);
 int							is_token_word(t_token_type type);
 // >>> RETOKENIZE
 int							retokenize(t_token **head);
-// >>>	=== COLLECT_WORD ===
+
+// >>> COLLECT_WORD ===
 int							collect_words(t_token **head, char *line, int *i,
 								t_token_type *type);
-// END LEXER Y PARSER
 
 // === EXPANSIÓN ===
 int							expand_variables(t_shell *shell, t_token *head);
