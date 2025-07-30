@@ -1,7 +1,7 @@
 
-# ESTADO
-- EXPORT NO FUNCIONA
-- ECHO NO FUNCIONA
+# ESTADO BUGS
+- heredoc segfault
+- export variable que ya existia:, agrega una nueva en vez de editar
 
 # RECORDATORIO PARA NICO
 # RECORDATORIO PARA AYOUB
