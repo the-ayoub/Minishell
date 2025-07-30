@@ -6,7 +6,7 @@
 #    By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/05 18:42:02 by nimatura          #+#    #+#              #
-#    Updated: 2025/07/30 19:09:43 by nimatura         ###   ########.fr        #
+#    Updated: 2025/07/30 19:16:09 by nimatura         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,7 +61,7 @@ $(LIBFT): $(LIBFT_CHECKSUM)
 
 $(LIBFT_CHECKSUM): $(LFT_FILES)
 	@printf "%-42b%b" "$(PURPLE)Compiling libft..." "$(BLUE)$(LIBFT)$(RESET)\n"
-	make -C $(LIBFT_PATH)
+	@make -C $(LIBFT_PATH) --silent
 	@touch $@
 
 clean:
