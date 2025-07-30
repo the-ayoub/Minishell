@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 15:29:33 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/29 18:17:22 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/30 18:25:43 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,7 @@ static char	*collect_normal_word(char *line, int *i, t_token_type *type)
 	return (word);
 }
 
-int	identify_cash_cases(char a, char b)
-{
-	if (a != '$')
-		return (1);
-	if (b == '"')
-		return (0);
-	return (1);
-}
-
-char	*handle_locale_aware_strings(char *line, int *i, t_token_type *type)
+static char	*handle_locale_aware_strings(char *line, int *i, t_token_type *type)
 {
 	char	*word;
 

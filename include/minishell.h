@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 19:46:54 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/30 14:20:14 by ohnonon          ###   ########.fr       */
+/*   Updated: 2025/07/30 18:29:03 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@
 extern volatile sig_atomic_t	g_in_input;
 
 // === FUNCIONES DE SHELL ===
-int							main(int argc, char **argv, char **envp);
 void						init_shell(t_shell *shell, char **envp);
 int							shell_loop(t_shell *shell);
 
@@ -95,9 +94,6 @@ int							collect_words(t_token **head, char *line, int *i,
 
 // === EXPANSIÓN ===
 int							expand_variables(t_shell *shell, t_token *head);
-void						append_char(char **str, char c);
-int							expand_dollar(t_shell *shell, char **result,
-								char *ptr);
 
 // === EXPAND_UTILS ===
 void						init_expand(t_expand *dt);
@@ -157,18 +153,14 @@ void						free_tokens(t_token *tokens);
 void						free_array(char **array);
 
 // === UTILS ===
-void						error_msg(const char *msg);
 void						error_exit(char *msg);
 void						free_array(char **array);
 void						free_cmd(t_cmd *cmd);
 void						free_tokens(t_token *tokens);
-void						free_redirs(t_redir *redirs);
 char						*get_cmd_path(const char *cmd, char **envp);
 char						*get_env_value(t_shell *shell, const char *name);
 
 // === DEBUGGING TOOLS ===
-void						expand_arr_and_print(t_list *lst);
-void						print_arr(char **str);
 void						print_lst(t_list *ptr);
 
 #endif
