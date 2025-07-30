@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 20:53:43 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/29 19:42:17 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/30 18:17:50 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ int	syntax_check(t_token *tokens)
 		}
 		else if (current->type == TOKEN_PIPE)
 		{
-			type = current->next->type;
+			if (current->next)
+				type = current->next->type;
 			if (!current->next || type == TOKEN_PIPE)
 				return (1);
 		}
