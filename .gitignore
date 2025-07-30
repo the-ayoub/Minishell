@@ -4,3 +4,4 @@
 **/.cache
 minishell
 **/minishell_tester
+*/.last_build

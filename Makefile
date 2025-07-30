@@ -6,7 +6,7 @@
 #    By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/05 18:42:02 by nimatura          #+#    #+#              #
-#    Updated: 2025/07/30 18:35:57 by nimatura         ###   ########.fr        #
+#    Updated: 2025/07/30 19:09:43 by nimatura         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,8 +32,11 @@ OBJ_FILE := $(SRC_FILE:.c=.o)
 OBJ_DIR	=	./obj/
 OBJ	=	$(addprefix $(OBJ_DIR), $(OBJ_FILE))
 
-LIBFT_PATH	=	./libft
-LIBFT		=	$(LIBFT_PATH)/libft.a
+LIBFT_PATH		=	./libft
+LIBFT			=	$(LIBFT_PATH)/libft.a
+LIBFT_CHECKSUM	:=	$(LIBFT_PATH)/.last_build
+LFT_FILES	:=	$(shell find $(LIBFT_PATH)/ -name '*.c' -o -name '*.h' -o \
+				-name 'Makefile')
 INCLUDE = ./include/minishell.h
 
 PURPLE	=	\033[0;35m
@@ -54,10 +57,12 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(INCLUDE) Makefile | $(OBJ_DIR)
 	@printf "%-42b%b" "$(PURPLE)Compiling $<:" "$(BLUE)$(@F)$(RESET)\n"
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-$(LIBFT):
-	@printf "%-42b%b" "$(PURPLE)Compiling libft..." "$(BLUE)$(@)$(RESET)\n"
-	@make -C $(LIBFT_PATH) --silent
-	@make bonus -C $(LIBFT_PATH) --silent
+$(LIBFT): $(LIBFT_CHECKSUM)
+
+$(LIBFT_CHECKSUM): $(LFT_FILES)
+	@printf "%-42b%b" "$(PURPLE)Compiling libft..." "$(BLUE)$(LIBFT)$(RESET)\n"
+	make -C $(LIBFT_PATH)
+	@touch $@
 
 clean:
 	@printf "%b" "$(BLUE)Cleaning...$(RESET)\n"
@@ -65,6 +70,7 @@ clean:
 		make clean -C $(LIBFT_PATH) --silent; \
 	fi
 	@rm -rf $(OBJ_DIR)
+	@rm -f $(LIBFT_CHECKSUM)
 
 fclean: clean
 	@printf "%b" "$(BLUE)Full cleaning...$(RESET)\n"
@@ -75,4 +81,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re 

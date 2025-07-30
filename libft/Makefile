@@ -6,7 +6,7 @@
 #    By: ohnudes </var/spool/mail/ohnudes>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/20 23:41:26 by ohnudes           #+#    #+#              #
-#    Updated: 2025/07/21 11:34:16 by ohnonon          ###   ########.fr        #
+#    Updated: 2025/07/30 19:13:45 by nimatura         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ SRC_FILE = ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c \
 		   ft_lstremove_and_link.c ft_strtrim2.c
 
 OBJ_FILE = $(SRC_FILE:.c=.o)
-INC_FILE = libft.h ft_printf.h get_next_line.h
+INC_FILE := libft.h ft_printf.h get_next_line.h
 
 # Elements
 SRC	= $(addprefix $(SRC_DIR), $(SRC_FILE))
@@ -51,7 +51,7 @@ LNK = ar rc
 
 all: $(NAME)
 
-$(NAME): $(OBJ) 
+$(NAME): $(OBJ) $(INCS) Makefile
 	@echo Creating library $(NAME)...
 	@$(LNK) $@ $^ 
 	@echo $(NAME) completed.
@@ -70,4 +70,4 @@ clean:
 
 re: fclean all
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re
