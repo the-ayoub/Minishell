@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:43:45 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/30 14:18:49 by ohnonon          ###   ########.fr       */
+/*   Updated: 2025/07/31 21:38:44 by aybelhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,20 @@
 
 volatile sig_atomic_t	g_in_input = 0;
 
+void sigint_heredoc_handler(int sig)
+{
+    (void)sig;
+
+    write(1, "\n", 1);
+	if (g_in_input)
+	{
+		rl_replace_line("", 0);
+		rl_on_new_line();
+		rl_redisplay();
+	}
+
+	exit(130);
+}
 static void	sigint_handler(int sig)
 {
 	(void)sig;
@@ -24,6 +38,19 @@ static void	sigint_handler(int sig)
 		rl_on_new_line();
 		rl_redisplay();
 	}
+}
+void	setup_signal_heredoc(void)
+{
+	struct sigaction	sa;
+
+	ft_bzero(&sa, sizeof(sa));
+	sa.sa_handler = sigint_heredoc_handler;
+	sigaction(SIGINT, &sa, NULL);
+	sa.sa_handler = SIG_IGN;
+	sigaction(SIGQUIT, &sa, NULL);
+	sa.sa_flags = SA_RESTART;
+	sigemptyset(&sa.sa_mask);
+	signal(SIGQUIT, SIG_IGN);
 }
 
 void	setup_signal_handlers(void)
