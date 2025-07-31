@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:16:35 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/30 14:10:44 by ohnonon          ###   ########.fr       */
+/*   Updated: 2025/07/31 18:16:03 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	clean_empty_node(t_token **head)
 	{
 		iter = next;
 		next = iter->next;
-		if (next == NULL)
+		if (next == NULL || iter->value == NULL)
 			return ;
 		if (ft_strcmp(iter->value, "") != 0)
 			return ;

@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 21:04:23 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/23 18:59:02 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/31 18:31:09 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,27 @@ static int	print_export(t_shell *shell)
 	return (shell->last_status);
 }
 
+static int	handle_new_var(t_shell *shell, char *str)
+{
+	char	*name;
+	char	*value;
+
+	name = get_var_name(str);
+	if (name == NULL)
+		return (FALSE);
+	check_var_and_del(&shell->raw_env, name);
+	value = ft_strchr(str, '=');
+	if (value == NULL)
+		return (TRUE);
+	value++;
+	set_env_var(shell, name, value);
+	return (TRUE);
+}
+
 int	builtin_export(t_shell *shell, char **argv)
 {
-	int	ret;
-	int	i;
+	int		ret;
+	int		i;
 
 	if (NULL == argv[1])
 		return (print_export(shell));
@@ -48,7 +65,7 @@ int	builtin_export(t_shell *shell, char **argv)
 		if (ret == FALSE)
 			aux_reset_loop(argv[i], &shell->last_status);
 		else if (ret == TRUE)
-			update_env(shell, argv[i]);
+			handle_new_var(shell, argv[1]);
 		else
 			shell->last_status = 0;
 		i++;
