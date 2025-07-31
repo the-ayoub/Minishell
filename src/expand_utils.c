@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 22:39:49 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/30 18:26:27 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/31 20:28:41 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,17 @@ int	aux_upd_data(t_expand *dt, char *match, char *var_name, char *env_var)
 	dt->to_expand = match;
 	dt->var_name = var_name;
 	return (1);
+}
+
+int	wrap_assamble_expansion(t_token **tkn, t_expand *dt)
+{
+	char	*tmp;
+
+	tmp = NULL;
+	tmp = assemble_expansion((*tkn)->value, dt);
+	if (NULL == tmp)
+		return (perror("cant expand variable\n"), FALSE);
+	free((*tkn)->value);
+	(*tkn)->value = tmp;
+	return (TRUE);
 }

@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 19:46:54 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/30 18:29:03 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/31 20:30:24 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 # define FALSE 0
 # define SUCCESS 0
 # define ERROR 1
-# define PATH_MAX 4096 // Tamaño razonable para la mayoría de sistemas
+# define PATH_MAX 4096
 
 // === VARIABLES GLOBALES ===
 extern volatile sig_atomic_t	g_in_input;
@@ -94,8 +94,12 @@ int							collect_words(t_token **head, char *line, int *i,
 
 // === EXPANSIÓN ===
 int							expand_variables(t_shell *shell, t_token *head);
+char						*assemble_expansion(char *token_value, \
+							t_expand *dt);
 
 // === EXPAND_UTILS ===
+int							wrap_assamble_expansion(t_token **tkn, \
+								t_expand *dt);
 void						init_expand(t_expand *dt);
 int							aux_upd_data(t_expand *dt, char *match,
 								char *var_name, char *env_var);

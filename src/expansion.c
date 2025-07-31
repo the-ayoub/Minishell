@@ -6,13 +6,13 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:39:44 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/29 18:26:33 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/31 20:28:15 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-static char	*assemble_expansion(char *token_value, t_expand *dt)
+char	*assemble_expansion(char *token_value, t_expand *dt)
 {
 	char	*new;
 	char	*tmp;
@@ -110,7 +110,6 @@ int	expand_variables(t_shell *shell, t_token *head)
 {
 	t_expand	dt;
 	t_token		*tkn;
-	char		*tmp;
 
 	init_expand(&dt);
 	tkn = head;
@@ -123,11 +122,8 @@ int	expand_variables(t_shell *shell, t_token *head)
 			tkn = tkn->next;
 			continue ;
 		}
-		tmp = assemble_expansion(tkn->value, &dt);
-		if (NULL == tmp)
-			return (perror("cant expand variable\n"), 1);
-		free(tkn->value);
-		tkn->value = tmp;
+		if (wrap_assamble_expansion(&tkn, &dt) == FALSE)
+			return (1);
 	}
 	free(dt.var_name);
 	return (0);
