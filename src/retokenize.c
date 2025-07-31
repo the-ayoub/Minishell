@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:16:35 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/31 18:16:03 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/31 20:21:00 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,24 @@ static void	clean_empty_node(t_token **head)
 	return ;
 }
 
+static int	guard_heredoc(t_token **head)
+{
+	t_token	*iter;
+	int		total_heredoc;
+
+	total_heredoc = 0;
+	iter = *head;
+	while (iter != NULL && total_heredoc < 18)
+	{
+		if (iter->type == TOKEN_HEREDOC)
+			total_heredoc++;
+		iter = iter->next;
+	}
+	if (total_heredoc > 17)
+		return (FALSE);
+	return (TRUE);
+}
+
 // returns 1 in case of error
 int	retokenize(t_token **head)
 {
@@ -44,6 +62,8 @@ int	retokenize(t_token **head)
 
 	next = *head;
 	if (NULL == next)
+		return (1);
+	if (guard_heredoc(head) == FALSE)
 		return (1);
 	clean_empty_node(head);
 	while (next != NULL)
