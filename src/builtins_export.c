@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 21:04:23 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/31 18:31:09 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/31 19:24:43 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,20 +34,44 @@ static int	print_export(t_shell *shell)
 	return (shell->last_status);
 }
 
+static int	aux_get_var_name(char *str, char **name)
+{
+	int	i;
+
+	i = 0;
+	if (str == NULL)
+		return (FALSE);
+	if (!ft_isalpha(str[i]) && str[i] != '_')
+		return (FALSE);
+	i++;
+	while (str[i] && str[i] != '=')
+	{
+		if (str[i] != '_' && !ft_isalnum(str[i]))
+			return (FALSE);
+		i++;
+	}
+	*name = malloc(sizeof(char) * (i + 1));
+	if (*name == NULL)
+		return (FALSE);
+	(*name)[i] = '\0';
+	while (i--)
+		(*name)[i] = str[i];
+	return (TRUE);
+}
+
 static int	handle_new_var(t_shell *shell, char *str)
 {
 	char	*name;
 	char	*value;
 
-	name = get_var_name(str);
-	if (name == NULL)
-		return (FALSE);
-	check_var_and_del(&shell->raw_env, name);
 	value = ft_strchr(str, '=');
 	if (value == NULL)
 		return (TRUE);
+	if (aux_get_var_name(str, &name) == FALSE)
+		return (FALSE);
 	value++;
 	set_env_var(shell, name, value);
+	free(name);
 	return (TRUE);
 }
 

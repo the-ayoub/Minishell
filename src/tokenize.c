@@ -6,16 +6,15 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 20:46:01 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/23 23:11:41 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/31 18:38:28 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-// NOTE: Por qué el ";"? Eso es bonus
 static int	is_special_char(char c)
 {
-	return (c == '|' || c == '<' || c == '>' || c == ';');
+	return (c == '|' || c == '<' || c == '>');
 }
 
 static t_token_type	detect_operator(char *s, int *i)
