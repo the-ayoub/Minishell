@@ -6,12 +6,38 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:16:35 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/31 20:21:00 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/31 20:52:05 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
+static void	clean_empty_node(t_token **head)
+{
+	t_token	*iter;
+	t_token	*next;
+
+	iter = *head;
+	while (iter != NULL && is_token_word(iter->type))
+	{
+		next = iter->next;
+		if (next == NULL || iter->value == NULL)
+			return ;
+		if (*iter->value != '\0')
+			return ;
+		if (is_token_word(next->type) == TRUE)
+		{
+			if (FALSE == wrapper_strjoin(&iter->value, next->value))
+			{
+				free_tokens(*head);
+				return ;
+			}
+		}
+		delete_token(head, next);
+	}
+	return ;
+}
+/*
 static void	clean_empty_node(t_token **head)
 {
 	t_token	*iter;
@@ -35,7 +61,7 @@ static void	clean_empty_node(t_token **head)
 	}
 	return ;
 }
-
+*/
 static int	guard_heredoc(t_token **head)
 {
 	t_token	*iter;

@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:39:44 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/31 20:28:15 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/07/31 20:35:37 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,18 +110,24 @@ int	expand_variables(t_shell *shell, t_token *head)
 {
 	t_expand	dt;
 	t_token		*tkn;
+	t_token		*next;
 
 	init_expand(&dt);
-	tkn = head;
-	while (NULL != tkn)
+	next = head;
+	while (NULL != next)
 	{
+		tkn = next;
+		next = tkn->next;
 		free_wrapper((void **)&dt.var_name);
 		dt.token_str = tkn->value;
-		if (1 == is_expandable(*tkn, &dt, shell))
+		if (tkn->type == TOKEN_HEREDOC)
 		{
-			tkn = tkn->next;
+			tkn = next;
+			next = tkn->next;
 			continue ;
 		}
+		if (1 == is_expandable(*tkn, &dt, shell))
+			continue ;
 		if (wrap_assamble_expansion(&tkn, &dt) == FALSE)
 			return (1);
 	}
