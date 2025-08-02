@@ -6,7 +6,7 @@
 #    By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/05 18:42:02 by nimatura          #+#    #+#              #
-#    Updated: 2025/07/30 19:16:25 by nimatura         ###   ########.fr        #
+#    Updated: 2025/08/02 23:05:11 by nimatura         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ SRC_FILE =	builtin_utils.c builtins.c builtins_cd.c builtins_echo.c \
 			free_array.c free_utils.c init_shell.c main.c pars.c pars_aux.c \
 			path_utils.c redirections.c retokenize.c shell_loop.c \
 			signal_handling.c syntax_check.c token_tools.c tokenize.c \
-			wrappers.c wrappers2.c
+			wrappers.c wrappers2.c heredoc.c
 
 SRC = $(addprefix $(SRC_DIR), $(SRC_FILE))
 
