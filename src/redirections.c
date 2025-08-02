@@ -6,69 +6,11 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:43:17 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/08/01 21:31:06 by aybelhaj         ###   ########.fr       */
+/*   Updated: 2025/08/02 23:01:07 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
-
-int	handle_heredoc_loop(int fd, const char *delimiter)
-{
-	char	*line;
-
-	while (1)
-	{
-		line = readline("> ");
-		if (!line)
-		{
-			ft_putstr_fd("minishell: warning: here-document delimited by EOF\n",
-				STDERR_FILENO);
-			break ;
-		}
-		if (ft_strcmp(line, delimiter) == 0)
-		{
-			free(line);
-			break ;
-		}
-		write(fd, line, ft_strlen(line));
-		write(fd, "\n", 1);
-		free(line);
-	}
-	return (0);
-}
-
-int	redirect_heredoc(t_shell *shell, t_redir *redir)
-{
-	int		pipe_fd[2];
-	pid_t	pid;
-	int		status;
-
-	if (pipe(pipe_fd) == -1)
-		return (perror("minishell: pipe"), -1);
-	pid = fork();
-	if (pid == -1)
-		return (perror("minishell: fork"), -1);
-	if (pid == 0)
-	{
-		setup_signal_heredoc();
-		close(pipe_fd[0]);
-		handle_heredoc_loop(pipe_fd[1], redir->file);
-		close(pipe_fd[1]);
-		exit(EXIT_SUCCESS);
-	}
-	else
-	{
-		close(pipe_fd[1]);
-		waitpid(pid, &status, 0);
-		if (WIFSIGNALED(status) && WTERMSIG(status) == SIGINT)
-		{
-			shell->last_status = 130;
-			close(pipe_fd[0]);
-			return (-1);
-		}
-		return (pipe_fd[0]);
-	}
-}
 
 static int	open_redirection(t_redir *redir, t_shell *shell)
 {

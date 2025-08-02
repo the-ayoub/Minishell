@@ -6,20 +6,13 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:43:45 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/08/01 21:30:35 by aybelhaj         ###   ########.fr       */
+/*   Updated: 2025/07/30 14:18:49 by ohnonon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
 volatile sig_atomic_t	g_in_input = 0;
-
-static void	sigint_heredoc_handler(int sig)
-{
-	(void)sig;
-	write(1, "\n", 1);
-	exit(130);
-}
 
 static void	sigint_handler(int sig)
 {
@@ -31,18 +24,6 @@ static void	sigint_handler(int sig)
 		rl_on_new_line();
 		rl_redisplay();
 	}
-}
-
-void	setup_signal_heredoc(void)
-{
-	struct sigaction	sa;
-
-	ft_bzero(&sa, sizeof(sa));
-	sa.sa_handler = sigint_heredoc_handler;
-	sa.sa_flags = SA_RESTART;
-	sigemptyset(&sa.sa_mask);
-	sigaction(SIGINT, &sa, NULL);
-	signal(SIGQUIT, SIG_IGN);
 }
 
 void	setup_signal_handlers(void)

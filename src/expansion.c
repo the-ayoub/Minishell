@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:39:44 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/31 20:35:37 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/08/02 23:00:20 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ int	expand_variables(t_shell *shell, t_token *head)
 			continue ;
 		if (wrap_assamble_expansion(&tkn, &dt) == FALSE)
 			return (1);
+		next = head;
 	}
-	free(dt.var_name);
-	return (0);
+	return (free_wrapper((void **)&dt.var_name), 0);
 }

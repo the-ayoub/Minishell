@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:16:35 by nimatura          #+#    #+#             */
-/*   Updated: 2025/08/01 21:32:06 by aybelhaj         ###   ########.fr       */
+/*   Updated: 2025/08/02 22:59:26 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,31 +37,6 @@ static void	clean_empty_node(t_token **head)
 	}
 	return ;
 }
-/*
-static void	clean_empty_node(t_token **head)
-{
-	t_token	*iter;
-	t_token	*next;
-
-	next = *head;
-	if (next != NULL)
-	{
-		iter = next;
-		next = iter->next;
-		if (next == NULL || iter->value == NULL)
-			return ;
-		if (ft_strcmp(iter->value, "") != 0)
-			return ;
-		if (FALSE == wrapper_strjoin(&iter->value, next->value))
-		{
-			free_tokens(*head);
-			return ;
-		}
-		delete_token(head, next);
-	}
-	return ;
-}
-*/
 
 static int	guard_heredoc(t_token **head)
 {
