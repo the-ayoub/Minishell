@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 19:46:54 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/31 22:20:33 by aybelhaj         ###   ########.fr       */
+/*   Updated: 2025/08/01 18:45:06 by aybelhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int							check_var_and_del(t_list **head, char *var);
 
 // === SIGNAL HANDLING ===
 void						setup_signal_handlers(void);
-
+void						setup_signal_heredoc(void);
 // === SYNTAX CHECK ===
 int							syntax_check(t_token *tokens);
 

@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:43:45 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/31 22:20:25 by aybelhaj         ###   ########.fr       */
+/*   Updated: 2025/08/01 21:30:35 by aybelhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 volatile sig_atomic_t	g_in_input = 0;
 
-static void sigint_heredoc_handler(int sig)
+static void	sigint_heredoc_handler(int sig)
 {
-    (void)sig;
-    write(1, "\n", 1);
-    exit(130);
+	(void)sig;
+	write(1, "\n", 1);
+	exit(130);
 }
 
 static void	sigint_handler(int sig)

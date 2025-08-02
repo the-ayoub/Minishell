@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:43:17 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/29 22:49:57 by aybelhaj         ###   ########.fr       */
+/*   Updated: 2025/08/01 21:31:06 by aybelhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,19 +39,35 @@ int	handle_heredoc_loop(int fd, const char *delimiter)
 
 int	redirect_heredoc(t_shell *shell, t_redir *redir)
 {
-	int	fd[2];
+	int		pipe_fd[2];
+	pid_t	pid;
+	int		status;
 
-	(void)shell;
-	if (!redir || !redir->file)
+	if (pipe(pipe_fd) == -1)
+		return (perror("minishell: pipe"), -1);
+	pid = fork();
+	if (pid == -1)
+		return (perror("minishell: fork"), -1);
+	if (pid == 0)
 	{
-		ft_putstr_fd("minishell: heredoc: missing delimiter\n", STDERR_FILENO);
-		return (-1);
+		setup_signal_heredoc();
+		close(pipe_fd[0]);
+		handle_heredoc_loop(pipe_fd[1], redir->file);
+		close(pipe_fd[1]);
+		exit(EXIT_SUCCESS);
 	}
-	if (pipe(fd) == -1)
-		return (-1);
-	handle_heredoc_loop(fd[1], redir->file);
-	close(fd[1]);
-	return (fd[0]);
+	else
+	{
+		close(pipe_fd[1]);
+		waitpid(pid, &status, 0);
+		if (WIFSIGNALED(status) && WTERMSIG(status) == SIGINT)
+		{
+			shell->last_status = 130;
+			close(pipe_fd[0]);
+			return (-1);
+		}
+		return (pipe_fd[0]);
+	}
 }
 
 static int	open_redirection(t_redir *redir, t_shell *shell)

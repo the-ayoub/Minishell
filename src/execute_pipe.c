@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_pipe.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 22:38:09 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/29 19:39:02 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/08/01 21:32:42 by aybelhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ static void	fork_helper(t_shell *shell, t_cmd *cmd)
 {
 	if (setup_redirections(shell, cmd) != SUCCESS)
 		exit(1);
+	if (!cmd->argv || !cmd->argv[0])
+		exit(EXIT_SUCCESS);
 	if (is_builtin(cmd->argv[0]))
 		exit(exec_builtin(shell, cmd));
 	else
