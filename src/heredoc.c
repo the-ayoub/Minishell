@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 22:18:53 by nimatura          #+#    #+#             */
-/*   Updated: 2025/08/03 02:31:39 by ohnonon          ###   ########.fr       */
+/*   Updated: 2025/08/03 02:57:16 by ohnonon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ static void	heredoc_fork(int *pid, int *fd, char *delim)
 	{
 		close_wrapper(fd[0]);
 		handle_heredoc_loop(fd[1], delim);
-		close_wrapper(fd[1]);
+		// close_wrapper(fd[1]);
 		exit(0);
 	}
 	else

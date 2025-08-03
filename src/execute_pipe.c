@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 22:38:09 by nimatura          #+#    #+#             */
-/*   Updated: 2025/08/03 02:33:49 by ohnonon          ###   ########.fr       */
+/*   Updated: 2025/08/03 02:55:39 by ohnonon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,11 +97,11 @@ void	execute_pipe(t_shell *shell, t_cmd *cmd)
 		fork_wrapper(shell, &data, cmd_iter);
 		update_fd(&data, &cmd_iter);
 	}
-	if (data.prev_read_end != -1)
-		close_wrapper(data.prev_read_end);
+	// if (data.prev_read_end != -1)
+	// 	close_wrapper(data.prev_read_end);
 	if (data.last_pid != -1)
 		wait_for_children(shell, data.last_pid);
 	reset_std_fds(&*data.b_std, shell);
-	close_wrapper(data.b_std[0]);
-	close_wrapper(data.b_std[1]);
+	// close_wrapper(data.b_std[0]);
+	// close_wrapper(data.b_std[1]);
 }
