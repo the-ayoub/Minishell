@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:39:32 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/29 19:37:22 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/08/03 02:34:14 by ohnonon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,12 +75,12 @@ static int	exe_builtin_parent(int *b_stdin, int *b_stdout, t_shell *shell)
 	if (wrapper_dup2(*b_stdin, STDIN_FILENO, shell) != TRUE || \
 		wrapper_dup2(*b_stdin, STDIN_FILENO, shell) != TRUE)
 	{
-		close(*b_stdin);
-		close(*b_stdout);
+		close_wrapper(*b_stdin);
+		close_wrapper(*b_stdout);
 		return (shell->last_status);
 	}
-	close(*b_stdin);
-	close(*b_stdout);
+	close_wrapper(*b_stdin);
+	close_wrapper(*b_stdout);
 	return (shell->last_status);
 }
 

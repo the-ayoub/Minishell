@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 22:18:53 by nimatura          #+#    #+#             */
-/*   Updated: 2025/08/02 22:58:47 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/08/03 02:31:39 by ohnonon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	set_heredoc_fd(void)
 		if (dup2(tty_fd, STDIN_FILENO) == -1)
 			ft_putstr_fd("can't restore fd term\n",
 				STDERR_FILENO);
-		close(tty_fd);
+		close_wrapper(tty_fd);
 	}
 }
 
@@ -61,7 +61,7 @@ int	handle_heredoc_loop(int fd, const char *delimiter)
 	{
 		free_wrapper((void **)line);
 		free_wrapper((void **)result);
-		close(fd);
+		close_wrapper(fd);
 		return (0);
 	}
 	if (result != NULL)
@@ -70,7 +70,7 @@ int	handle_heredoc_loop(int fd, const char *delimiter)
 		write(fd, "\n", 1);
 	}
 	free_wrapper((void **)&result);
-	close(fd);
+	close_wrapper(fd);
 	return (0);
 }
 
@@ -83,14 +83,14 @@ static void	heredoc_fork(int *pid, int *fd, char *delim)
 		exit(130);
 	if (*pid == 0)
 	{
-		close(fd[0]);
+		close_wrapper(fd[0]);
 		handle_heredoc_loop(fd[1], delim);
-		close(fd[1]);
+		close_wrapper(fd[1]);
 		exit(0);
 	}
 	else
 	{
-		close(fd[1]);
+		close_wrapper(fd[1]);
 		waitpid(*pid, &status, 0);
 		exit(0);
 	}

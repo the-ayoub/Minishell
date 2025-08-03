@@ -1,0 +1,9 @@
+Makefile
+compile_commands.json
+include
+libft
+minishell
+notes.md
+obj
+script.sh
+src

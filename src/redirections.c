@@ -6,11 +6,12 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:43:17 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/08/02 23:01:07 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/08/03 02:31:56 by ohnonon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
+#include <unistd.h>
 
 static int	open_redirection(t_redir *redir, t_shell *shell)
 {
@@ -45,10 +46,16 @@ int	setup_redirections(t_shell *shell, t_cmd *cmd)
 		if (fd == -1)
 			return (ERROR);
 		if (current->type == REDIR_IN || current->type == REDIR_HEREDOC)
-			dup2(fd, STDIN_FILENO);
+		{
+			if (wrapper_dup2(fd, STDIN_FILENO, shell) == FALSE)
+				ft_putstr_fd("STDIN_FILENO err\n", 3);
+		}
 		else
-			dup2(fd, STDOUT_FILENO);
-		close(fd);
+		{
+			if (wrapper_dup2(fd, STDOUT_FILENO, shell) == FALSE)
+				ft_putstr_fd("STDOUT err\n", 3);
+		}
+		close_wrapper(fd);
 		current = current->next;
 	}
 	return (SUCCESS);
@@ -63,8 +70,8 @@ int	reset_std_fds(int backup[2], t_shell *shell)
 		if (wrapper_dup2(backup[1], STDOUT_FILENO, shell) == FALSE)
 			shell->last_status = errno;
 	if (backup[0] >= 0)
-		close(backup[0]);
+		close_wrapper(backup[0]);
 	if (backup[1] >= 0)
-		close(backup[1]);
+		close_wrapper(backup[1]);
 	return (0);
 }

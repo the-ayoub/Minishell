@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 22:38:09 by nimatura          #+#    #+#             */
-/*   Updated: 2025/08/02 20:55:21 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/08/03 02:33:49 by ohnonon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,14 @@ static void	fork_wrapper(t_shell *shell, t_pipe *data, t_cmd *cmd)
 		{
 			if (wrapper_dup2(data->prev_read_end, STDIN_FILENO, shell) == 0)
 				exit(shell->last_status);
-			close(data->prev_read_end);
+			close_wrapper(data->prev_read_end);
 		}
 		if (cmd->next)
 		{
-			close(data->pipe_fd[0]);
+			close_wrapper(data->pipe_fd[0]);
 			if (wrapper_dup2(data->pipe_fd[1], STDOUT_FILENO, shell) == 0)
 				exit(shell->last_status);
-			close(data->pipe_fd[1]);
+			close_wrapper(data->pipe_fd[1]);
 		}
 		fork_helper(shell, cmd);
 	}
@@ -67,10 +67,10 @@ static void	set_pipe_data(t_pipe *data, t_shell *shell)
 static void	update_fd(t_pipe *data, t_cmd **cmd)
 {
 	if (data->prev_read_end != -1)
-		close(data->prev_read_end);
+		close_wrapper(data->prev_read_end);
 	if ((*cmd)->next != NULL)
 	{
-		close(data->pipe_fd[1]);
+		close_wrapper(data->pipe_fd[1]);
 		data->prev_read_end = data->pipe_fd[0];
 	}
 	data->last_pid = data->pid;
@@ -98,10 +98,10 @@ void	execute_pipe(t_shell *shell, t_cmd *cmd)
 		update_fd(&data, &cmd_iter);
 	}
 	if (data.prev_read_end != -1)
-		close(data.prev_read_end);
+		close_wrapper(data.prev_read_end);
 	if (data.last_pid != -1)
 		wait_for_children(shell, data.last_pid);
 	reset_std_fds(&*data.b_std, shell);
-	close(data.b_std[0]);
-	close(data.b_std[1]);
+	close_wrapper(data.b_std[0]);
+	close_wrapper(data.b_std[1]);
 }

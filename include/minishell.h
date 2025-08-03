@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 19:46:54 by nimatura          #+#    #+#             */
-/*   Updated: 2025/08/02 22:43:47 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/08/03 02:29:36 by ohnonon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # include <sys/wait.h>
 # include <termios.h>
 # include <unistd.h>
+# include <assert.h>
 
 // === CONSTANTES ===
 # define PROMPT "minishell> "
@@ -149,6 +150,7 @@ void						wrapper_free_lst(t_list *head);
 // === WRAPPERS 2 ===
 void						free_wrapper(void **ptr);
 int							waitpid_wrapper(pid_t *ptr, int *status);
+void						close_wrapper(int fd);
 
 // === FREE UTILS ===
 void						free_cmd_list(t_cmd *head);
