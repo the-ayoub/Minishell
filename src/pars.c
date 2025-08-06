@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:42:45 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/24 00:18:18 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/08/06 15:51:23 by ohnonon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static void	add_redirection(t_cmd *cmd, t_token *token)
 }
 
 // returns 1 in success, 0 for err
-static int	parse_redir(t_token **current, t_cmd **cmd, t_cmd **ptr)
+static int	parse_redir(t_token **current, t_cmd **cmd, t_cmd **ptr, t_shell *shell)
 {
 	if (NULL == (*current)->next || !is_token_word((*current)->next->type))
 	{
@@ -70,6 +70,8 @@ static int	parse_redir(t_token **current, t_cmd **cmd, t_cmd **ptr)
 		return (0);
 	}
 	add_redirection(*cmd, *current);
+	if ((*cmd)->redirs->type == REDIR_HEREDOC)
+		(*cmd)->redirs->hd_fd = redirect_heredoc(shell, (*cmd)->redirs);
 	*current = (*current)->next;
 	return (1);
 }
@@ -101,7 +103,7 @@ int	parse_tokens(t_shell *shell, t_token *tokens, t_cmd **ptr)
 			add_argument(current_cmd, ft_strdup(current->value));
 		else if (current->type >= TOKEN_REDIR_IN \
 				&& current->type <= TOKEN_HEREDOC)
-			parse_redir(&current, &current_cmd, ptr);
+			parse_redir(&current, &current_cmd, ptr, shell);
 		current = current->next;
 	}
 	*ptr = head;

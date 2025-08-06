@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 20:56:20 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/29 18:30:10 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/08/06 15:48:54 by ohnonon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ t_redir	*create_redirection(t_redir_type type, char *file)
 	new->type = type;
 	new->file = file;
 	new->next = NULL;
+	new->hd_fd = -1;
 	return (new);
 }
 

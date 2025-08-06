@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:39:32 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/08/03 02:34:14 by ohnonon          ###   ########.fr       */
+/*   Updated: 2025/08/05 21:04:58 by ohnonon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ static int	exe_builtin_parent(int *b_stdin, int *b_stdout, t_shell *shell)
 	return (shell->last_status);
 }
 
+// case in which there's no command other than << eof in cmdline
 static int	aux_guard(t_shell *shell, t_cmd *cmd)
 {
 	if (!cmd)

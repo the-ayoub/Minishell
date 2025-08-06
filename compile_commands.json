@@ -12,9 +12,9 @@
       "obj/ft_bzero.o",
       "src/ft_bzero.c"
     ],
-    "directory": "/home/nimatura/code/garage/minishell/group/libft",
-    "file": "/home/nimatura/code/garage/minishell/group/libft/src/ft_bzero.c",
-    "output": "/home/nimatura/code/garage/minishell/group/libft/obj/ft_bzero.o"
+    "directory": "/home/ohnonon/code/garage/minishell/group/libft",
+    "file": "/home/ohnonon/code/garage/minishell/group/libft/src/ft_bzero.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/libft/obj/ft_bzero.o"
   },
   {
     "arguments": [
@@ -29,9 +29,9 @@
       "obj/ft_isalnum.o",
       "src/ft_isalnum.c"
     ],
-    "directory": "/home/nimatura/code/garage/minishell/group/libft",
-    "file": "/home/nimatura/code/garage/minishell/group/libft/src/ft_isalnum.c",
-    "output": "/home/nimatura/code/garage/minishell/group/libft/obj/ft_isalnum.o"
+    "directory": "/home/ohnonon/code/garage/minishell/group/libft",
+    "file": "/home/ohnonon/code/garage/minishell/group/libft/src/ft_isalnum.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/libft/obj/ft_isalnum.o"
   },
   {
     "arguments": [
@@ -46,9 +46,9 @@
       "obj/ft_isalpha.o",
       "src/ft_isalpha.c"
     ],
-    "directory": "/home/nimatura/code/garage/minishell/group/libft",
-    "file": "/home/nimatura/code/garage/minishell/group/libft/src/ft_isalpha.c",
-    "output": "/home/nimatura/code/garage/minishell/group/libft/obj/ft_isalpha.o"
+    "directory": "/home/ohnonon/code/garage/minishell/group/libft",
+    "file": "/home/ohnonon/code/garage/minishell/group/libft/src/ft_isalpha.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/libft/obj/ft_isalpha.o"
   },
   {
     "arguments": [
@@ -63,9 +63,9 @@
       "obj/ft_isascii.o",
       "src/ft_isascii.c"
     ],
-    "directory": "/home/nimatura/code/garage/minishell/group/libft",
-    "file": "/home/nimatura/code/garage/minishell/group/libft/src/ft_isascii.c",
-    "output": "/home/nimatura/code/garage/minishell/group/libft/obj/ft_isascii.o"
+    "directory": "/home/ohnonon/code/garage/minishell/group/libft",
+    "file": "/home/ohnonon/code/garage/minishell/group/libft/src/ft_isascii.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/libft/obj/ft_isascii.o"
   },
   {
     "arguments": [
@@ -80,9 +80,9 @@
       "obj/ft_isdigit.o",
       "src/ft_isdigit.c"
     ],
-    "directory": "/home/nimatura/code/garage/minishell/group/libft",
-    "file": "/home/nimatura/code/garage/minishell/group/libft/src/ft_isdigit.c",
-    "output": "/home/nimatura/code/garage/minishell/group/libft/obj/ft_isdigit.o"
+    "directory": "/home/ohnonon/code/garage/minishell/group/libft",
+    "file": "/home/ohnonon/code/garage/minishell/group/libft/src/ft_isdigit.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/libft/obj/ft_isdigit.o"
   },
   {
     "arguments": [
@@ -97,9 +97,9 @@
       "obj/ft_isprint.o",
       "src/ft_isprint.c"
     ],
-    "directory": "/home/nimatura/code/garage/minishell/group/libft",
-    "file": "/home/nimatura/code/garage/minishell/group/libft/src/ft_isprint.c",
-    "output": "/home/nimatura/code/garage/minishell/group/libft/obj/ft_isprint.o"
+    "directory": "/home/ohnonon/code/garage/minishell/group/libft",
+    "file": "/home/ohnonon/code/garage/minishell/group/libft/src/ft_isprint.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/libft/obj/ft_isprint.o"
   },
   {
     "arguments": [
@@ -114,9 +114,9 @@
       "obj/ft_memcpy.o",
       "src/ft_memcpy.c"
     ],
-    "directory": "/home/nimatura/code/garage/minishell/group/libft",
-    "file": "/home/nimatura/code/garage/minishell/group/libft/src/ft_memcpy.c",
-    "output": "/home/nimatura/code/garage/minishell/group/libft/obj/ft_memcpy.o"
+    "directory": "/home/ohnonon/code/garage/minishell/group/libft",
+    "file": "/home/ohnonon/code/garage/minishell/group/libft/src/ft_memcpy.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/libft/obj/ft_memcpy.o"
   },
   {
     "arguments": [
@@ -131,9 +131,9 @@
       "obj/ft_memmove.o",
       "src/ft_memmove.c"
     ],
-    "directory": "/home/nimatura/code/garage/minishell/group/libft",
-    "file": "/home/nimatura/code/garage/minishell/group/libft/src/ft_memmove.c",
-    "output": "/home/nimatura/code/garage/minishell/group/libft/obj/ft_memmove.o"
+    "directory": "/home/ohnonon/code/garage/minishell/group/libft",
+    "file": "/home/ohnonon/code/garage/minishell/group/libft/src/ft_memmove.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/libft/obj/ft_memmove.o"
   },
   {
     "arguments": [
@@ -148,9 +148,9 @@
       "obj/ft_memset.o",
       "src/ft_memset.c"
     ],
-    "directory": "/home/nimatura/code/garage/minishell/group/libft",
-    "file": "/home/nimatura/code/garage/minishell/group/libft/src/ft_memset.c",
-    "output": "/home/nimatura/code/garage/minishell/group/libft/obj/ft_memset.o"
+    "directory": "/home/ohnonon/code/garage/minishell/group/libft",
+    "file": "/home/ohnonon/code/garage/minishell/group/libft/src/ft_memset.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/libft/obj/ft_memset.o"
   },
   {
     "arguments": [
@@ -165,9 +165,9 @@
       "obj/ft_strlcat.o",
       "src/ft_strlcat.c"
     ],
-    "directory": "/home/nimatura/code/garage/minishell/group/libft",
-    "file": "/home/nimatura/code/garage/minishell/group/libft/src/ft_strlcat.c",
-    "output": "/home/nimatura/code/garage/minishell/group/libft/obj/ft_strlcat.o"
+    "directory": "/home/ohnonon/code/garage/minishell/group/libft",
+    "file": "/home/ohnonon/code/garage/minishell/group/libft/src/ft_strlcat.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/libft/obj/ft_strlcat.o"
   },
   {
     "arguments": [
@@ -182,9 +182,9 @@
       "obj/ft_strlcpy.o",
       "src/ft_strlcpy.c"
     ],
-    "directory": "/home/nimatura/code/garage/minishell/group/libft",
-    "file": "/home/nimatura/code/garage/minishell/group/libft/src/ft_strlcpy.c",
-    "output": "/home/nimatura/code/garage/minishell/group/libft/obj/ft_strlcpy.o"
+    "directory": "/home/ohnonon/code/garage/minishell/group/libft",
+    "file": "/home/ohnonon/code/garage/minishell/group/libft/src/ft_strlcpy.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/libft/obj/ft_strlcpy.o"
   },
   {
     "arguments": [
@@ -199,9 +199,9 @@
       "obj/ft_strlen.o",
       "src/ft_strlen.c"
     ],
-    "directory": "/home/nimatura/code/garage/minishell/group/libft",
-    "file": "/home/nimatura/code/garage/minishell/group/libft/src/ft_strlen.c",
-    "output": "/home/nimatura/code/garage/minishell/group/libft/obj/ft_strlen.o"
+    "directory": "/home/ohnonon/code/garage/minishell/group/libft",
+    "file": "/home/ohnonon/code/garage/minishell/group/libft/src/ft_strlen.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/libft/obj/ft_strlen.o"
   },
   {
     "arguments": [
@@ -216,9 +216,9 @@
       "obj/ft_tolower.o",
       "src/ft_tolower.c"
     ],
-    "directory": "/home/nimatura/code/garage/minishell/group/libft",
-    "file": "/home/nimatura/code/garage/minishell/group/libft/src/ft_tolower.c",
-    "output": "/home/nimatura/code/garage/minishell/group/libft/obj/ft_tolower.o"
+    "directory": "/home/ohnonon/code/garage/minishell/group/libft",
+    "file": "/home/ohnonon/code/garage/minishell/group/libft/src/ft_tolower.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/libft/obj/ft_tolower.o"
   },
   {
     "arguments": [
@@ -233,9 +233,9 @@
       "obj/ft_toupper.o",
       "src/ft_toupper.c"
     ],
-    "directory": "/home/nimatura/code/garage/minishell/group/libft",
-    "file": "/home/nimatura/code/garage/minishell/group/libft/src/ft_toupper.c",
-    "output": "/home/nimatura/code/garage/minishell/group/libft/obj/ft_toupper.o"
+    "directory": "/home/ohnonon/code/garage/minishell/group/libft",
+    "file": "/home/ohnonon/code/garage/minishell/group/libft/src/ft_toupper.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/libft/obj/ft_toupper.o"
   },
   {
     "arguments": [
@@ -250,9 +250,9 @@
       "obj/ft_strchr.o",
       "src/ft_strchr.c"
     ],
-    "directory": "/home/nimatura/code/garage/minishell/group/libft",
-    "file": "/home/nimatura/code/garage/minishell/group/libft/src/ft_strchr.c",
-    "output": "/home/nimatura/code/garage/minishell/group/libft/obj/ft_strchr.o"
+    "directory": "/home/ohnonon/code/garage/minishell/group/libft",
+    "file": "/home/ohnonon/code/garage/minishell/group/libft/src/ft_strchr.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/libft/obj/ft_strchr.o"
   },
   {
     "arguments": [
@@ -267,9 +267,9 @@
       "obj/ft_strrchr.o",
       "src/ft_strrchr.c"
     ],
-    "directory": "/home/nimatura/code/garage/minishell/group/libft",
-    "file": "/home/nimatura/code/garage/minishell/group/libft/src/ft_strrchr.c",
-    "output": "/home/nimatura/code/garage/minishell/group/libft/obj/ft_strrchr.o"
+    "directory": "/home/ohnonon/code/garage/minishell/group/libft",
+    "file": "/home/ohnonon/code/garage/minishell/group/libft/src/ft_strrchr.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/libft/obj/ft_strrchr.o"
   },
   {
     "arguments": [
@@ -284,9 +284,9 @@
       "obj/ft_strncmp.o",
       "src/ft_strncmp.c"
     ],
-    "directory": "/home/nimatura/code/garage/minishell/group/libft",
-    "file": "/home/nimatura/code/garage/minishell/group/libft/src/ft_strncmp.c",
-    "output": "/home/nimatura/code/garage/minishell/group/libft/obj/ft_strncmp.o"
+    "directory": "/home/ohnonon/code/garage/minishell/group/libft",
+    "file": "/home/ohnonon/code/garage/minishell/group/libft/src/ft_strncmp.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/libft/obj/ft_strncmp.o"
   },
   {
     "arguments": [
@@ -301,9 +301,9 @@
       "obj/ft_memcmp.o",
       "src/ft_memcmp.c"
     ],
-    "directory": "/home/nimatura/code/garage/minishell/group/libft",
-    "file": "/home/nimatura/code/garage/minishell/group/libft/src/ft_memcmp.c",
-    "output": "/home/nimatura/code/garage/minishell/group/libft/obj/ft_memcmp.o"
+    "directory": "/home/ohnonon/code/garage/minishell/group/libft",
+    "file": "/home/ohnonon/code/garage/minishell/group/libft/src/ft_memcmp.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/libft/obj/ft_memcmp.o"
   },
   {
     "arguments": [
@@ -318,9 +318,9 @@
       "obj/ft_memchr.o",
       "src/ft_memchr.c"
     ],
-    "directory": "/home/nimatura/code/garage/minishell/group/libft",
-    "file": "/home/nimatura/code/garage/minishell/group/libft/src/ft_memchr.c",
-    "output": "/home/nimatura/code/garage/minishell/group/libft/obj/ft_memchr.o"
+    "directory": "/home/ohnonon/code/garage/minishell/group/libft",
+    "file": "/home/ohnonon/code/garage/minishell/group/libft/src/ft_memchr.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/libft/obj/ft_memchr.o"
   },
   {
     "arguments": [
@@ -335,9 +335,9 @@
       "obj/ft_strnstr.o",
       "src/ft_strnstr.c"
     ],
-    "directory": "/home/nimatura/code/garage/minishell/group/libft",
-    "file": "/home/nimatura/code/garage/minishell/group/libft/src/ft_strnstr.c",
-    "output": "/home/nimatura/code/garage/minishell/group/libft/obj/ft_strnstr.o"
+    "directory": "/home/ohnonon/code/garage/minishell/group/libft",
+    "file": "/home/ohnonon/code/garage/minishell/group/libft/src/ft_strnstr.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/libft/obj/ft_strnstr.o"
   },
   {
     "arguments": [
@@ -352,9 +352,9 @@
       "obj/ft_atoi.o",
       "src/ft_atoi.c"
     ],
-    "directory": "/home/nimatura/code/garage/minishell/group/libft",
-    "file": "/home/nimatura/code/garage/minishell/group/libft/src/ft_atoi.c",
-    "output": "/home/nimatura/code/garage/minishell/group/libft/obj/ft_atoi.o"
+    "directory": "/home/ohnonon/code/garage/minishell/group/libft",
+    "file": "/home/ohnonon/code/garage/minishell/group/libft/src/ft_atoi.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/libft/obj/ft_atoi.o"
   },
   {
     "arguments": [
@@ -369,9 +369,9 @@
       "obj/ft_calloc.o",
       "src/ft_calloc.c"
     ],
-    "directory": "/home/nimatura/code/garage/minishell/group/libft",
-    "file": "/home/nimatura/code/garage/minishell/group/libft/src/ft_calloc.c",
-    "output": "/home/nimatura/code/garage/minishell/group/libft/obj/ft_calloc.o"
+    "directory": "/home/ohnonon/code/garage/minishell/group/libft",
+    "file": "/home/ohnonon/code/garage/minishell/group/libft/src/ft_calloc.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/libft/obj/ft_calloc.o"
   },
   {
     "arguments": [
@@ -386,9 +386,9 @@
       "obj/ft_strdup.o",
       "src/ft_strdup.c"
     ],
-    "directory": "/home/nimatura/code/garage/minishell/group/libft",
-    "file": "/home/nimatura/code/garage/minishell/group/libft/src/ft_strdup.c",
-    "output": "/home/nimatura/code/garage/minishell/group/libft/obj/ft_strdup.o"
+    "directory": "/home/ohnonon/code/garage/minishell/group/libft",
+    "file": "/home/ohnonon/code/garage/minishell/group/libft/src/ft_strdup.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/libft/obj/ft_strdup.o"
   },
   {
     "arguments": [
@@ -403,9 +403,9 @@
       "obj/ft_substr.o",
       "src/ft_substr.c"
     ],
-    "directory": "/home/nimatura/code/garage/minishell/group/libft",
-    "file": "/home/nimatura/code/garage/minishell/group/libft/src/ft_substr.c",
-    "output": "/home/nimatura/code/garage/minishell/group/libft/obj/ft_substr.o"
+    "directory": "/home/ohnonon/code/garage/minishell/group/libft",
+    "file": "/home/ohnonon/code/garage/minishell/group/libft/src/ft_substr.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/libft/obj/ft_substr.o"
   },
   {
     "arguments": [
@@ -420,9 +420,9 @@
       "obj/ft_strjoin.o",
       "src/ft_strjoin.c"
     ],
-    "directory": "/home/nimatura/code/garage/minishell/group/libft",
-    "file": "/home/nimatura/code/garage/minishell/group/libft/src/ft_strjoin.c",
-    "output": "/home/nimatura/code/garage/minishell/group/libft/obj/ft_strjoin.o"
+    "directory": "/home/ohnonon/code/garage/minishell/group/libft",
+    "file": "/home/ohnonon/code/garage/minishell/group/libft/src/ft_strjoin.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/libft/obj/ft_strjoin.o"
   },
   {
     "arguments": [
@@ -437,9 +437,9 @@
       "obj/ft_strtrim.o",
       "src/ft_strtrim.c"
     ],
-    "directory": "/home/nimatura/code/garage/minishell/group/libft",
-    "file": "/home/nimatura/code/garage/minishell/group/libft/src/ft_strtrim.c",
-    "output": "/home/nimatura/code/garage/minishell/group/libft/obj/ft_strtrim.o"
+    "directory": "/home/ohnonon/code/garage/minishell/group/libft",
+    "file": "/home/ohnonon/code/garage/minishell/group/libft/src/ft_strtrim.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/libft/obj/ft_strtrim.o"
   },
   {
     "arguments": [
@@ -454,9 +454,9 @@
       "obj/ft_split.o",
       "src/ft_split.c"
     ],
-    "directory": "/home/nimatura/code/garage/minishell/group/libft",
-    "file": "/home/nimatura/code/garage/minishell/group/libft/src/ft_split.c",
-    "output": "/home/nimatura/code/garage/minishell/group/libft/obj/ft_split.o"
+    "directory": "/home/ohnonon/code/garage/minishell/group/libft",
+    "file": "/home/ohnonon/code/garage/minishell/group/libft/src/ft_split.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/libft/obj/ft_split.o"
   },
   {
     "arguments": [
@@ -471,9 +471,9 @@
       "obj/ft_itoa.o",
       "src/ft_itoa.c"
     ],
-    "directory": "/home/nimatura/code/garage/minishell/group/libft",
-    "file": "/home/nimatura/code/garage/minishell/group/libft/src/ft_itoa.c",
-    "output": "/home/nimatura/code/garage/minishell/group/libft/obj/ft_itoa.o"
+    "directory": "/home/ohnonon/code/garage/minishell/group/libft",
+    "file": "/home/ohnonon/code/garage/minishell/group/libft/src/ft_itoa.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/libft/obj/ft_itoa.o"
   },
   {
     "arguments": [
@@ -488,9 +488,9 @@
       "obj/ft_striteri.o",
       "src/ft_striteri.c"
     ],
-    "directory": "/home/nimatura/code/garage/minishell/group/libft",
-    "file": "/home/nimatura/code/garage/minishell/group/libft/src/ft_striteri.c",
-    "output": "/home/nimatura/code/garage/minishell/group/libft/obj/ft_striteri.o"
+    "directory": "/home/ohnonon/code/garage/minishell/group/libft",
+    "file": "/home/ohnonon/code/garage/minishell/group/libft/src/ft_striteri.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/libft/obj/ft_striteri.o"
   },
   {
     "arguments": [
@@ -505,9 +505,9 @@
       "obj/ft_strmapi.o",
       "src/ft_strmapi.c"
     ],
-    "directory": "/home/nimatura/code/garage/minishell/group/libft",
-    "file": "/home/nimatura/code/garage/minishell/group/libft/src/ft_strmapi.c",
-    "output": "/home/nimatura/code/garage/minishell/group/libft/obj/ft_strmapi.o"
+    "directory": "/home/ohnonon/code/garage/minishell/group/libft",
+    "file": "/home/ohnonon/code/garage/minishell/group/libft/src/ft_strmapi.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/libft/obj/ft_strmapi.o"
   },
   {
     "arguments": [
@@ -522,9 +522,9 @@
       "obj/ft_putstr_fd.o",
       "src/ft_putstr_fd.c"
     ],
-    "directory": "/home/nimatura/code/garage/minishell/group/libft",
-    "file": "/home/nimatura/code/garage/minishell/group/libft/src/ft_putstr_fd.c",
-    "output": "/home/nimatura/code/garage/minishell/group/libft/obj/ft_putstr_fd.o"
+    "directory": "/home/ohnonon/code/garage/minishell/group/libft",
+    "file": "/home/ohnonon/code/garage/minishell/group/libft/src/ft_putstr_fd.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/libft/obj/ft_putstr_fd.o"
   },
   {
     "arguments": [
@@ -539,9 +539,9 @@
       "obj/ft_putendl_fd.o",
       "src/ft_putendl_fd.c"
     ],
-    "directory": "/home/nimatura/code/garage/minishell/group/libft",
-    "file": "/home/nimatura/code/garage/minishell/group/libft/src/ft_putendl_fd.c",
-    "output": "/home/nimatura/code/garage/minishell/group/libft/obj/ft_putendl_fd.o"
+    "directory": "/home/ohnonon/code/garage/minishell/group/libft",
+    "file": "/home/ohnonon/code/garage/minishell/group/libft/src/ft_putendl_fd.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/libft/obj/ft_putendl_fd.o"
   },
   {
     "arguments": [
@@ -556,9 +556,9 @@
       "obj/ft_putchar_fd.o",
       "src/ft_putchar_fd.c"
     ],
-    "directory": "/home/nimatura/code/garage/minishell/group/libft",
-    "file": "/home/nimatura/code/garage/minishell/group/libft/src/ft_putchar_fd.c",
-    "output": "/home/nimatura/code/garage/minishell/group/libft/obj/ft_putchar_fd.o"
+    "directory": "/home/ohnonon/code/garage/minishell/group/libft",
+    "file": "/home/ohnonon/code/garage/minishell/group/libft/src/ft_putchar_fd.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/libft/obj/ft_putchar_fd.o"
   },
   {
     "arguments": [
@@ -573,9 +573,9 @@
       "obj/ft_putnbr_fd.o",
       "src/ft_putnbr_fd.c"
     ],
-    "directory": "/home/nimatura/code/garage/minishell/group/libft",
-    "file": "/home/nimatura/code/garage/minishell/group/libft/src/ft_putnbr_fd.c",
-    "output": "/home/nimatura/code/garage/minishell/group/libft/obj/ft_putnbr_fd.o"
+    "directory": "/home/ohnonon/code/garage/minishell/group/libft",
+    "file": "/home/ohnonon/code/garage/minishell/group/libft/src/ft_putnbr_fd.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/libft/obj/ft_putnbr_fd.o"
   },
   {
     "arguments": [
@@ -590,9 +590,9 @@
       "obj/ft_lstnew_bonus.o",
       "src/ft_lstnew_bonus.c"
     ],
-    "directory": "/home/nimatura/code/garage/minishell/group/libft",
-    "file": "/home/nimatura/code/garage/minishell/group/libft/src/ft_lstnew_bonus.c",
-    "output": "/home/nimatura/code/garage/minishell/group/libft/obj/ft_lstnew_bonus.o"
+    "directory": "/home/ohnonon/code/garage/minishell/group/libft",
+    "file": "/home/ohnonon/code/garage/minishell/group/libft/src/ft_lstnew_bonus.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/libft/obj/ft_lstnew_bonus.o"
   },
   {
     "arguments": [
@@ -607,9 +607,9 @@
       "obj/ft_lstadd_front_bonus.o",
       "src/ft_lstadd_front_bonus.c"
     ],
-    "directory": "/home/nimatura/code/garage/minishell/group/libft",
-    "file": "/home/nimatura/code/garage/minishell/group/libft/src/ft_lstadd_front_bonus.c",
-    "output": "/home/nimatura/code/garage/minishell/group/libft/obj/ft_lstadd_front_bonus.o"
+    "directory": "/home/ohnonon/code/garage/minishell/group/libft",
+    "file": "/home/ohnonon/code/garage/minishell/group/libft/src/ft_lstadd_front_bonus.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/libft/obj/ft_lstadd_front_bonus.o"
   },
   {
     "arguments": [
@@ -624,9 +624,9 @@
       "obj/ft_lstsize_bonus.o",
       "src/ft_lstsize_bonus.c"
     ],
-    "directory": "/home/nimatura/code/garage/minishell/group/libft",
-    "file": "/home/nimatura/code/garage/minishell/group/libft/src/ft_lstsize_bonus.c",
-    "output": "/home/nimatura/code/garage/minishell/group/libft/obj/ft_lstsize_bonus.o"
+    "directory": "/home/ohnonon/code/garage/minishell/group/libft",
+    "file": "/home/ohnonon/code/garage/minishell/group/libft/src/ft_lstsize_bonus.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/libft/obj/ft_lstsize_bonus.o"
   },
   {
     "arguments": [
@@ -641,9 +641,9 @@
       "obj/ft_lstlast_bonus.o",
       "src/ft_lstlast_bonus.c"
     ],
-    "directory": "/home/nimatura/code/garage/minishell/group/libft",
-    "file": "/home/nimatura/code/garage/minishell/group/libft/src/ft_lstlast_bonus.c",
-    "output": "/home/nimatura/code/garage/minishell/group/libft/obj/ft_lstlast_bonus.o"
+    "directory": "/home/ohnonon/code/garage/minishell/group/libft",
+    "file": "/home/ohnonon/code/garage/minishell/group/libft/src/ft_lstlast_bonus.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/libft/obj/ft_lstlast_bonus.o"
   },
   {
     "arguments": [
@@ -658,9 +658,9 @@
       "obj/ft_lstadd_back_bonus.o",
       "src/ft_lstadd_back_bonus.c"
     ],
-    "directory": "/home/nimatura/code/garage/minishell/group/libft",
-    "file": "/home/nimatura/code/garage/minishell/group/libft/src/ft_lstadd_back_bonus.c",
-    "output": "/home/nimatura/code/garage/minishell/group/libft/obj/ft_lstadd_back_bonus.o"
+    "directory": "/home/ohnonon/code/garage/minishell/group/libft",
+    "file": "/home/ohnonon/code/garage/minishell/group/libft/src/ft_lstadd_back_bonus.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/libft/obj/ft_lstadd_back_bonus.o"
   },
   {
     "arguments": [
@@ -675,9 +675,9 @@
       "obj/ft_lstdelone_bonus.o",
       "src/ft_lstdelone_bonus.c"
     ],
-    "directory": "/home/nimatura/code/garage/minishell/group/libft",
-    "file": "/home/nimatura/code/garage/minishell/group/libft/src/ft_lstdelone_bonus.c",
-    "output": "/home/nimatura/code/garage/minishell/group/libft/obj/ft_lstdelone_bonus.o"
+    "directory": "/home/ohnonon/code/garage/minishell/group/libft",
+    "file": "/home/ohnonon/code/garage/minishell/group/libft/src/ft_lstdelone_bonus.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/libft/obj/ft_lstdelone_bonus.o"
   },
   {
     "arguments": [
@@ -692,9 +692,9 @@
       "obj/ft_lstclear_bonus.o",
       "src/ft_lstclear_bonus.c"
     ],
-    "directory": "/home/nimatura/code/garage/minishell/group/libft",
-    "file": "/home/nimatura/code/garage/minishell/group/libft/src/ft_lstclear_bonus.c",
-    "output": "/home/nimatura/code/garage/minishell/group/libft/obj/ft_lstclear_bonus.o"
+    "directory": "/home/ohnonon/code/garage/minishell/group/libft",
+    "file": "/home/ohnonon/code/garage/minishell/group/libft/src/ft_lstclear_bonus.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/libft/obj/ft_lstclear_bonus.o"
   },
   {
     "arguments": [
@@ -709,9 +709,9 @@
       "obj/ft_lstiter_bonus.o",
       "src/ft_lstiter_bonus.c"
     ],
-    "directory": "/home/nimatura/code/garage/minishell/group/libft",
-    "file": "/home/nimatura/code/garage/minishell/group/libft/src/ft_lstiter_bonus.c",
-    "output": "/home/nimatura/code/garage/minishell/group/libft/obj/ft_lstiter_bonus.o"
+    "directory": "/home/ohnonon/code/garage/minishell/group/libft",
+    "file": "/home/ohnonon/code/garage/minishell/group/libft/src/ft_lstiter_bonus.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/libft/obj/ft_lstiter_bonus.o"
   },
   {
     "arguments": [
@@ -726,9 +726,9 @@
       "obj/ft_lstmap_bonus.o",
       "src/ft_lstmap_bonus.c"
     ],
-    "directory": "/home/nimatura/code/garage/minishell/group/libft",
-    "file": "/home/nimatura/code/garage/minishell/group/libft/src/ft_lstmap_bonus.c",
-    "output": "/home/nimatura/code/garage/minishell/group/libft/obj/ft_lstmap_bonus.o"
+    "directory": "/home/ohnonon/code/garage/minishell/group/libft",
+    "file": "/home/ohnonon/code/garage/minishell/group/libft/src/ft_lstmap_bonus.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/libft/obj/ft_lstmap_bonus.o"
   },
   {
     "arguments": [
@@ -743,9 +743,9 @@
       "obj/ft_printf.o",
       "src/ft_printf.c"
     ],
-    "directory": "/home/nimatura/code/garage/minishell/group/libft",
-    "file": "/home/nimatura/code/garage/minishell/group/libft/src/ft_printf.c",
-    "output": "/home/nimatura/code/garage/minishell/group/libft/obj/ft_printf.o"
+    "directory": "/home/ohnonon/code/garage/minishell/group/libft",
+    "file": "/home/ohnonon/code/garage/minishell/group/libft/src/ft_printf.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/libft/obj/ft_printf.o"
   },
   {
     "arguments": [
@@ -760,9 +760,9 @@
       "obj/ft_printf_tools.o",
       "src/ft_printf_tools.c"
     ],
-    "directory": "/home/nimatura/code/garage/minishell/group/libft",
-    "file": "/home/nimatura/code/garage/minishell/group/libft/src/ft_printf_tools.c",
-    "output": "/home/nimatura/code/garage/minishell/group/libft/obj/ft_printf_tools.o"
+    "directory": "/home/ohnonon/code/garage/minishell/group/libft",
+    "file": "/home/ohnonon/code/garage/minishell/group/libft/src/ft_printf_tools.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/libft/obj/ft_printf_tools.o"
   },
   {
     "arguments": [
@@ -777,9 +777,9 @@
       "obj/ft_printf_convert.o",
       "src/ft_printf_convert.c"
     ],
-    "directory": "/home/nimatura/code/garage/minishell/group/libft",
-    "file": "/home/nimatura/code/garage/minishell/group/libft/src/ft_printf_convert.c",
-    "output": "/home/nimatura/code/garage/minishell/group/libft/obj/ft_printf_convert.o"
+    "directory": "/home/ohnonon/code/garage/minishell/group/libft",
+    "file": "/home/ohnonon/code/garage/minishell/group/libft/src/ft_printf_convert.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/libft/obj/ft_printf_convert.o"
   },
   {
     "arguments": [
@@ -794,9 +794,9 @@
       "obj/get_next_line.o",
       "src/get_next_line.c"
     ],
-    "directory": "/home/nimatura/code/garage/minishell/group/libft",
-    "file": "/home/nimatura/code/garage/minishell/group/libft/src/get_next_line.c",
-    "output": "/home/nimatura/code/garage/minishell/group/libft/obj/get_next_line.o"
+    "directory": "/home/ohnonon/code/garage/minishell/group/libft",
+    "file": "/home/ohnonon/code/garage/minishell/group/libft/src/get_next_line.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/libft/obj/get_next_line.o"
   },
   {
     "arguments": [
@@ -811,9 +811,9 @@
       "obj/get_next_line_utils.o",
       "src/get_next_line_utils.c"
     ],
-    "directory": "/home/nimatura/code/garage/minishell/group/libft",
-    "file": "/home/nimatura/code/garage/minishell/group/libft/src/get_next_line_utils.c",
-    "output": "/home/nimatura/code/garage/minishell/group/libft/obj/get_next_line_utils.o"
+    "directory": "/home/ohnonon/code/garage/minishell/group/libft",
+    "file": "/home/ohnonon/code/garage/minishell/group/libft/src/get_next_line_utils.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/libft/obj/get_next_line_utils.o"
   },
   {
     "arguments": [
@@ -828,9 +828,9 @@
       "obj/ft_isspace.o",
       "src/ft_isspace.c"
     ],
-    "directory": "/home/nimatura/code/garage/minishell/group/libft",
-    "file": "/home/nimatura/code/garage/minishell/group/libft/src/ft_isspace.c",
-    "output": "/home/nimatura/code/garage/minishell/group/libft/obj/ft_isspace.o"
+    "directory": "/home/ohnonon/code/garage/minishell/group/libft",
+    "file": "/home/ohnonon/code/garage/minishell/group/libft/src/ft_isspace.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/libft/obj/ft_isspace.o"
   },
   {
     "arguments": [
@@ -845,9 +845,9 @@
       "obj/ft_strcmp.o",
       "src/ft_strcmp.c"
     ],
-    "directory": "/home/nimatura/code/garage/minishell/group/libft",
-    "file": "/home/nimatura/code/garage/minishell/group/libft/src/ft_strcmp.c",
-    "output": "/home/nimatura/code/garage/minishell/group/libft/obj/ft_strcmp.o"
+    "directory": "/home/ohnonon/code/garage/minishell/group/libft",
+    "file": "/home/ohnonon/code/garage/minishell/group/libft/src/ft_strcmp.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/libft/obj/ft_strcmp.o"
   },
   {
     "arguments": [
@@ -862,9 +862,9 @@
       "obj/ft_strtrim_end.o",
       "src/ft_strtrim_end.c"
     ],
-    "directory": "/home/nimatura/code/garage/minishell/group/libft",
-    "file": "/home/nimatura/code/garage/minishell/group/libft/src/ft_strtrim_end.c",
-    "output": "/home/nimatura/code/garage/minishell/group/libft/obj/ft_strtrim_end.o"
+    "directory": "/home/ohnonon/code/garage/minishell/group/libft",
+    "file": "/home/ohnonon/code/garage/minishell/group/libft/src/ft_strtrim_end.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/libft/obj/ft_strtrim_end.o"
   },
   {
     "arguments": [
@@ -879,9 +879,9 @@
       "obj/ft_lstremove_and_link.o",
       "src/ft_lstremove_and_link.c"
     ],
-    "directory": "/home/nimatura/code/garage/minishell/group/libft",
-    "file": "/home/nimatura/code/garage/minishell/group/libft/src/ft_lstremove_and_link.c",
-    "output": "/home/nimatura/code/garage/minishell/group/libft/obj/ft_lstremove_and_link.o"
+    "directory": "/home/ohnonon/code/garage/minishell/group/libft",
+    "file": "/home/ohnonon/code/garage/minishell/group/libft/src/ft_lstremove_and_link.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/libft/obj/ft_lstremove_and_link.o"
   },
   {
     "arguments": [
@@ -896,9 +896,9 @@
       "obj/ft_strtrim2.o",
       "src/ft_strtrim2.c"
     ],
-    "directory": "/home/nimatura/code/garage/minishell/group/libft",
-    "file": "/home/nimatura/code/garage/minishell/group/libft/src/ft_strtrim2.c",
-    "output": "/home/nimatura/code/garage/minishell/group/libft/obj/ft_strtrim2.o"
+    "directory": "/home/ohnonon/code/garage/minishell/group/libft",
+    "file": "/home/ohnonon/code/garage/minishell/group/libft/src/ft_strtrim2.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/libft/obj/ft_strtrim2.o"
   },
   {
     "arguments": [
@@ -907,304 +907,14 @@
       "-Wall",
       "-Wextra",
       "-Werror",
-      "-fsanitize=address",
-      "-c",
-      "-o",
-      "obj/tokenize.o",
-      "src/tokenize.c"
-    ],
-    "directory": "/home/nimatura/code/garage/minishell/group",
-    "file": "/home/nimatura/code/garage/minishell/group/src/tokenize.c",
-    "output": "/home/nimatura/code/garage/minishell/group/obj/tokenize.o"
-  },
-  {
-    "arguments": [
-      "/usr/bin/cc",
-      "-g",
-      "-Wall",
-      "-Wextra",
-      "-Werror",
-      "-fsanitize=address",
-      "-c",
-      "-o",
-      "obj/builtins.o",
-      "src/builtins.c"
-    ],
-    "directory": "/home/nimatura/code/garage/minishell/group",
-    "file": "/home/nimatura/code/garage/minishell/group/src/builtins.c",
-    "output": "/home/nimatura/code/garage/minishell/group/obj/builtins.o"
-  },
-  {
-    "arguments": [
-      "/usr/bin/cc",
-      "-g",
-      "-Wall",
-      "-Wextra",
-      "-Werror",
-      "-fsanitize=address",
-      "-c",
-      "-o",
-      "obj/env_main.o",
-      "src/env_main.c"
-    ],
-    "directory": "/home/nimatura/code/garage/minishell/group",
-    "file": "/home/nimatura/code/garage/minishell/group/src/env_main.c",
-    "output": "/home/nimatura/code/garage/minishell/group/obj/env_main.o"
-  },
-  {
-    "arguments": [
-      "/usr/bin/cc",
-      "-g",
-      "-Wall",
-      "-Wextra",
-      "-Werror",
-      "-fsanitize=address",
-      "-c",
-      "-o",
-      "obj/error_exit.o",
-      "src/error_exit.c"
-    ],
-    "directory": "/home/nimatura/code/garage/minishell/group",
-    "file": "/home/nimatura/code/garage/minishell/group/src/error_exit.c",
-    "output": "/home/nimatura/code/garage/minishell/group/obj/error_exit.o"
-  },
-  {
-    "arguments": [
-      "/usr/bin/cc",
-      "-g",
-      "-Wall",
-      "-Wextra",
-      "-Werror",
-      "-fsanitize=address",
-      "-c",
-      "-o",
-      "obj/error_msg.o",
-      "src/error_msg.c"
-    ],
-    "directory": "/home/nimatura/code/garage/minishell/group",
-    "file": "/home/nimatura/code/garage/minishell/group/src/error_msg.c",
-    "output": "/home/nimatura/code/garage/minishell/group/obj/error_msg.o"
-  },
-  {
-    "arguments": [
-      "/usr/bin/cc",
-      "-g",
-      "-Wall",
-      "-Wextra",
-      "-Werror",
-      "-fsanitize=address",
-      "-c",
-      "-o",
-      "obj/exec_utils.o",
-      "src/exec_utils.c"
-    ],
-    "directory": "/home/nimatura/code/garage/minishell/group",
-    "file": "/home/nimatura/code/garage/minishell/group/src/exec_utils.c",
-    "output": "/home/nimatura/code/garage/minishell/group/obj/exec_utils.o"
-  },
-  {
-    "arguments": [
-      "/usr/bin/cc",
-      "-g",
-      "-Wall",
-      "-Wextra",
-      "-Werror",
-      "-fsanitize=address",
-      "-c",
-      "-o",
-      "obj/exec.o",
-      "src/exec.c"
-    ],
-    "directory": "/home/nimatura/code/garage/minishell/group",
-    "file": "/home/nimatura/code/garage/minishell/group/src/exec.c",
-    "output": "/home/nimatura/code/garage/minishell/group/obj/exec.o"
-  },
-  {
-    "arguments": [
-      "/usr/bin/cc",
-      "-g",
-      "-Wall",
-      "-Wextra",
-      "-Werror",
-      "-fsanitize=address",
-      "-c",
-      "-o",
-      "obj/expansion.o",
-      "src/expansion.c"
-    ],
-    "directory": "/home/nimatura/code/garage/minishell/group",
-    "file": "/home/nimatura/code/garage/minishell/group/src/expansion.c",
-    "output": "/home/nimatura/code/garage/minishell/group/obj/expansion.o"
-  },
-  {
-    "arguments": [
-      "/usr/bin/cc",
-      "-g",
-      "-Wall",
-      "-Wextra",
-      "-Werror",
-      "-fsanitize=address",
-      "-c",
-      "-o",
-      "obj/free_array.o",
-      "src/free_array.c"
-    ],
-    "directory": "/home/nimatura/code/garage/minishell/group",
-    "file": "/home/nimatura/code/garage/minishell/group/src/free_array.c",
-    "output": "/home/nimatura/code/garage/minishell/group/obj/free_array.o"
-  },
-  {
-    "arguments": [
-      "/usr/bin/cc",
-      "-g",
-      "-Wall",
-      "-Wextra",
-      "-Werror",
-      "-fsanitize=address",
-      "-c",
-      "-o",
-      "obj/free_utils.o",
-      "src/free_utils.c"
-    ],
-    "directory": "/home/nimatura/code/garage/minishell/group",
-    "file": "/home/nimatura/code/garage/minishell/group/src/free_utils.c",
-    "output": "/home/nimatura/code/garage/minishell/group/obj/free_utils.o"
-  },
-  {
-    "arguments": [
-      "/usr/bin/cc",
-      "-g",
-      "-Wall",
-      "-Wextra",
-      "-Werror",
-      "-fsanitize=address",
-      "-c",
-      "-o",
-      "obj/init_shell.o",
-      "src/init_shell.c"
-    ],
-    "directory": "/home/nimatura/code/garage/minishell/group",
-    "file": "/home/nimatura/code/garage/minishell/group/src/init_shell.c",
-    "output": "/home/nimatura/code/garage/minishell/group/obj/init_shell.o"
-  },
-  {
-    "arguments": [
-      "/usr/bin/cc",
-      "-g",
-      "-Wall",
-      "-Wextra",
-      "-Werror",
-      "-fsanitize=address",
-      "-c",
-      "-o",
-      "obj/main.o",
-      "src/main.c"
-    ],
-    "directory": "/home/nimatura/code/garage/minishell/group",
-    "file": "/home/nimatura/code/garage/minishell/group/src/main.c",
-    "output": "/home/nimatura/code/garage/minishell/group/obj/main.o"
-  },
-  {
-    "arguments": [
-      "/usr/bin/cc",
-      "-g",
-      "-Wall",
-      "-Wextra",
-      "-Werror",
-      "-fsanitize=address",
-      "-c",
-      "-o",
-      "obj/pars.o",
-      "src/pars.c"
-    ],
-    "directory": "/home/nimatura/code/garage/minishell/group",
-    "file": "/home/nimatura/code/garage/minishell/group/src/pars.c",
-    "output": "/home/nimatura/code/garage/minishell/group/obj/pars.o"
-  },
-  {
-    "arguments": [
-      "/usr/bin/cc",
-      "-g",
-      "-Wall",
-      "-Wextra",
-      "-Werror",
-      "-fsanitize=address",
-      "-c",
-      "-o",
-      "obj/redirections.o",
-      "src/redirections.c"
-    ],
-    "directory": "/home/nimatura/code/garage/minishell/group",
-    "file": "/home/nimatura/code/garage/minishell/group/src/redirections.c",
-    "output": "/home/nimatura/code/garage/minishell/group/obj/redirections.o"
-  },
-  {
-    "arguments": [
-      "/usr/bin/cc",
-      "-g",
-      "-Wall",
-      "-Wextra",
-      "-Werror",
-      "-fsanitize=address",
-      "-c",
-      "-o",
-      "obj/retokenize.o",
-      "src/retokenize.c"
-    ],
-    "directory": "/home/nimatura/code/garage/minishell/group",
-    "file": "/home/nimatura/code/garage/minishell/group/src/retokenize.c",
-    "output": "/home/nimatura/code/garage/minishell/group/obj/retokenize.o"
-  },
-  {
-    "arguments": [
-      "/usr/bin/cc",
-      "-g",
-      "-Wall",
-      "-Wextra",
-      "-Werror",
-      "-fsanitize=address",
-      "-c",
-      "-o",
-      "obj/shell_loop.o",
-      "src/shell_loop.c"
-    ],
-    "directory": "/home/nimatura/code/garage/minishell/group",
-    "file": "/home/nimatura/code/garage/minishell/group/src/shell_loop.c",
-    "output": "/home/nimatura/code/garage/minishell/group/obj/shell_loop.o"
-  },
-  {
-    "arguments": [
-      "/usr/bin/cc",
-      "-g",
-      "-Wall",
-      "-Wextra",
-      "-Werror",
-      "-fsanitize=address",
-      "-c",
-      "-o",
-      "obj/signal_handling.o",
-      "src/signal_handling.c"
-    ],
-    "directory": "/home/nimatura/code/garage/minishell/group",
-    "file": "/home/nimatura/code/garage/minishell/group/src/signal_handling.c",
-    "output": "/home/nimatura/code/garage/minishell/group/obj/signal_handling.o"
-  },
-  {
-    "arguments": [
-      "/usr/bin/cc",
-      "-g",
-      "-Wall",
-      "-Wextra",
-      "-Werror",
-      "-fsanitize=address",
       "-c",
       "-o",
       "obj/builtin_utils.o",
       "src/builtin_utils.c"
     ],
-    "directory": "/home/nimatura/code/garage/minishell/group",
-    "file": "/home/nimatura/code/garage/minishell/group/src/builtin_utils.c",
-    "output": "/home/nimatura/code/garage/minishell/group/obj/builtin_utils.o"
+    "directory": "/home/ohnonon/code/garage/minishell/group",
+    "file": "/home/ohnonon/code/garage/minishell/group/src/builtin_utils.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/obj/builtin_utils.o"
   },
   {
     "arguments": [
@@ -1213,15 +923,14 @@
       "-Wall",
       "-Wextra",
       "-Werror",
-      "-fsanitize=address",
       "-c",
       "-o",
-      "obj/path_utils.o",
-      "src/path_utils.c"
+      "obj/builtins.o",
+      "src/builtins.c"
     ],
-    "directory": "/home/nimatura/code/garage/minishell/group",
-    "file": "/home/nimatura/code/garage/minishell/group/src/path_utils.c",
-    "output": "/home/nimatura/code/garage/minishell/group/obj/path_utils.o"
+    "directory": "/home/ohnonon/code/garage/minishell/group",
+    "file": "/home/ohnonon/code/garage/minishell/group/src/builtins.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/obj/builtins.o"
   },
   {
     "arguments": [
@@ -1230,235 +939,493 @@
       "-Wall",
       "-Wextra",
       "-Werror",
-      "-fsanitize=address",
-      "-c",
-      "-o",
-      "obj/expand_utils.o",
-      "src/expand_utils.c"
-    ],
-    "directory": "/home/nimatura/code/garage/minishell/group",
-    "file": "/home/nimatura/code/garage/minishell/group/src/expand_utils.c",
-    "output": "/home/nimatura/code/garage/minishell/group/obj/expand_utils.o"
-  },
-  {
-    "arguments": [
-      "/usr/bin/cc",
-      "-g",
-      "-Wall",
-      "-Wextra",
-      "-Werror",
-      "-fsanitize=address",
-      "-c",
-      "-o",
-      "obj/debugging_tools.o",
-      "src/debugging_tools.c"
-    ],
-    "directory": "/home/nimatura/code/garage/minishell/group",
-    "file": "/home/nimatura/code/garage/minishell/group/src/debugging_tools.c",
-    "output": "/home/nimatura/code/garage/minishell/group/obj/debugging_tools.o"
-  },
-  {
-    "arguments": [
-      "/usr/bin/cc",
-      "-g",
-      "-Wall",
-      "-Wextra",
-      "-Werror",
-      "-fsanitize=address",
-      "-c",
-      "-o",
-      "obj/env_utils.o",
-      "src/env_utils.c"
-    ],
-    "directory": "/home/nimatura/code/garage/minishell/group",
-    "file": "/home/nimatura/code/garage/minishell/group/src/env_utils.c",
-    "output": "/home/nimatura/code/garage/minishell/group/obj/env_utils.o"
-  },
-  {
-    "arguments": [
-      "/usr/bin/cc",
-      "-g",
-      "-Wall",
-      "-Wextra",
-      "-Werror",
-      "-fsanitize=address",
-      "-c",
-      "-o",
-      "obj/builtins_unset.o",
-      "src/builtins_unset.c"
-    ],
-    "directory": "/home/nimatura/code/garage/minishell/group",
-    "file": "/home/nimatura/code/garage/minishell/group/src/builtins_unset.c",
-    "output": "/home/nimatura/code/garage/minishell/group/obj/builtins_unset.o"
-  },
-  {
-    "arguments": [
-      "/usr/bin/cc",
-      "-g",
-      "-Wall",
-      "-Wextra",
-      "-Werror",
-      "-fsanitize=address",
-      "-c",
-      "-o",
-      "obj/builtins_export.o",
-      "src/builtins_export.c"
-    ],
-    "directory": "/home/nimatura/code/garage/minishell/group",
-    "file": "/home/nimatura/code/garage/minishell/group/src/builtins_export.c",
-    "output": "/home/nimatura/code/garage/minishell/group/obj/builtins_export.o"
-  },
-  {
-    "arguments": [
-      "/usr/bin/cc",
-      "-g",
-      "-Wall",
-      "-Wextra",
-      "-Werror",
-      "-fsanitize=address",
-      "-c",
-      "-o",
-      "obj/collect_word.o",
-      "src/collect_word.c"
-    ],
-    "directory": "/home/nimatura/code/garage/minishell/group",
-    "file": "/home/nimatura/code/garage/minishell/group/src/collect_word.c",
-    "output": "/home/nimatura/code/garage/minishell/group/obj/collect_word.o"
-  },
-  {
-    "arguments": [
-      "/usr/bin/cc",
-      "-g",
-      "-Wall",
-      "-Wextra",
-      "-Werror",
-      "-fsanitize=address",
-      "-c",
-      "-o",
-      "obj/syntax_check.o",
-      "src/syntax_check.c"
-    ],
-    "directory": "/home/nimatura/code/garage/minishell/group",
-    "file": "/home/nimatura/code/garage/minishell/group/src/syntax_check.c",
-    "output": "/home/nimatura/code/garage/minishell/group/obj/syntax_check.o"
-  },
-  {
-    "arguments": [
-      "/usr/bin/cc",
-      "-g",
-      "-Wall",
-      "-Wextra",
-      "-Werror",
-      "-fsanitize=address",
-      "-c",
-      "-o",
-      "obj/wrappers2.o",
-      "src/wrappers2.c"
-    ],
-    "directory": "/home/nimatura/code/garage/minishell/group",
-    "file": "/home/nimatura/code/garage/minishell/group/src/wrappers2.c",
-    "output": "/home/nimatura/code/garage/minishell/group/obj/wrappers2.o"
-  },
-  {
-    "arguments": [
-      "/usr/bin/cc",
-      "-g",
-      "-Wall",
-      "-Wextra",
-      "-Werror",
-      "-fsanitize=address",
-      "-c",
-      "-o",
-      "obj/pars_aux.o",
-      "src/pars_aux.c"
-    ],
-    "directory": "/home/nimatura/code/garage/minishell/group",
-    "file": "/home/nimatura/code/garage/minishell/group/src/pars_aux.c",
-    "output": "/home/nimatura/code/garage/minishell/group/obj/pars_aux.o"
-  },
-  {
-    "arguments": [
-      "/usr/bin/cc",
-      "-g",
-      "-Wall",
-      "-Wextra",
-      "-Werror",
-      "-fsanitize=address",
-      "-c",
-      "-o",
-      "obj/builtins_echo.o",
-      "src/builtins_echo.c"
-    ],
-    "directory": "/home/nimatura/code/garage/minishell/group",
-    "file": "/home/nimatura/code/garage/minishell/group/src/builtins_echo.c",
-    "output": "/home/nimatura/code/garage/minishell/group/obj/builtins_echo.o"
-  },
-  {
-    "arguments": [
-      "/usr/bin/cc",
-      "-g",
-      "-Wall",
-      "-Wextra",
-      "-Werror",
-      "-fsanitize=address",
-      "-c",
-      "-o",
-      "obj/execute_pipe.o",
-      "src/execute_pipe.c"
-    ],
-    "directory": "/home/nimatura/code/garage/minishell/group",
-    "file": "/home/nimatura/code/garage/minishell/group/src/execute_pipe.c",
-    "output": "/home/nimatura/code/garage/minishell/group/obj/execute_pipe.o"
-  },
-  {
-    "arguments": [
-      "/usr/bin/cc",
-      "-g",
-      "-Wall",
-      "-Wextra",
-      "-Werror",
-      "-fsanitize=address",
-      "-c",
-      "-o",
-      "obj/wrappers.o",
-      "src/wrappers.c"
-    ],
-    "directory": "/home/nimatura/code/garage/minishell/group",
-    "file": "/home/nimatura/code/garage/minishell/group/src/wrappers.c",
-    "output": "/home/nimatura/code/garage/minishell/group/obj/wrappers.o"
-  },
-  {
-    "arguments": [
-      "/usr/bin/cc",
-      "-g",
-      "-Wall",
-      "-Wextra",
-      "-Werror",
-      "-fsanitize=address",
-      "-c",
-      "-o",
-      "obj/token_tools.o",
-      "src/token_tools.c"
-    ],
-    "directory": "/home/nimatura/code/garage/minishell/group",
-    "file": "/home/nimatura/code/garage/minishell/group/src/token_tools.c",
-    "output": "/home/nimatura/code/garage/minishell/group/obj/token_tools.o"
-  },
-  {
-    "arguments": [
-      "/usr/bin/cc",
-      "-g",
-      "-Wall",
-      "-Wextra",
-      "-Werror",
-      "-fsanitize=address",
       "-c",
       "-o",
       "obj/builtins_cd.o",
       "src/builtins_cd.c"
     ],
-    "directory": "/home/nimatura/code/garage/minishell/group",
-    "file": "/home/nimatura/code/garage/minishell/group/src/builtins_cd.c",
-    "output": "/home/nimatura/code/garage/minishell/group/obj/builtins_cd.o"
+    "directory": "/home/ohnonon/code/garage/minishell/group",
+    "file": "/home/ohnonon/code/garage/minishell/group/src/builtins_cd.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/obj/builtins_cd.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "obj/builtins_echo.o",
+      "src/builtins_echo.c"
+    ],
+    "directory": "/home/ohnonon/code/garage/minishell/group",
+    "file": "/home/ohnonon/code/garage/minishell/group/src/builtins_echo.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/obj/builtins_echo.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "obj/builtins_export.o",
+      "src/builtins_export.c"
+    ],
+    "directory": "/home/ohnonon/code/garage/minishell/group",
+    "file": "/home/ohnonon/code/garage/minishell/group/src/builtins_export.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/obj/builtins_export.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "obj/builtins_unset.o",
+      "src/builtins_unset.c"
+    ],
+    "directory": "/home/ohnonon/code/garage/minishell/group",
+    "file": "/home/ohnonon/code/garage/minishell/group/src/builtins_unset.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/obj/builtins_unset.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "obj/collect_word.o",
+      "src/collect_word.c"
+    ],
+    "directory": "/home/ohnonon/code/garage/minishell/group",
+    "file": "/home/ohnonon/code/garage/minishell/group/src/collect_word.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/obj/collect_word.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "obj/debugging_tools.o",
+      "src/debugging_tools.c"
+    ],
+    "directory": "/home/ohnonon/code/garage/minishell/group",
+    "file": "/home/ohnonon/code/garage/minishell/group/src/debugging_tools.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/obj/debugging_tools.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "obj/env_main.o",
+      "src/env_main.c"
+    ],
+    "directory": "/home/ohnonon/code/garage/minishell/group",
+    "file": "/home/ohnonon/code/garage/minishell/group/src/env_main.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/obj/env_main.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "obj/env_utils.o",
+      "src/env_utils.c"
+    ],
+    "directory": "/home/ohnonon/code/garage/minishell/group",
+    "file": "/home/ohnonon/code/garage/minishell/group/src/env_utils.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/obj/env_utils.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "obj/error_exit.o",
+      "src/error_exit.c"
+    ],
+    "directory": "/home/ohnonon/code/garage/minishell/group",
+    "file": "/home/ohnonon/code/garage/minishell/group/src/error_exit.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/obj/error_exit.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "obj/exec.o",
+      "src/exec.c"
+    ],
+    "directory": "/home/ohnonon/code/garage/minishell/group",
+    "file": "/home/ohnonon/code/garage/minishell/group/src/exec.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/obj/exec.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "obj/exec_utils.o",
+      "src/exec_utils.c"
+    ],
+    "directory": "/home/ohnonon/code/garage/minishell/group",
+    "file": "/home/ohnonon/code/garage/minishell/group/src/exec_utils.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/obj/exec_utils.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "obj/execute_pipe.o",
+      "src/execute_pipe.c"
+    ],
+    "directory": "/home/ohnonon/code/garage/minishell/group",
+    "file": "/home/ohnonon/code/garage/minishell/group/src/execute_pipe.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/obj/execute_pipe.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "obj/expand_utils.o",
+      "src/expand_utils.c"
+    ],
+    "directory": "/home/ohnonon/code/garage/minishell/group",
+    "file": "/home/ohnonon/code/garage/minishell/group/src/expand_utils.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/obj/expand_utils.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "obj/expansion.o",
+      "src/expansion.c"
+    ],
+    "directory": "/home/ohnonon/code/garage/minishell/group",
+    "file": "/home/ohnonon/code/garage/minishell/group/src/expansion.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/obj/expansion.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "obj/free_array.o",
+      "src/free_array.c"
+    ],
+    "directory": "/home/ohnonon/code/garage/minishell/group",
+    "file": "/home/ohnonon/code/garage/minishell/group/src/free_array.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/obj/free_array.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "obj/free_utils.o",
+      "src/free_utils.c"
+    ],
+    "directory": "/home/ohnonon/code/garage/minishell/group",
+    "file": "/home/ohnonon/code/garage/minishell/group/src/free_utils.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/obj/free_utils.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "obj/init_shell.o",
+      "src/init_shell.c"
+    ],
+    "directory": "/home/ohnonon/code/garage/minishell/group",
+    "file": "/home/ohnonon/code/garage/minishell/group/src/init_shell.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/obj/init_shell.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "obj/main.o",
+      "src/main.c"
+    ],
+    "directory": "/home/ohnonon/code/garage/minishell/group",
+    "file": "/home/ohnonon/code/garage/minishell/group/src/main.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/obj/main.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "obj/pars.o",
+      "src/pars.c"
+    ],
+    "directory": "/home/ohnonon/code/garage/minishell/group",
+    "file": "/home/ohnonon/code/garage/minishell/group/src/pars.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/obj/pars.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "obj/pars_aux.o",
+      "src/pars_aux.c"
+    ],
+    "directory": "/home/ohnonon/code/garage/minishell/group",
+    "file": "/home/ohnonon/code/garage/minishell/group/src/pars_aux.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/obj/pars_aux.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "obj/path_utils.o",
+      "src/path_utils.c"
+    ],
+    "directory": "/home/ohnonon/code/garage/minishell/group",
+    "file": "/home/ohnonon/code/garage/minishell/group/src/path_utils.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/obj/path_utils.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "obj/redirections.o",
+      "src/redirections.c"
+    ],
+    "directory": "/home/ohnonon/code/garage/minishell/group",
+    "file": "/home/ohnonon/code/garage/minishell/group/src/redirections.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/obj/redirections.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "obj/retokenize.o",
+      "src/retokenize.c"
+    ],
+    "directory": "/home/ohnonon/code/garage/minishell/group",
+    "file": "/home/ohnonon/code/garage/minishell/group/src/retokenize.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/obj/retokenize.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "obj/shell_loop.o",
+      "src/shell_loop.c"
+    ],
+    "directory": "/home/ohnonon/code/garage/minishell/group",
+    "file": "/home/ohnonon/code/garage/minishell/group/src/shell_loop.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/obj/shell_loop.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "obj/signal_handling.o",
+      "src/signal_handling.c"
+    ],
+    "directory": "/home/ohnonon/code/garage/minishell/group",
+    "file": "/home/ohnonon/code/garage/minishell/group/src/signal_handling.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/obj/signal_handling.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "obj/syntax_check.o",
+      "src/syntax_check.c"
+    ],
+    "directory": "/home/ohnonon/code/garage/minishell/group",
+    "file": "/home/ohnonon/code/garage/minishell/group/src/syntax_check.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/obj/syntax_check.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "obj/token_tools.o",
+      "src/token_tools.c"
+    ],
+    "directory": "/home/ohnonon/code/garage/minishell/group",
+    "file": "/home/ohnonon/code/garage/minishell/group/src/token_tools.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/obj/token_tools.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "obj/tokenize.o",
+      "src/tokenize.c"
+    ],
+    "directory": "/home/ohnonon/code/garage/minishell/group",
+    "file": "/home/ohnonon/code/garage/minishell/group/src/tokenize.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/obj/tokenize.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "obj/wrappers.o",
+      "src/wrappers.c"
+    ],
+    "directory": "/home/ohnonon/code/garage/minishell/group",
+    "file": "/home/ohnonon/code/garage/minishell/group/src/wrappers.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/obj/wrappers.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "obj/wrappers2.o",
+      "src/wrappers2.c"
+    ],
+    "directory": "/home/ohnonon/code/garage/minishell/group",
+    "file": "/home/ohnonon/code/garage/minishell/group/src/wrappers2.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/obj/wrappers2.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "obj/heredoc.o",
+      "src/heredoc.c"
+    ],
+    "directory": "/home/ohnonon/code/garage/minishell/group",
+    "file": "/home/ohnonon/code/garage/minishell/group/src/heredoc.c",
+    "output": "/home/ohnonon/code/garage/minishell/group/obj/heredoc.o"
   }
 ]

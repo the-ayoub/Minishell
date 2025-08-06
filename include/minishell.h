@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 19:46:54 by nimatura          #+#    #+#             */
-/*   Updated: 2025/08/03 02:29:36 by ohnonon          ###   ########.fr       */
+/*   Updated: 2025/08/06 17:32:56 by ohnonon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@
 # define PATH_MAX 4096
 
 // === VARIABLES GLOBALES ===
-extern volatile sig_atomic_t	g_in_input;
+int				g_signal;
 
 // === FUNCIONES DE SHELL ===
 void						init_shell(t_shell *shell, char **envp);
@@ -63,7 +63,8 @@ int							is_valid_env_key(char *str);
 int							check_var_and_del(t_list **head, char *var);
 
 // === SIGNAL HANDLING ===
-void						setup_signal_handlers(void);
+void						init_signals(int mode);
+void						signignore(int signum);
 
 // === SYNTAX CHECK ===
 int							syntax_check(t_token *tokens);

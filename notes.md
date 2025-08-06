@@ -3,20 +3,6 @@
 - heredoc segfault
 - export variable que ya existia:, agrega una nueva en vez de editar
 
-# RECORDATORIO PARA NICO
-# RECORDATORIO PARA AYOUB
-
-# TODO AYOUB:
-[ ] proteger dup2: execute_pipe.c
-[x] heredoc: segfault
-[x] heredoc: syntax err
-
-# TODO NICO:
-    - Problema: gestionar syntax para organizar correctamente
-        casos: export "abc"=$USER"$PATH"
-[ ] norminette
-[ ] revisar funciones y proteger memoria
-
 # TODO:
 [ ] Salidas: error y salidas de builtins
 [ ] Gestionar caso bash < /dev/urandom: readline sale si le entra un no print

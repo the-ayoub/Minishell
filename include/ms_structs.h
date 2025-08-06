@@ -6,25 +6,17 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 23:05:39 by nimatura          #+#    #+#             */
-/*   Updated: 2025/07/29 20:06:37 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/08/06 17:37:29 by ohnonon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MS_STRUCTS_H
 # define MS_STRUCTS_H
 # include "../libft/inc/libft.h"
-// What the fuck is this
 # include <termios.h>
+# define SIG_DEF 1
+# define SIG_HEREDOC 2
 
-// Estados para el análisis de comillas
-typedef enum e_parse_state
-{
-	STATE_GENERAL,
-	STATE_IN_SQUOTE,
-	STATE_IN_DQUOTE
-}	t_parse_state;
-
-// === TIPOS DE TOKENS ===
 typedef enum e_token_type
 {
 	TOKEN_WORD,
@@ -61,6 +53,7 @@ typedef struct s_redir
 	t_redir_type	type;
 	char			*file;
 	struct s_redir	*next;
+	int				hd_fd;
 }	t_redir;
 
 // === ESTRUCTURA DE UN COMANDO ===
@@ -83,6 +76,7 @@ typedef struct s_shell
 	int				interactive;
 	int				in_input_phase;
 }	t_shell;
+// WARNING: BORRAR IN INPUT PHASE
 
 typedef struct s_pipe
 {

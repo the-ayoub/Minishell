@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:40:58 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/28 20:15:54 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/08/06 17:29:55 by ohnonon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,5 @@ void	init_shell(t_shell *shell, char **envp)
 	shell->last_status = 0;
 	shell->cmd = NULL;
 	shell->tokens = NULL;
+	g_signal = -3;
 }

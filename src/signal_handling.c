@@ -6,37 +6,62 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:43:45 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/07/30 14:18:49 by ohnonon          ###   ########.fr       */
+/*   Updated: 2025/08/06 17:28:34 by ohnonon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-volatile sig_atomic_t	g_in_input = 0;
-
-static void	sigint_handler(int sig)
+void	signignore(int signum)
 {
-	(void)sig;
-	write(1, "\n", 1);
-	if (g_in_input)
+	struct sigaction	signal;
+
+	signal.sa_handler = SIG_IGN;
+	signal.sa_flags = SA_RESTART;
+	sigemptyset(&signal.sa_mask);
+	if (sigaction(signum, &signal, NULL) < 0)
+		exit (1);
+}
+
+static void	heredoc_handl(int sig, siginfo_t *data, void *non_used_data)
+{
+	(void) data;
+	(void) non_used_data;
+	if (sig == SIGINT)
 	{
-		rl_replace_line("", 0);
+		rl_replace_line("", 1);
 		rl_on_new_line();
 		rl_redisplay();
+		ft_putstr_fd("\n", 1);
+		g_signal = 1;
+		exit (1);
 	}
 }
 
-void	setup_signal_handlers(void)
+static void	default_handl(int sig, siginfo_t *data, void *non_used_data)
 {
-	struct sigaction	sa_int;
-
-	sa_int.sa_handler = sigint_handler;
-	sa_int.sa_flags = SA_RESTART;
-	sigemptyset(&sa_int.sa_mask);
-	if (sigaction(SIGINT, &sa_int, NULL) == -1)
+	(void) data;
+	(void) non_used_data;
+	if (sig == SIGINT)
 	{
-		perror("minishell: sigaction");
-		exit(EXIT_FAILURE);
+		ft_putstr_fd("\n", 1);
+		rl_replace_line("", 1);
+		rl_on_new_line();
+		rl_redisplay();
+		g_signal = 1;
 	}
-	signal(SIGQUIT, SIG_IGN);
+}
+
+void	init_signals(int mode)
+{
+	struct sigaction	signal;
+
+	signal.sa_flags = SA_RESTART | SA_SIGINFO;
+	sigemptyset(&signal.sa_mask);
+	if (mode == 1)
+		signal.sa_sigaction = default_handl;
+	else if (mode == 2)
+		signal.sa_sigaction = heredoc_handl;
+	sigaction(SIGINT, &signal, NULL);
+	sigaction(SIGQUIT, &signal, NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 22:18:53 by nimatura          #+#    #+#             */
-/*   Updated: 2025/08/03 02:57:16 by ohnonon          ###   ########.fr       */
+/*   Updated: 2025/08/06 15:54:05 by ohnonon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,6 @@ static void	heredoc_fork(int *pid, int *fd, char *delim)
 	{
 		close_wrapper(fd[1]);
 		waitpid(*pid, &status, 0);
-		exit(0);
 	}
 }
 
@@ -102,6 +101,8 @@ int	redirect_heredoc(t_shell *shell, t_redir *redir)
 	int	pid;
 
 	(void)shell;
+	if (redir->type != REDIR_HEREDOC)
+		return (-2);
 	if (NULL == redir || NULL == redir->file)
 	{
 		ft_putstr_fd("minishell: heredoc: missing delimiter\n", STDERR_FILENO);
