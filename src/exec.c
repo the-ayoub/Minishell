@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:39:32 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/08/05 21:04:58 by ohnonon          ###   ########.fr       */
+/*   Updated: 2025/08/06 19:48:02 by ohnonon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static int	exe_builtin_parent(int *b_stdin, int *b_stdout, t_shell *shell)
 {
 	if (wrapper_dup(b_stdin, STDIN_FILENO, shell) == FALSE)
 		exit(shell->last_status);
-	if (wrapper_dup(b_stdin, STDOUT_FILENO, shell) == FALSE)
+	if (wrapper_dup(b_stdout, STDOUT_FILENO, shell) == FALSE)
 		exit(shell->last_status);
 	*b_stdout = dup(STDOUT_FILENO);
 	if (setup_redirections(shell, shell->cmd) != SUCCESS)
@@ -73,7 +73,7 @@ static int	exe_builtin_parent(int *b_stdin, int *b_stdout, t_shell *shell)
 	else
 		shell->last_status = exec_builtin(shell, shell->cmd);
 	if (wrapper_dup2(*b_stdin, STDIN_FILENO, shell) != TRUE || \
-		wrapper_dup2(*b_stdin, STDIN_FILENO, shell) != TRUE)
+		wrapper_dup2(*b_stdout, STDOUT_FILENO, shell) != TRUE)
 	{
 		close_wrapper(*b_stdin);
 		close_wrapper(*b_stdout);
@@ -91,7 +91,7 @@ static int	aux_guard(t_shell *shell, t_cmd *cmd)
 		return (FALSE);
 	if (!cmd->argv || !cmd->argv[0])
 	{
-		if (cmd->redirs)
+		if (cmd->redirs->hd_fd >= 0)
 			setup_redirections(shell, cmd);
 		return (FALSE);
 	}

@@ -6,14 +6,14 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:43:17 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/08/03 02:31:56 by ohnonon          ###   ########.fr       */
+/*   Updated: 2025/08/06 20:02:02 by ohnonon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 #include <unistd.h>
 
-static int	open_redirection(t_redir *redir, t_shell *shell)
+static int	open_redirection(t_redir *redir)
 {
 	int	fd;
 
@@ -25,7 +25,7 @@ static int	open_redirection(t_redir *redir, t_shell *shell)
 	else if (redir->type == REDIR_APPEND)
 		fd = open(redir->file, O_WRONLY | O_CREAT | O_APPEND, 0644);
 	else if (redir->type == REDIR_HEREDOC)
-		fd = redirect_heredoc(shell, redir);
+		fd = redir->hd_fd;
 	if (fd == -1)
 	{
 		ft_putstr_fd("minishell: ", STDERR_FILENO);
@@ -42,19 +42,16 @@ int	setup_redirections(t_shell *shell, t_cmd *cmd)
 	current = cmd->redirs;
 	while (current)
 	{
-		fd = open_redirection(current, shell);
+		fd = open_redirection(current);
 		if (fd == -1)
 			return (ERROR);
 		if (current->type == REDIR_IN || current->type == REDIR_HEREDOC)
 		{
 			if (wrapper_dup2(fd, STDIN_FILENO, shell) == FALSE)
-				ft_putstr_fd("STDIN_FILENO err\n", 3);
+				ft_putstr_fd("STDIN_FILENO err\n", 2);
 		}
-		else
-		{
-			if (wrapper_dup2(fd, STDOUT_FILENO, shell) == FALSE)
-				ft_putstr_fd("STDOUT err\n", 3);
-		}
+		else if (wrapper_dup2(fd, STDOUT_FILENO, shell) == FALSE)
+				ft_putstr_fd("STDOUT err\n", 2);
 		close_wrapper(fd);
 		current = current->next;
 	}

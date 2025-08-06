@@ -6,11 +6,13 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:43:45 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/08/06 17:28:34 by ohnonon          ###   ########.fr       */
+/*   Updated: 2025/08/06 18:19:33 by ohnonon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
+
+int g_signal = 0;
 
 void	signignore(int signum)
 {

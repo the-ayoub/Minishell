@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 19:46:54 by nimatura          #+#    #+#             */
-/*   Updated: 2025/08/06 17:32:56 by ohnonon          ###   ########.fr       */
+/*   Updated: 2025/08/06 18:17:44 by ohnonon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,7 @@
 # define ERROR 1
 # define PATH_MAX 4096
 
-// === VARIABLES GLOBALES ===
-int				g_signal;
+extern int				g_signal;
 
 // === FUNCIONES DE SHELL ===
 void						init_shell(t_shell *shell, char **envp);
@@ -118,6 +117,9 @@ void						wait_for_children(t_shell *shell, pid_t last_pid);
 int							builtin_in_pipe(char *cmd);
 void						close_pipe_ends(int pipe_fd[2], int keep_read_end);
 
+// === HEREDOC ===
+int							redirect_heredoc(t_shell *shell, t_redir *redir);
+
 // === EXEC PIPES ===
 void						execute_pipe(t_shell *shell, t_cmd *cmd);
 
@@ -129,8 +131,6 @@ int							is_valid_identifier(char *str);
 // === REDIR ===
 int							setup_redirections(t_shell *shell, t_cmd *cmd);
 int							reset_std_fds(int backup[2], t_shell *shell);
-int							redirect_heredoc(t_shell *shell, t_redir *redir);
-int							handle_heredoc_loop(int fd, const char *delimiter);
 
 // === COMPLETED BUILTINS ===
 int							builtin_echo(t_shell *shell, char **argv);

@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 22:18:53 by nimatura          #+#    #+#             */
-/*   Updated: 2025/08/06 15:54:05 by ohnonon          ###   ########.fr       */
+/*   Updated: 2025/08/06 20:19:35 by ohnonon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	set_heredoc_fd(void)
 	if (tty_fd != -1)
 	{
 		if (dup2(tty_fd, STDIN_FILENO) == -1)
-			ft_putstr_fd("can't restore fd term\n",
+			ft_putstr_fd("can't fetch terminal fd\n",
 				STDERR_FILENO);
 		close_wrapper(tty_fd);
 	}
@@ -30,6 +30,7 @@ static int	readline_loop(char **line, char **result, char *delim)
 {
 	while (1)
 	{
+		signignore(SIGQUIT);
 		*line = readline("> ");
 		if (!*line)
 		{
@@ -40,17 +41,17 @@ static int	readline_loop(char **line, char **result, char *delim)
 		if (ft_strcmp(*line, delim) == 0)
 		{
 			free_wrapper((void **)line);
-			free_wrapper((void **)result);
 			break ;
 		}
-		if (wrapper_strjoin(result, *line) == FALSE)
+		if (wrapper_strjoin(result, *line) == FALSE || !wrapper_strjoin(result \
+																 , "\n"))
 			break ;
 		free_wrapper((void **)line);
 	}
 	return (TRUE);
 }
 
-int	handle_heredoc_loop(int fd, const char *delimiter)
+static int	handle_heredoc_loop(int *fd, const char *delimiter)
 {
 	char	*line;
 	char	*result;
@@ -59,22 +60,22 @@ int	handle_heredoc_loop(int fd, const char *delimiter)
 	set_heredoc_fd();
 	if (readline_loop(&line, &result, (char *)delimiter) == FALSE)
 	{
-		free_wrapper((void **)line);
-		free_wrapper((void **)result);
-		close_wrapper(fd);
+		free_wrapper((void **)&line);
+		free_wrapper((void **)&result);
+		close_wrapper(fd[1]);
 		return (0);
 	}
 	if (result != NULL)
 	{
-		write(fd, result, ft_strlen(result));
-		write(fd, "\n", 1);
+		write(fd[1], result, ft_strlen(result));
+		free_wrapper((void **)&result);
 	}
+	close_wrapper(fd[1]);
 	free_wrapper((void **)&result);
-	close_wrapper(fd);
 	return (0);
 }
 
-static void	heredoc_fork(int *pid, int *fd, char *delim)
+static int	heredoc_fork(int *pid, int *fd, char *delim)
 {
 	int	status;
 
@@ -83,16 +84,19 @@ static void	heredoc_fork(int *pid, int *fd, char *delim)
 		exit(130);
 	if (*pid == 0)
 	{
+		init_signals(SIG_HEREDOC);
+		handle_heredoc_loop(fd, delim);
 		close_wrapper(fd[0]);
-		handle_heredoc_loop(fd[1], delim);
-		// close_wrapper(fd[1]);
 		exit(0);
 	}
 	else
 	{
-		close_wrapper(fd[1]);
 		waitpid(*pid, &status, 0);
+		close_wrapper(fd[1]);
+		if (WTERMSIG(status) == SIGINT)
+			return (ft_putstr_fd("\n", 1), FALSE);
 	}
+	return (TRUE);
 }
 
 int	redirect_heredoc(t_shell *shell, t_redir *redir)
@@ -110,6 +114,9 @@ int	redirect_heredoc(t_shell *shell, t_redir *redir)
 	}
 	if (pipe(fd) == -1)
 		return (-1);
-	heredoc_fork(&pid, fd, redir->file);
+	signal(SIGINT, SIG_IGN);
+	if (heredoc_fork(&pid, fd, redir->file) == FALSE)
+		return (-2);
+
 	return (fd[0]);
 }
