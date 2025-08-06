@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 23:48:54 by nimatura          #+#    #+#             */
-/*   Updated: 2025/08/03 02:52:12 by ohnonon          ###   ########.fr       */
+/*   Updated: 2025/08/06 20:28:18 by ohnonon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,12 @@ int	waitpid_wrapper(pid_t *ptr, int *status)
 	*ptr = waitpid(-1, status, 0);
 	return (*ptr);
 }
-
+void close_wrapper(int fd)
+{
+    if (close(fd) == -1)
+        perror("close failed");
+}
+/*
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
@@ -54,4 +59,4 @@ void close_wrapper(int fd)
         print_stack_trace();  // This shows where close_wrapper was called from
         assert(0 && "close_wrapper failed");
     }
-}
+}*/

@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 22:38:09 by nimatura          #+#    #+#             */
-/*   Updated: 2025/08/06 20:20:41 by ohnonon          ###   ########.fr       */
+/*   Updated: 2025/08/06 20:27:02 by ohnonon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ static void	update_fd(t_pipe *data, t_cmd **cmd)
 		close_wrapper(data->pipe_fd[1]);
 		data->prev_read_end = data->pipe_fd[0];
 	}
+	else
+		data->prev_read_end = -1;
 	data->last_pid = data->pid;
 	*cmd = (*cmd)->next;
 }
@@ -99,9 +101,7 @@ void	execute_pipe(t_shell *shell, t_cmd *cmd)
 	}
 	if (data.prev_read_end != -1)
 		close_wrapper(data.prev_read_end);
-	// if (data.last_pid != -1)
-	// 	wait_for_children(shell, data.last_pid);
+	if (data.last_pid != -1)
+		wait_for_children(shell, data.last_pid);
 	reset_std_fds(&*data.b_std, shell);
-	// close_wrapper(data.b_std[0]);
-	// close_wrapper(data.b_std[1]);
 }
