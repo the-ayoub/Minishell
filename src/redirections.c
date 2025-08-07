@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:43:17 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/08/06 20:02:02 by ohnonon          ###   ########.fr       */
+/*   Updated: 2025/08/07 15:21:37 by ohnonon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	setup_redirections(t_shell *shell, t_cmd *cmd)
 				ft_putstr_fd("STDIN_FILENO err\n", 2);
 		}
 		else if (wrapper_dup2(fd, STDOUT_FILENO, shell) == FALSE)
-				ft_putstr_fd("STDOUT err\n", 2);
+			ft_putstr_fd("STDOUT err\n", 2);
 		close_wrapper(fd);
 		current = current->next;
 	}

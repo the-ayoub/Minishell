@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 22:18:53 by nimatura          #+#    #+#             */
-/*   Updated: 2025/08/06 20:19:35 by ohnonon          ###   ########.fr       */
+/*   Updated: 2025/08/07 15:20:37 by ohnonon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,7 @@ static int	readline_loop(char **line, char **result, char *delim)
 			free_wrapper((void **)line);
 			break ;
 		}
-		if (wrapper_strjoin(result, *line) == FALSE || !wrapper_strjoin(result \
-																 , "\n"))
+		if (!wrapper_strjoin(result, *line) || !wrapper_strjoin(result, "\n"))
 			break ;
 		free_wrapper((void **)line);
 	}
@@ -117,6 +116,5 @@ int	redirect_heredoc(t_shell *shell, t_redir *redir)
 	signal(SIGINT, SIG_IGN);
 	if (heredoc_fork(&pid, fd, redir->file) == FALSE)
 		return (-2);
-
 	return (fd[0]);
 }

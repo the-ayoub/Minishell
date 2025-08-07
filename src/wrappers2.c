@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 23:48:54 by nimatura          #+#    #+#             */
-/*   Updated: 2025/08/06 20:28:18 by ohnonon          ###   ########.fr       */
+/*   Updated: 2025/08/07 15:21:12 by ohnonon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,11 @@ int	waitpid_wrapper(pid_t *ptr, int *status)
 	*ptr = waitpid(-1, status, 0);
 	return (*ptr);
 }
-void close_wrapper(int fd)
+
+void	close_wrapper(int fd)
 {
-    if (close(fd) == -1)
-        perror("close failed");
+	if (close(fd) == -1)
+		perror("close failed");
 }
 /*
 #include <stdio.h>
@@ -40,7 +41,7 @@ void print_stack_symbols_with_addr2line(void **buffer, int nptrs)
 	char cmd[512];
 	for (int i = 0; i < nptrs; i++)
 	{
-		snprintf(cmd, sizeof(cmd), "addr2line -f -p -e ./minishell %p", buffer[i]);
+snprintf(cmd, sizeof(cmd), "addr2line -f -p -e ./minishell %p", buffer[i]);
 		system(cmd);
 	}
 }

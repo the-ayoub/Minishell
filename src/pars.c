@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:42:45 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/08/06 18:05:27 by ohnonon          ###   ########.fr       */
+/*   Updated: 2025/08/07 15:21:59 by ohnonon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static void	add_redirection(t_cmd *cmd, t_token *token)
 }
 
 // returns 1 in success, 0 for err
-static int	parse_redir(t_token **current, t_cmd **cmd, t_cmd **ptr, t_shell *shell)
+static int	parse_redir(t_token **current, t_cmd **cmd, t_cmd **ptr, t_shell *s)
 {
 	if (NULL == (*current)->next || !is_token_word((*current)->next->type))
 	{
@@ -70,7 +70,7 @@ static int	parse_redir(t_token **current, t_cmd **cmd, t_cmd **ptr, t_shell *she
 	}
 	add_redirection(*cmd, *current);
 	if ((*cmd)->redirs->type == REDIR_HEREDOC)
-		(*cmd)->redirs->hd_fd = redirect_heredoc(shell, (*cmd)->redirs);
+		(*cmd)->redirs->hd_fd = redirect_heredoc(s, (*cmd)->redirs);
 	*current = (*current)->next;
 	return (1);
 }
