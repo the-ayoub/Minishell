@@ -6,13 +6,13 @@
 #    By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/05 18:42:02 by nimatura          #+#    #+#              #
-#    Updated: 2025/08/03 02:51:10 by ohnonon          ###   ########.fr        #
+#    Updated: 2025/08/07 17:57:08 by nimatura         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 CC = cc
-CFLAGS = -g -no-pie -Wall -Wextra -Werror #-fsanitize=address
+CFLAGS = -g -Wall -Wextra -Werror #-fsanitize=address
 LDFLAGS = -lreadline -lhistory
 
 DPS := $(SRC_FILE:.c=.d)
