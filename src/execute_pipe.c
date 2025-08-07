@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 22:38:09 by nimatura          #+#    #+#             */
-/*   Updated: 2025/08/06 20:27:02 by ohnonon          ###   ########.fr       */
+/*   Updated: 2025/08/07 18:12:45 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ static void	fork_wrapper(t_shell *shell, t_pipe *data, t_cmd *cmd)
 	}
 }
 
-// TODO: testear dup failing
 static void	set_pipe_data(t_pipe *data, t_shell *shell)
 {
 	data->pipe_fd[0] = -1;

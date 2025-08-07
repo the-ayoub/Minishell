@@ -6,11 +6,12 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:39:32 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/08/07 18:08:27 by nimatura         ###   ########.fr       */
+/*   Updated: 2025/08/07 18:05:45 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
+#include <unistd.h>
 
 void	exec_external(t_shell *shell, t_cmd *cmd)
 {

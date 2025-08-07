@@ -6,20 +6,12 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:39:21 by aybelhaj          #+#    #+#             */
-/*   Updated: 2025/08/06 19:51:32 by ohnonon          ###   ########.fr       */
+/*   Updated: 2025/08/07 18:12:52 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-// void	close_pipe_ends(int pipe_fd[2], int keep_read_end)
-// {
-// 	if (pipe_fd[1] != -1)
-// 		close_wrapper(pipe_fd[1]);
-// 	if (!keep_read_end && pipe_fd[0] != -1)
-// 		close_wrapper(pipe_fd[0]);
-// }
-//
 void	wait_for_children(t_shell *shell, pid_t last_pid)
 {
 	int		status;
