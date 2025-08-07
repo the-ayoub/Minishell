@@ -6,7 +6,7 @@
 /*   By: aybelhaj <aybelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 19:40:08 by nimatura          #+#    #+#             */
-/*   Updated: 2025/08/06 17:37:45 by ohnonon          ###   ########.fr       */
+/*   Updated: 2025/08/07 18:29:45 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ static int	init_std_fd(int (*arr)[2])
 }
 
 // returns 1 in case of err, otherwise 0
-// TODO: free_arr to free lnk_lst
 static int	readline_wrapper(char **line, t_shell *shell)
 {
 	*line = readline(PROMPT);
@@ -40,8 +39,6 @@ static int	readline_wrapper(char **line, t_shell *shell)
 	return (0);
 }
 
-// NOTE: When do we expand variables? when we transform the token into the cmd?
-// returns 1 in case of err, otherwise 0
 static int	tokenize_and_check_wrp(char **line, t_shell *shell)
 {
 	if (*line != NULL && **line != '\0')

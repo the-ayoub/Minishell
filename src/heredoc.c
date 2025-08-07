@@ -6,7 +6,7 @@
 /*   By: nimatura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 22:18:53 by nimatura          #+#    #+#             */
-/*   Updated: 2025/08/07 15:20:37 by ohnonon          ###   ########.fr       */
+/*   Updated: 2025/08/07 18:57:07 by nimatura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static int	handle_heredoc_loop(int *fd, const char *delimiter)
 	return (0);
 }
 
-static int	heredoc_fork(int *pid, int *fd, char *delim)
+static int	heredoc_fork(int *pid, int *fd, char *delim, t_shell *shell)
 {
 	int	status;
 
@@ -93,7 +93,10 @@ static int	heredoc_fork(int *pid, int *fd, char *delim)
 		waitpid(*pid, &status, 0);
 		close_wrapper(fd[1]);
 		if (WTERMSIG(status) == SIGINT)
+		{
+			shell->last_status = 130;
 			return (ft_putstr_fd("\n", 1), FALSE);
+		}
 	}
 	return (TRUE);
 }
@@ -114,7 +117,7 @@ int	redirect_heredoc(t_shell *shell, t_redir *redir)
 	if (pipe(fd) == -1)
 		return (-1);
 	signal(SIGINT, SIG_IGN);
-	if (heredoc_fork(&pid, fd, redir->file) == FALSE)
+	if (heredoc_fork(&pid, fd, redir->file, shell) == FALSE)
 		return (-2);
 	return (fd[0]);
 }
